@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ad_campaigns {
+  ad_id     String         @id @map("ad_id") @db.VarChar(16)
+  name      String         @map("name")
+  category  String         @map("category") @db.VarChar(50)
+  detections dooh_detection[]
+
+  @@map("ad_campaigns")
+}
+
+model dooh_detection {
+  id                Int       @id @default(autoincrement())
+  timestamp         DateTime  @map("timestamp") @db.Timestamptz
+  bluetooth_id_hash String    @map("bluetooth_id_hash") @db.VarChar(16)
+  ad_id             String    @map("ad_id") @db.VarChar(16)
+  
+  campaign          ad_campaigns @relation(fields: [ad_id], references: [ad_id])
+  
+  @@map("dooh_detections")
+  @@index([bluetooth_id_hash], name: "idx_dooh_device")
+  @@index([ad_id], name: "idx_dooh_ad")
+}
+
+model pos_purchase {
+  id                Int       @id @default(autoincrement())
+  timestamp         DateTime  @map("timestamp") @db.Timestamptz
+  bluetooth_id_hash String    @map("bluetooth_id_hash") @db.VarChar(16)
+  age               Int       @map("age")
+  race              String    @map("race") @db.VarChar(20)
+  gender            String    @map("gender") @db.Char(1)
+  items_purchased   Json?     @map("items_purchased")
+  total_sale        Decimal   @map("total_sale") @db.Decimal(10, 2)
+  
+  @@map("pos_purchases")
+  @@index([bluetooth_id_hash], name: "idx_pos_device")
+}

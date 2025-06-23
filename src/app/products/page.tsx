@@ -1,0 +1,418 @@
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowRight, Camera, Radar, Bluetooth, Eye, Users, BarChart3, Zap, Shield, Rocket } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
+
+export default function () {
+  return (
+    <div>
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="container px-4 md:px-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
+              Advanced Sensor Solutions for
+              <span className="text-blue-600"> Retail Intelligence</span>
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Deploy cutting-edge edge-AI IoT sensor systems that deliver real-time audience analytics, demographic
+              insights, and behavioral data to optimize your retail operations and advertising performance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* R&D Status Banner */}
+      <section className="py-4 bg-amber-50 border-y border-amber-200">
+        <div className="container px-4 md:px-6">
+          <div className="flex items-center justify-center space-x-4 text-center">
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <p className="text-lg font-medium text-amber-800">
+              Our products are currently in active R&D phase - Stay tuned for breakthrough innovations
+            </p>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Unified Sensor Suite Section */}
+      <section className="py-20 bg-white">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Unified Sensor Suite</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              All our products are built on the same advanced sensor technology platform, optimized for different retail
+              environments and use cases.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
+              <CardHeader className="text-center pb-8">
+                <div className="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                  <Zap className="h-10 w-10 text-blue-600" />
+                </div>
+                <CardTitle className="text-3xl mb-4">Edge-AI Sensor Platform</CardTitle>
+                <CardDescription className="text-lg">
+                  A comprehensive multi-sensor system that combines computer vision, radar technology, and wireless
+                  sensing for complete retail environment understanding.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                  <Image
+                    src="/placeholder.svg?height=350&width=600"
+                    alt="Unified Sensor Suite Technology"
+                    width={600}
+                    height={350}
+                    className="rounded-lg"
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Camera className="h-8 w-8 text-green-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">AI Demographics Camera</h3>
+                    <p className="text-gray-600 text-sm">
+                      Real-time computer vision for age, gender, emotion detection, and gaze tracking with
+                      privacy-preserving processing
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Radar className="h-8 w-8 text-purple-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">4D mmWave Radar</h3>
+                    <p className="text-gray-600 text-sm">
+                      Advanced radar sensing for gait analysis, movement patterns, and precise occupancy detection in
+                      all lighting conditions
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Bluetooth className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Bluetooth/MAC Sniffer</h3>
+                    <p className="text-gray-600 text-sm">
+                      Anonymous device tracking for customer journey mapping, return visitor identification, and dwell
+                      time analysis
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-lg p-6 border border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Core Capabilities</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Real-time demographic profiling</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Movement pattern analysis</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Occupancy and traffic counting</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Dwell time measurement</span>
+                      </li>
+                    </ul>
+                    <ul className="space-y-2 text-gray-600">
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Anonymous visitor tracking</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Attention and engagement metrics</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Privacy-compliant data processing</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+                        <span>Edge-AI real-time inference</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Applications */}
+      <section className="py-20 bg-gray-50">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Product Applications</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Our unified sensor suite is configured and optimized for specific retail environments and use cases.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* POS Analytics Application */}
+            <Card className="border-2 border-gray-200 hover:border-blue-300 transition-colors">
+              <CardHeader className="pb-8">
+                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                  <BarChart3 className="h-8 w-8 text-blue-600" />
+                </div>
+                <CardTitle className="text-2xl mb-2">POS Analytics Sensor</CardTitle>
+                <CardDescription className="text-lg">
+                  Sensor suite optimized for point-of-sale environments with queue management and checkout analytics
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                  <Image
+                    src="/placeholder.svg?height=250&width=400"
+                    alt="POS Analytics Configuration"
+                    width={400}
+                    height={250}
+                    className="rounded-lg"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-900">Optimized Applications</h3>
+                  <ul className="space-y-3 text-gray-600">
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Queue Length Optimization</span>
+                        <p className="text-sm text-gray-500">
+                          Real-time monitoring of checkout lines to reduce wait times and improve customer satisfaction
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Customer Flow Analysis</span>
+                        <p className="text-sm text-gray-500">
+                          Track movement patterns around checkout areas to optimize store layout and staffing
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Demographic Profiling</span>
+                        <p className="text-sm text-gray-500">
+                          Understand customer demographics for targeted promotions and product placement
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Staff Scheduling Optimization</span>
+                        <p className="text-sm text-gray-500">
+                          Data-driven insights for optimal staffing based on traffic patterns and peak hours
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Conversion Rate Analytics</span>
+                        <p className="text-sm text-gray-500">
+                          Measure and optimize the effectiveness of checkout processes and upselling opportunities
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex space-x-3 pt-4">
+                  <Button className="flex-1">
+                    Request Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button variant="outline" className="flex-1">
+                    Technical Specs
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* DOOH Analytics Application */}
+            <Card className="border-2 border-gray-200 hover:border-blue-300 transition-colors">
+              <CardHeader className="pb-8">
+                <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                  <Eye className="h-8 w-8 text-green-600" />
+                </div>
+                <CardTitle className="text-2xl mb-2">DOOH Analytics Sensor</CardTitle>
+                <CardDescription className="text-lg">
+                  Sensor suite optimized for digital advertising displays with audience measurement and engagement
+                  tracking
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                  <Image
+                    src="/placeholder.svg?height=250&width=400"
+                    alt="DOOH Analytics Configuration"
+                    width={400}
+                    height={250}
+                    className="rounded-lg"
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-gray-900">Optimized Applications</h3>
+                  <ul className="space-y-3 text-gray-600">
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Real-Time Audience Measurement</span>
+                        <p className="text-sm text-gray-500">
+                          Accurate counting and demographic analysis of viewers for verified advertising metrics
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Gaze Tracking & Engagement</span>
+                        <p className="text-sm text-gray-500">
+                          Measure attention levels and engagement duration for ad content optimization
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Dynamic Content Optimization</span>
+                        <p className="text-sm text-gray-500">
+                          Automatically adjust advertising content based on real-time audience demographics
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Impression Verification</span>
+                        <p className="text-sm text-gray-500">
+                          Provide advertisers with verified, auditable metrics for campaign performance
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <span className="font-medium">Revenue Optimization</span>
+                        <p className="text-sm text-gray-500">
+                          Maximize advertising revenue through data-driven pricing and placement strategies
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="flex space-x-3 pt-4">
+                  <Button className="flex-1">
+                    Request Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                  <Button variant="outline" className="flex-1">
+                    Technical Specs
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Specifications */}
+      <section className="py-20 bg-white">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technical Excellence</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Built with cutting-edge technology for reliable, accurate, and privacy-compliant analytics
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-6 w-6 text-blue-600" />
+                </div>
+                <CardTitle>Edge-AI Processing</CardTitle>
+                <CardDescription>
+                  On-device AI processing ensures real-time analytics with minimal latency and maximum privacy
+                  protection
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-6 w-6 text-green-600" />
+                </div>
+                <CardTitle>Privacy Compliant</CardTitle>
+                <CardDescription>
+                  GDPR and CCPA compliant with anonymous data processing and no personal information storage
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg">
+              <CardHeader className="text-center">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-6 w-6 text-purple-600" />
+                </div>
+                <CardTitle>Scalable Deployment</CardTitle>
+                <CardDescription>
+                  Easy installation and centralized management for single locations or enterprise-wide deployments
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
+        <div className="container px-4 md:px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Deploy Intelligent Sensors?</h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Transform your retail spaces with cutting-edge edge-AI sensor technology. Get started with a pilot program
+            today.
+          </p>
+          <div className="flex justify-center">
+            <Button size="lg" variant="secondary">
+              Schedule a Demo
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-900 text-white py-16">
+        < Footer />
+      </footer>
+    </div>
+  );
+}
+

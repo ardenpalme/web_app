@@ -1,103 +1,302 @@
-import Image from "next/image";
+'use client';
+import { Button } from "@/components/ui/button"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users2, Shield } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { trpc } from '@/lib/trpc';
 
-export default function Home() {
+import Navbar from "@/components/navbar"
+import Footer from "@/components/footer"
+
+export function TestTRPC() {
+  const { data, isLoading } = trpc.audience.ImpressionByRace.useQuery();
+  if (isLoading) return <div>Loading...</div>;
+  if (!data) return <div>No Data</div>;
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <ul>
+      {data.map((row, i) => (
+        <li key={i}>
+          Race: {row.race} — Count: {row._count.gender}
+        </li>
+      ))}
+    </ul>);
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function () {
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      { /*<TestTRPC /> */}
+
+      {/* Hero Section */}
+      <section className="py-20 md:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div className="space-y-8">
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
+                Fine-Tune your Ads with
+                <span className="text-blue-600"> Expert Audience Analytics</span>
+              </h1>
+
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Transform your mall's digital advertising revenue with AI-powered audience insights. Maximize DOOH ad
+                performance, understand shopper behavior, and increase tenant satisfaction with precise demographic
+                targeting.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  Request Demo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white text-blue-900 border-2 border-blue-600 hover:bg-blue-50"
+                >
+                  View Case Study
+                </Button>
+              </div>
+
+              <div className="flex items-center space-x-2 text-sm text-gray-600">
+                <Check className="h-4 w-4 text-green-500" />
+                <span>30-day pilot program</span>
+                <span>•</span>
+                <span>ROI guarantee</span>
+              </div>
+            </div>
+
+            {/* Image Content */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-4 flex items-center justify-center">
+                <Image
+                  src="/mall_dooh.jpg"
+                  alt="LaunchPad AI Sensor System - Advanced IoT sensors with cameras, radar, and edge-AI processing for retail analytics"
+                  width={800}
+                  height={500}
+                  className="rounded-xl"
+                  priority
+                />
+              </div>
+
+              {/* Floating Feature Cards */}
+              <div className="absolute -top-4 -left-4 bg-white rounded-lg shadow-lg p-4 border border-gray-200">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <Eye className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-gray-900">Real-Time Analytics</div>
+                    <div className="text-xs text-gray-500">Edge-AI Processing</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-4 border border-gray-200">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                    <Shield className="h-4 w-4 text-green-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-gray-900">Privacy Compliant</div>
+                    <div className="text-xs text-gray-500">GDPR & CCPA</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="absolute top-1/2 -left-6 transform -translate-y-1/2 bg-white rounded-lg shadow-lg p-4 border border-gray-200">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                    <BarChart3 className="h-4 w-4 text-purple-600" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-gray-900">45% Revenue Boost</div>
+                    <div className="text-xs text-gray-500">Average Increase</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 bg-white">
+        <div className="container px-4 md:px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Maximize Your Mall's Digital Revenue</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Advanced DOOH analytics that help mall owners optimize advertising spaces, understand shopper patterns,
+              and deliver measurable results to advertisers.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Eye className="h-6 w-6 text-blue-600" />
+                </div>
+                <CardTitle>Real-Time Audience Measurement</CardTitle>
+                <CardDescription>
+                  Track foot traffic, dwell time, and audience demographics in real-time across all your digital
+                  displays. Provide advertisers with verified impression data and engagement metrics.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                  <BarChart3 className="h-6 w-6 text-green-600" />
+                </div>
+                <CardTitle>Shopper Behavior Analytics</CardTitle>
+                <CardDescription>
+                  Understand peak hours, popular zones, and shopper journey patterns. Optimize store layouts and
+                  advertising placement to maximize tenant revenue and customer satisfaction.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                  <MapPin className="h-6 w-6 text-purple-600" />
+                </div>
+                <CardTitle>Location Intelligence</CardTitle>
+                <CardDescription>
+                  AI-powered zone analysis identifies high-value advertising locations. Increase ad rates with
+                  data-backed premium placement recommendations and performance guarantees.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-orange-600" />
+                </div>
+                <CardTitle>Revenue Optimization</CardTitle>
+                <CardDescription>
+                  Dynamic pricing recommendations based on audience density and demographics. Maximize DOOH revenue with
+                  automated yield management and performance-based advertising packages.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <Users2 className="h-6 w-6 text-red-600" />
+                </div>
+                <CardTitle>Demographic Targeting</CardTitle>
+                <CardDescription>
+                  Precise age, gender, and interest profiling enables targeted advertising campaigns. Help brands reach
+                  their ideal customers while increasing ad effectiveness and renewal rates.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+                  <BarChart3 className="h-6 w-6 text-cyan-600" />
+                </div>
+                <CardTitle>Advertiser Reporting</CardTitle>
+                <CardDescription>
+                  Comprehensive campaign reports with verified metrics, audience insights, and ROI analysis. Build
+                  advertiser confidence with transparent, measurable results and detailed performance data.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-white">
+        <div className="container px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Turn Your Mall Into a Data-Driven Revenue Machine
+              </h2>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="h-4 w-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Increase Ad Revenue by 40-60%</h3>
+                    <p className="text-gray-600">
+                      Data-backed premium pricing and optimized ad placement strategies that maximize your digital
+                      advertising income.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="h-4 w-4 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Attract Premium Advertisers</h3>
+                    <p className="text-gray-600">
+                      Verified audience metrics and demographic insights help you secure long-term contracts with
+                      high-value brands.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="h-4 w-4 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Optimize Tenant Mix & Layout</h3>
+                    <p className="text-gray-600">
+                      Shopper flow analytics help you make informed decisions about store placement and common area
+                      optimization.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 text-center order-first lg:order-last">
+              <div className="text-6xl mb-4">📊</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Real-Time Dashboard</h3>
+              <p className="text-gray-600 mb-6">
+                Monitor all your mall's digital advertising performance, foot traffic patterns, and revenue metrics from
+                one comprehensive dashboard.
+              </p>
+              <Button variant="outline">View Demo Dashboard</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
+        <div className="container px-4 md:px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Ready to Maximize Your Mall's Digital Revenue?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Provide key insights to tenant shopowners with advanced DOOH ad-attribution analytics.
+          </p>
+          <div className="flex justify-center">
+            <Button size="lg" variant="secondary">
+              Contact us
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-900 text-white py-16">
+        < Footer />
       </footer>
     </div>
-  );
+  )
 }
+
