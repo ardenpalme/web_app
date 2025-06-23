@@ -17,7 +17,7 @@ export function TestTRPC() {
     <ul>
       {data.map((row, i) => (
         <li key={i}>
-          Race: {row.race} — Count: {row._count.gender}
+          Race: {row.race} — Count: {row._count}
         </li>
       ))}
     </ul>);
@@ -27,7 +27,7 @@ export default function () {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      { /*<TestTRPC /> */}
+      <TestTRPC /> 
 
       {/* Hero Section */}
       <section className="py-20 md:py-32">

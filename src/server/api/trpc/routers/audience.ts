@@ -8,7 +8,7 @@ export const audienceRouter = router({
   ImpressionByRace: publicProcedure.query(async () => {
     return await prisma.pos_purchase.groupBy({
       by: ['race'],
-      _count: { gender: true }
+      _count: true,
     });
   }),
 });
