@@ -20,25 +20,34 @@ import {
 
 import { trpc } from '@/lib/trpc';
 
-const chartConfig = {
-  impressions: { label: "Impressions" },
-  Asian:    { label: "Asian",    color: "#e76f51" },
-  Black:    { label: "Black",    color: "#2a9d8f" },
-  Hispanic: { label: "Hispanic", color: "#f4a261" },
-  White:    { label: "White",    color: "#e9c46a" },
-  Other:    { label: "Other",    color: "#264653" },
+const raceColors: Record<string, string> = {
+  Asian:    "#f59e0b",
+  Black:    "#fbbf24",
+  Hispanic: "#fcd34d",
+  White:    "#fde68a",
+  Other:    "#fff7ed",
 };
 
-const raceColors: Record<string, string> = {
-  Asian: "#e76f51",
-  Black: '#36A2EB',
-  Hispanic: '#FFCE56',
-  White: '#9966FF',
-  Other: '#999999',
+const chartConfig = {
+  Asian:    { label: "Asian",    color: "#f59e0b" },
+  Black:    { label: "Black",    color: "#fbbf24" },
+  Hispanic: { label: "Hispanic", color: "#fcd34d" },
+  White:    { label: "White",    color: "#fde68a" },
+  Other:    { label: "Other",    color: "#fff7ed" },
+};
+
+const genderColors: Record<string, string> = {
+  Male:    "#f59e0b",
+  Female:  "#fbbf24",
+};
+
+const chartConfig1 = {
+  Male:     { label: "Male",    color: "#f59e0b" },
+  Female:   { label: "Female",  color: "#fbbf24" },
 };
 
 export function ChartA1() {
-  const { data = [] } = trpc.audience.ImpressionByRace.useQuery();
+  const { data = [] } = trpc.audience.PurchaseByRace.useQuery();
 
   const chartData = data.map((row) => ({
     label: row.race,
@@ -50,70 +59,58 @@ export function ChartA1() {
   if (!chartData.length) return <div>No data</div>;
 
   return (
-    <Card className="flex flex-col">
+     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
+        <CardTitle>Purchase (by Ethnicity)</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart width={250} height={250}>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="value"
-              nameKey="label"
-              innerRadius={60}
-              strokeWidth={5}
-            >
-              <Label
-                content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                    return (
-                      <text
-                        x={viewBox.cx}
-                        y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                      >
-                        <tspan
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          className="text-black  font-bold"
-                        >
-                          YOIOOOOO
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                          Visitors 122
-                        </tspan>
-                      </text>
-                    )
-                  }
-                }}
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-foreground">{total_impressions.toLocaleString()}</div>
+              <div className="text-sm text-muted-foreground mt-1">Total</div>
+            </div>
+          </div>
+          <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]" >
+            <PieChart width={250} height={250}>
+              <ChartTooltip
+                cursor={false}
+                content={
+                  <ChartTooltipContent
+                    formatter={(value, label) => [`${value.toLocaleString()} `, label]}
+                    labelFormatter={() => ""}
+                  />
+                }
               />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
+              <Pie
+                data={chartData}
+                dataKey="value"
+                nameKey="label"
+                innerRadius={60}
+                strokeWidth={5}
+              >
+              {chartData.map((entry, i) => (
+                <Cell key={i} fill={entry.fill} />
+              ))}
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+          {/* Center total display */}
+        </div>
       </CardContent>
       <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
-        </div>
+      {/* Legend */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+        {chartData.map((item, index) => (
+          <div key={item.label} className="flex items-center space-x-2">
+            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.fill }} />
+            <span className="text-sm font-medium">{item.label}</span>
+          </div>
+        ))}
+      </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
 
