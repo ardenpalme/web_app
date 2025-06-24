@@ -159,7 +159,7 @@ export default function ResearchPage() {
                       </li>
                       <li>
                         <div className="flex w-[50px] p-1">
-                          <Link href="https://arxiv.org/abs/2503.07435">
+                          <Link href="https://arxiv.org/abs/2503.07435" target="_blank" rel="noopener noreferrer" >
                             <Button variant="outline" className="flex-1 cursor-pointer">
                               Learn More
                               <ArrowRight className="h-3 w-3" />
@@ -232,7 +232,7 @@ export default function ResearchPage() {
                       </li>
                       <li>
                         <div className="flex w-[50px] p-1">
-                          <Link href="https://www.mdpi.com/1424-8220/24/1/142">
+                          <Link href="https://www.mdpi.com/1424-8220/24/1/142" target="_blank" rel="noopener noreferrer">
                             <Button variant="outline" className="flex-1 cursor-pointer">
                               Learn More
                               <ArrowRight className="h-3 w-3" />

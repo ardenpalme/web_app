@@ -257,7 +257,7 @@ export default function () {
                 Monitor all your mall's digital advertising performance, foot traffic patterns, and revenue metrics from
                 one comprehensive dashboard.
               </p>
-              <Link href="/dashboard">
+              <Link href="/dashboard" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="cursor-pointer">View Demo Dashboard</Button>
               </Link>
             </div>
