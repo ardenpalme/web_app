@@ -1,8 +1,10 @@
 import { router } from '../../trpc';
-import { helloRouter } from './hello';
+import { utilsRouter } from './utils';
 import { audienceRouter } from './audience';
+import { customerRouter } from './customers';
 
 export const appRouter = router({ 
-  hello: helloRouter,
   audience: audienceRouter,
+  customers: customerRouter,
+  utils: utilsRouter,
 });

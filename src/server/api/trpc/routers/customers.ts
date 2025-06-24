@@ -4,8 +4,8 @@ import { PrismaClient } from '@generated/prisma'
 
 const prisma = new PrismaClient()
 
-export const audienceRouter = router({
-  ViewsByRace: publicProcedure
+export const customerRouter = router({
+  PurchaseByRace: publicProcedure
   .input(
     z.object({
       start: z.string().datetime(),
@@ -14,7 +14,7 @@ export const audienceRouter = router({
   )
   .query(async ({ input }) => {
     const { start, end } = input;
-    return await prisma.dooh_detections.groupBy({
+    return await prisma.pos_purchase.groupBy({
       by: ['race'],
       where: {
         timestamp: {
@@ -26,7 +26,7 @@ export const audienceRouter = router({
     });
   }),
 
-  ViewsByGender: publicProcedure
+  PurchaseByGender: publicProcedure
   .input(
     z.object({
       start: z.string().datetime(),
@@ -35,7 +35,7 @@ export const audienceRouter = router({
   )
   .query(async ({ input }) => {
     const { start, end } = input;
-    return await prisma.dooh_detections.groupBy({
+    return await prisma.pos_purchase.groupBy({
       by: ['gender'],
       where: {
         timestamp: {
@@ -47,7 +47,7 @@ export const audienceRouter = router({
     });
   }),
 
-  ViewsByAge: publicProcedure
+  PurchaseByAge: publicProcedure
   .input(
     z.object({
       start: z.string().datetime(),
@@ -57,7 +57,7 @@ export const audienceRouter = router({
   .query(async ({ input }) => {
     const { start, end } = input;
 
-    const all = await prisma.dooh_detections.findMany({
+    const all = await prisma.pos_purchase.findMany({
       where: {
         timestamp: {
           gte: new Date(start),
