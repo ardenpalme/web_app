@@ -247,30 +247,23 @@ export default function () {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
+      {/* Office Location Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Impact</h2>
-            <p className="text-lg text-gray-600">Building the future of retail intelligence</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">5+</div>
-              <div className="text-gray-600">Years of Research</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
-              <div className="text-gray-600">Academic Publications</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">2</div>
-              <div className="text-gray-600">Core Product Lines</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
-              <div className="text-gray-600">Privacy Compliant</div>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Location</h2>
+
+            <Card className="border-0 shadow-lg p-8">
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-gray-900">LaunchPad Research Lab</h3>
+                <div className="text-gray-600 space-y-2">
+                  <p>30 North Gould Street</p>
+                  <p>Sheridan, WY 82801</p>
+                  <p className="pt-2">contact@intuitus-ads.com</p>
+                  <p>(307) 207-5967</p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>

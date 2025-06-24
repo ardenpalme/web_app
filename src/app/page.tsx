@@ -4,30 +4,14 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users2, Shield } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { trpc } from '@/lib/trpc';
 
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
-
-export function TestTRPC() {
-  const { data, isLoading } = trpc.audience.ImpressionByRace.useQuery();
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>No Data</div>;
-  return (
-    <ul>
-      {data.map((row, i) => (
-        <li key={i}>
-          Race: {row.race} — Count: {row._count}
-        </li>
-      ))}
-    </ul>);
-}
 
 export default function () {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <TestTRPC /> 
 
       {/* Hero Section */}
       <section className="py-20 md:py-32">
@@ -47,17 +31,21 @@ export default function () {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  Request Demo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white text-blue-900 border-2 border-blue-600 hover:bg-blue-50"
-                >
-                  View Case Study
-                </Button>
+                <Link href="mailto:info@intuitus-ads.com">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 cursor-pointer">
+                    Request Demo
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/products">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white text-blue-900 border-2 border-blue-500 hover:bg-blue-50 cursor-pointer"
+                  >
+                  Learn More
+                  </Button>
+                </Link>
               </div>
 
               <div className="flex items-center space-x-2 text-sm text-gray-600">
@@ -269,7 +257,9 @@ export default function () {
                 Monitor all your mall's digital advertising performance, foot traffic patterns, and revenue metrics from
                 one comprehensive dashboard.
               </p>
-              <Button variant="outline">View Demo Dashboard</Button>
+              <Link href="/dashboard">
+                <Button variant="outline" className="cursor-pointer">View Demo Dashboard</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -285,10 +275,12 @@ export default function () {
             Provide key insights to tenant shopowners with advanced DOOH ad-attribution analytics.
           </p>
           <div className="flex justify-center">
-            <Button size="lg" variant="secondary">
-              Contact us
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="mailto:info@intuitus-ads.com">
+              <Button size="lg" variant="secondary" className="cursor-pointer">
+                Contact Us
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

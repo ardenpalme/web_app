@@ -64,11 +64,11 @@ export default function () {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                <div className="inline-block p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg items-center justify-center">
                   <Image
-                    src="/placeholder.svg?height=350&width=600"
+                    src="/unified-sensor-node.png"
                     alt="Unified Sensor Suite Technology"
-                    width={600}
+                    width={800}
                     height={350}
                     className="rounded-lg"
                   />
@@ -179,14 +179,16 @@ export default function () {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
-                  <Image
-                    src="/placeholder.svg?height=250&width=400"
-                    alt="POS Analytics Configuration"
-                    width={400}
-                    height={250}
-                    className="rounded-lg"
-                  />
+                <div className="flex justify-center">
+                  <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
+                    <Image
+                      src="/pos_checkout.jpg"
+                      alt="DOOH Analytics Configuration"
+                      width={900}
+                      height={900}
+                      className="rounded-lg"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-4">
@@ -240,15 +242,6 @@ export default function () {
                   </ul>
                 </div>
 
-                <div className="flex space-x-3 pt-4">
-                  <Button className="flex-1">
-                    Request Demo
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" className="flex-1">
-                    Technical Specs
-                  </Button>
-                </div>
               </CardContent>
             </Card>
 
@@ -265,14 +258,16 @@ export default function () {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
-                  <Image
-                    src="/placeholder.svg?height=250&width=400"
-                    alt="DOOH Analytics Configuration"
-                    width={400}
-                    height={250}
-                    className="rounded-lg"
-                  />
+                <div className="flex justify-center">
+                  <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
+                    <Image
+                      src="/dooh_analytics.jpg"
+                      alt="DOOH Analytics Configuration"
+                      width={600}
+                      height={500}
+                      className="w-full h-auto max-w-[800px] rounded-lg"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-4">
@@ -326,15 +321,6 @@ export default function () {
                   </ul>
                 </div>
 
-                <div className="flex space-x-3 pt-4">
-                  <Button className="flex-1">
-                    Request Demo
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                  <Button variant="outline" className="flex-1">
-                    Technical Specs
-                  </Button>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -401,10 +387,12 @@ export default function () {
             today.
           </p>
           <div className="flex justify-center">
-            <Button size="lg" variant="secondary">
-              Schedule a Demo
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="mailto:info@intuitus-ads.com">
+              <Button size="lg" variant="secondary" className="cursor-pointer">
+                Schedule a Demo
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

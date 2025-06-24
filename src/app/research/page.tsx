@@ -130,14 +130,17 @@ export default function ResearchPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/placeholder.svg?height=200&width=350"
-                      alt="MmGait-3D Research Visualization"
-                      width={350}
-                      height={200}
-                      className="rounded-lg"
-                    />
+
+                  <div className="flex justify-center items-center">
+                    <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg">
+                      <Image
+                        src="/diagram.png"
+                        alt="MmGait-3D Research Visualization"
+                        width={350}
+                        height={200}
+                        className="rounded-lg"
+                      />
+                    </div>
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-semibold text-gray-900">Key Contributions</h4>
@@ -154,6 +157,16 @@ export default function ResearchPage() {
                         <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                         <span>Comprehensive evaluation framework for 3D gait analysis systems</span>
                       </li>
+                      <li>
+                        <div className="flex w-[50px] p-1">
+                          <Link href="https://arxiv.org/abs/2503.07435">
+                            <Button variant="outline" className="flex-1 cursor-pointer">
+                              Learn More
+                              <ArrowRight className="h-3 w-3" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -165,11 +178,6 @@ export default function ResearchPage() {
                   <Badge variant="outline">Retail Analytics</Badge>
                 </div>
 
-                <div className="flex space-x-3">
-                  <Button variant="outline" className="flex-1">
-                    Learn More
-                  </Button>
-                </div>
               </CardContent>
             </Card>
 
@@ -196,14 +204,16 @@ export default function ResearchPage() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid lg:grid-cols-2 gap-6">
-                  <div className="aspect-video bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/placeholder.svg?height=200&width=350"
-                      alt="Privacy-Preserving Gait Analysis Research"
-                      width={350}
-                      height={200}
-                      className="rounded-lg"
-                    />
+                  <div className="flex justify-center items-center">
+                    <div className="p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-lg">
+                      <Image
+                        src="/radar_board.png"
+                        alt="Privacy-Preserving Gait Analysis Research"
+                        width={350}
+                        height={200}
+                        className="rounded-lg"
+                      />
+                    </div>
                   </div>
                   <div className="space-y-4">
                     <h4 className="font-semibold text-gray-900">Key Contributions</h4>
@@ -220,6 +230,16 @@ export default function ResearchPage() {
                         <div className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                         <span>GDPR and CCPA compliance validation for commercial deployments</span>
                       </li>
+                      <li>
+                        <div className="flex w-[50px] p-1">
+                          <Link href="https://www.mdpi.com/1424-8220/24/1/142">
+                            <Button variant="outline" className="flex-1 cursor-pointer">
+                              Learn More
+                              <ArrowRight className="h-3 w-3" />
+                            </Button>
+                          </Link>
+                        </div>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -231,146 +251,9 @@ export default function ResearchPage() {
                   <Badge variant="outline">Healthcare</Badge>
                 </div>
 
-                <div className="flex space-x-3">
-                  <Button variant="outline" className="flex-1">
-                    Learn More
-                  </Button>
-                </div>
               </CardContent>
             </Card>
 
-            {/* Paper 3 */}
-            <Card className="border-2 border-gray-200 hover:border-purple-300 transition-colors">
-              <CardHeader className="pb-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Brain className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <div className="flex-1">
-                    <Badge variant="secondary" className="mb-3">
-                      Research Paper
-                    </Badge>
-                    <CardTitle className="text-xl mb-2">
-                      Edge-AI Optimization for Real-Time Sensor Fusion in Retail Environments
-                    </CardTitle>
-                    <CardDescription className="text-base">
-                      Advanced techniques for deploying deep learning models on edge devices while maintaining real-time
-                      performance and accuracy in multi-sensor retail analytics systems.
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <div className="aspect-video bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/placeholder.svg?height=200&width=350"
-                      alt="Edge-AI Optimization Research"
-                      width={350}
-                      height={200}
-                      className="rounded-lg"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-gray-900">Key Contributions</h4>
-                    <ul className="space-y-2 text-gray-600 text-sm">
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Novel model compression techniques for edge deployment</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Real-time multi-sensor fusion algorithms for retail analytics</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Power-efficient inference optimization for IoT devices</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Edge Computing</Badge>
-                  <Badge variant="outline">Model Optimization</Badge>
-                  <Badge variant="outline">IoT Systems</Badge>
-                  <Badge variant="outline">Real-time Processing</Badge>
-                </div>
-
-                <div className="flex space-x-3">
-                  <Button variant="outline" className="flex-1">
-                    Learn More
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Paper 4 */}
-            <Card className="border-2 border-gray-200 hover:border-orange-300 transition-colors">
-              <CardHeader className="pb-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Database className="h-6 w-6 text-orange-600" />
-                  </div>
-                  <div className="flex-1">
-                    <Badge variant="secondary" className="mb-3">
-                      Research Paper
-                    </Badge>
-                    <CardTitle className="text-xl mb-2">
-                      Federated Learning for Distributed Retail Analytics with Privacy Guarantees
-                    </CardTitle>
-                    <CardDescription className="text-base">
-                      A comprehensive framework for collaborative machine learning across multiple retail locations
-                      while ensuring data privacy and regulatory compliance through advanced federated learning
-                      techniques.
-                    </CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid lg:grid-cols-2 gap-6">
-                  <div className="aspect-video bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center">
-                    <Image
-                      src="/placeholder.svg?height=200&width=350"
-                      alt="Federated Learning Research"
-                      width={350}
-                      height={200}
-                      className="rounded-lg"
-                    />
-                  </div>
-                  <div className="space-y-4">
-                    <h4 className="font-semibold text-gray-900">Key Contributions</h4>
-                    <ul className="space-y-2 text-gray-600 text-sm">
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Differential privacy mechanisms for retail data protection</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Secure aggregation protocols for multi-location learning</span>
-                      </li>
-                      <li className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-orange-600 rounded-full mt-2 flex-shrink-0"></div>
-                        <span>Communication-efficient federated optimization algorithms</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Federated Learning</Badge>
-                  <Badge variant="outline">Differential Privacy</Badge>
-                  <Badge variant="outline">Distributed Systems</Badge>
-                  <Badge variant="outline">Data Protection</Badge>
-                </div>
-
-                <div className="flex space-x-3">
-                  <Button variant="outline" className="flex-1">
-                    Learn More
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
