@@ -5,9 +5,23 @@ import { PrismaClient } from '@generated/prisma'
 const prisma = new PrismaClient()
 
 export const audienceRouter = router({
-  PurchaseByRace: publicProcedure.query(async () => {
+  PurchaseByRace: publicProcedure
+  .input(
+    z.object({
+      start: z.string().datetime(),
+      end: z.string().datetime(),
+    })
+  )
+  .query(async ({ input }) => {
+    const { start, end } = input;
     return await prisma.pos_purchase.groupBy({
       by: ['race'],
+      where: {
+        timestamp: {
+          gte: new Date(start),
+          lte: new Date(end),
+        },
+      },
       _count: true,
     });
   }),
@@ -28,8 +42,8 @@ export const audienceRouter = router({
 
     for (const { age } of all) {
       if (age !== null) {
-        const bucketStart = Math.floor(age / 5) * 5;
-        const label = `${bucketStart}-${bucketStart + 4}`;
+        const bucketStart = Math.floor(age / 10) * 10;
+        const label = `${bucketStart}-${bucketStart + 9}`;
         buckets.set(label, (buckets.get(label) || 0) + 1);
       }
     }
