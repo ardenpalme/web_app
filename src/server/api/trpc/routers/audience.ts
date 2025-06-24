@@ -26,16 +26,45 @@ export const audienceRouter = router({
     });
   }),
 
-  PurchaseByGender: publicProcedure.query(async () => {
+  PurchaseByGender: publicProcedure
+  .input(
+    z.object({
+      start: z.string().datetime(),
+      end: z.string().datetime(),
+    })
+  )
+  .query(async ({ input }) => {
+    const { start, end } = input;
     return await prisma.pos_purchase.groupBy({
       by: ['gender'],
-      _count: { gender: true }
+      where: {
+        timestamp: {
+          gte: new Date(start),
+          lte: new Date(end),
+        },
+      },
+      _count: true,
     });
   }),
 
-  PurchaseByAge: publicProcedure.query(async () => {
+  PurchaseByAge: publicProcedure
+  .input(
+    z.object({
+      start: z.string().datetime(),
+      end: z.string().datetime(),
+    })
+  )
+  .query(async ({ input }) => {
+    const { start, end } = input;
+
     const all = await prisma.pos_purchase.findMany({
-      select: { age: true }
+      where: {
+        timestamp: {
+          gte: new Date(start),
+          lte: new Date(end),
+        },
+      },
+      select: { age: true },
     });
 
     const buckets = new Map<string, number>();
@@ -48,8 +77,9 @@ export const audienceRouter = router({
       }
     }
 
-    return [...buckets.entries()].sort((a, b) => parseInt(a[0]) - parseInt(b[0])).
-      map(([range, count]) => ({ ageRange: range, count }));
+    return [...buckets.entries()]
+      .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
+      .map(([age, _count]) => ({ age, _count }));
   }),
 
   DateTimeRange: publicProcedure.query(async () => {
@@ -63,6 +93,6 @@ export const audienceRouter = router({
       dooh: [doohStart?.timestamp || null, doohEnd?.timestamp || null],
       pos: [posStart?.timestamp || null, posEnd?.timestamp || null]
     };
-  })
+  }),
 });
 

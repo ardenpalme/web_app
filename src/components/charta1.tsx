@@ -9,7 +9,7 @@ import { trpc } from '@/lib/trpc';
 
 const chartConfigs = {
   race: {
-    title: "Purchases by Race",
+    title: "Num Purchases by Race",
     config: {
       Asian: { label: "Asian", color: "#f59e0b" },
       Black: { label: "Black", color: "#fbbf24" },
@@ -26,7 +26,7 @@ const chartConfigs = {
     ],
   },
   gender: {
-    title: "Purchases by Gender",
+    title: "Num Purchases by Gender",
     config: {
       Male: { label: "Male", color: "#f59e0b" },
       Female: { label: "Female", color: "#fbbf24" },
@@ -37,7 +37,7 @@ const chartConfigs = {
     ],
   },
   age: {
-    title: "Purchases by Age",
+    title: "Num Purchases by Age",
     config: {
       "10-19": { label: "10-19", color: "#f59e0b" },
       "20-29": { label: "20-29", color: "#fbbf24" },
@@ -62,7 +62,6 @@ interface DonutChartProps {
 }
 
 export function PurchasePieChart({ timeRange }: DonutChartProps) {
-  console.log(timeRange);
   const [selectedChart, setSelectedChart] = useState<keyof typeof chartConfigs>("race")
 
   const purchaseByRace = trpc.audience.PurchaseByRace.useQuery(timeRange, {
@@ -95,16 +94,15 @@ export function PurchasePieChart({ timeRange }: DonutChartProps) {
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div>
           <CardTitle className="text-2xl font-bold">{currentConfig.title}</CardTitle>
-          <CardDescription>{timeRange.start} - {timeRange.end}</CardDescription>
         </div>
         <Select value={selectedChart} onValueChange={(value: keyof typeof chartConfigs) => setSelectedChart(value)}>
           <SelectTrigger className="w-[200px]">
             <SelectValue placeholder="Select chart type" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="race">Purchases by Race</SelectItem>
-            <SelectItem value="gender">Purchases by Gender</SelectItem>
-            <SelectItem value="age">Purchases by Age</SelectItem>
+            <SelectItem value="race">Race</SelectItem>
+            <SelectItem value="gender">Gender</SelectItem>
+            <SelectItem value="age">Age</SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
@@ -123,7 +121,7 @@ export function PurchasePieChart({ timeRange }: DonutChartProps) {
                 cursor={false}
                 content={
                   <ChartTooltipContent
-                    formatter={(value, name) => [`$${value.toLocaleString()}`, name]}
+                    formatter={(value, name) => [name, ` ${value.toLocaleString()}`]}
                     labelFormatter={() => ""}
                   />
                 }
