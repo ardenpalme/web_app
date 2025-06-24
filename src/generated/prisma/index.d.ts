@@ -2139,10 +2139,12 @@ export namespace Prisma {
 
   export type Dooh_detectionAvgAggregateOutputType = {
     id: number | null
+    age: number | null
   }
 
   export type Dooh_detectionSumAggregateOutputType = {
     id: number | null
+    age: number | null
   }
 
   export type Dooh_detectionMinAggregateOutputType = {
@@ -2150,6 +2152,9 @@ export namespace Prisma {
     timestamp: Date | null
     bluetooth_id_hash: string | null
     ad_id: string | null
+    age: number | null
+    race: string | null
+    gender: string | null
   }
 
   export type Dooh_detectionMaxAggregateOutputType = {
@@ -2157,6 +2162,9 @@ export namespace Prisma {
     timestamp: Date | null
     bluetooth_id_hash: string | null
     ad_id: string | null
+    age: number | null
+    race: string | null
+    gender: string | null
   }
 
   export type Dooh_detectionCountAggregateOutputType = {
@@ -2164,16 +2172,21 @@ export namespace Prisma {
     timestamp: number
     bluetooth_id_hash: number
     ad_id: number
+    age: number
+    race: number
+    gender: number
     _all: number
   }
 
 
   export type Dooh_detectionAvgAggregateInputType = {
     id?: true
+    age?: true
   }
 
   export type Dooh_detectionSumAggregateInputType = {
     id?: true
+    age?: true
   }
 
   export type Dooh_detectionMinAggregateInputType = {
@@ -2181,6 +2194,9 @@ export namespace Prisma {
     timestamp?: true
     bluetooth_id_hash?: true
     ad_id?: true
+    age?: true
+    race?: true
+    gender?: true
   }
 
   export type Dooh_detectionMaxAggregateInputType = {
@@ -2188,6 +2204,9 @@ export namespace Prisma {
     timestamp?: true
     bluetooth_id_hash?: true
     ad_id?: true
+    age?: true
+    race?: true
+    gender?: true
   }
 
   export type Dooh_detectionCountAggregateInputType = {
@@ -2195,6 +2214,9 @@ export namespace Prisma {
     timestamp?: true
     bluetooth_id_hash?: true
     ad_id?: true
+    age?: true
+    race?: true
+    gender?: true
     _all?: true
   }
 
@@ -2289,6 +2311,9 @@ export namespace Prisma {
     timestamp: Date
     bluetooth_id_hash: string
     ad_id: string
+    age: number
+    race: string
+    gender: string
     _count: Dooh_detectionCountAggregateOutputType | null
     _avg: Dooh_detectionAvgAggregateOutputType | null
     _sum: Dooh_detectionSumAggregateOutputType | null
@@ -2315,6 +2340,9 @@ export namespace Prisma {
     timestamp?: boolean
     bluetooth_id_hash?: boolean
     ad_id?: boolean
+    age?: boolean
+    race?: boolean
+    gender?: boolean
     campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dooh_detection"]>
 
@@ -2323,6 +2351,9 @@ export namespace Prisma {
     timestamp?: boolean
     bluetooth_id_hash?: boolean
     ad_id?: boolean
+    age?: boolean
+    race?: boolean
+    gender?: boolean
     campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dooh_detection"]>
 
@@ -2331,6 +2362,9 @@ export namespace Prisma {
     timestamp?: boolean
     bluetooth_id_hash?: boolean
     ad_id?: boolean
+    age?: boolean
+    race?: boolean
+    gender?: boolean
     campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dooh_detection"]>
 
@@ -2339,9 +2373,12 @@ export namespace Prisma {
     timestamp?: boolean
     bluetooth_id_hash?: boolean
     ad_id?: boolean
+    age?: boolean
+    race?: boolean
+    gender?: boolean
   }
 
-  export type dooh_detectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "ad_id", ExtArgs["result"]["dooh_detection"]>
+  export type dooh_detectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "ad_id" | "age" | "race" | "gender", ExtArgs["result"]["dooh_detection"]>
   export type dooh_detectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
   }
@@ -2362,6 +2399,9 @@ export namespace Prisma {
       timestamp: Date
       bluetooth_id_hash: string
       ad_id: string
+      age: number
+      race: string
+      gender: string
     }, ExtArgs["result"]["dooh_detection"]>
     composites: {}
   }
@@ -2790,6 +2830,9 @@ export namespace Prisma {
     readonly timestamp: FieldRef<"dooh_detection", 'DateTime'>
     readonly bluetooth_id_hash: FieldRef<"dooh_detection", 'String'>
     readonly ad_id: FieldRef<"dooh_detection", 'String'>
+    readonly age: FieldRef<"dooh_detection", 'Int'>
+    readonly race: FieldRef<"dooh_detection", 'String'>
+    readonly gender: FieldRef<"dooh_detection", 'String'>
   }
     
 
@@ -3219,13 +3262,13 @@ export namespace Prisma {
   export type Pos_purchaseAvgAggregateOutputType = {
     id: number | null
     age: number | null
-    total_sale: Decimal | null
+    sale_total: Decimal | null
   }
 
   export type Pos_purchaseSumAggregateOutputType = {
     id: number | null
     age: number | null
-    total_sale: Decimal | null
+    sale_total: Decimal | null
   }
 
   export type Pos_purchaseMinAggregateOutputType = {
@@ -3235,7 +3278,7 @@ export namespace Prisma {
     age: number | null
     race: string | null
     gender: string | null
-    total_sale: Decimal | null
+    sale_total: Decimal | null
   }
 
   export type Pos_purchaseMaxAggregateOutputType = {
@@ -3245,7 +3288,7 @@ export namespace Prisma {
     age: number | null
     race: string | null
     gender: string | null
-    total_sale: Decimal | null
+    sale_total: Decimal | null
   }
 
   export type Pos_purchaseCountAggregateOutputType = {
@@ -3256,7 +3299,7 @@ export namespace Prisma {
     race: number
     gender: number
     items_purchased: number
-    total_sale: number
+    sale_total: number
     _all: number
   }
 
@@ -3264,13 +3307,13 @@ export namespace Prisma {
   export type Pos_purchaseAvgAggregateInputType = {
     id?: true
     age?: true
-    total_sale?: true
+    sale_total?: true
   }
 
   export type Pos_purchaseSumAggregateInputType = {
     id?: true
     age?: true
-    total_sale?: true
+    sale_total?: true
   }
 
   export type Pos_purchaseMinAggregateInputType = {
@@ -3280,7 +3323,7 @@ export namespace Prisma {
     age?: true
     race?: true
     gender?: true
-    total_sale?: true
+    sale_total?: true
   }
 
   export type Pos_purchaseMaxAggregateInputType = {
@@ -3290,7 +3333,7 @@ export namespace Prisma {
     age?: true
     race?: true
     gender?: true
-    total_sale?: true
+    sale_total?: true
   }
 
   export type Pos_purchaseCountAggregateInputType = {
@@ -3301,7 +3344,7 @@ export namespace Prisma {
     race?: true
     gender?: true
     items_purchased?: true
-    total_sale?: true
+    sale_total?: true
     _all?: true
   }
 
@@ -3399,7 +3442,7 @@ export namespace Prisma {
     race: string
     gender: string
     items_purchased: JsonValue | null
-    total_sale: Decimal
+    sale_total: Decimal
     _count: Pos_purchaseCountAggregateOutputType | null
     _avg: Pos_purchaseAvgAggregateOutputType | null
     _sum: Pos_purchaseSumAggregateOutputType | null
@@ -3429,7 +3472,7 @@ export namespace Prisma {
     race?: boolean
     gender?: boolean
     items_purchased?: boolean
-    total_sale?: boolean
+    sale_total?: boolean
   }, ExtArgs["result"]["pos_purchase"]>
 
   export type pos_purchaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3440,7 +3483,7 @@ export namespace Prisma {
     race?: boolean
     gender?: boolean
     items_purchased?: boolean
-    total_sale?: boolean
+    sale_total?: boolean
   }, ExtArgs["result"]["pos_purchase"]>
 
   export type pos_purchaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3451,7 +3494,7 @@ export namespace Prisma {
     race?: boolean
     gender?: boolean
     items_purchased?: boolean
-    total_sale?: boolean
+    sale_total?: boolean
   }, ExtArgs["result"]["pos_purchase"]>
 
   export type pos_purchaseSelectScalar = {
@@ -3462,10 +3505,10 @@ export namespace Prisma {
     race?: boolean
     gender?: boolean
     items_purchased?: boolean
-    total_sale?: boolean
+    sale_total?: boolean
   }
 
-  export type pos_purchaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "age" | "race" | "gender" | "items_purchased" | "total_sale", ExtArgs["result"]["pos_purchase"]>
+  export type pos_purchaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "age" | "race" | "gender" | "items_purchased" | "sale_total", ExtArgs["result"]["pos_purchase"]>
 
   export type $pos_purchasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "pos_purchase"
@@ -3478,7 +3521,7 @@ export namespace Prisma {
       race: string
       gender: string
       items_purchased: Prisma.JsonValue | null
-      total_sale: Prisma.Decimal
+      sale_total: Prisma.Decimal
     }, ExtArgs["result"]["pos_purchase"]>
     composites: {}
   }
@@ -3909,7 +3952,7 @@ export namespace Prisma {
     readonly race: FieldRef<"pos_purchase", 'String'>
     readonly gender: FieldRef<"pos_purchase", 'String'>
     readonly items_purchased: FieldRef<"pos_purchase", 'Json'>
-    readonly total_sale: FieldRef<"pos_purchase", 'Decimal'>
+    readonly sale_total: FieldRef<"pos_purchase", 'Decimal'>
   }
     
 
@@ -4303,7 +4346,10 @@ export namespace Prisma {
     id: 'id',
     timestamp: 'timestamp',
     bluetooth_id_hash: 'bluetooth_id_hash',
-    ad_id: 'ad_id'
+    ad_id: 'ad_id',
+    age: 'age',
+    race: 'race',
+    gender: 'gender'
   };
 
   export type Dooh_detectionScalarFieldEnum = (typeof Dooh_detectionScalarFieldEnum)[keyof typeof Dooh_detectionScalarFieldEnum]
@@ -4317,7 +4363,7 @@ export namespace Prisma {
     race: 'race',
     gender: 'gender',
     items_purchased: 'items_purchased',
-    total_sale: 'total_sale'
+    sale_total: 'sale_total'
   };
 
   export type Pos_purchaseScalarFieldEnum = (typeof Pos_purchaseScalarFieldEnum)[keyof typeof Pos_purchaseScalarFieldEnum]
@@ -4509,6 +4555,9 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
     bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
     ad_id?: StringFilter<"dooh_detection"> | string
+    age?: IntFilter<"dooh_detection"> | number
+    race?: StringFilter<"dooh_detection"> | string
+    gender?: StringFilter<"dooh_detection"> | string
     campaign?: XOR<Ad_campaignsScalarRelationFilter, ad_campaignsWhereInput>
   }
 
@@ -4517,6 +4566,9 @@ export namespace Prisma {
     timestamp?: SortOrder
     bluetooth_id_hash?: SortOrder
     ad_id?: SortOrder
+    age?: SortOrder
+    race?: SortOrder
+    gender?: SortOrder
     campaign?: ad_campaignsOrderByWithRelationInput
   }
 
@@ -4528,6 +4580,9 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
     bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
     ad_id?: StringFilter<"dooh_detection"> | string
+    age?: IntFilter<"dooh_detection"> | number
+    race?: StringFilter<"dooh_detection"> | string
+    gender?: StringFilter<"dooh_detection"> | string
     campaign?: XOR<Ad_campaignsScalarRelationFilter, ad_campaignsWhereInput>
   }, "id">
 
@@ -4536,6 +4591,9 @@ export namespace Prisma {
     timestamp?: SortOrder
     bluetooth_id_hash?: SortOrder
     ad_id?: SortOrder
+    age?: SortOrder
+    race?: SortOrder
+    gender?: SortOrder
     _count?: dooh_detectionCountOrderByAggregateInput
     _avg?: dooh_detectionAvgOrderByAggregateInput
     _max?: dooh_detectionMaxOrderByAggregateInput
@@ -4551,6 +4609,9 @@ export namespace Prisma {
     timestamp?: DateTimeWithAggregatesFilter<"dooh_detection"> | Date | string
     bluetooth_id_hash?: StringWithAggregatesFilter<"dooh_detection"> | string
     ad_id?: StringWithAggregatesFilter<"dooh_detection"> | string
+    age?: IntWithAggregatesFilter<"dooh_detection"> | number
+    race?: StringWithAggregatesFilter<"dooh_detection"> | string
+    gender?: StringWithAggregatesFilter<"dooh_detection"> | string
   }
 
   export type pos_purchaseWhereInput = {
@@ -4564,7 +4625,7 @@ export namespace Prisma {
     race?: StringFilter<"pos_purchase"> | string
     gender?: StringFilter<"pos_purchase"> | string
     items_purchased?: JsonNullableFilter<"pos_purchase">
-    total_sale?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseOrderByWithRelationInput = {
@@ -4575,7 +4636,7 @@ export namespace Prisma {
     race?: SortOrder
     gender?: SortOrder
     items_purchased?: SortOrderInput | SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
 
   export type pos_purchaseWhereUniqueInput = Prisma.AtLeast<{
@@ -4589,7 +4650,7 @@ export namespace Prisma {
     race?: StringFilter<"pos_purchase"> | string
     gender?: StringFilter<"pos_purchase"> | string
     items_purchased?: JsonNullableFilter<"pos_purchase">
-    total_sale?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
   }, "id">
 
   export type pos_purchaseOrderByWithAggregationInput = {
@@ -4600,7 +4661,7 @@ export namespace Prisma {
     race?: SortOrder
     gender?: SortOrder
     items_purchased?: SortOrderInput | SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
     _count?: pos_purchaseCountOrderByAggregateInput
     _avg?: pos_purchaseAvgOrderByAggregateInput
     _max?: pos_purchaseMaxOrderByAggregateInput
@@ -4619,7 +4680,7 @@ export namespace Prisma {
     race?: StringWithAggregatesFilter<"pos_purchase"> | string
     gender?: StringWithAggregatesFilter<"pos_purchase"> | string
     items_purchased?: JsonNullableWithAggregatesFilter<"pos_purchase">
-    total_sale?: DecimalWithAggregatesFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalWithAggregatesFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
   }
 
   export type ad_campaignsCreateInput = {
@@ -4671,6 +4732,9 @@ export namespace Prisma {
   export type dooh_detectionCreateInput = {
     timestamp: Date | string
     bluetooth_id_hash: string
+    age: number
+    race: string
+    gender: string
     campaign: ad_campaignsCreateNestedOneWithoutDetectionsInput
   }
 
@@ -4679,11 +4743,17 @@ export namespace Prisma {
     timestamp: Date | string
     bluetooth_id_hash: string
     ad_id: string
+    age: number
+    race: string
+    gender: string
   }
 
   export type dooh_detectionUpdateInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
     campaign?: ad_campaignsUpdateOneRequiredWithoutDetectionsNestedInput
   }
 
@@ -4692,6 +4762,9 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
     ad_id?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
   export type dooh_detectionCreateManyInput = {
@@ -4699,11 +4772,17 @@ export namespace Prisma {
     timestamp: Date | string
     bluetooth_id_hash: string
     ad_id: string
+    age: number
+    race: string
+    gender: string
   }
 
   export type dooh_detectionUpdateManyMutationInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
   export type dooh_detectionUncheckedUpdateManyInput = {
@@ -4711,6 +4790,9 @@ export namespace Prisma {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
     ad_id?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
   export type pos_purchaseCreateInput = {
@@ -4720,7 +4802,7 @@ export namespace Prisma {
     race: string
     gender: string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale: Decimal | DecimalJsLike | number | string
+    sale_total: Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseUncheckedCreateInput = {
@@ -4731,7 +4813,7 @@ export namespace Prisma {
     race: string
     gender: string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale: Decimal | DecimalJsLike | number | string
+    sale_total: Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseUpdateInput = {
@@ -4741,7 +4823,7 @@ export namespace Prisma {
     race?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseUncheckedUpdateInput = {
@@ -4752,7 +4834,7 @@ export namespace Prisma {
     race?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseCreateManyInput = {
@@ -4763,7 +4845,7 @@ export namespace Prisma {
     race: string
     gender: string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale: Decimal | DecimalJsLike | number | string
+    sale_total: Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseUpdateManyMutationInput = {
@@ -4773,7 +4855,7 @@ export namespace Prisma {
     race?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type pos_purchaseUncheckedUpdateManyInput = {
@@ -4784,7 +4866,7 @@ export namespace Prisma {
     race?: StringFieldUpdateOperationsInput | string
     gender?: StringFieldUpdateOperationsInput | string
     items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    total_sale?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4880,10 +4962,14 @@ export namespace Prisma {
     timestamp?: SortOrder
     bluetooth_id_hash?: SortOrder
     ad_id?: SortOrder
+    age?: SortOrder
+    race?: SortOrder
+    gender?: SortOrder
   }
 
   export type dooh_detectionAvgOrderByAggregateInput = {
     id?: SortOrder
+    age?: SortOrder
   }
 
   export type dooh_detectionMaxOrderByAggregateInput = {
@@ -4891,6 +4977,9 @@ export namespace Prisma {
     timestamp?: SortOrder
     bluetooth_id_hash?: SortOrder
     ad_id?: SortOrder
+    age?: SortOrder
+    race?: SortOrder
+    gender?: SortOrder
   }
 
   export type dooh_detectionMinOrderByAggregateInput = {
@@ -4898,10 +4987,14 @@ export namespace Prisma {
     timestamp?: SortOrder
     bluetooth_id_hash?: SortOrder
     ad_id?: SortOrder
+    age?: SortOrder
+    race?: SortOrder
+    gender?: SortOrder
   }
 
   export type dooh_detectionSumOrderByAggregateInput = {
     id?: SortOrder
+    age?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4981,13 +5074,13 @@ export namespace Prisma {
     race?: SortOrder
     gender?: SortOrder
     items_purchased?: SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
 
   export type pos_purchaseAvgOrderByAggregateInput = {
     id?: SortOrder
     age?: SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
 
   export type pos_purchaseMaxOrderByAggregateInput = {
@@ -4997,7 +5090,7 @@ export namespace Prisma {
     age?: SortOrder
     race?: SortOrder
     gender?: SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
 
   export type pos_purchaseMinOrderByAggregateInput = {
@@ -5007,13 +5100,13 @@ export namespace Prisma {
     age?: SortOrder
     race?: SortOrder
     gender?: SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
 
   export type pos_purchaseSumOrderByAggregateInput = {
     id?: SortOrder
     age?: SortOrder
-    total_sale?: SortOrder
+    sale_total?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -5114,20 +5207,20 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type ad_campaignsUpdateOneRequiredWithoutDetectionsNestedInput = {
-    create?: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
-    connectOrCreate?: ad_campaignsCreateOrConnectWithoutDetectionsInput
-    upsert?: ad_campaignsUpsertWithoutDetectionsInput
-    connect?: ad_campaignsWhereUniqueInput
-    update?: XOR<XOR<ad_campaignsUpdateToOneWithWhereWithoutDetectionsInput, ad_campaignsUpdateWithoutDetectionsInput>, ad_campaignsUncheckedUpdateWithoutDetectionsInput>
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type ad_campaignsUpdateOneRequiredWithoutDetectionsNestedInput = {
+    create?: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
+    connectOrCreate?: ad_campaignsCreateOrConnectWithoutDetectionsInput
+    upsert?: ad_campaignsUpsertWithoutDetectionsInput
+    connect?: ad_campaignsWhereUniqueInput
+    update?: XOR<XOR<ad_campaignsUpdateToOneWithWhereWithoutDetectionsInput, ad_campaignsUpdateWithoutDetectionsInput>, ad_campaignsUncheckedUpdateWithoutDetectionsInput>
   }
 
   export type DecimalFieldUpdateOperationsInput = {
@@ -5296,12 +5389,18 @@ export namespace Prisma {
   export type dooh_detectionCreateWithoutCampaignInput = {
     timestamp: Date | string
     bluetooth_id_hash: string
+    age: number
+    race: string
+    gender: string
   }
 
   export type dooh_detectionUncheckedCreateWithoutCampaignInput = {
     id?: number
     timestamp: Date | string
     bluetooth_id_hash: string
+    age: number
+    race: string
+    gender: string
   }
 
   export type dooh_detectionCreateOrConnectWithoutCampaignInput = {
@@ -5338,6 +5437,9 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
     bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
     ad_id?: StringFilter<"dooh_detection"> | string
+    age?: IntFilter<"dooh_detection"> | number
+    race?: StringFilter<"dooh_detection"> | string
+    gender?: StringFilter<"dooh_detection"> | string
   }
 
   export type ad_campaignsCreateWithoutDetectionsInput = {
@@ -5384,23 +5486,35 @@ export namespace Prisma {
     id?: number
     timestamp: Date | string
     bluetooth_id_hash: string
+    age: number
+    race: string
+    gender: string
   }
 
   export type dooh_detectionUpdateWithoutCampaignInput = {
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
   export type dooh_detectionUncheckedUpdateWithoutCampaignInput = {
     id?: IntFieldUpdateOperationsInput | number
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
   export type dooh_detectionUncheckedUpdateManyWithoutCampaignInput = {
     id?: IntFieldUpdateOperationsInput | number
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
+    age?: IntFieldUpdateOperationsInput | number
+    race?: StringFieldUpdateOperationsInput | string
+    gender?: StringFieldUpdateOperationsInput | string
   }
 
 

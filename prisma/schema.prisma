@@ -22,6 +22,9 @@ model dooh_detection {
   timestamp         DateTime  @map("timestamp") @db.Timestamptz
   bluetooth_id_hash String    @map("bluetooth_id_hash") @db.VarChar(16)
   ad_id             String    @map("ad_id") @db.VarChar(16)
+  age               Int       @map("age")
+  race              String    @map("race") @db.VarChar(20)
+  gender            String    @map("gender") @db.Char(1)
   
   campaign          ad_campaigns @relation(fields: [ad_id], references: [ad_id])
   
@@ -38,8 +41,9 @@ model pos_purchase {
   race              String    @map("race") @db.VarChar(20)
   gender            String    @map("gender") @db.Char(1)
   items_purchased   Json?     @map("items_purchased")
-  total_sale        Decimal   @map("total_sale") @db.Decimal(10, 2)
+  sale_total        Decimal   @map("total_sale") @db.Decimal(10, 2)
   
   @@map("pos_purchases")
   @@index([bluetooth_id_hash], name: "idx_pos_device")
+  @@index([sale_total], name: "idx_pos_total")
 }

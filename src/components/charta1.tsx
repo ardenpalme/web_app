@@ -64,13 +64,13 @@ interface DonutChartProps {
 export function PurchasePieChart({ timeRange }: DonutChartProps) {
   const [selectedChart, setSelectedChart] = useState<keyof typeof chartConfigs>("race")
 
-  const purchaseByRace = trpc.customers.PurchaseByRace.useQuery(timeRange, {
+  const purchaseByRace = trpc.customers.NumPurchasesByRace.useQuery(timeRange, {
     enabled: selectedChart === "race",
   });
-  const purchaseByGender = trpc.customers.PurchaseByGender.useQuery(timeRange, {
+  const purchaseByGender = trpc.customers.NumPurchasesByGender.useQuery(timeRange, {
     enabled: selectedChart === "gender",
   });
-  const purchaseByAge = trpc.customers.PurchaseByAge.useQuery(timeRange, {
+  const purchaseByAge = trpc.customers.NumPurchasesByAge.useQuery(timeRange, {
     enabled: selectedChart === "age",
   });
 

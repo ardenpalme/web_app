@@ -130,7 +130,10 @@ exports.Prisma.Dooh_detectionScalarFieldEnum = {
   id: 'id',
   timestamp: 'timestamp',
   bluetooth_id_hash: 'bluetooth_id_hash',
-  ad_id: 'ad_id'
+  ad_id: 'ad_id',
+  age: 'age',
+  race: 'race',
+  gender: 'gender'
 };
 
 exports.Prisma.Pos_purchaseScalarFieldEnum = {
@@ -141,7 +144,7 @@ exports.Prisma.Pos_purchaseScalarFieldEnum = {
   race: 'race',
   gender: 'gender',
   items_purchased: 'items_purchased',
-  total_sale: 'total_sale'
+  sale_total: 'sale_total'
 };
 
 exports.Prisma.SortOrder = {
