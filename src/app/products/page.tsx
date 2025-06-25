@@ -1,48 +1,63 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Camera, Radar, Bluetooth, Eye, Users, BarChart3, Zap, Shield, Rocket } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ArrowRight,
+  Camera,
+  Radar,
+  Bluetooth,
+  Eye,
+  Users,
+  BarChart3,
+  Zap,
+  Shield,
+  Rocket,
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
-export default function () {
+export default function Products() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container px-4 md:px-6">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
-              Advanced Sensor Solutions for
-              <span className="text-blue-600"> Retail Intelligence</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Deploy cutting-edge edge-AI IoT sensor systems that deliver real-time audience analytics, demographic
-              insights, and behavioral data to optimize your retail operations and advertising performance.
-            </p>
-          </div>
+      {/* Hero Section - Full Width */}
+      <section className="w-full py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
+            Advanced Sensor Solutions for
+            <span className="text-blue-600"> Retail Intelligence</span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Deploy cutting-edge edge-AI IoT sensor systems that deliver real-time audience analytics, demographic
+            insights, and behavioral data to optimize your retail operations and advertising performance.
+          </p>
         </div>
       </section>
 
-      {/* R&D Status Banner */}
-      <section className="py-4 bg-amber-50 border-y border-amber-200">
-        <div className="container px-4 md:px-6">
+      {/* R&D Banner */}
+      <section className="w-full py-4 bg-amber-50 border-y border-amber-200">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="flex items-center justify-center space-x-4 text-center">
-            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse shrink-0"></div>
             <p className="text-lg font-medium text-amber-800">
               Our products are currently in active R&D phase - Stay tuned for breakthrough innovations
             </p>
-            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse shrink-0"></div>
           </div>
         </div>
       </section>
 
-      {/* Unified Sensor Suite Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      {/* Unified Sensor Section */}
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Unified Sensor Suite</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -54,7 +69,7 @@ export default function () {
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-50">
               <CardHeader className="text-center pb-8">
-                <div className="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
                   <Zap className="h-10 w-10 text-blue-600" />
                 </div>
                 <CardTitle className="text-3xl mb-4">Edge-AI Sensor Platform</CardTitle>
@@ -64,7 +79,7 @@ export default function () {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
-                <div className="inline-block p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg items-center justify-center">
+                <div className="inline-block p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg items-center justify-center">
                   <Image
                     src="/unified-sensor-node.png"
                     alt="Unified Sensor Suite Technology"
@@ -157,8 +172,8 @@ export default function () {
       </section>
 
       {/* Product Applications */}
-      <section className="py-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-gray-50">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Product Applications</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -170,17 +185,19 @@ export default function () {
             {/* POS Analytics Application */}
             <Card className="border-2 border-gray-200 hover:border-blue-300 transition-colors">
               <CardHeader className="pb-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+	        <div className="flex items-center space-x-4 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
                   <BarChart3 className="h-8 w-8 text-blue-600" />
                 </div>
                 <CardTitle className="text-2xl mb-2">POS Analytics Sensor</CardTitle>
+		</div>
                 <CardDescription className="text-lg">
                   Sensor suite optimized for point-of-sale environments with queue management and checkout analytics
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex justify-center">
-                  <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
+                  <div className="p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
                     <Image
                       src="/pos_checkout.jpg"
                       alt="DOOH Analytics Configuration"
@@ -248,10 +265,12 @@ export default function () {
             {/* DOOH Analytics Application */}
             <Card className="border-2 border-gray-200 hover:border-blue-300 transition-colors">
               <CardHeader className="pb-8">
-                <div className="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+	        <div className="flex items-center space-x-4 mb-4">
+                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
                   <Eye className="h-8 w-8 text-green-600" />
                 </div>
                 <CardTitle className="text-2xl mb-2">DOOH Analytics Sensor</CardTitle>
+		</div>
                 <CardDescription className="text-lg">
                   Sensor suite optimized for digital advertising displays with audience measurement and engagement
                   tracking
@@ -259,7 +278,7 @@ export default function () {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex justify-center">
-                  <div className="p-4 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
+                  <div className="p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg">
                     <Image
                       src="/dooh_analytics.jpg"
                       alt="DOOH Analytics Configuration"
@@ -328,8 +347,8 @@ export default function () {
       </section>
 
       {/* Technical Specifications */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technical Excellence</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -337,50 +356,58 @@ export default function () {
             </p>
           </div>
 
+
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-6 w-6 text-blue-600" />
-                </div>
+
+        <Card className="border-0 shadow-lg">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <Zap className="h-6 w-6 text-blue-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
                 <CardTitle>Edge-AI Processing</CardTitle>
                 <CardDescription>
                   On-device AI processing ensures real-time analytics with minimal latency and maximum privacy
                   protection
                 </CardDescription>
-              </CardHeader>
-            </Card>
+            </div>
+          </CardHeader>
+	  </Card>
 
             <Card className="border-0 shadow-lg">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
                   <Shield className="h-6 w-6 text-green-600" />
                 </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
                 <CardTitle>Privacy Compliant</CardTitle>
                 <CardDescription>
                   GDPR and CCPA compliant with anonymous data processing and no personal information storage
                 </CardDescription>
+		</div>
               </CardHeader>
             </Card>
 
             <Card className="border-0 shadow-lg">
-              <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-purple-600" />
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+                  <Users className="h-6 w-6 text-yellow-600" />
                 </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
                 <CardTitle>Scalable Deployment</CardTitle>
                 <CardDescription>
                   Easy installation and centralized management for single locations or enterprise-wide deployments
                 </CardDescription>
+	</div>
               </CardHeader>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="container px-4 md:px-6 text-center">
+      {/* CTA Section - Full Width */}
+      <section className="w-full py-20 bg-blue-600">
+        <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Deploy Intelligent Sensors?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Transform your retail spaces with cutting-edge edge-AI sensor technology. Get started with a pilot program
@@ -397,10 +424,12 @@ export default function () {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-16">
-        < Footer />
+      {/* Footer */}
+      <footer className="w-full bg-gray-900 text-white py-16">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
+          <Footer />
+        </div>
       </footer>
     </div>
   );
 }
-

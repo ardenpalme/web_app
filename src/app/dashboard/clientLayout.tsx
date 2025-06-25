@@ -70,8 +70,6 @@ export default function ClientLayout({
   const timeRange = formatDateTimeRange(startDate, startTime, endDate, endTime);
 
   return (
-    <html lang="en">
-      <body>
         <SidebarProvider>
           <Sidebar>
             <SidebarHeader>
@@ -184,7 +182,7 @@ export default function ClientLayout({
             </SidebarFooter>
           </Sidebar>
           <SidebarInset>
-            <TimeRangeContext.Provider value={timeRange}>
+            <TimeRangeContext.Provider value={{timeRange}}>
             <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
               <div className="flex items-center gap-2 px-4">
                 <SidebarTrigger className="-ml-1" />
@@ -254,8 +252,6 @@ export default function ClientLayout({
             </TimeRangeContext.Provider>
           </SidebarInset>
         </SidebarProvider>
-      </body>
-    </html>
-  )
+  );
 }
 

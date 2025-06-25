@@ -175,8 +175,8 @@ export default function AdvertisingPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-start">
-        <div>
+      <div className="flex flex-col">
+        <div className="my-4">
           <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Performance</h1>
           <p className="text-muted-foreground">
             Comprehensive analytics for your digital out-of-home advertising campaign effectiveness and ROI.
@@ -321,7 +321,7 @@ export default function AdvertisingPage() {
             </ResponsiveContainer>
           </ChartContainer>
 
-          <div className="grid grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
             <div className="text-center p-3 bg-accent rounded-lg">
               <div className="text-lg font-bold">18:00</div>
               <div className="text-sm text-muted-foreground">Peak Performance</div>

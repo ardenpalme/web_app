@@ -7,7 +7,6 @@ type TimeRange = {
 
 type TimeRangeContextType = {
   timeRange: TimeRange
-  setTimeRange: (range: TimeRange) => void
 }
 
 export const TimeRangeContext = createContext<TimeRangeContextType | null>(null)

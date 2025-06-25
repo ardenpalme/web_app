@@ -9,12 +9,12 @@ import Footer from "@/components/footer"
 
 export default function ResearchPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
               Pioneering the Future of
@@ -30,21 +30,21 @@ export default function ResearchPage() {
       </section>
 
       {/* R&D Status Banner */}
-      <section className="py-4 bg-amber-50 border-y border-amber-200">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-4 bg-amber-50 border-y border-amber-200">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="flex items-center justify-center space-x-4 text-center">
-            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse shrink-0"></div>
             <p className="text-lg font-medium text-amber-800">
               Our products are currently in active R&D phase - Stay tuned for breakthrough innovations
             </p>
-            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse"></div>
+            <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse shrink-0"></div>
           </div>
         </div>
       </section>
 
       {/* Research Overview */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Research Focus Areas</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -97,8 +97,8 @@ export default function ResearchPage() {
       </section>
 
       {/* Featured Publications */}
-      <section className="py-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-gray-50">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Foundational Research</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -132,7 +132,7 @@ export default function ResearchPage() {
                 <div className="grid lg:grid-cols-2 gap-6">
 
                   <div className="flex justify-center items-center">
-                    <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg">
+                    <div className="p-2 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg">
                       <Image
                         src="/diagram.png"
                         alt="MmGait-3D Research Visualization"
@@ -205,11 +205,11 @@ export default function ResearchPage() {
               <CardContent className="space-y-6">
                 <div className="grid lg:grid-cols-2 gap-6">
                   <div className="flex justify-center items-center">
-                    <div className="p-4 bg-gradient-to-br from-green-100 to-green-200 rounded-lg">
+                    <div className="p-2 bg-gradient-to-br from-green-100 to-green-200 rounded-lg">
                       <Image
                         src="/radar_board.png"
                         alt="Privacy-Preserving Gait Analysis Research"
-                        width={350}
+                        width={325}
                         height={200}
                         className="rounded-lg"
                       />
@@ -258,8 +258,11 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-16">
-        < Footer />
+      {/* Footer */}
+      <footer className="w-full bg-gray-900 text-white py-16">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
+          <Footer />
+        </div>
       </footer>
     </div>
   )

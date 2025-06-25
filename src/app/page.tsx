@@ -1,7 +1,7 @@
 'use client';
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users2, Shield } from "lucide-react"
+import { Presentation, Store, LayoutDashboard, ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users, Shield } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -10,12 +10,12 @@ import Footer from "@/components/footer"
 
 export default function () {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-20 md:py-32">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 md:py-32">
+        <div className="px-4 md:px-6 mx-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
             <div className="space-y-8">
@@ -111,101 +111,101 @@ export default function () {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Maximize Your Mall's Digital Revenue</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Advanced DOOH analytics that help mall owners optimize advertising spaces, understand shopper patterns,
-              and deliver measurable results to advertisers.
-            </p>
-          </div>
+      <section id="features" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 mx-6">
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <Eye className="h-6 w-6 text-blue-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Real-Time Audience Measurement</CardTitle>
+              <CardDescription>
+                Track foot traffic, dwell time, and audience demographics in real-time across all your digital displays.
+                Provide advertisers with verified impression data and engagement metrics.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-blue-600" />
-                </div>
-                <CardTitle>Real-Time Audience Measurement</CardTitle>
-                <CardDescription>
-                  Track foot traffic, dwell time, and audience demographics in real-time across all your digital
-                  displays. Provide advertisers with verified impression data and engagement metrics.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <BarChart3 className="h-6 w-6 text-green-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Shopper Behavior Analytics</CardTitle>
+              <CardDescription>
+                Understand peak hours, popular zones, and shopper journey patterns. Optimize store layouts and
+                advertising placement to maximize tenant revenue and customer satisfaction.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
 
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <BarChart3 className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle>Shopper Behavior Analytics</CardTitle>
-                <CardDescription>
-                  Understand peak hours, popular zones, and shopper journey patterns. Optimize store layouts and
-                  advertising placement to maximize tenant revenue and customer satisfaction.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <Users className="h-6 w-6 text-yellow-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Demographic Insights</CardTitle>
+              <CardDescription>
+                Identify the age, gender, and interests of your audience. Tailor your messaging to resonate with
+                specific demographic groups and improve ad performance.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
 
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <MapPin className="h-6 w-6 text-purple-600" />
-                </div>
-                <CardTitle>Location Intelligence</CardTitle>
-                <CardDescription>
-                  AI-powered zone analysis identifies high-value advertising locations. Increase ad rates with
-                  data-backed premium placement recommendations and performance guarantees.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <LayoutDashboard className="h-6 w-6 text-red-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Centralized Dashboard</CardTitle>
+              <CardDescription>
+                Access all your data and analytics in one intuitive dashboard. Monitor performance, track trends, and
+                generate reports with ease.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
 
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-orange-600" />
-                </div>
-                <CardTitle>Revenue Optimization</CardTitle>
-                <CardDescription>
-                  Dynamic pricing recommendations based on audience density and demographics. Maximize DOOH revenue with
-                  automated yield management and performance-based advertising packages.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <Store className="h-6 w-6 text-purple-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Multi-Location Management</CardTitle>
+              <CardDescription>
+                Manage and compare data across multiple locations. Identify top-performing stores, optimize resource
+                allocation, and replicate successful strategies.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
 
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users2 className="h-6 w-6 text-red-600" />
-                </div>
-                <CardTitle>Demographic Targeting</CardTitle>
-                <CardDescription>
-                  Precise age, gender, and interest profiling enables targeted advertising campaigns. Help brands reach
-                  their ideal customers while increasing ad effectiveness and renewal rates.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
-                  <BarChart3 className="h-6 w-6 text-cyan-600" />
-                </div>
-                <CardTitle>Advertiser Reporting</CardTitle>
-                <CardDescription>
-                  Comprehensive campaign reports with verified metrics, audience insights, and ROI analysis. Build
-                  advertiser confidence with transparent, measurable results and detailed performance data.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <Presentation className="h-6 w-6 text-indigo-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle>Automated Reporting</CardTitle>
+              <CardDescription>
+                Generate custom reports automatically and share them with stakeholders. Keep everyone informed about
+                performance and progress.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -265,9 +265,9 @@ export default function () {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="container px-4 md:px-6 text-center">
+      {/* CTA Section - Full Width */}
+      <section className="w-full py-20 bg-blue-600">
+        <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Maximize Your Mall's Digital Revenue?
           </h2>
@@ -285,8 +285,11 @@ export default function () {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-16">
-        < Footer />
+      {/* Footer */}
+      <footer className="w-full bg-gray-900 text-white py-16">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
+          <Footer />
+        </div>
       </footer>
     </div>
   )

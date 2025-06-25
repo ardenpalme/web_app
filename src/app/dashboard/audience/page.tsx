@@ -343,8 +343,8 @@ export default function AudiencePage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-start">
-        <div>
+      <div className="flex flex-col">
+        <div className="my-4">
           <h1 className="text-3xl font-bold tracking-tight">DOOH Network Analytics</h1>
           <p className="text-muted-foreground">
             Comprehensive insights into your digital signage network performance, audience demographics, and revenue

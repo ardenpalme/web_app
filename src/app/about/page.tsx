@@ -12,12 +12,12 @@ import Footer from "@/components/footer"
 
 export default function () {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen items-center overflow-x-hidden">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
               Transforming Retail Intelligence with
@@ -32,8 +32,8 @@ export default function () {
       </section>
 
       {/* Mission Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
@@ -47,13 +47,15 @@ export default function () {
                 developing solutions that not only maximize revenue but also enhance the shopping experience while
                 maintaining the highest standards of privacy protection.
               </p>
-              <div className="flex space-x-4">
-                <Button>
-                  Learn About Our Products
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button variant="outline">View Our Research</Button>
-              </div>
+	<div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+  <Button className="w-full sm:w-auto">
+    Learn About Our Products
+    <ArrowRight className="ml-2 h-4 w-4" />
+  </Button>
+  <Button variant="outline" className="w-full sm:w-auto">
+    View Our Research
+  </Button>
+</div>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8">
               <div className="text-center">
@@ -70,8 +72,8 @@ export default function () {
       </section>
 
       {/* Team Background */}
-      <section className="py-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-gray-50">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Team</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -145,8 +147,8 @@ export default function () {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-white">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -201,8 +203,8 @@ export default function () {
       </section>
 
       {/* Approach Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-gray-50">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Approach</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -248,8 +250,8 @@ export default function () {
       </section>
 
       {/* Office Location Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+      <section className="w-full py-20 bg-gray-50">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Location</h2>
 
@@ -269,8 +271,8 @@ export default function () {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-blue-600">
-        <div className="container px-4 md:px-6 text-center">
+      <section className="w-full py-20 bg-blue-600">
+        <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Retail Space?</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Join us in revolutionizing retail intelligence. Let's discuss how our advanced analytics solutions can drive
@@ -288,8 +290,11 @@ export default function () {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-16">
-        < Footer />
+      {/* Footer */}
+      <footer className="w-full bg-gray-900 text-white py-16">
+        <div className="px-4 md:px-6 max-w-7xl mx-auto">
+          <Footer />
+        </div>
       </footer>
     </div>
   );
