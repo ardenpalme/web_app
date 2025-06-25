@@ -32,18 +32,18 @@ export default function Products() {
       <section className="w-full py-16 md:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
-            Advanced Sensor Solutions for
-            <span className="text-blue-600"> Retail Intelligence</span>
+            Advance Sensor Solution for Real-Time
+            <p className="text-blue-600"> Retail and DOOH Intelligence</p>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Deploy cutting-edge edge-AI IoT sensor systems that deliver real-time audience analytics, demographic
-            insights, and behavioral data to optimize your retail operations and advertising performance.
+            Deploy AI-powered sensor systems that track real-time audience engagement, 
+            shopper demographics, and store conversions—connecting DOOH exposure to in-mall retail performance.
           </p>
         </div>
       </section>
 
       {/* R&D Banner */}
-      <section className="w-full py-4 bg-amber-50 border-y border-amber-200">
+      <section className="w-full py-3 bg-amber-50 border-y border-amber-200">
         <div className="px-4 md:px-6 max-w-7xl mx-auto">
           <div className="flex items-center justify-center space-x-4 text-center">
             <div className="w-3 h-3 bg-amber-500 rounded-full animate-pulse shrink-0"></div>
@@ -74,8 +74,8 @@ export default function Products() {
                 </div>
                 <CardTitle className="text-3xl mb-4">Edge-AI Sensor Platform</CardTitle>
                 <CardDescription className="text-lg">
-                  A comprehensive multi-sensor system that combines computer vision, radar technology, and wireless
-                  sensing for complete retail environment understanding.
+                  Multi-modal sensing combining computer vision, stereo depth, radar, and BLE tracking 
+                  to understand shopper behavior in retail environments.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
@@ -208,40 +208,33 @@ export default function Products() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <h3 className="text-lg font-semibold text-gray-900">Optimized Applications</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-6 text-gray-600">
                     <li className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-medium">Queue Length Optimization</span>
+                        <span className="font-medium">DOOH-to-Purchase Attribution</span>
                         <p className="text-sm text-gray-500">
-                          Real-time monitoring of checkout lines to reduce wait times and improve customer satisfaction
+                          Identify whether a customer at checkout previously engaged with a 
+                          DOOH ad—closing the loop between ad exposure and in-store conversion.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-medium">Customer Flow Analysis</span>
+                        <span className="font-medium">Demographic Insights at Point of Sale</span>
                         <p className="text-sm text-gray-500">
-                          Track movement patterns around checkout areas to optimize store layout and staffing
+                          Capture anonymized age, gender, and race data for paying customers to 
+                          validate campaign reach and purchasing behavior by audience segment.
                         </p>
                       </div>
                     </li>
                     <li className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-medium">Demographic Profiling</span>
-                        <p className="text-sm text-gray-500">
-                          Understand customer demographics for targeted promotions and product placement
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                      <div>
-                        <span className="font-medium">Staff Scheduling Optimization</span>
+                        <span className="font-medium">Traffic-Aware Retail Optimization</span>
                         <p className="text-sm text-gray-500">
                           Data-driven insights for optimal staffing based on traffic patterns and peak hours
                         </p>
@@ -250,9 +243,9 @@ export default function Products() {
                     <li className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
-                        <span className="font-medium">Conversion Rate Analytics</span>
+                        <span className="font-medium">Queue Length Optimization</span>
                         <p className="text-sm text-gray-500">
-                          Measure and optimize the effectiveness of checkout processes and upselling opportunities
+                          Real-time monitoring of checkout lines to reduce wait times and improve customer satisfaction
                         </p>
                       </div>
                     </li>
@@ -282,16 +275,16 @@ export default function Products() {
                     <Image
                       src="/dooh_analytics.jpg"
                       alt="DOOH Analytics Configuration"
-                      width={600}
-                      height={500}
+                      width={430}
+                      height={430}
                       className="w-full h-auto max-w-[800px] rounded-lg"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <h3 className="text-lg font-semibold text-gray-900">Optimized Applications</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-5 text-gray-600">
                     <li className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-green-600 rounded-full mt-2 flex-shrink-0"></div>
                       <div>
@@ -365,7 +358,7 @@ export default function Products() {
               <Zap className="h-6 w-6 text-blue-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-                <CardTitle>Edge-AI Processing</CardTitle>
+                <CardTitle className="md:py-2">Edge-AI Processing</CardTitle>
                 <CardDescription>
                   On-device AI processing ensures real-time analytics with minimal latency and maximum privacy
                   protection
@@ -380,7 +373,7 @@ export default function Products() {
                   <Shield className="h-6 w-6 text-green-600" />
                 </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-                <CardTitle>Privacy Compliant</CardTitle>
+                <CardTitle className="md:py-2">Privacy Compliant</CardTitle>
                 <CardDescription>
                   GDPR and CCPA compliant with anonymous data processing and no personal information storage
                 </CardDescription>
@@ -394,7 +387,7 @@ export default function Products() {
                   <Users className="h-6 w-6 text-yellow-600" />
                 </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-                <CardTitle>Scalable Deployment</CardTitle>
+                <CardTitle className="md:py-2">Scalable Deployment</CardTitle>
                 <CardDescription>
                   Easy installation and centralized management for single locations or enterprise-wide deployments
                 </CardDescription>
@@ -408,13 +401,12 @@ export default function Products() {
       {/* CTA Section - Full Width */}
       <section className="w-full py-20 bg-blue-600">
         <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Deploy Intelligent Sensors?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Maximize Media Revenue with DOOH and Retail Intelligence</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Transform your retail spaces with cutting-edge edge-AI sensor technology. Get started with a pilot program
-            today.
+            Our AI-powered sensor nodes provide privacy-preserving real-time shopper insights to you and your store tenants.
           </p>
           <div className="flex justify-center">
-            <Link href="mailto:info@intuitus-ads.com">
+            <Link href="mailto:contact@intuitus-ads.com">
               <Button size="lg" variant="secondary" className="cursor-pointer">
                 Schedule a Demo
                 <ArrowRight className="ml-2 h-4 w-4" />

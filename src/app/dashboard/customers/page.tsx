@@ -86,8 +86,7 @@ const customerAgeData = [
 // Customer Demographics - Gender breakdown
 const customerGenderData = [
   { name: "Female", value: 78, percentage: 54.9, avgSpend: 71.2, fill: "#ec4899" },
-  { name: "Male", value: 58, percentage: 40.8, avgSpend: 62.8, fill: "#3b82f6" },
-  { name: "Non-binary/Other", value: 6, percentage: 4.2, avgSpend: 68.5, fill: "#6b7280" },
+  { name: "Male", value: 64, percentage: 4.8, avgSpend: 62.8, fill: "#3b82f6" },
 ]
 
 // Hourly Sales Performance

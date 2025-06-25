@@ -76,7 +76,7 @@ export default function Navbar() {
               <Link href="/about" className="text-gray-700 hover:text-black text-lg">About</Link>
               <Link href="/products" className="text-gray-700 hover:text-black text-lg">Products</Link>
               <Link href="/research" className="text-gray-700 hover:text-black text-lg">Research</Link>
-              <Link href="mailto:info@intuitus-ads.com" className="text-gray-700 hover:text-black text-lg">Contact Us</Link>
+              <Link href="mailto:contact@intuitus-ads.com" className="text-gray-700 hover:text-black text-lg">Contact Us</Link>
             </nav>
           </motion.div>
         )}

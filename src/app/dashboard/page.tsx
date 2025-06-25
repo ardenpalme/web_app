@@ -367,7 +367,7 @@ export default function HomePage() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a
-              href="/customers"
+              href="/dashboard/customers"
               className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent transition-colors"
             >
               <Users className="h-8 w-8 text-blue-600" />
@@ -377,7 +377,7 @@ export default function HomePage() {
               </div>
             </a>
             <a
-              href="/audience"
+              href="/dashboard/audience"
               className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent transition-colors"
             >
               <Target className="h-8 w-8 text-purple-600" />
@@ -387,7 +387,7 @@ export default function HomePage() {
               </div>
             </a>
             <a
-              href="/advertising"
+              href="/dashboard/advertising"
               className="flex items-center space-x-3 p-4 rounded-lg border hover:bg-accent transition-colors"
             >
               <Megaphone className="h-8 w-8 text-red-600" />

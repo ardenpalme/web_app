@@ -143,7 +143,6 @@ const overallAgeData = [
 const overallGenderData = [
   { name: "Female", value: 4680, percentage: 55.6, avgDwell: 4.8, fill: "#ec4899" },
   { name: "Male", value: 3420, percentage: 40.6, avgDwell: 3.6, fill: "#3b82f6" },
-  { name: "Other", value: 320, percentage: 3.8, avgDwell: 4.2, fill: "#6b7280" },
 ]
 
 // Hourly Foot Traffic by Location

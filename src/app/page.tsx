@@ -1,7 +1,7 @@
 'use client';
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Presentation, Store, LayoutDashboard, ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users, Shield } from "lucide-react"
+import { Presentation, Store, LayoutDashboard, ArrowRight, Check, BarChart3, Eye, MapPin, TrendingUp, Users, Shield, ShieldCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -20,18 +20,16 @@ export default function () {
             {/* Text Content */}
             <div className="space-y-8">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-                Fine-Tune your Ads with
-                <span className="text-blue-600"> Expert Audience Analytics</span>
+                Bridge the gap between ad engagement and tenant sales
+                {/*<span className="text-blue-600"> Expert Audience and POS Analytics</span>*/}
               </h1>
-
               <p className="text-xl text-gray-600 leading-relaxed">
-                Transform your mall's digital advertising revenue with AI-powered audience insights. Maximize DOOH ad
-                performance, understand shopper behavior, and increase tenant satisfaction with precise demographic
-                targeting.
+                Connect DOOH impressions to actual in-store conversions.
+                Showcase the commercial impact of your media network on in-mall retail success. 
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="mailto:info@intuitus-ads.com">
+                <Link href="mailto:contact@intuitus-ads.com">
                   <Button size="lg" className="bg-blue-600 hover:bg-blue-700 cursor-pointer">
                     Request Demo
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -52,7 +50,7 @@ export default function () {
                 <Check className="h-4 w-4 text-green-500" />
                 <span>30-day pilot program</span>
                 <span>•</span>
-                <span>ROI guarantee</span>
+                <span>ROI guarantee or money-back</span>
               </div>
             </div>
 
@@ -100,8 +98,8 @@ export default function () {
                     <BarChart3 className="h-4 w-4 text-purple-600" />
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-gray-900">45% Revenue Boost</div>
-                    <div className="text-xs text-gray-500">Average Increase</div>
+                    <div className="text-sm font-semibold text-gray-900">+24% ROI*</div>
+                    <div className="text-xs text-gray-500">Proj. Increase</div>
                   </div>
                 </div>
               </div>
@@ -118,10 +116,10 @@ export default function () {
               <Eye className="h-6 w-6 text-blue-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Real-Time Audience Measurement</CardTitle>
+              <CardTitle className="md:py-2">Real-Time Audience Measurement</CardTitle>
               <CardDescription>
-                Track foot traffic, dwell time, and audience demographics in real-time across all your digital displays.
-                Provide advertisers with verified impression data and engagement metrics.
+                Track impressions, dwell time, and audience demographics in real-time across all your digital displays.
+                Provide advertisers with verified impression data and gaze-based engagement metrics.
               </CardDescription>
             </div>
           </CardHeader>
@@ -130,13 +128,27 @@ export default function () {
         <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
-              <BarChart3 className="h-6 w-6 text-green-600" />
+              <ShieldCheck className="h-6 w-6 text-green-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Shopper Behavior Analytics</CardTitle>
+              <CardTitle className="md:py-2">Privacy-Safe Data Processing </CardTitle>
               <CardDescription>
-                Understand peak hours, popular zones, and shopper journey patterns. Optimize store layouts and
-                advertising placement to maximize tenant revenue and customer satisfaction.
+                Sensors collect anonymously shoppers ID's, which are periodically deleted. 
+                Our privacy-conscious system architecture is designed for on-premise data processing.
+              </CardDescription>
+            </div>
+          </CardHeader>
+        </Card>
+
+        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
+            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
+              <BarChart3 className="h-6 w-6 text-purple-600" />
+            </div>
+            <div className="flex-grow space-y-3 md:space-y-0">
+              <CardTitle className="md:py-2">POS Customer Analytics</CardTitle>
+              <CardDescription>
+                Provide store tenants with real-time customer intelligence. Who is buying (demographics)? Did they see the DOOH ad?
               </CardDescription>
             </div>
           </CardHeader>
@@ -148,10 +160,11 @@ export default function () {
               <Users className="h-6 w-6 text-yellow-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Demographic Insights</CardTitle>
+              <CardTitle className="md:py-2">Demographic Insights</CardTitle>
               <CardDescription>
-                Identify the age, gender, and interests of your audience. Tailor your messaging to resonate with
-                specific demographic groups and improve ad performance.
+                Provide store tenants with key DOOH viewer demographics statistics. 
+                Enable them to tailor their messaging messaging to resonate with
+                specific groups, improving ad performance.
               </CardDescription>
             </div>
           </CardHeader>
@@ -163,29 +176,16 @@ export default function () {
               <LayoutDashboard className="h-6 w-6 text-red-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Centralized Dashboard</CardTitle>
+              <CardTitle className="md:py-2">Centralized Dashboard</CardTitle>
               <CardDescription>
-                Access all your data and analytics in one intuitive dashboard. Monitor performance, track trends, and
-                generate reports with ease.
+                Store tenants and mall operators access all your real-time data and analytics in one intuitive dashboard. 
+                Monitor DOOH network performance, track customer demographics, and generate reports.
               </CardDescription>
             </div>
           </CardHeader>
         </Card>
 
-        <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-          <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 md:mb-4">
-              <Store className="h-6 w-6 text-purple-600" />
-            </div>
-            <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Multi-Location Management</CardTitle>
-              <CardDescription>
-                Manage and compare data across multiple locations. Identify top-performing stores, optimize resource
-                allocation, and replicate successful strategies.
-              </CardDescription>
-            </div>
-          </CardHeader>
-        </Card>
+        
 
         <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
           <CardHeader className="flex flex-row items-center space-x-4 md:flex-col md:space-x-0 md:items-start">
@@ -193,7 +193,7 @@ export default function () {
               <Presentation className="h-6 w-6 text-indigo-600" />
             </div>
             <div className="flex-grow space-y-3 md:space-y-0">
-              <CardTitle>Automated Reporting</CardTitle>
+              <CardTitle className="md:py-2">Automated Reporting</CardTitle>
               <CardDescription>
                 Generate custom reports automatically and share them with stakeholders. Keep everyone informed about
                 performance and progress.
@@ -209,7 +209,7 @@ export default function () {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Turn Your Mall Into a Data-Driven Revenue Machine
+                Turn Measured Attention into Higher Ad Rates and Tenant Value
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -217,10 +217,10 @@ export default function () {
                     <Check className="h-4 w-4 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Increase Ad Revenue by 40-60%</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">Increase DOOH Ad Revenue by 10–25%*</h3>
                     <p className="text-gray-600">
-                      Data-backed premium pricing and optimized ad placement strategies that maximize your digital
-                      advertising income.
+                      Implement data-backed premium pricing and zone-based CPM optimization using 
+                      verified impressions, dwell time, and demographic targeting.
                     </p>
                   </div>
                 </div>
@@ -241,10 +241,10 @@ export default function () {
                     <Check className="h-4 w-4 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Optimize Tenant Mix & Layout</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">Close the Loop Between Ad Exposure and In-Store Sales</h3>
                     <p className="text-gray-600">
-                      Shopper flow analytics help you make informed decisions about store placement and common area
-                      optimization.
+                      Track customer journeys from screen to checkout and deliver anonymized demographic reports to store tenants.
+                      Measure ROI from DOOH ad spend.
                     </p>
                   </div>
                 </div>
@@ -253,9 +253,11 @@ export default function () {
             <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 text-center order-first lg:order-last">
               <div className="text-6xl mb-4">📊</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Real-Time Dashboard</h3>
+              <p className="text-gray-600">
+                <text className="font-semibold">Mall Owners</text>: Monitor all your mall's digital advertising performance.
+              </p>
               <p className="text-gray-600 mb-6">
-                Monitor all your mall's digital advertising performance, foot traffic patterns, and revenue metrics from
-                one comprehensive dashboard.
+                <text className="font-semibold">Store Tenants</text>: Monitor POS Customer Analytics, DOOH ad attributions.
               </p>
               <Link href="/dashboard" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="cursor-pointer">View Demo Dashboard</Button>
@@ -269,13 +271,13 @@ export default function () {
       <section className="w-full py-20 bg-blue-600">
         <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Maximize Your Mall's Digital Revenue?
+            Maximize Ad Revenue While Supporting Tenant Success
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Provide key insights to tenant shopowners with advanced DOOH ad-attribution analytics.
+            Offer proof of performance that keeps advertisers and retailers invested.
           </p>
           <div className="flex justify-center">
-            <Link href="mailto:info@intuitus-ads.com">
+            <Link href="mailto:contact@intuitus-ads.com">
               <Button size="lg" variant="secondary" className="cursor-pointer">
                 Contact Us
                 <ArrowRight className="ml-2 h-4 w-4" />
