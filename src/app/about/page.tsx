@@ -20,12 +20,10 @@ export default function () {
         <div className="px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
-              Transforming Retail Intelligence with
-              <span className="text-blue-600"> Advanced Analytics</span>
+	    Unifying DOOH and Retail with Privacy-Safe Sensor Intelligence
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We're a team of engineers and researchers dedicated to revolutionizing how retail spaces understand and
-              engage with their audiences through cutting-edge AI and sensor technology.
+	    We’re a team of engineers and researchers developing next-generation sensor systems for retail and DOOH analytics. By combining real-time AI with privacy-preserving edge technology, we help malls and retailers understand shopper behavior and ad impact—from the moment of attention to the point of sale.
             </p>
           </div>
         </div>
@@ -38,23 +36,25 @@ export default function () {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-600 mb-6">
-                We believe that retail spaces should be intelligent, responsive, and privacy-conscious. Our mission is
-                to bridge the gap between advanced academic research and practical commercial applications, bringing
-                cutting-edge sensor technology and AI analytics to mall owners and retailers worldwide.
+	      We transform advanced research into real-world sensor systems that make malls intelligent, measurable, and privacy-conscious.
+	With expertise in computer vision, radar, and edge AI, we deliver real-time actionable insights to store tenants and mall owners.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                By combining expertise in electrical and computer engineering with computational mathematics, we're
-                developing solutions that not only maximize revenue but also enhance the shopping experience while
-                maintaining the highest standards of privacy protection.
+	      Our platform links DOOH engagement to in-store sales, provides verified audience data, and powers tenant-level analytics.
+		We've designed our systems for mall-scale and cloud performance, with full GDPR/CCPA compliance from sensor to dashboard.
               </p>
 	<div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-  <Button className="w-full sm:w-auto">
+	<Link href="/products">
+  <Button className="w-full sm:w-auto cursor-pointer">
     Learn About Our Products
     <ArrowRight className="ml-2 h-4 w-4" />
   </Button>
-  <Button variant="outline" className="w-full sm:w-auto">
+  </Link>
+  <Link href="/research">
+  <Button variant="outline" className="w-full sm:w-auto cursor-pointer">
     View Our Research
   </Button>
+  </Link>
 </div>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8">
@@ -62,8 +62,7 @@ export default function () {
                 <div className="text-6xl mb-4">🎯</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Vision 2025</h3>
                 <p className="text-gray-600">
-                  To become the leading provider of privacy-preserving retail intelligence solutions, empowering mall
-                  owners with actionable insights that drive revenue growth and customer satisfaction.
+		To become the trusted analytics infrastructure behind the world’s leading malls, enabling data-backed decisions in media pricing, tenant performance, and space optimization while upholding the highest standards of user privacy.
                 </p>
               </div>
             </div>
@@ -257,7 +256,7 @@ export default function () {
 
             <Card className="border-0 shadow-lg p-8">
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900">LaunchPad Research Lab</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Intuitus Ads Office</h3>
                 <div className="text-gray-600 space-y-2">
                   <p>30 North Gould Street</p>
                   <p>Sheridan, WY 82801</p>
@@ -273,19 +272,22 @@ export default function () {
       {/* CTA Section */}
       <section className="w-full py-20 bg-blue-600">
         <div className="px-4 md:px-6 text-center max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Retail Space?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Quantify What Your Mall Delivers in Real Time</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join us in revolutionizing retail intelligence. Let's discuss how our advanced analytics solutions can drive
-            growth for your business.
+	  From gaze detection to in-store conversions, our privacy-first platform gives mall owners the data needed to justify ad rates and support tenant success.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-            <Button size="lg" variant="secondary" className="flex-1">
+	  <Link href="mailto:contact@intuitus-ads.com">
+            <Button size="lg" variant="secondary" className="flex-1 cursor-pointer">
               Book a Demo
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <Button href="/research" size="lg" variant="secondary" className="flex-1">
+	    </Link>
+	  <Link href="/research" >
+            <Button size="lg" variant="secondary" className="flex-1 cursor-pointer">
               View Our Research
             </Button>
+	    </Link>
           </div>
         </div>
       </section>
