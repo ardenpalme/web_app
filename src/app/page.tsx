@@ -20,8 +20,8 @@ export default function () {
             {/* Text Content */}
             <div className="space-y-8">
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900">
-                Bridge the gap between ad engagement and tenant sales
-                {/*<span className="text-blue-600"> Expert Audience and POS Analytics</span>*/}
+                Smart End-to-End DOOH Advertising Solution
+                <span className="text-blue-600"> Advanced Analytics</span>
               </h1>
               <p className="text-xl text-gray-600 leading-relaxed">
                 Connect DOOH impressions to actual in-store conversions.
@@ -259,9 +259,6 @@ export default function () {
               <p className="text-gray-600 mb-6">
                 <text className="font-semibold">Store Tenants</text>: Monitor POS Customer Analytics, DOOH ad attributions.
               </p>
-              <Link href="/dashboard" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="cursor-pointer">View Demo Dashboard</Button>
-              </Link>
             </div>
           </div>
         </div>

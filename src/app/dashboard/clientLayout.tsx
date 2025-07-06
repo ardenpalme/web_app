@@ -32,6 +32,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { TimeRangeContext } from "@/context/time-range-context"
 import { formatDateTimeRange } from "@/lib/utils"
+import { useUser, useClerk } from "@clerk/nextjs";
 
 const defaultStart = "2023-10-15T10:00:18.000Z"
 const defaultEnd = "2023-10-22T19:07:23.000Z"
@@ -68,6 +69,9 @@ export default function ClientLayout({
   const pathname = usePathname()
 
   const timeRange = formatDateTimeRange(startDate, startTime, endDate, endTime);
+
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
   return (
         <SidebarProvider>
@@ -154,8 +158,8 @@ export default function ClientLayout({
                           <AvatarFallback className="rounded-lg">JD</AvatarFallback>
                         </Avatar>
                         <div className="grid flex-1 text-left text-sm leading-tight">
-                          <span className="truncate font-semibold">John Doe</span>
-                          <span className="truncate text-xs">john@acmecorp.com</span>
+                          <span className="truncate font-semibold">{user?.fullName ?? ""}</span>
+                          <span className="truncate text-xs">{user?.primaryEmailAddress?.emailAddress ?? ""}</span>
                         </div>
                         <ChevronDown className="ml-auto size-4" />
                       </SidebarMenuButton>
@@ -166,13 +170,10 @@ export default function ClientLayout({
                       align="end"
                       sideOffset={4}
                     >
-                      <DropdownMenuItem>
-                        <span>Account</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <span>Billing</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
+                      <DropdownMenuItem
+                          onClick={() => signOut({ redirectUrl: '/' })}
+                          className="cursor-pointer"
+                      >
                         <span>Sign out</span>
                       </DropdownMenuItem>
                     </DropdownMenuContent>

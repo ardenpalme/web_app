@@ -57,10 +57,13 @@ export default function Navbar() {
         {/* Contact Button (Always Visible) */}
         <div className="hidden md:flex items-center space-x-4">
           <Link href="mailto:contact@intuitus-ads.com">
-            <Button size="sm" className="text-base cursor-pointer">Contact Us</Button>
+            <Button size="sm" className="text-base cursor-pointer">
+              Contact Us
+            </Button>
           </Link>
         </div>
       </div>
+
 
       {/* Mobile Dropdown Menu */}
       <AnimatePresence>
