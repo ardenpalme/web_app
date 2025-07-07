@@ -189,7 +189,7 @@ export default function ClientLayout({
                 <SidebarTrigger className="-ml-1" />
               </div>
             </header>
-            <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
+            <main>
             {children}
             </main>
             </TimeRangeContext.Provider>
