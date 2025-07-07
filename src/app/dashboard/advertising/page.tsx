@@ -30,6 +30,24 @@ import {
 } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
+import { trpc } from '@/lib/trpc'
+
+export function TestTRPC() {
+  const { data, isLoading } = trpc.audience.ViewsByAge.useQuery({
+    start:"2023-10-15T13:00:00.000Z", 
+    end:"2025-10-23T13:00:00.000Z"});
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!data) return <div>No Data</div>;
+  return (
+    <ul>
+      {data.map((row, i) => (
+        <li key={i}>
+          {row.ageRange} :: {row._count}
+        </li>
+      ))}
+    </ul>);
+}
 
 interface UploadedFile {
   id: string
@@ -186,6 +204,8 @@ export default function DOOHCMSInterface() {
           <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
           <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
         </div>
+        <TestTRPC />
+
 
         {/* Campaign Details */}
         <Card>

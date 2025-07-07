@@ -14,7 +14,7 @@ export const audienceRouter = router({
   )
   .query(async ({ input }) => {
     const { start, end } = input;
-    return await prisma.dooh_detections.groupBy({
+    return await prisma.dooh_detection.groupBy({
       by: ['race'],
       where: {
         timestamp: {
@@ -35,7 +35,7 @@ export const audienceRouter = router({
   )
   .query(async ({ input }) => {
     const { start, end } = input;
-    return await prisma.dooh_detections.groupBy({
+    return await prisma.dooh_detection.groupBy({
       by: ['gender'],
       where: {
         timestamp: {
@@ -52,12 +52,13 @@ export const audienceRouter = router({
     z.object({
       start: z.string().datetime(),
       end: z.string().datetime(),
+      binWidth: z.number().int().min(1).max(50).default(10), // e.g., 10 = bins like 0–9, 10–19, etc.
     })
   )
   .query(async ({ input }) => {
-    const { start, end } = input;
+    const { start, end, binWidth } = input
 
-    const all = await prisma.dooh_detections.findMany({
+    const all = await prisma.dooh_detection.findMany({
       where: {
         timestamp: {
           gte: new Date(start),
@@ -65,21 +66,22 @@ export const audienceRouter = router({
         },
       },
       select: { age: true },
-    });
+    })
 
-    const buckets = new Map<string, number>();
-
+    // Bin ages into ranges
+    const bins: Record<string, number> = {}
     for (const { age } of all) {
-      if (age !== null) {
-        const bucketStart = Math.floor(age / 10) * 10;
-        const label = `${bucketStart}-${bucketStart + 9}`;
-        buckets.set(label, (buckets.get(label) || 0) + 1);
-      }
+      const binStart = Math.floor(age / binWidth) * binWidth
+      const binLabel = `${binStart}-${binStart + binWidth - 1}`
+      bins[binLabel] = (bins[binLabel] || 0) + 1
     }
 
-    return [...buckets.entries()]
-      .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
-      .map(([age, _count]) => ({ age, _count }));
+    // Return as array
+    return Object.entries(bins).map(([range, count]) => ({
+      ageRange: range,
+      _count: count,
+    }))
   }),
+
 });
 
