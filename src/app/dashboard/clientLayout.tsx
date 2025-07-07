@@ -188,64 +188,6 @@ export default function ClientLayout({
               <div className="flex items-center gap-2 px-4">
                 <SidebarTrigger className="-ml-1" />
               </div>
-              <div className="ml-auto px-4">
-                {/* Date and Time Selector */}
-                <Popover open={isDatePickerOpen} onOpenChange={setIsDatePickerOpen}>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className="w-[280px] justify-start text-left font-normal">
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {format(startDate, "MMM dd")} {startTime} - {format(endDate, "MMM dd")} {endTime}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="end">
-                    <div className="flex">
-                      <div className="p-3">
-                        <div className="text-sm font-medium mb-2">Start Date & Time</div>
-                        <Calendar
-                          mode="single"
-                          selected={startDate}
-                          onSelect={(date) => date && setStartDate(date)}
-                          initialFocus
-                        />
-                        <div className="mt-3">
-                          <Label htmlFor="start-time" className="text-sm font-medium">
-                            Time (UTC)
-                          </Label>
-                          <div className="flex items-center mt-1">
-                            <Clock className="mr-2 h-4 w-4 text-muted-foreground" />
-                            <Input
-                              id="start-time"
-                              type="time"
-                              value={startTime}
-                              onChange={(e) => setStartTime(e.target.value)}
-                              className="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-3 border-l">
-                        <div className="text-sm font-medium mb-2">End Date & Time</div>
-                        <Calendar mode="single" selected={endDate} onSelect={(date) => date && setEndDate(date)} />
-                        <div className="mt-3">
-                          <Label htmlFor="end-time" className="text-sm font-medium">
-                            Time (UTC)
-                          </Label>
-                          <div className="flex items-center mt-1">
-                            <Clock className="mr-2 h-4 w-4 text-muted-foreground" />
-                            <Input
-                              id="end-time"
-                              type="time"
-                              value={endTime}
-                              onChange={(e) => setEndTime(e.target.value)}
-                              className="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </PopoverContent>
-                </Popover>
-              </div>
             </header>
             <main className="flex flex-1 flex-col gap-4 p-4 pt-0">
             {children}
