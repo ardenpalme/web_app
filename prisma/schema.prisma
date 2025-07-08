@@ -33,3 +33,9 @@ model creatives {
   created_at        DateTime?           @default(now()) @db.Timestamp(6)
   campaign_creative campaign_creative[]
 }
+
+model system_config {
+  id        Int     @id @default(autoincrement())
+  parameter String?
+  value     String
+}

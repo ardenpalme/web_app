@@ -140,6 +140,12 @@ exports.Prisma.CreativesScalarFieldEnum = {
   created_at: 'created_at'
 };
 
+exports.Prisma.System_configScalarFieldEnum = {
+  id: 'id',
+  parameter: 'parameter',
+  value: 'value'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -159,7 +165,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   campaign_creative: 'campaign_creative',
   campaigns: 'campaigns',
-  creatives: 'creatives'
+  creatives: 'creatives',
+  system_config: 'system_config'
 };
 
 /**
