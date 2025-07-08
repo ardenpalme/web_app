@@ -204,23 +204,28 @@ export default function DOOHCMSInterface() {
     }
   };
 
-  //const uploadFileMutation = trpc.upload.uploadFile.useMutation();
+  const uploadCreativeMutation = trpc.creative.upload.useMutation();
+  const uploadCampaignMutation = trpc.campaign.upload.useMutation();
+
   const uploadCampaign = async () => {
-    const camp_data = {
+    const creative_ids: string[] = [];
+    for (const file of uploadedFiles.filter((f) => f.status === "success")) {
+      const fname = `${file.name}.${file.extension}`;
+
+      await uploadFileToWorker(file.file, fname);
+
+      const creative = await uploadCreativeMutation.mutateAsync({ name: fname });
+      creative_ids.push(creative.id);
+    }
+
+    await uploadCampaignMutation.mutateAsync({
       name: campaignName,
       start_date: startDate,
       end_date: endDate,
-      target_age_ranges: selectedAgeRanges,
+      target_age_groups: selectedAgeRanges,
       target_gender: gender,
-    };
-
-    console.log(camp_data);
-
-    for (const file of uploadedFiles.filter((f) => f.status === "success")) {
-      const fname = `${file.name}.${file.extension}`;
-      const status = await uploadFileToWorker(file.file, fname);
-      console.log(status);
-    }
+      creative_ids,
+    });
   };
 
   return (

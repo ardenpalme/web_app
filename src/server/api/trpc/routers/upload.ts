@@ -1,40 +1,60 @@
 import { publicProcedure, router } from '../../trpc';
 import { z } from 'zod';
+import { PrismaClient } from '@generated/prisma'
 
-const WORKER_UPLOAD_URL = "https://r2-worker.ardenpalme.workers.dev/api/files";
-const PRESHARED_AUTH_HEADER_VALUE = "e3a1c6b4d9f27a815b3cf1d6982ab6ed973420e8795a6f8cda2f5f4135c4a0ee";//process.env.NEXT_PUBLIC_PRESHARED_AUTH_HEADER_VALUE!;
+const prisma = new PrismaClient()
 
-export const uploadRouter = router({
-  uploadFile: publicProcedure
+export const campaignRouter = router({
+  upload: publicProcedure
     .input(
       z.object({
-        file: z.instanceof(File),
-        fname: z.string(),
+        name: z.string(),
+        start_date: z.string().datetime(),
+        end_date: z.string().datetime(),
+        target_age_groups: z.array(z.string()),
+        target_gender: z.string(),
+        creative_ids: z.array(z.string().uuid()),
       })
     )
     .mutation(async ({ input }) => {
-      const file = input.file;
-      const fname = input.fname;
-      const form = new FormData();
-      form.append("file", file, fname);
-
-      const res = await fetch(`${WORKER_UPLOAD_URL}/${encodeURIComponent(fname)}`, {
-        method: "PUT",
-        headers: {
-          "x-custom-psk": PRESHARED_AUTH_HEADER_VALUE,
+      return await prisma.campaigns.create({
+        data: {
+          name: input.name,
+          start_date: new Date(input.start_date),
+          end_date: new Date(input.end_date),
+          age_groups: input.target_age_groups,
+          gender: input.target_gender,
+          campaign_creative: {
+            create: input.creative_ids.map((creativeId) => ({
+              creatives: {
+                connect: { id: creativeId },
+              },
+            })),
+          },
         },
-        body: form,
+        include: {
+          campaign_creative: {
+            include: {
+              creatives: true, 
+            },
+          },
+        },
       });
+    }),
+});
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(`Upload failed: ${res.status} - ${errorText}`);
-      }
-
-      return {
-        success: true,
-        filename: fname,
-        //r2Url: `https://<your-cdn-domain>/${file.name}`, // optional
-      };
+export const creativeRouter = router({
+  upload: publicProcedure
+    .input(
+      z.object({
+        name: z.string(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      return await prisma.creatives.create({
+        data: {
+          name: input.name,
+        },
+      });
     }),
 });

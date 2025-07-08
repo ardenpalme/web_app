@@ -14,20 +14,20 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model ad_campaigns
+ * Model campaign_creative
  * 
  */
-export type ad_campaigns = $Result.DefaultSelection<Prisma.$ad_campaignsPayload>
+export type campaign_creative = $Result.DefaultSelection<Prisma.$campaign_creativePayload>
 /**
- * Model dooh_detection
+ * Model campaigns
  * 
  */
-export type dooh_detection = $Result.DefaultSelection<Prisma.$dooh_detectionPayload>
+export type campaigns = $Result.DefaultSelection<Prisma.$campaignsPayload>
 /**
- * Model pos_purchase
+ * Model creatives
  * 
  */
-export type pos_purchase = $Result.DefaultSelection<Prisma.$pos_purchasePayload>
+export type creatives = $Result.DefaultSelection<Prisma.$creativesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -36,8 +36,8 @@ export type pos_purchase = $Result.DefaultSelection<Prisma.$pos_purchasePayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Ad_campaigns
- * const ad_campaigns = await prisma.ad_campaigns.findMany()
+ * // Fetch zero or more Campaign_creatives
+ * const campaign_creatives = await prisma.campaign_creative.findMany()
  * ```
  *
  *
@@ -57,8 +57,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Ad_campaigns
-   * const ad_campaigns = await prisma.ad_campaigns.findMany()
+   * // Fetch zero or more Campaign_creatives
+   * const campaign_creatives = await prisma.campaign_creative.findMany()
    * ```
    *
    *
@@ -155,34 +155,34 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.ad_campaigns`: Exposes CRUD operations for the **ad_campaigns** model.
+   * `prisma.campaign_creative`: Exposes CRUD operations for the **campaign_creative** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Ad_campaigns
-    * const ad_campaigns = await prisma.ad_campaigns.findMany()
+    * // Fetch zero or more Campaign_creatives
+    * const campaign_creatives = await prisma.campaign_creative.findMany()
     * ```
     */
-  get ad_campaigns(): Prisma.ad_campaignsDelegate<ExtArgs, ClientOptions>;
+  get campaign_creative(): Prisma.campaign_creativeDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.dooh_detection`: Exposes CRUD operations for the **dooh_detection** model.
+   * `prisma.campaigns`: Exposes CRUD operations for the **campaigns** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Dooh_detections
-    * const dooh_detections = await prisma.dooh_detection.findMany()
+    * // Fetch zero or more Campaigns
+    * const campaigns = await prisma.campaigns.findMany()
     * ```
     */
-  get dooh_detection(): Prisma.dooh_detectionDelegate<ExtArgs, ClientOptions>;
+  get campaigns(): Prisma.campaignsDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.pos_purchase`: Exposes CRUD operations for the **pos_purchase** model.
+   * `prisma.creatives`: Exposes CRUD operations for the **creatives** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Pos_purchases
-    * const pos_purchases = await prisma.pos_purchase.findMany()
+    * // Fetch zero or more Creatives
+    * const creatives = await prisma.creatives.findMany()
     * ```
     */
-  get pos_purchase(): Prisma.pos_purchaseDelegate<ExtArgs, ClientOptions>;
+  get creatives(): Prisma.creativesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -623,9 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    ad_campaigns: 'ad_campaigns',
-    dooh_detection: 'dooh_detection',
-    pos_purchase: 'pos_purchase'
+    campaign_creative: 'campaign_creative',
+    campaigns: 'campaigns',
+    creatives: 'creatives'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,229 +644,229 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "ad_campaigns" | "dooh_detection" | "pos_purchase"
+      modelProps: "campaign_creative" | "campaigns" | "creatives"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      ad_campaigns: {
-        payload: Prisma.$ad_campaignsPayload<ExtArgs>
-        fields: Prisma.ad_campaignsFieldRefs
+      campaign_creative: {
+        payload: Prisma.$campaign_creativePayload<ExtArgs>
+        fields: Prisma.campaign_creativeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ad_campaignsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload> | null
+            args: Prisma.campaign_creativeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ad_campaignsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           findFirst: {
-            args: Prisma.ad_campaignsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload> | null
+            args: Prisma.campaign_creativeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ad_campaignsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           findMany: {
-            args: Prisma.ad_campaignsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>[]
+            args: Prisma.campaign_creativeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
           }
           create: {
-            args: Prisma.ad_campaignsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           createMany: {
-            args: Prisma.ad_campaignsCreateManyArgs<ExtArgs>
+            args: Prisma.campaign_creativeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ad_campaignsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>[]
+            args: Prisma.campaign_creativeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
           }
           delete: {
-            args: Prisma.ad_campaignsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           update: {
-            args: Prisma.ad_campaignsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           deleteMany: {
-            args: Prisma.ad_campaignsDeleteManyArgs<ExtArgs>
+            args: Prisma.campaign_creativeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ad_campaignsUpdateManyArgs<ExtArgs>
+            args: Prisma.campaign_creativeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ad_campaignsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>[]
+            args: Prisma.campaign_creativeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
           }
           upsert: {
-            args: Prisma.ad_campaignsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ad_campaignsPayload>
+            args: Prisma.campaign_creativeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
           }
           aggregate: {
-            args: Prisma.Ad_campaignsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAd_campaigns>
+            args: Prisma.Campaign_creativeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCampaign_creative>
           }
           groupBy: {
-            args: Prisma.ad_campaignsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Ad_campaignsGroupByOutputType>[]
+            args: Prisma.campaign_creativeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Campaign_creativeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ad_campaignsCountArgs<ExtArgs>
-            result: $Utils.Optional<Ad_campaignsCountAggregateOutputType> | number
+            args: Prisma.campaign_creativeCountArgs<ExtArgs>
+            result: $Utils.Optional<Campaign_creativeCountAggregateOutputType> | number
           }
         }
       }
-      dooh_detection: {
-        payload: Prisma.$dooh_detectionPayload<ExtArgs>
-        fields: Prisma.dooh_detectionFieldRefs
+      campaigns: {
+        payload: Prisma.$campaignsPayload<ExtArgs>
+        fields: Prisma.campaignsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.dooh_detectionFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload> | null
+            args: Prisma.campaignsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.dooh_detectionFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           findFirst: {
-            args: Prisma.dooh_detectionFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload> | null
+            args: Prisma.campaignsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.dooh_detectionFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           findMany: {
-            args: Prisma.dooh_detectionFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>[]
+            args: Prisma.campaignsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
           }
           create: {
-            args: Prisma.dooh_detectionCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           createMany: {
-            args: Prisma.dooh_detectionCreateManyArgs<ExtArgs>
+            args: Prisma.campaignsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.dooh_detectionCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>[]
+            args: Prisma.campaignsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
           }
           delete: {
-            args: Prisma.dooh_detectionDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           update: {
-            args: Prisma.dooh_detectionUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           deleteMany: {
-            args: Prisma.dooh_detectionDeleteManyArgs<ExtArgs>
+            args: Prisma.campaignsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.dooh_detectionUpdateManyArgs<ExtArgs>
+            args: Prisma.campaignsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.dooh_detectionUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>[]
+            args: Prisma.campaignsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
           }
           upsert: {
-            args: Prisma.dooh_detectionUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$dooh_detectionPayload>
+            args: Prisma.campaignsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
           }
           aggregate: {
-            args: Prisma.Dooh_detectionAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDooh_detection>
+            args: Prisma.CampaignsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCampaigns>
           }
           groupBy: {
-            args: Prisma.dooh_detectionGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Dooh_detectionGroupByOutputType>[]
+            args: Prisma.campaignsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CampaignsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.dooh_detectionCountArgs<ExtArgs>
-            result: $Utils.Optional<Dooh_detectionCountAggregateOutputType> | number
+            args: Prisma.campaignsCountArgs<ExtArgs>
+            result: $Utils.Optional<CampaignsCountAggregateOutputType> | number
           }
         }
       }
-      pos_purchase: {
-        payload: Prisma.$pos_purchasePayload<ExtArgs>
-        fields: Prisma.pos_purchaseFieldRefs
+      creatives: {
+        payload: Prisma.$creativesPayload<ExtArgs>
+        fields: Prisma.creativesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.pos_purchaseFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload> | null
+            args: Prisma.creativesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.pos_purchaseFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           findFirst: {
-            args: Prisma.pos_purchaseFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload> | null
+            args: Prisma.creativesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.pos_purchaseFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           findMany: {
-            args: Prisma.pos_purchaseFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>[]
+            args: Prisma.creativesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
           }
           create: {
-            args: Prisma.pos_purchaseCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           createMany: {
-            args: Prisma.pos_purchaseCreateManyArgs<ExtArgs>
+            args: Prisma.creativesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.pos_purchaseCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>[]
+            args: Prisma.creativesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
           }
           delete: {
-            args: Prisma.pos_purchaseDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           update: {
-            args: Prisma.pos_purchaseUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           deleteMany: {
-            args: Prisma.pos_purchaseDeleteManyArgs<ExtArgs>
+            args: Prisma.creativesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.pos_purchaseUpdateManyArgs<ExtArgs>
+            args: Prisma.creativesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.pos_purchaseUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>[]
+            args: Prisma.creativesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
           }
           upsert: {
-            args: Prisma.pos_purchaseUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pos_purchasePayload>
+            args: Prisma.creativesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
           }
           aggregate: {
-            args: Prisma.Pos_purchaseAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePos_purchase>
+            args: Prisma.CreativesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCreatives>
           }
           groupBy: {
-            args: Prisma.pos_purchaseGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Pos_purchaseGroupByOutputType>[]
+            args: Prisma.creativesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CreativesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.pos_purchaseCountArgs<ExtArgs>
-            result: $Utils.Optional<Pos_purchaseCountAggregateOutputType> | number
+            args: Prisma.creativesCountArgs<ExtArgs>
+            result: $Utils.Optional<CreativesCountAggregateOutputType> | number
           }
         }
       }
@@ -954,9 +954,9 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    ad_campaigns?: ad_campaignsOmit
-    dooh_detection?: dooh_detectionOmit
-    pos_purchase?: pos_purchaseOmit
+    campaign_creative?: campaign_creativeOmit
+    campaigns?: campaignsOmit
+    creatives?: creativesOmit
   }
 
   /* Types for Logging */
@@ -1047,33 +1047,64 @@ export namespace Prisma {
 
 
   /**
-   * Count Type Ad_campaignsCountOutputType
+   * Count Type CampaignsCountOutputType
    */
 
-  export type Ad_campaignsCountOutputType = {
-    detections: number
+  export type CampaignsCountOutputType = {
+    campaign_creative: number
   }
 
-  export type Ad_campaignsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detections?: boolean | Ad_campaignsCountOutputTypeCountDetectionsArgs
+  export type CampaignsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign_creative?: boolean | CampaignsCountOutputTypeCountCampaign_creativeArgs
   }
 
   // Custom InputTypes
   /**
-   * Ad_campaignsCountOutputType without action
+   * CampaignsCountOutputType without action
    */
-  export type Ad_campaignsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Ad_campaignsCountOutputType
+     * Select specific fields to fetch from the CampaignsCountOutputType
      */
-    select?: Ad_campaignsCountOutputTypeSelect<ExtArgs> | null
+    select?: CampaignsCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * Ad_campaignsCountOutputType without action
+   * CampaignsCountOutputType without action
    */
-  export type Ad_campaignsCountOutputTypeCountDetectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: dooh_detectionWhereInput
+  export type CampaignsCountOutputTypeCountCampaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: campaign_creativeWhereInput
+  }
+
+
+  /**
+   * Count Type CreativesCountOutputType
+   */
+
+  export type CreativesCountOutputType = {
+    campaign_creative: number
+  }
+
+  export type CreativesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign_creative?: boolean | CreativesCountOutputTypeCountCampaign_creativeArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CreativesCountOutputType without action
+   */
+  export type CreativesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CreativesCountOutputType
+     */
+    select?: CreativesCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CreativesCountOutputType without action
+   */
+  export type CreativesCountOutputTypeCountCampaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: campaign_creativeWhereInput
   }
 
 
@@ -1082,323 +1113,1382 @@ export namespace Prisma {
    */
 
   /**
-   * Model ad_campaigns
+   * Model campaign_creative
    */
 
-  export type AggregateAd_campaigns = {
-    _count: Ad_campaignsCountAggregateOutputType | null
-    _min: Ad_campaignsMinAggregateOutputType | null
-    _max: Ad_campaignsMaxAggregateOutputType | null
+  export type AggregateCampaign_creative = {
+    _count: Campaign_creativeCountAggregateOutputType | null
+    _min: Campaign_creativeMinAggregateOutputType | null
+    _max: Campaign_creativeMaxAggregateOutputType | null
   }
 
-  export type Ad_campaignsMinAggregateOutputType = {
-    ad_id: string | null
+  export type Campaign_creativeMinAggregateOutputType = {
+    campaign_id: string | null
+    creative_id: string | null
+  }
+
+  export type Campaign_creativeMaxAggregateOutputType = {
+    campaign_id: string | null
+    creative_id: string | null
+  }
+
+  export type Campaign_creativeCountAggregateOutputType = {
+    campaign_id: number
+    creative_id: number
+    _all: number
+  }
+
+
+  export type Campaign_creativeMinAggregateInputType = {
+    campaign_id?: true
+    creative_id?: true
+  }
+
+  export type Campaign_creativeMaxAggregateInputType = {
+    campaign_id?: true
+    creative_id?: true
+  }
+
+  export type Campaign_creativeCountAggregateInputType = {
+    campaign_id?: true
+    creative_id?: true
+    _all?: true
+  }
+
+  export type Campaign_creativeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which campaign_creative to aggregate.
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of campaign_creatives to fetch.
+     */
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: campaign_creativeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` campaign_creatives from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` campaign_creatives.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned campaign_creatives
+    **/
+    _count?: true | Campaign_creativeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Campaign_creativeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Campaign_creativeMaxAggregateInputType
+  }
+
+  export type GetCampaign_creativeAggregateType<T extends Campaign_creativeAggregateArgs> = {
+        [P in keyof T & keyof AggregateCampaign_creative]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCampaign_creative[P]>
+      : GetScalarType<T[P], AggregateCampaign_creative[P]>
+  }
+
+
+
+
+  export type campaign_creativeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: campaign_creativeWhereInput
+    orderBy?: campaign_creativeOrderByWithAggregationInput | campaign_creativeOrderByWithAggregationInput[]
+    by: Campaign_creativeScalarFieldEnum[] | Campaign_creativeScalarFieldEnum
+    having?: campaign_creativeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Campaign_creativeCountAggregateInputType | true
+    _min?: Campaign_creativeMinAggregateInputType
+    _max?: Campaign_creativeMaxAggregateInputType
+  }
+
+  export type Campaign_creativeGroupByOutputType = {
+    campaign_id: string
+    creative_id: string
+    _count: Campaign_creativeCountAggregateOutputType | null
+    _min: Campaign_creativeMinAggregateOutputType | null
+    _max: Campaign_creativeMaxAggregateOutputType | null
+  }
+
+  type GetCampaign_creativeGroupByPayload<T extends campaign_creativeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Campaign_creativeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Campaign_creativeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Campaign_creativeGroupByOutputType[P]>
+            : GetScalarType<T[P], Campaign_creativeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type campaign_creativeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    campaign_id?: boolean
+    creative_id?: boolean
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaign_creative"]>
+
+  export type campaign_creativeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    campaign_id?: boolean
+    creative_id?: boolean
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaign_creative"]>
+
+  export type campaign_creativeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    campaign_id?: boolean
+    creative_id?: boolean
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaign_creative"]>
+
+  export type campaign_creativeSelectScalar = {
+    campaign_id?: boolean
+    creative_id?: boolean
+  }
+
+  export type campaign_creativeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"campaign_id" | "creative_id", ExtArgs["result"]["campaign_creative"]>
+  export type campaign_creativeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }
+  export type campaign_creativeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }
+  export type campaign_creativeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
+    creatives?: boolean | creativesDefaultArgs<ExtArgs>
+  }
+
+  export type $campaign_creativePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "campaign_creative"
+    objects: {
+      campaigns: Prisma.$campaignsPayload<ExtArgs>
+      creatives: Prisma.$creativesPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      campaign_id: string
+      creative_id: string
+    }, ExtArgs["result"]["campaign_creative"]>
+    composites: {}
+  }
+
+  type campaign_creativeGetPayload<S extends boolean | null | undefined | campaign_creativeDefaultArgs> = $Result.GetResult<Prisma.$campaign_creativePayload, S>
+
+  type campaign_creativeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<campaign_creativeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Campaign_creativeCountAggregateInputType | true
+    }
+
+  export interface campaign_creativeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['campaign_creative'], meta: { name: 'campaign_creative' } }
+    /**
+     * Find zero or one Campaign_creative that matches the filter.
+     * @param {campaign_creativeFindUniqueArgs} args - Arguments to find a Campaign_creative
+     * @example
+     * // Get one Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends campaign_creativeFindUniqueArgs>(args: SelectSubset<T, campaign_creativeFindUniqueArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Campaign_creative that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {campaign_creativeFindUniqueOrThrowArgs} args - Arguments to find a Campaign_creative
+     * @example
+     * // Get one Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends campaign_creativeFindUniqueOrThrowArgs>(args: SelectSubset<T, campaign_creativeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Campaign_creative that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeFindFirstArgs} args - Arguments to find a Campaign_creative
+     * @example
+     * // Get one Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends campaign_creativeFindFirstArgs>(args?: SelectSubset<T, campaign_creativeFindFirstArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Campaign_creative that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeFindFirstOrThrowArgs} args - Arguments to find a Campaign_creative
+     * @example
+     * // Get one Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends campaign_creativeFindFirstOrThrowArgs>(args?: SelectSubset<T, campaign_creativeFindFirstOrThrowArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Campaign_creatives that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Campaign_creatives
+     * const campaign_creatives = await prisma.campaign_creative.findMany()
+     * 
+     * // Get first 10 Campaign_creatives
+     * const campaign_creatives = await prisma.campaign_creative.findMany({ take: 10 })
+     * 
+     * // Only select the `campaign_id`
+     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.findMany({ select: { campaign_id: true } })
+     * 
+     */
+    findMany<T extends campaign_creativeFindManyArgs>(args?: SelectSubset<T, campaign_creativeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Campaign_creative.
+     * @param {campaign_creativeCreateArgs} args - Arguments to create a Campaign_creative.
+     * @example
+     * // Create one Campaign_creative
+     * const Campaign_creative = await prisma.campaign_creative.create({
+     *   data: {
+     *     // ... data to create a Campaign_creative
+     *   }
+     * })
+     * 
+     */
+    create<T extends campaign_creativeCreateArgs>(args: SelectSubset<T, campaign_creativeCreateArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Campaign_creatives.
+     * @param {campaign_creativeCreateManyArgs} args - Arguments to create many Campaign_creatives.
+     * @example
+     * // Create many Campaign_creatives
+     * const campaign_creative = await prisma.campaign_creative.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends campaign_creativeCreateManyArgs>(args?: SelectSubset<T, campaign_creativeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Campaign_creatives and returns the data saved in the database.
+     * @param {campaign_creativeCreateManyAndReturnArgs} args - Arguments to create many Campaign_creatives.
+     * @example
+     * // Create many Campaign_creatives
+     * const campaign_creative = await prisma.campaign_creative.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Campaign_creatives and only return the `campaign_id`
+     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.createManyAndReturn({
+     *   select: { campaign_id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends campaign_creativeCreateManyAndReturnArgs>(args?: SelectSubset<T, campaign_creativeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Campaign_creative.
+     * @param {campaign_creativeDeleteArgs} args - Arguments to delete one Campaign_creative.
+     * @example
+     * // Delete one Campaign_creative
+     * const Campaign_creative = await prisma.campaign_creative.delete({
+     *   where: {
+     *     // ... filter to delete one Campaign_creative
+     *   }
+     * })
+     * 
+     */
+    delete<T extends campaign_creativeDeleteArgs>(args: SelectSubset<T, campaign_creativeDeleteArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Campaign_creative.
+     * @param {campaign_creativeUpdateArgs} args - Arguments to update one Campaign_creative.
+     * @example
+     * // Update one Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends campaign_creativeUpdateArgs>(args: SelectSubset<T, campaign_creativeUpdateArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Campaign_creatives.
+     * @param {campaign_creativeDeleteManyArgs} args - Arguments to filter Campaign_creatives to delete.
+     * @example
+     * // Delete a few Campaign_creatives
+     * const { count } = await prisma.campaign_creative.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends campaign_creativeDeleteManyArgs>(args?: SelectSubset<T, campaign_creativeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Campaign_creatives.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Campaign_creatives
+     * const campaign_creative = await prisma.campaign_creative.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends campaign_creativeUpdateManyArgs>(args: SelectSubset<T, campaign_creativeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Campaign_creatives and returns the data updated in the database.
+     * @param {campaign_creativeUpdateManyAndReturnArgs} args - Arguments to update many Campaign_creatives.
+     * @example
+     * // Update many Campaign_creatives
+     * const campaign_creative = await prisma.campaign_creative.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Campaign_creatives and only return the `campaign_id`
+     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.updateManyAndReturn({
+     *   select: { campaign_id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends campaign_creativeUpdateManyAndReturnArgs>(args: SelectSubset<T, campaign_creativeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Campaign_creative.
+     * @param {campaign_creativeUpsertArgs} args - Arguments to update or create a Campaign_creative.
+     * @example
+     * // Update or create a Campaign_creative
+     * const campaign_creative = await prisma.campaign_creative.upsert({
+     *   create: {
+     *     // ... data to create a Campaign_creative
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Campaign_creative we want to update
+     *   }
+     * })
+     */
+    upsert<T extends campaign_creativeUpsertArgs>(args: SelectSubset<T, campaign_creativeUpsertArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Campaign_creatives.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeCountArgs} args - Arguments to filter Campaign_creatives to count.
+     * @example
+     * // Count the number of Campaign_creatives
+     * const count = await prisma.campaign_creative.count({
+     *   where: {
+     *     // ... the filter for the Campaign_creatives we want to count
+     *   }
+     * })
+    **/
+    count<T extends campaign_creativeCountArgs>(
+      args?: Subset<T, campaign_creativeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Campaign_creativeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Campaign_creative.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Campaign_creativeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Campaign_creativeAggregateArgs>(args: Subset<T, Campaign_creativeAggregateArgs>): Prisma.PrismaPromise<GetCampaign_creativeAggregateType<T>>
+
+    /**
+     * Group by Campaign_creative.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {campaign_creativeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends campaign_creativeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: campaign_creativeGroupByArgs['orderBy'] }
+        : { orderBy?: campaign_creativeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, campaign_creativeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaign_creativeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the campaign_creative model
+   */
+  readonly fields: campaign_creativeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for campaign_creative.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__campaign_creativeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    campaigns<T extends campaignsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, campaignsDefaultArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    creatives<T extends creativesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, creativesDefaultArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the campaign_creative model
+   */
+  interface campaign_creativeFieldRefs {
+    readonly campaign_id: FieldRef<"campaign_creative", 'String'>
+    readonly creative_id: FieldRef<"campaign_creative", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * campaign_creative findUnique
+   */
+  export type campaign_creativeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter, which campaign_creative to fetch.
+     */
+    where: campaign_creativeWhereUniqueInput
+  }
+
+  /**
+   * campaign_creative findUniqueOrThrow
+   */
+  export type campaign_creativeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter, which campaign_creative to fetch.
+     */
+    where: campaign_creativeWhereUniqueInput
+  }
+
+  /**
+   * campaign_creative findFirst
+   */
+  export type campaign_creativeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter, which campaign_creative to fetch.
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of campaign_creatives to fetch.
+     */
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for campaign_creatives.
+     */
+    cursor?: campaign_creativeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` campaign_creatives from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` campaign_creatives.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of campaign_creatives.
+     */
+    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+  }
+
+  /**
+   * campaign_creative findFirstOrThrow
+   */
+  export type campaign_creativeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter, which campaign_creative to fetch.
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of campaign_creatives to fetch.
+     */
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for campaign_creatives.
+     */
+    cursor?: campaign_creativeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` campaign_creatives from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` campaign_creatives.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of campaign_creatives.
+     */
+    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+  }
+
+  /**
+   * campaign_creative findMany
+   */
+  export type campaign_creativeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter, which campaign_creatives to fetch.
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of campaign_creatives to fetch.
+     */
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing campaign_creatives.
+     */
+    cursor?: campaign_creativeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` campaign_creatives from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` campaign_creatives.
+     */
+    skip?: number
+    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+  }
+
+  /**
+   * campaign_creative create
+   */
+  export type campaign_creativeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a campaign_creative.
+     */
+    data: XOR<campaign_creativeCreateInput, campaign_creativeUncheckedCreateInput>
+  }
+
+  /**
+   * campaign_creative createMany
+   */
+  export type campaign_creativeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many campaign_creatives.
+     */
+    data: campaign_creativeCreateManyInput | campaign_creativeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * campaign_creative createManyAndReturn
+   */
+  export type campaign_creativeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * The data used to create many campaign_creatives.
+     */
+    data: campaign_creativeCreateManyInput | campaign_creativeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * campaign_creative update
+   */
+  export type campaign_creativeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a campaign_creative.
+     */
+    data: XOR<campaign_creativeUpdateInput, campaign_creativeUncheckedUpdateInput>
+    /**
+     * Choose, which campaign_creative to update.
+     */
+    where: campaign_creativeWhereUniqueInput
+  }
+
+  /**
+   * campaign_creative updateMany
+   */
+  export type campaign_creativeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update campaign_creatives.
+     */
+    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyInput>
+    /**
+     * Filter which campaign_creatives to update
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * Limit how many campaign_creatives to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * campaign_creative updateManyAndReturn
+   */
+  export type campaign_creativeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * The data used to update campaign_creatives.
+     */
+    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyInput>
+    /**
+     * Filter which campaign_creatives to update
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * Limit how many campaign_creatives to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * campaign_creative upsert
+   */
+  export type campaign_creativeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the campaign_creative to update in case it exists.
+     */
+    where: campaign_creativeWhereUniqueInput
+    /**
+     * In case the campaign_creative found by the `where` argument doesn't exist, create a new campaign_creative with this data.
+     */
+    create: XOR<campaign_creativeCreateInput, campaign_creativeUncheckedCreateInput>
+    /**
+     * In case the campaign_creative was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<campaign_creativeUpdateInput, campaign_creativeUncheckedUpdateInput>
+  }
+
+  /**
+   * campaign_creative delete
+   */
+  export type campaign_creativeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    /**
+     * Filter which campaign_creative to delete.
+     */
+    where: campaign_creativeWhereUniqueInput
+  }
+
+  /**
+   * campaign_creative deleteMany
+   */
+  export type campaign_creativeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which campaign_creatives to delete
+     */
+    where?: campaign_creativeWhereInput
+    /**
+     * Limit how many campaign_creatives to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * campaign_creative without action
+   */
+  export type campaign_creativeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the campaign_creative
+     */
+    select?: campaign_creativeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the campaign_creative
+     */
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model campaigns
+   */
+
+  export type AggregateCampaigns = {
+    _count: CampaignsCountAggregateOutputType | null
+    _min: CampaignsMinAggregateOutputType | null
+    _max: CampaignsMaxAggregateOutputType | null
+  }
+
+  export type CampaignsMinAggregateOutputType = {
+    id: string | null
     name: string | null
-    category: string | null
+    start_date: Date | null
+    end_date: Date | null
+    gender: string | null
   }
 
-  export type Ad_campaignsMaxAggregateOutputType = {
-    ad_id: string | null
+  export type CampaignsMaxAggregateOutputType = {
+    id: string | null
     name: string | null
-    category: string | null
+    start_date: Date | null
+    end_date: Date | null
+    gender: string | null
   }
 
-  export type Ad_campaignsCountAggregateOutputType = {
-    ad_id: number
+  export type CampaignsCountAggregateOutputType = {
+    id: number
     name: number
-    category: number
+    start_date: number
+    end_date: number
+    age_groups: number
+    gender: number
     _all: number
   }
 
 
-  export type Ad_campaignsMinAggregateInputType = {
-    ad_id?: true
+  export type CampaignsMinAggregateInputType = {
+    id?: true
     name?: true
-    category?: true
+    start_date?: true
+    end_date?: true
+    gender?: true
   }
 
-  export type Ad_campaignsMaxAggregateInputType = {
-    ad_id?: true
+  export type CampaignsMaxAggregateInputType = {
+    id?: true
     name?: true
-    category?: true
+    start_date?: true
+    end_date?: true
+    gender?: true
   }
 
-  export type Ad_campaignsCountAggregateInputType = {
-    ad_id?: true
+  export type CampaignsCountAggregateInputType = {
+    id?: true
     name?: true
-    category?: true
+    start_date?: true
+    end_date?: true
+    age_groups?: true
+    gender?: true
     _all?: true
   }
 
-  export type Ad_campaignsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ad_campaigns to aggregate.
+     * Filter which campaigns to aggregate.
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ad_campaigns to fetch.
+     * Determine the order of campaigns to fetch.
      */
-    orderBy?: ad_campaignsOrderByWithRelationInput | ad_campaignsOrderByWithRelationInput[]
+    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ad_campaignsWhereUniqueInput
+    cursor?: campaignsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ad_campaigns from the position of the cursor.
+     * Take `±n` campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ad_campaigns.
+     * Skip the first `n` campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned ad_campaigns
+     * Count returned campaigns
     **/
-    _count?: true | Ad_campaignsCountAggregateInputType
+    _count?: true | CampaignsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Ad_campaignsMinAggregateInputType
+    _min?: CampaignsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Ad_campaignsMaxAggregateInputType
+    _max?: CampaignsMaxAggregateInputType
   }
 
-  export type GetAd_campaignsAggregateType<T extends Ad_campaignsAggregateArgs> = {
-        [P in keyof T & keyof AggregateAd_campaigns]: P extends '_count' | 'count'
+  export type GetCampaignsAggregateType<T extends CampaignsAggregateArgs> = {
+        [P in keyof T & keyof AggregateCampaigns]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAd_campaigns[P]>
-      : GetScalarType<T[P], AggregateAd_campaigns[P]>
+        : GetScalarType<T[P], AggregateCampaigns[P]>
+      : GetScalarType<T[P], AggregateCampaigns[P]>
   }
 
 
 
 
-  export type ad_campaignsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ad_campaignsWhereInput
-    orderBy?: ad_campaignsOrderByWithAggregationInput | ad_campaignsOrderByWithAggregationInput[]
-    by: Ad_campaignsScalarFieldEnum[] | Ad_campaignsScalarFieldEnum
-    having?: ad_campaignsScalarWhereWithAggregatesInput
+  export type campaignsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: campaignsWhereInput
+    orderBy?: campaignsOrderByWithAggregationInput | campaignsOrderByWithAggregationInput[]
+    by: CampaignsScalarFieldEnum[] | CampaignsScalarFieldEnum
+    having?: campaignsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Ad_campaignsCountAggregateInputType | true
-    _min?: Ad_campaignsMinAggregateInputType
-    _max?: Ad_campaignsMaxAggregateInputType
+    _count?: CampaignsCountAggregateInputType | true
+    _min?: CampaignsMinAggregateInputType
+    _max?: CampaignsMaxAggregateInputType
   }
 
-  export type Ad_campaignsGroupByOutputType = {
-    ad_id: string
+  export type CampaignsGroupByOutputType = {
+    id: string
     name: string
-    category: string
-    _count: Ad_campaignsCountAggregateOutputType | null
-    _min: Ad_campaignsMinAggregateOutputType | null
-    _max: Ad_campaignsMaxAggregateOutputType | null
+    start_date: Date | null
+    end_date: Date | null
+    age_groups: string[]
+    gender: string | null
+    _count: CampaignsCountAggregateOutputType | null
+    _min: CampaignsMinAggregateOutputType | null
+    _max: CampaignsMaxAggregateOutputType | null
   }
 
-  type GetAd_campaignsGroupByPayload<T extends ad_campaignsGroupByArgs> = Prisma.PrismaPromise<
+  type GetCampaignsGroupByPayload<T extends campaignsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Ad_campaignsGroupByOutputType, T['by']> &
+      PickEnumerable<CampaignsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Ad_campaignsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CampaignsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Ad_campaignsGroupByOutputType[P]>
-            : GetScalarType<T[P], Ad_campaignsGroupByOutputType[P]>
+              : GetScalarType<T[P], CampaignsGroupByOutputType[P]>
+            : GetScalarType<T[P], CampaignsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ad_campaignsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ad_id?: boolean
+  export type campaignsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     name?: boolean
-    category?: boolean
-    detections?: boolean | ad_campaigns$detectionsArgs<ExtArgs>
-    _count?: boolean | Ad_campaignsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["ad_campaigns"]>
+    start_date?: boolean
+    end_date?: boolean
+    age_groups?: boolean
+    gender?: boolean
+    campaign_creative?: boolean | campaigns$campaign_creativeArgs<ExtArgs>
+    _count?: boolean | CampaignsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaigns"]>
 
-  export type ad_campaignsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ad_id?: boolean
+  export type campaignsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     name?: boolean
-    category?: boolean
-  }, ExtArgs["result"]["ad_campaigns"]>
+    start_date?: boolean
+    end_date?: boolean
+    age_groups?: boolean
+    gender?: boolean
+  }, ExtArgs["result"]["campaigns"]>
 
-  export type ad_campaignsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ad_id?: boolean
+  export type campaignsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     name?: boolean
-    category?: boolean
-  }, ExtArgs["result"]["ad_campaigns"]>
+    start_date?: boolean
+    end_date?: boolean
+    age_groups?: boolean
+    gender?: boolean
+  }, ExtArgs["result"]["campaigns"]>
 
-  export type ad_campaignsSelectScalar = {
-    ad_id?: boolean
+  export type campaignsSelectScalar = {
+    id?: boolean
     name?: boolean
-    category?: boolean
+    start_date?: boolean
+    end_date?: boolean
+    age_groups?: boolean
+    gender?: boolean
   }
 
-  export type ad_campaignsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ad_id" | "name" | "category", ExtArgs["result"]["ad_campaigns"]>
-  export type ad_campaignsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detections?: boolean | ad_campaigns$detectionsArgs<ExtArgs>
-    _count?: boolean | Ad_campaignsCountOutputTypeDefaultArgs<ExtArgs>
+  export type campaignsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "start_date" | "end_date" | "age_groups" | "gender", ExtArgs["result"]["campaigns"]>
+  export type campaignsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign_creative?: boolean | campaigns$campaign_creativeArgs<ExtArgs>
+    _count?: boolean | CampaignsCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ad_campaignsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ad_campaignsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type campaignsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type campaignsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $ad_campaignsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "ad_campaigns"
+  export type $campaignsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "campaigns"
     objects: {
-      detections: Prisma.$dooh_detectionPayload<ExtArgs>[]
+      campaign_creative: Prisma.$campaign_creativePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      ad_id: string
+      id: string
       name: string
-      category: string
-    }, ExtArgs["result"]["ad_campaigns"]>
+      start_date: Date | null
+      end_date: Date | null
+      age_groups: string[]
+      gender: string | null
+    }, ExtArgs["result"]["campaigns"]>
     composites: {}
   }
 
-  type ad_campaignsGetPayload<S extends boolean | null | undefined | ad_campaignsDefaultArgs> = $Result.GetResult<Prisma.$ad_campaignsPayload, S>
+  type campaignsGetPayload<S extends boolean | null | undefined | campaignsDefaultArgs> = $Result.GetResult<Prisma.$campaignsPayload, S>
 
-  type ad_campaignsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ad_campaignsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Ad_campaignsCountAggregateInputType | true
+  type campaignsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<campaignsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CampaignsCountAggregateInputType | true
     }
 
-  export interface ad_campaignsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ad_campaigns'], meta: { name: 'ad_campaigns' } }
+  export interface campaignsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['campaigns'], meta: { name: 'campaigns' } }
     /**
-     * Find zero or one Ad_campaigns that matches the filter.
-     * @param {ad_campaignsFindUniqueArgs} args - Arguments to find a Ad_campaigns
+     * Find zero or one Campaigns that matches the filter.
+     * @param {campaignsFindUniqueArgs} args - Arguments to find a Campaigns
      * @example
-     * // Get one Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findUnique({
+     * // Get one Campaigns
+     * const campaigns = await prisma.campaigns.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ad_campaignsFindUniqueArgs>(args: SelectSubset<T, ad_campaignsFindUniqueArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends campaignsFindUniqueArgs>(args: SelectSubset<T, campaignsFindUniqueArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Ad_campaigns that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Campaigns that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ad_campaignsFindUniqueOrThrowArgs} args - Arguments to find a Ad_campaigns
+     * @param {campaignsFindUniqueOrThrowArgs} args - Arguments to find a Campaigns
      * @example
-     * // Get one Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findUniqueOrThrow({
+     * // Get one Campaigns
+     * const campaigns = await prisma.campaigns.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ad_campaignsFindUniqueOrThrowArgs>(args: SelectSubset<T, ad_campaignsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends campaignsFindUniqueOrThrowArgs>(args: SelectSubset<T, campaignsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Ad_campaigns that matches the filter.
+     * Find the first Campaigns that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsFindFirstArgs} args - Arguments to find a Ad_campaigns
+     * @param {campaignsFindFirstArgs} args - Arguments to find a Campaigns
      * @example
-     * // Get one Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findFirst({
+     * // Get one Campaigns
+     * const campaigns = await prisma.campaigns.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ad_campaignsFindFirstArgs>(args?: SelectSubset<T, ad_campaignsFindFirstArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends campaignsFindFirstArgs>(args?: SelectSubset<T, campaignsFindFirstArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Ad_campaigns that matches the filter or
+     * Find the first Campaigns that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsFindFirstOrThrowArgs} args - Arguments to find a Ad_campaigns
+     * @param {campaignsFindFirstOrThrowArgs} args - Arguments to find a Campaigns
      * @example
-     * // Get one Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findFirstOrThrow({
+     * // Get one Campaigns
+     * const campaigns = await prisma.campaigns.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ad_campaignsFindFirstOrThrowArgs>(args?: SelectSubset<T, ad_campaignsFindFirstOrThrowArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends campaignsFindFirstOrThrowArgs>(args?: SelectSubset<T, campaignsFindFirstOrThrowArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Ad_campaigns that matches the filter.
+     * Find zero or more Campaigns that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {campaignsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findMany()
+     * // Get all Campaigns
+     * const campaigns = await prisma.campaigns.findMany()
      * 
-     * // Get first 10 Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.findMany({ take: 10 })
+     * // Get first 10 Campaigns
+     * const campaigns = await prisma.campaigns.findMany({ take: 10 })
      * 
-     * // Only select the `ad_id`
-     * const ad_campaignsWithAd_idOnly = await prisma.ad_campaigns.findMany({ select: { ad_id: true } })
+     * // Only select the `id`
+     * const campaignsWithIdOnly = await prisma.campaigns.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ad_campaignsFindManyArgs>(args?: SelectSubset<T, ad_campaignsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends campaignsFindManyArgs>(args?: SelectSubset<T, campaignsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Ad_campaigns.
-     * @param {ad_campaignsCreateArgs} args - Arguments to create a Ad_campaigns.
+     * Create a Campaigns.
+     * @param {campaignsCreateArgs} args - Arguments to create a Campaigns.
      * @example
-     * // Create one Ad_campaigns
-     * const Ad_campaigns = await prisma.ad_campaigns.create({
+     * // Create one Campaigns
+     * const Campaigns = await prisma.campaigns.create({
      *   data: {
-     *     // ... data to create a Ad_campaigns
+     *     // ... data to create a Campaigns
      *   }
      * })
      * 
      */
-    create<T extends ad_campaignsCreateArgs>(args: SelectSubset<T, ad_campaignsCreateArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends campaignsCreateArgs>(args: SelectSubset<T, campaignsCreateArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Ad_campaigns.
-     * @param {ad_campaignsCreateManyArgs} args - Arguments to create many Ad_campaigns.
+     * Create many Campaigns.
+     * @param {campaignsCreateManyArgs} args - Arguments to create many Campaigns.
      * @example
-     * // Create many Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.createMany({
+     * // Create many Campaigns
+     * const campaigns = await prisma.campaigns.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ad_campaignsCreateManyArgs>(args?: SelectSubset<T, ad_campaignsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends campaignsCreateManyArgs>(args?: SelectSubset<T, campaignsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Ad_campaigns and returns the data saved in the database.
-     * @param {ad_campaignsCreateManyAndReturnArgs} args - Arguments to create many Ad_campaigns.
+     * Create many Campaigns and returns the data saved in the database.
+     * @param {campaignsCreateManyAndReturnArgs} args - Arguments to create many Campaigns.
      * @example
-     * // Create many Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.createManyAndReturn({
+     * // Create many Campaigns
+     * const campaigns = await prisma.campaigns.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Ad_campaigns and only return the `ad_id`
-     * const ad_campaignsWithAd_idOnly = await prisma.ad_campaigns.createManyAndReturn({
-     *   select: { ad_id: true },
+     * // Create many Campaigns and only return the `id`
+     * const campaignsWithIdOnly = await prisma.campaigns.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1407,28 +2497,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ad_campaignsCreateManyAndReturnArgs>(args?: SelectSubset<T, ad_campaignsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends campaignsCreateManyAndReturnArgs>(args?: SelectSubset<T, campaignsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Ad_campaigns.
-     * @param {ad_campaignsDeleteArgs} args - Arguments to delete one Ad_campaigns.
+     * Delete a Campaigns.
+     * @param {campaignsDeleteArgs} args - Arguments to delete one Campaigns.
      * @example
-     * // Delete one Ad_campaigns
-     * const Ad_campaigns = await prisma.ad_campaigns.delete({
+     * // Delete one Campaigns
+     * const Campaigns = await prisma.campaigns.delete({
      *   where: {
-     *     // ... filter to delete one Ad_campaigns
+     *     // ... filter to delete one Campaigns
      *   }
      * })
      * 
      */
-    delete<T extends ad_campaignsDeleteArgs>(args: SelectSubset<T, ad_campaignsDeleteArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends campaignsDeleteArgs>(args: SelectSubset<T, campaignsDeleteArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Ad_campaigns.
-     * @param {ad_campaignsUpdateArgs} args - Arguments to update one Ad_campaigns.
+     * Update one Campaigns.
+     * @param {campaignsUpdateArgs} args - Arguments to update one Campaigns.
      * @example
-     * // Update one Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.update({
+     * // Update one Campaigns
+     * const campaigns = await prisma.campaigns.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1438,30 +2528,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ad_campaignsUpdateArgs>(args: SelectSubset<T, ad_campaignsUpdateArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends campaignsUpdateArgs>(args: SelectSubset<T, campaignsUpdateArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Ad_campaigns.
-     * @param {ad_campaignsDeleteManyArgs} args - Arguments to filter Ad_campaigns to delete.
+     * Delete zero or more Campaigns.
+     * @param {campaignsDeleteManyArgs} args - Arguments to filter Campaigns to delete.
      * @example
-     * // Delete a few Ad_campaigns
-     * const { count } = await prisma.ad_campaigns.deleteMany({
+     * // Delete a few Campaigns
+     * const { count } = await prisma.campaigns.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ad_campaignsDeleteManyArgs>(args?: SelectSubset<T, ad_campaignsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends campaignsDeleteManyArgs>(args?: SelectSubset<T, campaignsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Ad_campaigns.
+     * Update zero or more Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {campaignsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.updateMany({
+     * // Update many Campaigns
+     * const campaigns = await prisma.campaigns.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1471,14 +2561,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ad_campaignsUpdateManyArgs>(args: SelectSubset<T, ad_campaignsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends campaignsUpdateManyArgs>(args: SelectSubset<T, campaignsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Ad_campaigns and returns the data updated in the database.
-     * @param {ad_campaignsUpdateManyAndReturnArgs} args - Arguments to update many Ad_campaigns.
+     * Update zero or more Campaigns and returns the data updated in the database.
+     * @param {campaignsUpdateManyAndReturnArgs} args - Arguments to update many Campaigns.
      * @example
-     * // Update many Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.updateManyAndReturn({
+     * // Update many Campaigns
+     * const campaigns = await prisma.campaigns.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1487,9 +2577,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Ad_campaigns and only return the `ad_id`
-     * const ad_campaignsWithAd_idOnly = await prisma.ad_campaigns.updateManyAndReturn({
-     *   select: { ad_id: true },
+     * // Update zero or more Campaigns and only return the `id`
+     * const campaignsWithIdOnly = await prisma.campaigns.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1501,56 +2591,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ad_campaignsUpdateManyAndReturnArgs>(args: SelectSubset<T, ad_campaignsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends campaignsUpdateManyAndReturnArgs>(args: SelectSubset<T, campaignsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Ad_campaigns.
-     * @param {ad_campaignsUpsertArgs} args - Arguments to update or create a Ad_campaigns.
+     * Create or update one Campaigns.
+     * @param {campaignsUpsertArgs} args - Arguments to update or create a Campaigns.
      * @example
-     * // Update or create a Ad_campaigns
-     * const ad_campaigns = await prisma.ad_campaigns.upsert({
+     * // Update or create a Campaigns
+     * const campaigns = await prisma.campaigns.upsert({
      *   create: {
-     *     // ... data to create a Ad_campaigns
+     *     // ... data to create a Campaigns
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Ad_campaigns we want to update
+     *     // ... the filter for the Campaigns we want to update
      *   }
      * })
      */
-    upsert<T extends ad_campaignsUpsertArgs>(args: SelectSubset<T, ad_campaignsUpsertArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends campaignsUpsertArgs>(args: SelectSubset<T, campaignsUpsertArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Ad_campaigns.
+     * Count the number of Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsCountArgs} args - Arguments to filter Ad_campaigns to count.
+     * @param {campaignsCountArgs} args - Arguments to filter Campaigns to count.
      * @example
-     * // Count the number of Ad_campaigns
-     * const count = await prisma.ad_campaigns.count({
+     * // Count the number of Campaigns
+     * const count = await prisma.campaigns.count({
      *   where: {
-     *     // ... the filter for the Ad_campaigns we want to count
+     *     // ... the filter for the Campaigns we want to count
      *   }
      * })
     **/
-    count<T extends ad_campaignsCountArgs>(
-      args?: Subset<T, ad_campaignsCountArgs>,
+    count<T extends campaignsCountArgs>(
+      args?: Subset<T, campaignsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Ad_campaignsCountAggregateOutputType>
+          : GetScalarType<T['select'], CampaignsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Ad_campaigns.
+     * Allows you to perform aggregations operations on a Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Ad_campaignsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CampaignsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1570,13 +2660,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Ad_campaignsAggregateArgs>(args: Subset<T, Ad_campaignsAggregateArgs>): Prisma.PrismaPromise<GetAd_campaignsAggregateType<T>>
+    aggregate<T extends CampaignsAggregateArgs>(args: Subset<T, CampaignsAggregateArgs>): Prisma.PrismaPromise<GetCampaignsAggregateType<T>>
 
     /**
-     * Group by Ad_campaigns.
+     * Group by Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ad_campaignsGroupByArgs} args - Group by arguments.
+     * @param {campaignsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1591,14 +2681,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ad_campaignsGroupByArgs,
+      T extends campaignsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ad_campaignsGroupByArgs['orderBy'] }
-        : { orderBy?: ad_campaignsGroupByArgs['orderBy'] },
+        ? { orderBy: campaignsGroupByArgs['orderBy'] }
+        : { orderBy?: campaignsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1647,22 +2737,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ad_campaignsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAd_campaignsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, campaignsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaignsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the ad_campaigns model
+   * Fields of the campaigns model
    */
-  readonly fields: ad_campaignsFieldRefs;
+  readonly fields: campaignsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for ad_campaigns.
+   * The delegate class that acts as a "Promise-like" for campaigns.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ad_campaignsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__campaignsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detections<T extends ad_campaigns$detectionsArgs<ExtArgs> = {}>(args?: Subset<T, ad_campaigns$detectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    campaign_creative<T extends campaigns$campaign_creativeArgs<ExtArgs> = {}>(args?: Subset<T, campaigns$campaign_creativeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1689,849 +2779,762 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the ad_campaigns model
+   * Fields of the campaigns model
    */
-  interface ad_campaignsFieldRefs {
-    readonly ad_id: FieldRef<"ad_campaigns", 'String'>
-    readonly name: FieldRef<"ad_campaigns", 'String'>
-    readonly category: FieldRef<"ad_campaigns", 'String'>
+  interface campaignsFieldRefs {
+    readonly id: FieldRef<"campaigns", 'String'>
+    readonly name: FieldRef<"campaigns", 'String'>
+    readonly start_date: FieldRef<"campaigns", 'DateTime'>
+    readonly end_date: FieldRef<"campaigns", 'DateTime'>
+    readonly age_groups: FieldRef<"campaigns", 'String[]'>
+    readonly gender: FieldRef<"campaigns", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * ad_campaigns findUnique
+   * campaigns findUnique
    */
-  export type ad_campaignsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter, which ad_campaigns to fetch.
+     * Filter, which campaigns to fetch.
      */
-    where: ad_campaignsWhereUniqueInput
+    where: campaignsWhereUniqueInput
   }
 
   /**
-   * ad_campaigns findUniqueOrThrow
+   * campaigns findUniqueOrThrow
    */
-  export type ad_campaignsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter, which ad_campaigns to fetch.
+     * Filter, which campaigns to fetch.
      */
-    where: ad_campaignsWhereUniqueInput
+    where: campaignsWhereUniqueInput
   }
 
   /**
-   * ad_campaigns findFirst
+   * campaigns findFirst
    */
-  export type ad_campaignsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter, which ad_campaigns to fetch.
+     * Filter, which campaigns to fetch.
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ad_campaigns to fetch.
+     * Determine the order of campaigns to fetch.
      */
-    orderBy?: ad_campaignsOrderByWithRelationInput | ad_campaignsOrderByWithRelationInput[]
+    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ad_campaigns.
+     * Sets the position for searching for campaigns.
      */
-    cursor?: ad_campaignsWhereUniqueInput
+    cursor?: campaignsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ad_campaigns from the position of the cursor.
+     * Take `±n` campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ad_campaigns.
+     * Skip the first `n` campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ad_campaigns.
+     * Filter by unique combinations of campaigns.
      */
-    distinct?: Ad_campaignsScalarFieldEnum | Ad_campaignsScalarFieldEnum[]
+    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
   }
 
   /**
-   * ad_campaigns findFirstOrThrow
+   * campaigns findFirstOrThrow
    */
-  export type ad_campaignsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter, which ad_campaigns to fetch.
+     * Filter, which campaigns to fetch.
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ad_campaigns to fetch.
+     * Determine the order of campaigns to fetch.
      */
-    orderBy?: ad_campaignsOrderByWithRelationInput | ad_campaignsOrderByWithRelationInput[]
+    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for ad_campaigns.
+     * Sets the position for searching for campaigns.
      */
-    cursor?: ad_campaignsWhereUniqueInput
+    cursor?: campaignsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ad_campaigns from the position of the cursor.
+     * Take `±n` campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ad_campaigns.
+     * Skip the first `n` campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of ad_campaigns.
+     * Filter by unique combinations of campaigns.
      */
-    distinct?: Ad_campaignsScalarFieldEnum | Ad_campaignsScalarFieldEnum[]
+    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
   }
 
   /**
-   * ad_campaigns findMany
+   * campaigns findMany
    */
-  export type ad_campaignsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter, which ad_campaigns to fetch.
+     * Filter, which campaigns to fetch.
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of ad_campaigns to fetch.
+     * Determine the order of campaigns to fetch.
      */
-    orderBy?: ad_campaignsOrderByWithRelationInput | ad_campaignsOrderByWithRelationInput[]
+    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing ad_campaigns.
+     * Sets the position for listing campaigns.
      */
-    cursor?: ad_campaignsWhereUniqueInput
+    cursor?: campaignsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` ad_campaigns from the position of the cursor.
+     * Take `±n` campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` ad_campaigns.
+     * Skip the first `n` campaigns.
      */
     skip?: number
-    distinct?: Ad_campaignsScalarFieldEnum | Ad_campaignsScalarFieldEnum[]
+    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
   }
 
   /**
-   * ad_campaigns create
+   * campaigns create
    */
-  export type ad_campaignsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * The data needed to create a ad_campaigns.
+     * The data needed to create a campaigns.
      */
-    data: XOR<ad_campaignsCreateInput, ad_campaignsUncheckedCreateInput>
+    data: XOR<campaignsCreateInput, campaignsUncheckedCreateInput>
   }
 
   /**
-   * ad_campaigns createMany
+   * campaigns createMany
    */
-  export type ad_campaignsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many ad_campaigns.
+     * The data used to create many campaigns.
      */
-    data: ad_campaignsCreateManyInput | ad_campaignsCreateManyInput[]
+    data: campaignsCreateManyInput | campaignsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * ad_campaigns createManyAndReturn
+   * campaigns createManyAndReturn
    */
-  export type ad_campaignsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelectCreateManyAndReturn<ExtArgs> | null
+    select?: campaignsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
-     * The data used to create many ad_campaigns.
+     * The data used to create many campaigns.
      */
-    data: ad_campaignsCreateManyInput | ad_campaignsCreateManyInput[]
+    data: campaignsCreateManyInput | campaignsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * ad_campaigns update
+   * campaigns update
    */
-  export type ad_campaignsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * The data needed to update a ad_campaigns.
+     * The data needed to update a campaigns.
      */
-    data: XOR<ad_campaignsUpdateInput, ad_campaignsUncheckedUpdateInput>
+    data: XOR<campaignsUpdateInput, campaignsUncheckedUpdateInput>
     /**
-     * Choose, which ad_campaigns to update.
+     * Choose, which campaigns to update.
      */
-    where: ad_campaignsWhereUniqueInput
+    where: campaignsWhereUniqueInput
   }
 
   /**
-   * ad_campaigns updateMany
+   * campaigns updateMany
    */
-  export type ad_campaignsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update ad_campaigns.
+     * The data used to update campaigns.
      */
-    data: XOR<ad_campaignsUpdateManyMutationInput, ad_campaignsUncheckedUpdateManyInput>
+    data: XOR<campaignsUpdateManyMutationInput, campaignsUncheckedUpdateManyInput>
     /**
-     * Filter which ad_campaigns to update
+     * Filter which campaigns to update
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
-     * Limit how many ad_campaigns to update.
+     * Limit how many campaigns to update.
      */
     limit?: number
   }
 
   /**
-   * ad_campaigns updateManyAndReturn
+   * campaigns updateManyAndReturn
    */
-  export type ad_campaignsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: campaignsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
-     * The data used to update ad_campaigns.
+     * The data used to update campaigns.
      */
-    data: XOR<ad_campaignsUpdateManyMutationInput, ad_campaignsUncheckedUpdateManyInput>
+    data: XOR<campaignsUpdateManyMutationInput, campaignsUncheckedUpdateManyInput>
     /**
-     * Filter which ad_campaigns to update
+     * Filter which campaigns to update
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
-     * Limit how many ad_campaigns to update.
+     * Limit how many campaigns to update.
      */
     limit?: number
   }
 
   /**
-   * ad_campaigns upsert
+   * campaigns upsert
    */
-  export type ad_campaignsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * The filter to search for the ad_campaigns to update in case it exists.
+     * The filter to search for the campaigns to update in case it exists.
      */
-    where: ad_campaignsWhereUniqueInput
+    where: campaignsWhereUniqueInput
     /**
-     * In case the ad_campaigns found by the `where` argument doesn't exist, create a new ad_campaigns with this data.
+     * In case the campaigns found by the `where` argument doesn't exist, create a new campaigns with this data.
      */
-    create: XOR<ad_campaignsCreateInput, ad_campaignsUncheckedCreateInput>
+    create: XOR<campaignsCreateInput, campaignsUncheckedCreateInput>
     /**
-     * In case the ad_campaigns was found with the provided `where` argument, update it with this data.
+     * In case the campaigns was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ad_campaignsUpdateInput, ad_campaignsUncheckedUpdateInput>
+    update: XOR<campaignsUpdateInput, campaignsUncheckedUpdateInput>
   }
 
   /**
-   * ad_campaigns delete
+   * campaigns delete
    */
-  export type ad_campaignsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
     /**
-     * Filter which ad_campaigns to delete.
+     * Filter which campaigns to delete.
      */
-    where: ad_campaignsWhereUniqueInput
+    where: campaignsWhereUniqueInput
   }
 
   /**
-   * ad_campaigns deleteMany
+   * campaigns deleteMany
    */
-  export type ad_campaignsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which ad_campaigns to delete
+     * Filter which campaigns to delete
      */
-    where?: ad_campaignsWhereInput
+    where?: campaignsWhereInput
     /**
-     * Limit how many ad_campaigns to delete.
+     * Limit how many campaigns to delete.
      */
     limit?: number
   }
 
   /**
-   * ad_campaigns.detections
+   * campaigns.campaign_creative
    */
-  export type ad_campaigns$detectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaigns$campaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the campaign_creative
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: campaign_creativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the campaign_creative
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: campaign_creativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
-    where?: dooh_detectionWhereInput
-    orderBy?: dooh_detectionOrderByWithRelationInput | dooh_detectionOrderByWithRelationInput[]
-    cursor?: dooh_detectionWhereUniqueInput
+    include?: campaign_creativeInclude<ExtArgs> | null
+    where?: campaign_creativeWhereInput
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    cursor?: campaign_creativeWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: Dooh_detectionScalarFieldEnum | Dooh_detectionScalarFieldEnum[]
+    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
   }
 
   /**
-   * ad_campaigns without action
+   * campaigns without action
    */
-  export type ad_campaignsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type campaignsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ad_campaigns
+     * Select specific fields to fetch from the campaigns
      */
-    select?: ad_campaignsSelect<ExtArgs> | null
+    select?: campaignsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the ad_campaigns
+     * Omit specific fields from the campaigns
      */
-    omit?: ad_campaignsOmit<ExtArgs> | null
+    omit?: campaignsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ad_campaignsInclude<ExtArgs> | null
+    include?: campaignsInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model dooh_detection
+   * Model creatives
    */
 
-  export type AggregateDooh_detection = {
-    _count: Dooh_detectionCountAggregateOutputType | null
-    _avg: Dooh_detectionAvgAggregateOutputType | null
-    _sum: Dooh_detectionSumAggregateOutputType | null
-    _min: Dooh_detectionMinAggregateOutputType | null
-    _max: Dooh_detectionMaxAggregateOutputType | null
+  export type AggregateCreatives = {
+    _count: CreativesCountAggregateOutputType | null
+    _min: CreativesMinAggregateOutputType | null
+    _max: CreativesMaxAggregateOutputType | null
   }
 
-  export type Dooh_detectionAvgAggregateOutputType = {
-    id: number | null
-    age: number | null
+  export type CreativesMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    created_at: Date | null
   }
 
-  export type Dooh_detectionSumAggregateOutputType = {
-    id: number | null
-    age: number | null
+  export type CreativesMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    created_at: Date | null
   }
 
-  export type Dooh_detectionMinAggregateOutputType = {
-    id: number | null
-    timestamp: Date | null
-    bluetooth_id_hash: string | null
-    ad_id: string | null
-    age: number | null
-    race: string | null
-    gender: string | null
-  }
-
-  export type Dooh_detectionMaxAggregateOutputType = {
-    id: number | null
-    timestamp: Date | null
-    bluetooth_id_hash: string | null
-    ad_id: string | null
-    age: number | null
-    race: string | null
-    gender: string | null
-  }
-
-  export type Dooh_detectionCountAggregateOutputType = {
+  export type CreativesCountAggregateOutputType = {
     id: number
-    timestamp: number
-    bluetooth_id_hash: number
-    ad_id: number
-    age: number
-    race: number
-    gender: number
+    name: number
+    created_at: number
     _all: number
   }
 
 
-  export type Dooh_detectionAvgAggregateInputType = {
+  export type CreativesMinAggregateInputType = {
     id?: true
-    age?: true
+    name?: true
+    created_at?: true
   }
 
-  export type Dooh_detectionSumAggregateInputType = {
+  export type CreativesMaxAggregateInputType = {
     id?: true
-    age?: true
+    name?: true
+    created_at?: true
   }
 
-  export type Dooh_detectionMinAggregateInputType = {
+  export type CreativesCountAggregateInputType = {
     id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    ad_id?: true
-    age?: true
-    race?: true
-    gender?: true
-  }
-
-  export type Dooh_detectionMaxAggregateInputType = {
-    id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    ad_id?: true
-    age?: true
-    race?: true
-    gender?: true
-  }
-
-  export type Dooh_detectionCountAggregateInputType = {
-    id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    ad_id?: true
-    age?: true
-    race?: true
-    gender?: true
+    name?: true
+    created_at?: true
     _all?: true
   }
 
-  export type Dooh_detectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which dooh_detection to aggregate.
+     * Filter which creatives to aggregate.
      */
-    where?: dooh_detectionWhereInput
+    where?: creativesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of dooh_detections to fetch.
+     * Determine the order of creatives to fetch.
      */
-    orderBy?: dooh_detectionOrderByWithRelationInput | dooh_detectionOrderByWithRelationInput[]
+    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: dooh_detectionWhereUniqueInput
+    cursor?: creativesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` dooh_detections from the position of the cursor.
+     * Take `±n` creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` dooh_detections.
+     * Skip the first `n` creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned dooh_detections
+     * Count returned creatives
     **/
-    _count?: true | Dooh_detectionCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Dooh_detectionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Dooh_detectionSumAggregateInputType
+    _count?: true | CreativesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Dooh_detectionMinAggregateInputType
+    _min?: CreativesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Dooh_detectionMaxAggregateInputType
+    _max?: CreativesMaxAggregateInputType
   }
 
-  export type GetDooh_detectionAggregateType<T extends Dooh_detectionAggregateArgs> = {
-        [P in keyof T & keyof AggregateDooh_detection]: P extends '_count' | 'count'
+  export type GetCreativesAggregateType<T extends CreativesAggregateArgs> = {
+        [P in keyof T & keyof AggregateCreatives]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateDooh_detection[P]>
-      : GetScalarType<T[P], AggregateDooh_detection[P]>
+        : GetScalarType<T[P], AggregateCreatives[P]>
+      : GetScalarType<T[P], AggregateCreatives[P]>
   }
 
 
 
 
-  export type dooh_detectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: dooh_detectionWhereInput
-    orderBy?: dooh_detectionOrderByWithAggregationInput | dooh_detectionOrderByWithAggregationInput[]
-    by: Dooh_detectionScalarFieldEnum[] | Dooh_detectionScalarFieldEnum
-    having?: dooh_detectionScalarWhereWithAggregatesInput
+  export type creativesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: creativesWhereInput
+    orderBy?: creativesOrderByWithAggregationInput | creativesOrderByWithAggregationInput[]
+    by: CreativesScalarFieldEnum[] | CreativesScalarFieldEnum
+    having?: creativesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Dooh_detectionCountAggregateInputType | true
-    _avg?: Dooh_detectionAvgAggregateInputType
-    _sum?: Dooh_detectionSumAggregateInputType
-    _min?: Dooh_detectionMinAggregateInputType
-    _max?: Dooh_detectionMaxAggregateInputType
+    _count?: CreativesCountAggregateInputType | true
+    _min?: CreativesMinAggregateInputType
+    _max?: CreativesMaxAggregateInputType
   }
 
-  export type Dooh_detectionGroupByOutputType = {
-    id: number
-    timestamp: Date
-    bluetooth_id_hash: string
-    ad_id: string
-    age: number
-    race: string
-    gender: string
-    _count: Dooh_detectionCountAggregateOutputType | null
-    _avg: Dooh_detectionAvgAggregateOutputType | null
-    _sum: Dooh_detectionSumAggregateOutputType | null
-    _min: Dooh_detectionMinAggregateOutputType | null
-    _max: Dooh_detectionMaxAggregateOutputType | null
+  export type CreativesGroupByOutputType = {
+    id: string
+    name: string
+    created_at: Date | null
+    _count: CreativesCountAggregateOutputType | null
+    _min: CreativesMinAggregateOutputType | null
+    _max: CreativesMaxAggregateOutputType | null
   }
 
-  type GetDooh_detectionGroupByPayload<T extends dooh_detectionGroupByArgs> = Prisma.PrismaPromise<
+  type GetCreativesGroupByPayload<T extends creativesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Dooh_detectionGroupByOutputType, T['by']> &
+      PickEnumerable<CreativesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Dooh_detectionGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CreativesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Dooh_detectionGroupByOutputType[P]>
-            : GetScalarType<T[P], Dooh_detectionGroupByOutputType[P]>
+              : GetScalarType<T[P], CreativesGroupByOutputType[P]>
+            : GetScalarType<T[P], CreativesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type dooh_detectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type creativesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    ad_id?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["dooh_detection"]>
+    name?: boolean
+    created_at?: boolean
+    campaign_creative?: boolean | creatives$campaign_creativeArgs<ExtArgs>
+    _count?: boolean | CreativesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creatives"]>
 
-  export type dooh_detectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type creativesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    ad_id?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["dooh_detection"]>
+    name?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["creatives"]>
 
-  export type dooh_detectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type creativesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    ad_id?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["dooh_detection"]>
+    name?: boolean
+    created_at?: boolean
+  }, ExtArgs["result"]["creatives"]>
 
-  export type dooh_detectionSelectScalar = {
+  export type creativesSelectScalar = {
     id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    ad_id?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
+    name?: boolean
+    created_at?: boolean
   }
 
-  export type dooh_detectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "ad_id" | "age" | "race" | "gender", ExtArgs["result"]["dooh_detection"]>
-  export type dooh_detectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
+  export type creativesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at", ExtArgs["result"]["creatives"]>
+  export type creativesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign_creative?: boolean | creatives$campaign_creativeArgs<ExtArgs>
+    _count?: boolean | CreativesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type dooh_detectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
-  }
-  export type dooh_detectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign?: boolean | ad_campaignsDefaultArgs<ExtArgs>
-  }
+  export type creativesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type creativesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $dooh_detectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "dooh_detection"
+  export type $creativesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "creatives"
     objects: {
-      campaign: Prisma.$ad_campaignsPayload<ExtArgs>
+      campaign_creative: Prisma.$campaign_creativePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      timestamp: Date
-      bluetooth_id_hash: string
-      ad_id: string
-      age: number
-      race: string
-      gender: string
-    }, ExtArgs["result"]["dooh_detection"]>
+      id: string
+      name: string
+      created_at: Date | null
+    }, ExtArgs["result"]["creatives"]>
     composites: {}
   }
 
-  type dooh_detectionGetPayload<S extends boolean | null | undefined | dooh_detectionDefaultArgs> = $Result.GetResult<Prisma.$dooh_detectionPayload, S>
+  type creativesGetPayload<S extends boolean | null | undefined | creativesDefaultArgs> = $Result.GetResult<Prisma.$creativesPayload, S>
 
-  type dooh_detectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<dooh_detectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Dooh_detectionCountAggregateInputType | true
+  type creativesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<creativesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CreativesCountAggregateInputType | true
     }
 
-  export interface dooh_detectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['dooh_detection'], meta: { name: 'dooh_detection' } }
+  export interface creativesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['creatives'], meta: { name: 'creatives' } }
     /**
-     * Find zero or one Dooh_detection that matches the filter.
-     * @param {dooh_detectionFindUniqueArgs} args - Arguments to find a Dooh_detection
+     * Find zero or one Creatives that matches the filter.
+     * @param {creativesFindUniqueArgs} args - Arguments to find a Creatives
      * @example
-     * // Get one Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.findUnique({
+     * // Get one Creatives
+     * const creatives = await prisma.creatives.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends dooh_detectionFindUniqueArgs>(args: SelectSubset<T, dooh_detectionFindUniqueArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends creativesFindUniqueArgs>(args: SelectSubset<T, creativesFindUniqueArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Dooh_detection that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Creatives that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {dooh_detectionFindUniqueOrThrowArgs} args - Arguments to find a Dooh_detection
+     * @param {creativesFindUniqueOrThrowArgs} args - Arguments to find a Creatives
      * @example
-     * // Get one Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.findUniqueOrThrow({
+     * // Get one Creatives
+     * const creatives = await prisma.creatives.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends dooh_detectionFindUniqueOrThrowArgs>(args: SelectSubset<T, dooh_detectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends creativesFindUniqueOrThrowArgs>(args: SelectSubset<T, creativesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Dooh_detection that matches the filter.
+     * Find the first Creatives that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionFindFirstArgs} args - Arguments to find a Dooh_detection
+     * @param {creativesFindFirstArgs} args - Arguments to find a Creatives
      * @example
-     * // Get one Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.findFirst({
+     * // Get one Creatives
+     * const creatives = await prisma.creatives.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends dooh_detectionFindFirstArgs>(args?: SelectSubset<T, dooh_detectionFindFirstArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends creativesFindFirstArgs>(args?: SelectSubset<T, creativesFindFirstArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Dooh_detection that matches the filter or
+     * Find the first Creatives that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionFindFirstOrThrowArgs} args - Arguments to find a Dooh_detection
+     * @param {creativesFindFirstOrThrowArgs} args - Arguments to find a Creatives
      * @example
-     * // Get one Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.findFirstOrThrow({
+     * // Get one Creatives
+     * const creatives = await prisma.creatives.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends dooh_detectionFindFirstOrThrowArgs>(args?: SelectSubset<T, dooh_detectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends creativesFindFirstOrThrowArgs>(args?: SelectSubset<T, creativesFindFirstOrThrowArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Dooh_detections that matches the filter.
+     * Find zero or more Creatives that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {creativesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Dooh_detections
-     * const dooh_detections = await prisma.dooh_detection.findMany()
+     * // Get all Creatives
+     * const creatives = await prisma.creatives.findMany()
      * 
-     * // Get first 10 Dooh_detections
-     * const dooh_detections = await prisma.dooh_detection.findMany({ take: 10 })
+     * // Get first 10 Creatives
+     * const creatives = await prisma.creatives.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const dooh_detectionWithIdOnly = await prisma.dooh_detection.findMany({ select: { id: true } })
+     * const creativesWithIdOnly = await prisma.creatives.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends dooh_detectionFindManyArgs>(args?: SelectSubset<T, dooh_detectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends creativesFindManyArgs>(args?: SelectSubset<T, creativesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Dooh_detection.
-     * @param {dooh_detectionCreateArgs} args - Arguments to create a Dooh_detection.
+     * Create a Creatives.
+     * @param {creativesCreateArgs} args - Arguments to create a Creatives.
      * @example
-     * // Create one Dooh_detection
-     * const Dooh_detection = await prisma.dooh_detection.create({
+     * // Create one Creatives
+     * const Creatives = await prisma.creatives.create({
      *   data: {
-     *     // ... data to create a Dooh_detection
+     *     // ... data to create a Creatives
      *   }
      * })
      * 
      */
-    create<T extends dooh_detectionCreateArgs>(args: SelectSubset<T, dooh_detectionCreateArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends creativesCreateArgs>(args: SelectSubset<T, creativesCreateArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Dooh_detections.
-     * @param {dooh_detectionCreateManyArgs} args - Arguments to create many Dooh_detections.
+     * Create many Creatives.
+     * @param {creativesCreateManyArgs} args - Arguments to create many Creatives.
      * @example
-     * // Create many Dooh_detections
-     * const dooh_detection = await prisma.dooh_detection.createMany({
+     * // Create many Creatives
+     * const creatives = await prisma.creatives.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends dooh_detectionCreateManyArgs>(args?: SelectSubset<T, dooh_detectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends creativesCreateManyArgs>(args?: SelectSubset<T, creativesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Dooh_detections and returns the data saved in the database.
-     * @param {dooh_detectionCreateManyAndReturnArgs} args - Arguments to create many Dooh_detections.
+     * Create many Creatives and returns the data saved in the database.
+     * @param {creativesCreateManyAndReturnArgs} args - Arguments to create many Creatives.
      * @example
-     * // Create many Dooh_detections
-     * const dooh_detection = await prisma.dooh_detection.createManyAndReturn({
+     * // Create many Creatives
+     * const creatives = await prisma.creatives.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Dooh_detections and only return the `id`
-     * const dooh_detectionWithIdOnly = await prisma.dooh_detection.createManyAndReturn({
+     * // Create many Creatives and only return the `id`
+     * const creativesWithIdOnly = await prisma.creatives.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2541,28 +3544,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends dooh_detectionCreateManyAndReturnArgs>(args?: SelectSubset<T, dooh_detectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends creativesCreateManyAndReturnArgs>(args?: SelectSubset<T, creativesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Dooh_detection.
-     * @param {dooh_detectionDeleteArgs} args - Arguments to delete one Dooh_detection.
+     * Delete a Creatives.
+     * @param {creativesDeleteArgs} args - Arguments to delete one Creatives.
      * @example
-     * // Delete one Dooh_detection
-     * const Dooh_detection = await prisma.dooh_detection.delete({
+     * // Delete one Creatives
+     * const Creatives = await prisma.creatives.delete({
      *   where: {
-     *     // ... filter to delete one Dooh_detection
+     *     // ... filter to delete one Creatives
      *   }
      * })
      * 
      */
-    delete<T extends dooh_detectionDeleteArgs>(args: SelectSubset<T, dooh_detectionDeleteArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends creativesDeleteArgs>(args: SelectSubset<T, creativesDeleteArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Dooh_detection.
-     * @param {dooh_detectionUpdateArgs} args - Arguments to update one Dooh_detection.
+     * Update one Creatives.
+     * @param {creativesUpdateArgs} args - Arguments to update one Creatives.
      * @example
-     * // Update one Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.update({
+     * // Update one Creatives
+     * const creatives = await prisma.creatives.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2572,30 +3575,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends dooh_detectionUpdateArgs>(args: SelectSubset<T, dooh_detectionUpdateArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends creativesUpdateArgs>(args: SelectSubset<T, creativesUpdateArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Dooh_detections.
-     * @param {dooh_detectionDeleteManyArgs} args - Arguments to filter Dooh_detections to delete.
+     * Delete zero or more Creatives.
+     * @param {creativesDeleteManyArgs} args - Arguments to filter Creatives to delete.
      * @example
-     * // Delete a few Dooh_detections
-     * const { count } = await prisma.dooh_detection.deleteMany({
+     * // Delete a few Creatives
+     * const { count } = await prisma.creatives.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends dooh_detectionDeleteManyArgs>(args?: SelectSubset<T, dooh_detectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends creativesDeleteManyArgs>(args?: SelectSubset<T, creativesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Dooh_detections.
+     * Update zero or more Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {creativesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Dooh_detections
-     * const dooh_detection = await prisma.dooh_detection.updateMany({
+     * // Update many Creatives
+     * const creatives = await prisma.creatives.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2605,14 +3608,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends dooh_detectionUpdateManyArgs>(args: SelectSubset<T, dooh_detectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends creativesUpdateManyArgs>(args: SelectSubset<T, creativesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Dooh_detections and returns the data updated in the database.
-     * @param {dooh_detectionUpdateManyAndReturnArgs} args - Arguments to update many Dooh_detections.
+     * Update zero or more Creatives and returns the data updated in the database.
+     * @param {creativesUpdateManyAndReturnArgs} args - Arguments to update many Creatives.
      * @example
-     * // Update many Dooh_detections
-     * const dooh_detection = await prisma.dooh_detection.updateManyAndReturn({
+     * // Update many Creatives
+     * const creatives = await prisma.creatives.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2621,8 +3624,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Dooh_detections and only return the `id`
-     * const dooh_detectionWithIdOnly = await prisma.dooh_detection.updateManyAndReturn({
+     * // Update zero or more Creatives and only return the `id`
+     * const creativesWithIdOnly = await prisma.creatives.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2635,56 +3638,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends dooh_detectionUpdateManyAndReturnArgs>(args: SelectSubset<T, dooh_detectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends creativesUpdateManyAndReturnArgs>(args: SelectSubset<T, creativesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Dooh_detection.
-     * @param {dooh_detectionUpsertArgs} args - Arguments to update or create a Dooh_detection.
+     * Create or update one Creatives.
+     * @param {creativesUpsertArgs} args - Arguments to update or create a Creatives.
      * @example
-     * // Update or create a Dooh_detection
-     * const dooh_detection = await prisma.dooh_detection.upsert({
+     * // Update or create a Creatives
+     * const creatives = await prisma.creatives.upsert({
      *   create: {
-     *     // ... data to create a Dooh_detection
+     *     // ... data to create a Creatives
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Dooh_detection we want to update
+     *     // ... the filter for the Creatives we want to update
      *   }
      * })
      */
-    upsert<T extends dooh_detectionUpsertArgs>(args: SelectSubset<T, dooh_detectionUpsertArgs<ExtArgs>>): Prisma__dooh_detectionClient<$Result.GetResult<Prisma.$dooh_detectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends creativesUpsertArgs>(args: SelectSubset<T, creativesUpsertArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Dooh_detections.
+     * Count the number of Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionCountArgs} args - Arguments to filter Dooh_detections to count.
+     * @param {creativesCountArgs} args - Arguments to filter Creatives to count.
      * @example
-     * // Count the number of Dooh_detections
-     * const count = await prisma.dooh_detection.count({
+     * // Count the number of Creatives
+     * const count = await prisma.creatives.count({
      *   where: {
-     *     // ... the filter for the Dooh_detections we want to count
+     *     // ... the filter for the Creatives we want to count
      *   }
      * })
     **/
-    count<T extends dooh_detectionCountArgs>(
-      args?: Subset<T, dooh_detectionCountArgs>,
+    count<T extends creativesCountArgs>(
+      args?: Subset<T, creativesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Dooh_detectionCountAggregateOutputType>
+          : GetScalarType<T['select'], CreativesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Dooh_detection.
+     * Allows you to perform aggregations operations on a Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Dooh_detectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CreativesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2704,13 +3707,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Dooh_detectionAggregateArgs>(args: Subset<T, Dooh_detectionAggregateArgs>): Prisma.PrismaPromise<GetDooh_detectionAggregateType<T>>
+    aggregate<T extends CreativesAggregateArgs>(args: Subset<T, CreativesAggregateArgs>): Prisma.PrismaPromise<GetCreativesAggregateType<T>>
 
     /**
-     * Group by Dooh_detection.
+     * Group by Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {dooh_detectionGroupByArgs} args - Group by arguments.
+     * @param {creativesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2725,14 +3728,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends dooh_detectionGroupByArgs,
+      T extends creativesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: dooh_detectionGroupByArgs['orderBy'] }
-        : { orderBy?: dooh_detectionGroupByArgs['orderBy'] },
+        ? { orderBy: creativesGroupByArgs['orderBy'] }
+        : { orderBy?: creativesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2781,22 +3784,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, dooh_detectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDooh_detectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, creativesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCreativesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the dooh_detection model
+   * Fields of the creatives model
    */
-  readonly fields: dooh_detectionFieldRefs;
+  readonly fields: creativesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for dooh_detection.
+   * The delegate class that acts as a "Promise-like" for creatives.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__dooh_detectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__creativesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    campaign<T extends ad_campaignsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ad_campaignsDefaultArgs<ExtArgs>>): Prisma__ad_campaignsClient<$Result.GetResult<Prisma.$ad_campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    campaign_creative<T extends creatives$campaign_creativeArgs<ExtArgs> = {}>(args?: Subset<T, creatives$campaign_creativeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2823,1499 +3826,439 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the dooh_detection model
+   * Fields of the creatives model
    */
-  interface dooh_detectionFieldRefs {
-    readonly id: FieldRef<"dooh_detection", 'Int'>
-    readonly timestamp: FieldRef<"dooh_detection", 'DateTime'>
-    readonly bluetooth_id_hash: FieldRef<"dooh_detection", 'String'>
-    readonly ad_id: FieldRef<"dooh_detection", 'String'>
-    readonly age: FieldRef<"dooh_detection", 'Int'>
-    readonly race: FieldRef<"dooh_detection", 'String'>
-    readonly gender: FieldRef<"dooh_detection", 'String'>
+  interface creativesFieldRefs {
+    readonly id: FieldRef<"creatives", 'String'>
+    readonly name: FieldRef<"creatives", 'String'>
+    readonly created_at: FieldRef<"creatives", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * dooh_detection findUnique
+   * creatives findUnique
    */
-  export type dooh_detectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * Filter, which dooh_detection to fetch.
+     * Filter, which creatives to fetch.
      */
-    where: dooh_detectionWhereUniqueInput
+    where: creativesWhereUniqueInput
   }
 
   /**
-   * dooh_detection findUniqueOrThrow
+   * creatives findUniqueOrThrow
    */
-  export type dooh_detectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * Filter, which dooh_detection to fetch.
+     * Filter, which creatives to fetch.
      */
-    where: dooh_detectionWhereUniqueInput
+    where: creativesWhereUniqueInput
   }
 
   /**
-   * dooh_detection findFirst
+   * creatives findFirst
    */
-  export type dooh_detectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * Filter, which dooh_detection to fetch.
+     * Filter, which creatives to fetch.
      */
-    where?: dooh_detectionWhereInput
+    where?: creativesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of dooh_detections to fetch.
+     * Determine the order of creatives to fetch.
      */
-    orderBy?: dooh_detectionOrderByWithRelationInput | dooh_detectionOrderByWithRelationInput[]
+    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for dooh_detections.
+     * Sets the position for searching for creatives.
      */
-    cursor?: dooh_detectionWhereUniqueInput
+    cursor?: creativesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` dooh_detections from the position of the cursor.
+     * Take `±n` creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` dooh_detections.
+     * Skip the first `n` creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of dooh_detections.
+     * Filter by unique combinations of creatives.
      */
-    distinct?: Dooh_detectionScalarFieldEnum | Dooh_detectionScalarFieldEnum[]
+    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
   }
 
   /**
-   * dooh_detection findFirstOrThrow
+   * creatives findFirstOrThrow
    */
-  export type dooh_detectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * Filter, which dooh_detection to fetch.
+     * Filter, which creatives to fetch.
      */
-    where?: dooh_detectionWhereInput
+    where?: creativesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of dooh_detections to fetch.
+     * Determine the order of creatives to fetch.
      */
-    orderBy?: dooh_detectionOrderByWithRelationInput | dooh_detectionOrderByWithRelationInput[]
+    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for dooh_detections.
+     * Sets the position for searching for creatives.
      */
-    cursor?: dooh_detectionWhereUniqueInput
+    cursor?: creativesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` dooh_detections from the position of the cursor.
+     * Take `±n` creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` dooh_detections.
+     * Skip the first `n` creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of dooh_detections.
+     * Filter by unique combinations of creatives.
      */
-    distinct?: Dooh_detectionScalarFieldEnum | Dooh_detectionScalarFieldEnum[]
+    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
   }
 
   /**
-   * dooh_detection findMany
+   * creatives findMany
    */
-  export type dooh_detectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * Filter, which dooh_detections to fetch.
+     * Filter, which creatives to fetch.
      */
-    where?: dooh_detectionWhereInput
+    where?: creativesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of dooh_detections to fetch.
+     * Determine the order of creatives to fetch.
      */
-    orderBy?: dooh_detectionOrderByWithRelationInput | dooh_detectionOrderByWithRelationInput[]
+    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing dooh_detections.
+     * Sets the position for listing creatives.
      */
-    cursor?: dooh_detectionWhereUniqueInput
+    cursor?: creativesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` dooh_detections from the position of the cursor.
+     * Take `±n` creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` dooh_detections.
+     * Skip the first `n` creatives.
      */
     skip?: number
-    distinct?: Dooh_detectionScalarFieldEnum | Dooh_detectionScalarFieldEnum[]
+    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
   }
 
   /**
-   * dooh_detection create
+   * creatives create
    */
-  export type dooh_detectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: dooh_detectionInclude<ExtArgs> | null
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * The data needed to create a dooh_detection.
+     * The data needed to create a creatives.
      */
-    data: XOR<dooh_detectionCreateInput, dooh_detectionUncheckedCreateInput>
+    data: XOR<creativesCreateInput, creativesUncheckedCreateInput>
   }
 
   /**
-   * dooh_detection createMany
+   * creatives createMany
    */
-  export type dooh_detectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many dooh_detections.
+     * The data used to create many creatives.
      */
-    data: dooh_detectionCreateManyInput | dooh_detectionCreateManyInput[]
+    data: creativesCreateManyInput | creativesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * dooh_detection createManyAndReturn
+   * creatives createManyAndReturn
    */
-  export type dooh_detectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the dooh_detection
+     * Select specific fields to fetch from the creatives
      */
-    select?: dooh_detectionSelectCreateManyAndReturn<ExtArgs> | null
+    select?: creativesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the dooh_detection
+     * Omit specific fields from the creatives
      */
-    omit?: dooh_detectionOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
-     * The data used to create many dooh_detections.
+     * The data used to create many creatives.
      */
-    data: dooh_detectionCreateManyInput | dooh_detectionCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * dooh_detection update
-   */
-  export type dooh_detectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the dooh_detection
-     */
-    select?: dooh_detectionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the dooh_detection
-     */
-    omit?: dooh_detectionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionInclude<ExtArgs> | null
-    /**
-     * The data needed to update a dooh_detection.
-     */
-    data: XOR<dooh_detectionUpdateInput, dooh_detectionUncheckedUpdateInput>
-    /**
-     * Choose, which dooh_detection to update.
-     */
-    where: dooh_detectionWhereUniqueInput
-  }
-
-  /**
-   * dooh_detection updateMany
-   */
-  export type dooh_detectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update dooh_detections.
-     */
-    data: XOR<dooh_detectionUpdateManyMutationInput, dooh_detectionUncheckedUpdateManyInput>
-    /**
-     * Filter which dooh_detections to update
-     */
-    where?: dooh_detectionWhereInput
-    /**
-     * Limit how many dooh_detections to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * dooh_detection updateManyAndReturn
-   */
-  export type dooh_detectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the dooh_detection
-     */
-    select?: dooh_detectionSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the dooh_detection
-     */
-    omit?: dooh_detectionOmit<ExtArgs> | null
-    /**
-     * The data used to update dooh_detections.
-     */
-    data: XOR<dooh_detectionUpdateManyMutationInput, dooh_detectionUncheckedUpdateManyInput>
-    /**
-     * Filter which dooh_detections to update
-     */
-    where?: dooh_detectionWhereInput
-    /**
-     * Limit how many dooh_detections to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * dooh_detection upsert
-   */
-  export type dooh_detectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the dooh_detection
-     */
-    select?: dooh_detectionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the dooh_detection
-     */
-    omit?: dooh_detectionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionInclude<ExtArgs> | null
-    /**
-     * The filter to search for the dooh_detection to update in case it exists.
-     */
-    where: dooh_detectionWhereUniqueInput
-    /**
-     * In case the dooh_detection found by the `where` argument doesn't exist, create a new dooh_detection with this data.
-     */
-    create: XOR<dooh_detectionCreateInput, dooh_detectionUncheckedCreateInput>
-    /**
-     * In case the dooh_detection was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<dooh_detectionUpdateInput, dooh_detectionUncheckedUpdateInput>
-  }
-
-  /**
-   * dooh_detection delete
-   */
-  export type dooh_detectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the dooh_detection
-     */
-    select?: dooh_detectionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the dooh_detection
-     */
-    omit?: dooh_detectionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionInclude<ExtArgs> | null
-    /**
-     * Filter which dooh_detection to delete.
-     */
-    where: dooh_detectionWhereUniqueInput
-  }
-
-  /**
-   * dooh_detection deleteMany
-   */
-  export type dooh_detectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which dooh_detections to delete
-     */
-    where?: dooh_detectionWhereInput
-    /**
-     * Limit how many dooh_detections to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * dooh_detection without action
-   */
-  export type dooh_detectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the dooh_detection
-     */
-    select?: dooh_detectionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the dooh_detection
-     */
-    omit?: dooh_detectionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: dooh_detectionInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model pos_purchase
-   */
-
-  export type AggregatePos_purchase = {
-    _count: Pos_purchaseCountAggregateOutputType | null
-    _avg: Pos_purchaseAvgAggregateOutputType | null
-    _sum: Pos_purchaseSumAggregateOutputType | null
-    _min: Pos_purchaseMinAggregateOutputType | null
-    _max: Pos_purchaseMaxAggregateOutputType | null
-  }
-
-  export type Pos_purchaseAvgAggregateOutputType = {
-    id: number | null
-    age: number | null
-    sale_total: Decimal | null
-  }
-
-  export type Pos_purchaseSumAggregateOutputType = {
-    id: number | null
-    age: number | null
-    sale_total: Decimal | null
-  }
-
-  export type Pos_purchaseMinAggregateOutputType = {
-    id: number | null
-    timestamp: Date | null
-    bluetooth_id_hash: string | null
-    age: number | null
-    race: string | null
-    gender: string | null
-    sale_total: Decimal | null
-  }
-
-  export type Pos_purchaseMaxAggregateOutputType = {
-    id: number | null
-    timestamp: Date | null
-    bluetooth_id_hash: string | null
-    age: number | null
-    race: string | null
-    gender: string | null
-    sale_total: Decimal | null
-  }
-
-  export type Pos_purchaseCountAggregateOutputType = {
-    id: number
-    timestamp: number
-    bluetooth_id_hash: number
-    age: number
-    race: number
-    gender: number
-    items_purchased: number
-    sale_total: number
-    _all: number
-  }
-
-
-  export type Pos_purchaseAvgAggregateInputType = {
-    id?: true
-    age?: true
-    sale_total?: true
-  }
-
-  export type Pos_purchaseSumAggregateInputType = {
-    id?: true
-    age?: true
-    sale_total?: true
-  }
-
-  export type Pos_purchaseMinAggregateInputType = {
-    id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    age?: true
-    race?: true
-    gender?: true
-    sale_total?: true
-  }
-
-  export type Pos_purchaseMaxAggregateInputType = {
-    id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    age?: true
-    race?: true
-    gender?: true
-    sale_total?: true
-  }
-
-  export type Pos_purchaseCountAggregateInputType = {
-    id?: true
-    timestamp?: true
-    bluetooth_id_hash?: true
-    age?: true
-    race?: true
-    gender?: true
-    items_purchased?: true
-    sale_total?: true
-    _all?: true
-  }
-
-  export type Pos_purchaseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which pos_purchase to aggregate.
-     */
-    where?: pos_purchaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pos_purchases to fetch.
-     */
-    orderBy?: pos_purchaseOrderByWithRelationInput | pos_purchaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: pos_purchaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pos_purchases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pos_purchases.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned pos_purchases
-    **/
-    _count?: true | Pos_purchaseCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Pos_purchaseAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Pos_purchaseSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Pos_purchaseMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Pos_purchaseMaxAggregateInputType
-  }
-
-  export type GetPos_purchaseAggregateType<T extends Pos_purchaseAggregateArgs> = {
-        [P in keyof T & keyof AggregatePos_purchase]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePos_purchase[P]>
-      : GetScalarType<T[P], AggregatePos_purchase[P]>
-  }
-
-
-
-
-  export type pos_purchaseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: pos_purchaseWhereInput
-    orderBy?: pos_purchaseOrderByWithAggregationInput | pos_purchaseOrderByWithAggregationInput[]
-    by: Pos_purchaseScalarFieldEnum[] | Pos_purchaseScalarFieldEnum
-    having?: pos_purchaseScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Pos_purchaseCountAggregateInputType | true
-    _avg?: Pos_purchaseAvgAggregateInputType
-    _sum?: Pos_purchaseSumAggregateInputType
-    _min?: Pos_purchaseMinAggregateInputType
-    _max?: Pos_purchaseMaxAggregateInputType
-  }
-
-  export type Pos_purchaseGroupByOutputType = {
-    id: number
-    timestamp: Date
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
-    items_purchased: JsonValue | null
-    sale_total: Decimal
-    _count: Pos_purchaseCountAggregateOutputType | null
-    _avg: Pos_purchaseAvgAggregateOutputType | null
-    _sum: Pos_purchaseSumAggregateOutputType | null
-    _min: Pos_purchaseMinAggregateOutputType | null
-    _max: Pos_purchaseMaxAggregateOutputType | null
-  }
-
-  type GetPos_purchaseGroupByPayload<T extends pos_purchaseGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Pos_purchaseGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Pos_purchaseGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Pos_purchaseGroupByOutputType[P]>
-            : GetScalarType<T[P], Pos_purchaseGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type pos_purchaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    items_purchased?: boolean
-    sale_total?: boolean
-  }, ExtArgs["result"]["pos_purchase"]>
-
-  export type pos_purchaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    items_purchased?: boolean
-    sale_total?: boolean
-  }, ExtArgs["result"]["pos_purchase"]>
-
-  export type pos_purchaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    items_purchased?: boolean
-    sale_total?: boolean
-  }, ExtArgs["result"]["pos_purchase"]>
-
-  export type pos_purchaseSelectScalar = {
-    id?: boolean
-    timestamp?: boolean
-    bluetooth_id_hash?: boolean
-    age?: boolean
-    race?: boolean
-    gender?: boolean
-    items_purchased?: boolean
-    sale_total?: boolean
-  }
-
-  export type pos_purchaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "bluetooth_id_hash" | "age" | "race" | "gender" | "items_purchased" | "sale_total", ExtArgs["result"]["pos_purchase"]>
-
-  export type $pos_purchasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "pos_purchase"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      timestamp: Date
-      bluetooth_id_hash: string
-      age: number
-      race: string
-      gender: string
-      items_purchased: Prisma.JsonValue | null
-      sale_total: Prisma.Decimal
-    }, ExtArgs["result"]["pos_purchase"]>
-    composites: {}
-  }
-
-  type pos_purchaseGetPayload<S extends boolean | null | undefined | pos_purchaseDefaultArgs> = $Result.GetResult<Prisma.$pos_purchasePayload, S>
-
-  type pos_purchaseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<pos_purchaseFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Pos_purchaseCountAggregateInputType | true
-    }
-
-  export interface pos_purchaseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pos_purchase'], meta: { name: 'pos_purchase' } }
-    /**
-     * Find zero or one Pos_purchase that matches the filter.
-     * @param {pos_purchaseFindUniqueArgs} args - Arguments to find a Pos_purchase
-     * @example
-     * // Get one Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends pos_purchaseFindUniqueArgs>(args: SelectSubset<T, pos_purchaseFindUniqueArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Pos_purchase that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {pos_purchaseFindUniqueOrThrowArgs} args - Arguments to find a Pos_purchase
-     * @example
-     * // Get one Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends pos_purchaseFindUniqueOrThrowArgs>(args: SelectSubset<T, pos_purchaseFindUniqueOrThrowArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Pos_purchase that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseFindFirstArgs} args - Arguments to find a Pos_purchase
-     * @example
-     * // Get one Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends pos_purchaseFindFirstArgs>(args?: SelectSubset<T, pos_purchaseFindFirstArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Pos_purchase that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseFindFirstOrThrowArgs} args - Arguments to find a Pos_purchase
-     * @example
-     * // Get one Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends pos_purchaseFindFirstOrThrowArgs>(args?: SelectSubset<T, pos_purchaseFindFirstOrThrowArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Pos_purchases that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Pos_purchases
-     * const pos_purchases = await prisma.pos_purchase.findMany()
-     * 
-     * // Get first 10 Pos_purchases
-     * const pos_purchases = await prisma.pos_purchase.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const pos_purchaseWithIdOnly = await prisma.pos_purchase.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends pos_purchaseFindManyArgs>(args?: SelectSubset<T, pos_purchaseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Pos_purchase.
-     * @param {pos_purchaseCreateArgs} args - Arguments to create a Pos_purchase.
-     * @example
-     * // Create one Pos_purchase
-     * const Pos_purchase = await prisma.pos_purchase.create({
-     *   data: {
-     *     // ... data to create a Pos_purchase
-     *   }
-     * })
-     * 
-     */
-    create<T extends pos_purchaseCreateArgs>(args: SelectSubset<T, pos_purchaseCreateArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Pos_purchases.
-     * @param {pos_purchaseCreateManyArgs} args - Arguments to create many Pos_purchases.
-     * @example
-     * // Create many Pos_purchases
-     * const pos_purchase = await prisma.pos_purchase.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends pos_purchaseCreateManyArgs>(args?: SelectSubset<T, pos_purchaseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Pos_purchases and returns the data saved in the database.
-     * @param {pos_purchaseCreateManyAndReturnArgs} args - Arguments to create many Pos_purchases.
-     * @example
-     * // Create many Pos_purchases
-     * const pos_purchase = await prisma.pos_purchase.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Pos_purchases and only return the `id`
-     * const pos_purchaseWithIdOnly = await prisma.pos_purchase.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends pos_purchaseCreateManyAndReturnArgs>(args?: SelectSubset<T, pos_purchaseCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Pos_purchase.
-     * @param {pos_purchaseDeleteArgs} args - Arguments to delete one Pos_purchase.
-     * @example
-     * // Delete one Pos_purchase
-     * const Pos_purchase = await prisma.pos_purchase.delete({
-     *   where: {
-     *     // ... filter to delete one Pos_purchase
-     *   }
-     * })
-     * 
-     */
-    delete<T extends pos_purchaseDeleteArgs>(args: SelectSubset<T, pos_purchaseDeleteArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Pos_purchase.
-     * @param {pos_purchaseUpdateArgs} args - Arguments to update one Pos_purchase.
-     * @example
-     * // Update one Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends pos_purchaseUpdateArgs>(args: SelectSubset<T, pos_purchaseUpdateArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Pos_purchases.
-     * @param {pos_purchaseDeleteManyArgs} args - Arguments to filter Pos_purchases to delete.
-     * @example
-     * // Delete a few Pos_purchases
-     * const { count } = await prisma.pos_purchase.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends pos_purchaseDeleteManyArgs>(args?: SelectSubset<T, pos_purchaseDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Pos_purchases.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Pos_purchases
-     * const pos_purchase = await prisma.pos_purchase.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends pos_purchaseUpdateManyArgs>(args: SelectSubset<T, pos_purchaseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Pos_purchases and returns the data updated in the database.
-     * @param {pos_purchaseUpdateManyAndReturnArgs} args - Arguments to update many Pos_purchases.
-     * @example
-     * // Update many Pos_purchases
-     * const pos_purchase = await prisma.pos_purchase.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Pos_purchases and only return the `id`
-     * const pos_purchaseWithIdOnly = await prisma.pos_purchase.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends pos_purchaseUpdateManyAndReturnArgs>(args: SelectSubset<T, pos_purchaseUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Pos_purchase.
-     * @param {pos_purchaseUpsertArgs} args - Arguments to update or create a Pos_purchase.
-     * @example
-     * // Update or create a Pos_purchase
-     * const pos_purchase = await prisma.pos_purchase.upsert({
-     *   create: {
-     *     // ... data to create a Pos_purchase
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Pos_purchase we want to update
-     *   }
-     * })
-     */
-    upsert<T extends pos_purchaseUpsertArgs>(args: SelectSubset<T, pos_purchaseUpsertArgs<ExtArgs>>): Prisma__pos_purchaseClient<$Result.GetResult<Prisma.$pos_purchasePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Pos_purchases.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseCountArgs} args - Arguments to filter Pos_purchases to count.
-     * @example
-     * // Count the number of Pos_purchases
-     * const count = await prisma.pos_purchase.count({
-     *   where: {
-     *     // ... the filter for the Pos_purchases we want to count
-     *   }
-     * })
-    **/
-    count<T extends pos_purchaseCountArgs>(
-      args?: Subset<T, pos_purchaseCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Pos_purchaseCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Pos_purchase.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Pos_purchaseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Pos_purchaseAggregateArgs>(args: Subset<T, Pos_purchaseAggregateArgs>): Prisma.PrismaPromise<GetPos_purchaseAggregateType<T>>
-
-    /**
-     * Group by Pos_purchase.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pos_purchaseGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends pos_purchaseGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: pos_purchaseGroupByArgs['orderBy'] }
-        : { orderBy?: pos_purchaseGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, pos_purchaseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPos_purchaseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the pos_purchase model
-   */
-  readonly fields: pos_purchaseFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for pos_purchase.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__pos_purchaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the pos_purchase model
-   */
-  interface pos_purchaseFieldRefs {
-    readonly id: FieldRef<"pos_purchase", 'Int'>
-    readonly timestamp: FieldRef<"pos_purchase", 'DateTime'>
-    readonly bluetooth_id_hash: FieldRef<"pos_purchase", 'String'>
-    readonly age: FieldRef<"pos_purchase", 'Int'>
-    readonly race: FieldRef<"pos_purchase", 'String'>
-    readonly gender: FieldRef<"pos_purchase", 'String'>
-    readonly items_purchased: FieldRef<"pos_purchase", 'Json'>
-    readonly sale_total: FieldRef<"pos_purchase", 'Decimal'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * pos_purchase findUnique
-   */
-  export type pos_purchaseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * Filter, which pos_purchase to fetch.
-     */
-    where: pos_purchaseWhereUniqueInput
-  }
-
-  /**
-   * pos_purchase findUniqueOrThrow
-   */
-  export type pos_purchaseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * Filter, which pos_purchase to fetch.
-     */
-    where: pos_purchaseWhereUniqueInput
-  }
-
-  /**
-   * pos_purchase findFirst
-   */
-  export type pos_purchaseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * Filter, which pos_purchase to fetch.
-     */
-    where?: pos_purchaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pos_purchases to fetch.
-     */
-    orderBy?: pos_purchaseOrderByWithRelationInput | pos_purchaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for pos_purchases.
-     */
-    cursor?: pos_purchaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pos_purchases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pos_purchases.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pos_purchases.
-     */
-    distinct?: Pos_purchaseScalarFieldEnum | Pos_purchaseScalarFieldEnum[]
-  }
-
-  /**
-   * pos_purchase findFirstOrThrow
-   */
-  export type pos_purchaseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * Filter, which pos_purchase to fetch.
-     */
-    where?: pos_purchaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pos_purchases to fetch.
-     */
-    orderBy?: pos_purchaseOrderByWithRelationInput | pos_purchaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for pos_purchases.
-     */
-    cursor?: pos_purchaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pos_purchases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pos_purchases.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pos_purchases.
-     */
-    distinct?: Pos_purchaseScalarFieldEnum | Pos_purchaseScalarFieldEnum[]
-  }
-
-  /**
-   * pos_purchase findMany
-   */
-  export type pos_purchaseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * Filter, which pos_purchases to fetch.
-     */
-    where?: pos_purchaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pos_purchases to fetch.
-     */
-    orderBy?: pos_purchaseOrderByWithRelationInput | pos_purchaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing pos_purchases.
-     */
-    cursor?: pos_purchaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pos_purchases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pos_purchases.
-     */
-    skip?: number
-    distinct?: Pos_purchaseScalarFieldEnum | Pos_purchaseScalarFieldEnum[]
-  }
-
-  /**
-   * pos_purchase create
-   */
-  export type pos_purchaseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pos_purchase
-     */
-    select?: pos_purchaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pos_purchase
-     */
-    omit?: pos_purchaseOmit<ExtArgs> | null
-    /**
-     * The data needed to create a pos_purchase.
-     */
-    data: XOR<pos_purchaseCreateInput, pos_purchaseUncheckedCreateInput>
-  }
-
-  /**
-   * pos_purchase createMany
-   */
-  export type pos_purchaseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many pos_purchases.
-     */
-    data: pos_purchaseCreateManyInput | pos_purchaseCreateManyInput[]
+    data: creativesCreateManyInput | creativesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * pos_purchase createManyAndReturn
+   * creatives update
    */
-  export type pos_purchaseCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * Select specific fields to fetch from the creatives
      */
-    select?: pos_purchaseSelectCreateManyAndReturn<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pos_purchase
+     * Omit specific fields from the creatives
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
-     * The data used to create many pos_purchases.
+     * Choose, which related nodes to fetch as well
      */
-    data: pos_purchaseCreateManyInput | pos_purchaseCreateManyInput[]
-    skipDuplicates?: boolean
+    include?: creativesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a creatives.
+     */
+    data: XOR<creativesUpdateInput, creativesUncheckedUpdateInput>
+    /**
+     * Choose, which creatives to update.
+     */
+    where: creativesWhereUniqueInput
   }
 
   /**
-   * pos_purchase update
+   * creatives updateMany
    */
-  export type pos_purchaseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * The data used to update creatives.
      */
-    select?: pos_purchaseSelect<ExtArgs> | null
+    data: XOR<creativesUpdateManyMutationInput, creativesUncheckedUpdateManyInput>
     /**
-     * Omit specific fields from the pos_purchase
+     * Filter which creatives to update
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    where?: creativesWhereInput
     /**
-     * The data needed to update a pos_purchase.
-     */
-    data: XOR<pos_purchaseUpdateInput, pos_purchaseUncheckedUpdateInput>
-    /**
-     * Choose, which pos_purchase to update.
-     */
-    where: pos_purchaseWhereUniqueInput
-  }
-
-  /**
-   * pos_purchase updateMany
-   */
-  export type pos_purchaseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update pos_purchases.
-     */
-    data: XOR<pos_purchaseUpdateManyMutationInput, pos_purchaseUncheckedUpdateManyInput>
-    /**
-     * Filter which pos_purchases to update
-     */
-    where?: pos_purchaseWhereInput
-    /**
-     * Limit how many pos_purchases to update.
+     * Limit how many creatives to update.
      */
     limit?: number
   }
 
   /**
-   * pos_purchase updateManyAndReturn
+   * creatives updateManyAndReturn
    */
-  export type pos_purchaseUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * Select specific fields to fetch from the creatives
      */
-    select?: pos_purchaseSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: creativesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the pos_purchase
+     * Omit specific fields from the creatives
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
-     * The data used to update pos_purchases.
+     * The data used to update creatives.
      */
-    data: XOR<pos_purchaseUpdateManyMutationInput, pos_purchaseUncheckedUpdateManyInput>
+    data: XOR<creativesUpdateManyMutationInput, creativesUncheckedUpdateManyInput>
     /**
-     * Filter which pos_purchases to update
+     * Filter which creatives to update
      */
-    where?: pos_purchaseWhereInput
+    where?: creativesWhereInput
     /**
-     * Limit how many pos_purchases to update.
+     * Limit how many creatives to update.
      */
     limit?: number
   }
 
   /**
-   * pos_purchase upsert
+   * creatives upsert
    */
-  export type pos_purchaseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * Select specific fields to fetch from the creatives
      */
-    select?: pos_purchaseSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pos_purchase
+     * Omit specific fields from the creatives
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
-     * The filter to search for the pos_purchase to update in case it exists.
+     * Choose, which related nodes to fetch as well
      */
-    where: pos_purchaseWhereUniqueInput
+    include?: creativesInclude<ExtArgs> | null
     /**
-     * In case the pos_purchase found by the `where` argument doesn't exist, create a new pos_purchase with this data.
+     * The filter to search for the creatives to update in case it exists.
      */
-    create: XOR<pos_purchaseCreateInput, pos_purchaseUncheckedCreateInput>
+    where: creativesWhereUniqueInput
     /**
-     * In case the pos_purchase was found with the provided `where` argument, update it with this data.
+     * In case the creatives found by the `where` argument doesn't exist, create a new creatives with this data.
      */
-    update: XOR<pos_purchaseUpdateInput, pos_purchaseUncheckedUpdateInput>
+    create: XOR<creativesCreateInput, creativesUncheckedCreateInput>
+    /**
+     * In case the creatives was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<creativesUpdateInput, creativesUncheckedUpdateInput>
   }
 
   /**
-   * pos_purchase delete
+   * creatives delete
    */
-  export type pos_purchaseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * Select specific fields to fetch from the creatives
      */
-    select?: pos_purchaseSelect<ExtArgs> | null
+    select?: creativesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pos_purchase
+     * Omit specific fields from the creatives
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    omit?: creativesOmit<ExtArgs> | null
     /**
-     * Filter which pos_purchase to delete.
+     * Choose, which related nodes to fetch as well
      */
-    where: pos_purchaseWhereUniqueInput
+    include?: creativesInclude<ExtArgs> | null
+    /**
+     * Filter which creatives to delete.
+     */
+    where: creativesWhereUniqueInput
   }
 
   /**
-   * pos_purchase deleteMany
+   * creatives deleteMany
    */
-  export type pos_purchaseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creativesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which pos_purchases to delete
+     * Filter which creatives to delete
      */
-    where?: pos_purchaseWhereInput
+    where?: creativesWhereInput
     /**
-     * Limit how many pos_purchases to delete.
+     * Limit how many creatives to delete.
      */
     limit?: number
   }
 
   /**
-   * pos_purchase without action
+   * creatives.campaign_creative
    */
-  export type pos_purchaseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type creatives$campaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the pos_purchase
+     * Select specific fields to fetch from the campaign_creative
      */
-    select?: pos_purchaseSelect<ExtArgs> | null
+    select?: campaign_creativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the pos_purchase
+     * Omit specific fields from the campaign_creative
      */
-    omit?: pos_purchaseOmit<ExtArgs> | null
+    omit?: campaign_creativeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: campaign_creativeInclude<ExtArgs> | null
+    where?: campaign_creativeWhereInput
+    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
+    cursor?: campaign_creativeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+  }
+
+  /**
+   * creatives without action
+   */
+  export type creativesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the creatives
+     */
+    select?: creativesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the creatives
+     */
+    omit?: creativesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: creativesInclude<ExtArgs> | null
   }
 
 
@@ -4333,40 +4276,33 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Ad_campaignsScalarFieldEnum: {
-    ad_id: 'ad_id',
-    name: 'name',
-    category: 'category'
+  export const Campaign_creativeScalarFieldEnum: {
+    campaign_id: 'campaign_id',
+    creative_id: 'creative_id'
   };
 
-  export type Ad_campaignsScalarFieldEnum = (typeof Ad_campaignsScalarFieldEnum)[keyof typeof Ad_campaignsScalarFieldEnum]
+  export type Campaign_creativeScalarFieldEnum = (typeof Campaign_creativeScalarFieldEnum)[keyof typeof Campaign_creativeScalarFieldEnum]
 
 
-  export const Dooh_detectionScalarFieldEnum: {
+  export const CampaignsScalarFieldEnum: {
     id: 'id',
-    timestamp: 'timestamp',
-    bluetooth_id_hash: 'bluetooth_id_hash',
-    ad_id: 'ad_id',
-    age: 'age',
-    race: 'race',
+    name: 'name',
+    start_date: 'start_date',
+    end_date: 'end_date',
+    age_groups: 'age_groups',
     gender: 'gender'
   };
 
-  export type Dooh_detectionScalarFieldEnum = (typeof Dooh_detectionScalarFieldEnum)[keyof typeof Dooh_detectionScalarFieldEnum]
+  export type CampaignsScalarFieldEnum = (typeof CampaignsScalarFieldEnum)[keyof typeof CampaignsScalarFieldEnum]
 
 
-  export const Pos_purchaseScalarFieldEnum: {
+  export const CreativesScalarFieldEnum: {
     id: 'id',
-    timestamp: 'timestamp',
-    bluetooth_id_hash: 'bluetooth_id_hash',
-    age: 'age',
-    race: 'race',
-    gender: 'gender',
-    items_purchased: 'items_purchased',
-    sale_total: 'sale_total'
+    name: 'name',
+    created_at: 'created_at'
   };
 
-  export type Pos_purchaseScalarFieldEnum = (typeof Pos_purchaseScalarFieldEnum)[keyof typeof Pos_purchaseScalarFieldEnum]
+  export type CreativesScalarFieldEnum = (typeof CreativesScalarFieldEnum)[keyof typeof CreativesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4377,29 +4313,12 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -4430,20 +4349,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4458,415 +4363,373 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
+   * Reference to a field of type 'Int'
    */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
   /**
-   * Reference to a field of type 'QueryMode'
+   * Reference to a field of type 'Int[]'
    */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
    */
 
 
-  export type ad_campaignsWhereInput = {
-    AND?: ad_campaignsWhereInput | ad_campaignsWhereInput[]
-    OR?: ad_campaignsWhereInput[]
-    NOT?: ad_campaignsWhereInput | ad_campaignsWhereInput[]
-    ad_id?: StringFilter<"ad_campaigns"> | string
-    name?: StringFilter<"ad_campaigns"> | string
-    category?: StringFilter<"ad_campaigns"> | string
-    detections?: Dooh_detectionListRelationFilter
+  export type campaign_creativeWhereInput = {
+    AND?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
+    OR?: campaign_creativeWhereInput[]
+    NOT?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
+    campaign_id?: UuidFilter<"campaign_creative"> | string
+    creative_id?: UuidFilter<"campaign_creative"> | string
+    campaigns?: XOR<CampaignsScalarRelationFilter, campaignsWhereInput>
+    creatives?: XOR<CreativesScalarRelationFilter, creativesWhereInput>
   }
 
-  export type ad_campaignsOrderByWithRelationInput = {
-    ad_id?: SortOrder
-    name?: SortOrder
-    category?: SortOrder
-    detections?: dooh_detectionOrderByRelationAggregateInput
+  export type campaign_creativeOrderByWithRelationInput = {
+    campaign_id?: SortOrder
+    creative_id?: SortOrder
+    campaigns?: campaignsOrderByWithRelationInput
+    creatives?: creativesOrderByWithRelationInput
   }
 
-  export type ad_campaignsWhereUniqueInput = Prisma.AtLeast<{
-    ad_id?: string
-    AND?: ad_campaignsWhereInput | ad_campaignsWhereInput[]
-    OR?: ad_campaignsWhereInput[]
-    NOT?: ad_campaignsWhereInput | ad_campaignsWhereInput[]
-    name?: StringFilter<"ad_campaigns"> | string
-    category?: StringFilter<"ad_campaigns"> | string
-    detections?: Dooh_detectionListRelationFilter
-  }, "ad_id">
+  export type campaign_creativeWhereUniqueInput = Prisma.AtLeast<{
+    campaign_id_creative_id?: campaign_creativeCampaign_idCreative_idCompoundUniqueInput
+    AND?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
+    OR?: campaign_creativeWhereInput[]
+    NOT?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
+    campaign_id?: UuidFilter<"campaign_creative"> | string
+    creative_id?: UuidFilter<"campaign_creative"> | string
+    campaigns?: XOR<CampaignsScalarRelationFilter, campaignsWhereInput>
+    creatives?: XOR<CreativesScalarRelationFilter, creativesWhereInput>
+  }, "campaign_id_creative_id">
 
-  export type ad_campaignsOrderByWithAggregationInput = {
-    ad_id?: SortOrder
-    name?: SortOrder
-    category?: SortOrder
-    _count?: ad_campaignsCountOrderByAggregateInput
-    _max?: ad_campaignsMaxOrderByAggregateInput
-    _min?: ad_campaignsMinOrderByAggregateInput
+  export type campaign_creativeOrderByWithAggregationInput = {
+    campaign_id?: SortOrder
+    creative_id?: SortOrder
+    _count?: campaign_creativeCountOrderByAggregateInput
+    _max?: campaign_creativeMaxOrderByAggregateInput
+    _min?: campaign_creativeMinOrderByAggregateInput
   }
 
-  export type ad_campaignsScalarWhereWithAggregatesInput = {
-    AND?: ad_campaignsScalarWhereWithAggregatesInput | ad_campaignsScalarWhereWithAggregatesInput[]
-    OR?: ad_campaignsScalarWhereWithAggregatesInput[]
-    NOT?: ad_campaignsScalarWhereWithAggregatesInput | ad_campaignsScalarWhereWithAggregatesInput[]
-    ad_id?: StringWithAggregatesFilter<"ad_campaigns"> | string
-    name?: StringWithAggregatesFilter<"ad_campaigns"> | string
-    category?: StringWithAggregatesFilter<"ad_campaigns"> | string
+  export type campaign_creativeScalarWhereWithAggregatesInput = {
+    AND?: campaign_creativeScalarWhereWithAggregatesInput | campaign_creativeScalarWhereWithAggregatesInput[]
+    OR?: campaign_creativeScalarWhereWithAggregatesInput[]
+    NOT?: campaign_creativeScalarWhereWithAggregatesInput | campaign_creativeScalarWhereWithAggregatesInput[]
+    campaign_id?: UuidWithAggregatesFilter<"campaign_creative"> | string
+    creative_id?: UuidWithAggregatesFilter<"campaign_creative"> | string
   }
 
-  export type dooh_detectionWhereInput = {
-    AND?: dooh_detectionWhereInput | dooh_detectionWhereInput[]
-    OR?: dooh_detectionWhereInput[]
-    NOT?: dooh_detectionWhereInput | dooh_detectionWhereInput[]
-    id?: IntFilter<"dooh_detection"> | number
-    timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
-    bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
-    ad_id?: StringFilter<"dooh_detection"> | string
-    age?: IntFilter<"dooh_detection"> | number
-    race?: StringFilter<"dooh_detection"> | string
-    gender?: StringFilter<"dooh_detection"> | string
-    campaign?: XOR<Ad_campaignsScalarRelationFilter, ad_campaignsWhereInput>
+  export type campaignsWhereInput = {
+    AND?: campaignsWhereInput | campaignsWhereInput[]
+    OR?: campaignsWhereInput[]
+    NOT?: campaignsWhereInput | campaignsWhereInput[]
+    id?: UuidFilter<"campaigns"> | string
+    name?: StringFilter<"campaigns"> | string
+    start_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
+    end_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
+    age_groups?: StringNullableListFilter<"campaigns">
+    gender?: StringNullableFilter<"campaigns"> | string | null
+    campaign_creative?: Campaign_creativeListRelationFilter
   }
 
-  export type dooh_detectionOrderByWithRelationInput = {
+  export type campaignsOrderByWithRelationInput = {
     id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    ad_id?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    campaign?: ad_campaignsOrderByWithRelationInput
+    name?: SortOrder
+    start_date?: SortOrderInput | SortOrder
+    end_date?: SortOrderInput | SortOrder
+    age_groups?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    campaign_creative?: campaign_creativeOrderByRelationAggregateInput
   }
 
-  export type dooh_detectionWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: dooh_detectionWhereInput | dooh_detectionWhereInput[]
-    OR?: dooh_detectionWhereInput[]
-    NOT?: dooh_detectionWhereInput | dooh_detectionWhereInput[]
-    timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
-    bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
-    ad_id?: StringFilter<"dooh_detection"> | string
-    age?: IntFilter<"dooh_detection"> | number
-    race?: StringFilter<"dooh_detection"> | string
-    gender?: StringFilter<"dooh_detection"> | string
-    campaign?: XOR<Ad_campaignsScalarRelationFilter, ad_campaignsWhereInput>
+  export type campaignsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: campaignsWhereInput | campaignsWhereInput[]
+    OR?: campaignsWhereInput[]
+    NOT?: campaignsWhereInput | campaignsWhereInput[]
+    name?: StringFilter<"campaigns"> | string
+    start_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
+    end_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
+    age_groups?: StringNullableListFilter<"campaigns">
+    gender?: StringNullableFilter<"campaigns"> | string | null
+    campaign_creative?: Campaign_creativeListRelationFilter
   }, "id">
 
-  export type dooh_detectionOrderByWithAggregationInput = {
+  export type campaignsOrderByWithAggregationInput = {
     id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    ad_id?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    _count?: dooh_detectionCountOrderByAggregateInput
-    _avg?: dooh_detectionAvgOrderByAggregateInput
-    _max?: dooh_detectionMaxOrderByAggregateInput
-    _min?: dooh_detectionMinOrderByAggregateInput
-    _sum?: dooh_detectionSumOrderByAggregateInput
+    name?: SortOrder
+    start_date?: SortOrderInput | SortOrder
+    end_date?: SortOrderInput | SortOrder
+    age_groups?: SortOrder
+    gender?: SortOrderInput | SortOrder
+    _count?: campaignsCountOrderByAggregateInput
+    _max?: campaignsMaxOrderByAggregateInput
+    _min?: campaignsMinOrderByAggregateInput
   }
 
-  export type dooh_detectionScalarWhereWithAggregatesInput = {
-    AND?: dooh_detectionScalarWhereWithAggregatesInput | dooh_detectionScalarWhereWithAggregatesInput[]
-    OR?: dooh_detectionScalarWhereWithAggregatesInput[]
-    NOT?: dooh_detectionScalarWhereWithAggregatesInput | dooh_detectionScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"dooh_detection"> | number
-    timestamp?: DateTimeWithAggregatesFilter<"dooh_detection"> | Date | string
-    bluetooth_id_hash?: StringWithAggregatesFilter<"dooh_detection"> | string
-    ad_id?: StringWithAggregatesFilter<"dooh_detection"> | string
-    age?: IntWithAggregatesFilter<"dooh_detection"> | number
-    race?: StringWithAggregatesFilter<"dooh_detection"> | string
-    gender?: StringWithAggregatesFilter<"dooh_detection"> | string
+  export type campaignsScalarWhereWithAggregatesInput = {
+    AND?: campaignsScalarWhereWithAggregatesInput | campaignsScalarWhereWithAggregatesInput[]
+    OR?: campaignsScalarWhereWithAggregatesInput[]
+    NOT?: campaignsScalarWhereWithAggregatesInput | campaignsScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"campaigns"> | string
+    name?: StringWithAggregatesFilter<"campaigns"> | string
+    start_date?: DateTimeNullableWithAggregatesFilter<"campaigns"> | Date | string | null
+    end_date?: DateTimeNullableWithAggregatesFilter<"campaigns"> | Date | string | null
+    age_groups?: StringNullableListFilter<"campaigns">
+    gender?: StringNullableWithAggregatesFilter<"campaigns"> | string | null
   }
 
-  export type pos_purchaseWhereInput = {
-    AND?: pos_purchaseWhereInput | pos_purchaseWhereInput[]
-    OR?: pos_purchaseWhereInput[]
-    NOT?: pos_purchaseWhereInput | pos_purchaseWhereInput[]
-    id?: IntFilter<"pos_purchase"> | number
-    timestamp?: DateTimeFilter<"pos_purchase"> | Date | string
-    bluetooth_id_hash?: StringFilter<"pos_purchase"> | string
-    age?: IntFilter<"pos_purchase"> | number
-    race?: StringFilter<"pos_purchase"> | string
-    gender?: StringFilter<"pos_purchase"> | string
-    items_purchased?: JsonNullableFilter<"pos_purchase">
-    sale_total?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+  export type creativesWhereInput = {
+    AND?: creativesWhereInput | creativesWhereInput[]
+    OR?: creativesWhereInput[]
+    NOT?: creativesWhereInput | creativesWhereInput[]
+    id?: UuidFilter<"creatives"> | string
+    name?: StringFilter<"creatives"> | string
+    created_at?: DateTimeNullableFilter<"creatives"> | Date | string | null
+    campaign_creative?: Campaign_creativeListRelationFilter
   }
 
-  export type pos_purchaseOrderByWithRelationInput = {
+  export type creativesOrderByWithRelationInput = {
     id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    items_purchased?: SortOrderInput | SortOrder
-    sale_total?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    campaign_creative?: campaign_creativeOrderByRelationAggregateInput
   }
 
-  export type pos_purchaseWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: pos_purchaseWhereInput | pos_purchaseWhereInput[]
-    OR?: pos_purchaseWhereInput[]
-    NOT?: pos_purchaseWhereInput | pos_purchaseWhereInput[]
-    timestamp?: DateTimeFilter<"pos_purchase"> | Date | string
-    bluetooth_id_hash?: StringFilter<"pos_purchase"> | string
-    age?: IntFilter<"pos_purchase"> | number
-    race?: StringFilter<"pos_purchase"> | string
-    gender?: StringFilter<"pos_purchase"> | string
-    items_purchased?: JsonNullableFilter<"pos_purchase">
-    sale_total?: DecimalFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+  export type creativesWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: creativesWhereInput | creativesWhereInput[]
+    OR?: creativesWhereInput[]
+    NOT?: creativesWhereInput | creativesWhereInput[]
+    name?: StringFilter<"creatives"> | string
+    created_at?: DateTimeNullableFilter<"creatives"> | Date | string | null
+    campaign_creative?: Campaign_creativeListRelationFilter
   }, "id">
 
-  export type pos_purchaseOrderByWithAggregationInput = {
+  export type creativesOrderByWithAggregationInput = {
     id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    items_purchased?: SortOrderInput | SortOrder
-    sale_total?: SortOrder
-    _count?: pos_purchaseCountOrderByAggregateInput
-    _avg?: pos_purchaseAvgOrderByAggregateInput
-    _max?: pos_purchaseMaxOrderByAggregateInput
-    _min?: pos_purchaseMinOrderByAggregateInput
-    _sum?: pos_purchaseSumOrderByAggregateInput
+    name?: SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _count?: creativesCountOrderByAggregateInput
+    _max?: creativesMaxOrderByAggregateInput
+    _min?: creativesMinOrderByAggregateInput
   }
 
-  export type pos_purchaseScalarWhereWithAggregatesInput = {
-    AND?: pos_purchaseScalarWhereWithAggregatesInput | pos_purchaseScalarWhereWithAggregatesInput[]
-    OR?: pos_purchaseScalarWhereWithAggregatesInput[]
-    NOT?: pos_purchaseScalarWhereWithAggregatesInput | pos_purchaseScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"pos_purchase"> | number
-    timestamp?: DateTimeWithAggregatesFilter<"pos_purchase"> | Date | string
-    bluetooth_id_hash?: StringWithAggregatesFilter<"pos_purchase"> | string
-    age?: IntWithAggregatesFilter<"pos_purchase"> | number
-    race?: StringWithAggregatesFilter<"pos_purchase"> | string
-    gender?: StringWithAggregatesFilter<"pos_purchase"> | string
-    items_purchased?: JsonNullableWithAggregatesFilter<"pos_purchase">
-    sale_total?: DecimalWithAggregatesFilter<"pos_purchase"> | Decimal | DecimalJsLike | number | string
+  export type creativesScalarWhereWithAggregatesInput = {
+    AND?: creativesScalarWhereWithAggregatesInput | creativesScalarWhereWithAggregatesInput[]
+    OR?: creativesScalarWhereWithAggregatesInput[]
+    NOT?: creativesScalarWhereWithAggregatesInput | creativesScalarWhereWithAggregatesInput[]
+    id?: UuidWithAggregatesFilter<"creatives"> | string
+    name?: StringWithAggregatesFilter<"creatives"> | string
+    created_at?: DateTimeNullableWithAggregatesFilter<"creatives"> | Date | string | null
   }
 
-  export type ad_campaignsCreateInput = {
-    ad_id: string
+  export type campaign_creativeCreateInput = {
+    campaigns: campaignsCreateNestedOneWithoutCampaign_creativeInput
+    creatives: creativesCreateNestedOneWithoutCampaign_creativeInput
+  }
+
+  export type campaign_creativeUncheckedCreateInput = {
+    campaign_id: string
+    creative_id: string
+  }
+
+  export type campaign_creativeUpdateInput = {
+    campaigns?: campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput
+    creatives?: creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput
+  }
+
+  export type campaign_creativeUncheckedUpdateInput = {
+    campaign_id?: StringFieldUpdateOperationsInput | string
+    creative_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type campaign_creativeCreateManyInput = {
+    campaign_id: string
+    creative_id: string
+  }
+
+  export type campaign_creativeUpdateManyMutationInput = {
+
+  }
+
+  export type campaign_creativeUncheckedUpdateManyInput = {
+    campaign_id?: StringFieldUpdateOperationsInput | string
+    creative_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type campaignsCreateInput = {
+    id?: string
     name: string
-    category: string
-    detections?: dooh_detectionCreateNestedManyWithoutCampaignInput
+    start_date?: Date | string | null
+    end_date?: Date | string | null
+    age_groups?: campaignsCreateage_groupsInput | string[]
+    gender?: string | null
+    campaign_creative?: campaign_creativeCreateNestedManyWithoutCampaignsInput
   }
 
-  export type ad_campaignsUncheckedCreateInput = {
-    ad_id: string
+  export type campaignsUncheckedCreateInput = {
+    id?: string
     name: string
-    category: string
-    detections?: dooh_detectionUncheckedCreateNestedManyWithoutCampaignInput
+    start_date?: Date | string | null
+    end_date?: Date | string | null
+    age_groups?: campaignsCreateage_groupsInput | string[]
+    gender?: string | null
+    campaign_creative?: campaign_creativeUncheckedCreateNestedManyWithoutCampaignsInput
   }
 
-  export type ad_campaignsUpdateInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
+  export type campaignsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    detections?: dooh_detectionUpdateManyWithoutCampaignNestedInput
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    campaign_creative?: campaign_creativeUpdateManyWithoutCampaignsNestedInput
   }
 
-  export type ad_campaignsUncheckedUpdateInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
+  export type campaignsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
-    detections?: dooh_detectionUncheckedUpdateManyWithoutCampaignNestedInput
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    campaign_creative?: campaign_creativeUncheckedUpdateManyWithoutCampaignsNestedInput
   }
 
-  export type ad_campaignsCreateManyInput = {
-    ad_id: string
+  export type campaignsCreateManyInput = {
+    id?: string
     name: string
-    category: string
+    start_date?: Date | string | null
+    end_date?: Date | string | null
+    age_groups?: campaignsCreateage_groupsInput | string[]
+    gender?: string | null
   }
 
-  export type ad_campaignsUpdateManyMutationInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
+  export type campaignsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type ad_campaignsUncheckedUpdateManyInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
+  export type campaignsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type dooh_detectionCreateInput = {
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
-    campaign: ad_campaignsCreateNestedOneWithoutDetectionsInput
+  export type creativesCreateInput = {
+    id?: string
+    name: string
+    created_at?: Date | string | null
+    campaign_creative?: campaign_creativeCreateNestedManyWithoutCreativesInput
   }
 
-  export type dooh_detectionUncheckedCreateInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    ad_id: string
-    age: number
-    race: string
-    gender: string
+  export type creativesUncheckedCreateInput = {
+    id?: string
+    name: string
+    created_at?: Date | string | null
+    campaign_creative?: campaign_creativeUncheckedCreateNestedManyWithoutCreativesInput
   }
 
-  export type dooh_detectionUpdateInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
-    campaign?: ad_campaignsUpdateOneRequiredWithoutDetectionsNestedInput
+  export type creativesUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    campaign_creative?: campaign_creativeUpdateManyWithoutCreativesNestedInput
   }
 
-  export type dooh_detectionUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    ad_id?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type creativesUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    campaign_creative?: campaign_creativeUncheckedUpdateManyWithoutCreativesNestedInput
   }
 
-  export type dooh_detectionCreateManyInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    ad_id: string
-    age: number
-    race: string
-    gender: string
+  export type creativesCreateManyInput = {
+    id?: string
+    name: string
+    created_at?: Date | string | null
   }
 
-  export type dooh_detectionUpdateManyMutationInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type creativesUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type dooh_detectionUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    ad_id?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type creativesUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type pos_purchaseCreateInput = {
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total: Decimal | DecimalJsLike | number | string
+  export type UuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidFilter<$PrismaModel> | string
   }
 
-  export type pos_purchaseUncheckedCreateInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total: Decimal | DecimalJsLike | number | string
+  export type CampaignsScalarRelationFilter = {
+    is?: campaignsWhereInput
+    isNot?: campaignsWhereInput
   }
 
-  export type pos_purchaseUpdateInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  export type CreativesScalarRelationFilter = {
+    is?: creativesWhereInput
+    isNot?: creativesWhereInput
   }
 
-  export type pos_purchaseUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  export type campaign_creativeCampaign_idCreative_idCompoundUniqueInput = {
+    campaign_id: string
+    creative_id: string
   }
 
-  export type pos_purchaseCreateManyInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total: Decimal | DecimalJsLike | number | string
+  export type campaign_creativeCountOrderByAggregateInput = {
+    campaign_id?: SortOrder
+    creative_id?: SortOrder
   }
 
-  export type pos_purchaseUpdateManyMutationInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  export type campaign_creativeMaxOrderByAggregateInput = {
+    campaign_id?: SortOrder
+    creative_id?: SortOrder
   }
 
-  export type pos_purchaseUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
-    items_purchased?: NullableJsonNullValueInput | InputJsonValue
-    sale_total?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  export type campaign_creativeMinOrderByAggregateInput = {
+    campaign_id?: SortOrder
+    creative_id?: SortOrder
+  }
+
+  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4884,32 +4747,78 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type Dooh_detectionListRelationFilter = {
-    every?: dooh_detectionWhereInput
-    some?: dooh_detectionWhereInput
-    none?: dooh_detectionWhereInput
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type dooh_detectionOrderByRelationAggregateInput = {
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type Campaign_creativeListRelationFilter = {
+    every?: campaign_creativeWhereInput
+    some?: campaign_creativeWhereInput
+    none?: campaign_creativeWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type campaign_creativeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type ad_campaignsCountOrderByAggregateInput = {
-    ad_id?: SortOrder
+  export type campaignsCountOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
-    category?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    age_groups?: SortOrder
+    gender?: SortOrder
   }
 
-  export type ad_campaignsMaxOrderByAggregateInput = {
-    ad_id?: SortOrder
+  export type campaignsMaxOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
-    category?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    gender?: SortOrder
   }
 
-  export type ad_campaignsMinOrderByAggregateInput = {
-    ad_id?: SortOrder
+  export type campaignsMinOrderByAggregateInput = {
+    id?: SortOrder
     name?: SortOrder
-    category?: SortOrder
+    start_date?: SortOrder
+    end_date?: SortOrder
+    gender?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -4930,7 +4839,215 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type IntFilter<$PrismaModel = never> = {
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type creativesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type creativesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type creativesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type campaignsCreateNestedOneWithoutCampaign_creativeInput = {
+    create?: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
+    connectOrCreate?: campaignsCreateOrConnectWithoutCampaign_creativeInput
+    connect?: campaignsWhereUniqueInput
+  }
+
+  export type creativesCreateNestedOneWithoutCampaign_creativeInput = {
+    create?: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
+    connectOrCreate?: creativesCreateOrConnectWithoutCampaign_creativeInput
+    connect?: creativesWhereUniqueInput
+  }
+
+  export type campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput = {
+    create?: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
+    connectOrCreate?: campaignsCreateOrConnectWithoutCampaign_creativeInput
+    upsert?: campaignsUpsertWithoutCampaign_creativeInput
+    connect?: campaignsWhereUniqueInput
+    update?: XOR<XOR<campaignsUpdateToOneWithWhereWithoutCampaign_creativeInput, campaignsUpdateWithoutCampaign_creativeInput>, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
+  }
+
+  export type creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput = {
+    create?: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
+    connectOrCreate?: creativesCreateOrConnectWithoutCampaign_creativeInput
+    upsert?: creativesUpsertWithoutCampaign_creativeInput
+    connect?: creativesWhereUniqueInput
+    update?: XOR<XOR<creativesUpdateToOneWithWhereWithoutCampaign_creativeInput, creativesUpdateWithoutCampaign_creativeInput>, creativesUncheckedUpdateWithoutCampaign_creativeInput>
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type campaignsCreateage_groupsInput = {
+    set: string[]
+  }
+
+  export type campaign_creativeCreateNestedManyWithoutCampaignsInput = {
+    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
+    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  }
+
+  export type campaign_creativeUncheckedCreateNestedManyWithoutCampaignsInput = {
+    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
+    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
+  export type campaignsUpdateage_groupsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type campaign_creativeUpdateManyWithoutCampaignsNestedInput = {
+    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
+    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput[]
+    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
+    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    update?: campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput[]
+    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCampaignsInput | campaign_creativeUpdateManyWithWhereWithoutCampaignsInput[]
+    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  }
+
+  export type campaign_creativeUncheckedUpdateManyWithoutCampaignsNestedInput = {
+    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
+    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput[]
+    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
+    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    update?: campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput[]
+    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCampaignsInput | campaign_creativeUpdateManyWithWhereWithoutCampaignsInput[]
+    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  }
+
+  export type campaign_creativeCreateNestedManyWithoutCreativesInput = {
+    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
+    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  }
+
+  export type campaign_creativeUncheckedCreateNestedManyWithoutCreativesInput = {
+    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
+    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  }
+
+  export type campaign_creativeUpdateManyWithoutCreativesNestedInput = {
+    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
+    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput | campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput[]
+    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
+    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    update?: campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput | campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput[]
+    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCreativesInput | campaign_creativeUpdateManyWithWhereWithoutCreativesInput[]
+    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  }
+
+  export type campaign_creativeUncheckedUpdateManyWithoutCreativesNestedInput = {
+    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
+    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
+    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput | campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput[]
+    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
+    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+    update?: campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput | campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput[]
+    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCreativesInput | campaign_creativeUpdateManyWithWhereWithoutCreativesInput[]
+    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  }
+
+  export type NestedUuidFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
+  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4939,296 +5056,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type Ad_campaignsScalarRelationFilter = {
-    is?: ad_campaignsWhereInput
-    isNot?: ad_campaignsWhereInput
-  }
-
-  export type dooh_detectionCountOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    ad_id?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-  }
-
-  export type dooh_detectionAvgOrderByAggregateInput = {
-    id?: SortOrder
-    age?: SortOrder
-  }
-
-  export type dooh_detectionMaxOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    ad_id?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-  }
-
-  export type dooh_detectionMinOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    ad_id?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-  }
-
-  export type dooh_detectionSumOrderByAggregateInput = {
-    id?: SortOrder
-    age?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
-
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type pos_purchaseCountOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    items_purchased?: SortOrder
-    sale_total?: SortOrder
-  }
-
-  export type pos_purchaseAvgOrderByAggregateInput = {
-    id?: SortOrder
-    age?: SortOrder
-    sale_total?: SortOrder
-  }
-
-  export type pos_purchaseMaxOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    sale_total?: SortOrder
-  }
-
-  export type pos_purchaseMinOrderByAggregateInput = {
-    id?: SortOrder
-    timestamp?: SortOrder
-    bluetooth_id_hash?: SortOrder
-    age?: SortOrder
-    race?: SortOrder
-    gender?: SortOrder
-    sale_total?: SortOrder
-  }
-
-  export type pos_purchaseSumOrderByAggregateInput = {
-    id?: SortOrder
-    age?: SortOrder
-    sale_total?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
-  export type dooh_detectionCreateNestedManyWithoutCampaignInput = {
-    create?: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput> | dooh_detectionCreateWithoutCampaignInput[] | dooh_detectionUncheckedCreateWithoutCampaignInput[]
-    connectOrCreate?: dooh_detectionCreateOrConnectWithoutCampaignInput | dooh_detectionCreateOrConnectWithoutCampaignInput[]
-    createMany?: dooh_detectionCreateManyCampaignInputEnvelope
-    connect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-  }
-
-  export type dooh_detectionUncheckedCreateNestedManyWithoutCampaignInput = {
-    create?: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput> | dooh_detectionCreateWithoutCampaignInput[] | dooh_detectionUncheckedCreateWithoutCampaignInput[]
-    connectOrCreate?: dooh_detectionCreateOrConnectWithoutCampaignInput | dooh_detectionCreateOrConnectWithoutCampaignInput[]
-    createMany?: dooh_detectionCreateManyCampaignInputEnvelope
-    connect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type dooh_detectionUpdateManyWithoutCampaignNestedInput = {
-    create?: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput> | dooh_detectionCreateWithoutCampaignInput[] | dooh_detectionUncheckedCreateWithoutCampaignInput[]
-    connectOrCreate?: dooh_detectionCreateOrConnectWithoutCampaignInput | dooh_detectionCreateOrConnectWithoutCampaignInput[]
-    upsert?: dooh_detectionUpsertWithWhereUniqueWithoutCampaignInput | dooh_detectionUpsertWithWhereUniqueWithoutCampaignInput[]
-    createMany?: dooh_detectionCreateManyCampaignInputEnvelope
-    set?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    disconnect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    delete?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    connect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    update?: dooh_detectionUpdateWithWhereUniqueWithoutCampaignInput | dooh_detectionUpdateWithWhereUniqueWithoutCampaignInput[]
-    updateMany?: dooh_detectionUpdateManyWithWhereWithoutCampaignInput | dooh_detectionUpdateManyWithWhereWithoutCampaignInput[]
-    deleteMany?: dooh_detectionScalarWhereInput | dooh_detectionScalarWhereInput[]
-  }
-
-  export type dooh_detectionUncheckedUpdateManyWithoutCampaignNestedInput = {
-    create?: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput> | dooh_detectionCreateWithoutCampaignInput[] | dooh_detectionUncheckedCreateWithoutCampaignInput[]
-    connectOrCreate?: dooh_detectionCreateOrConnectWithoutCampaignInput | dooh_detectionCreateOrConnectWithoutCampaignInput[]
-    upsert?: dooh_detectionUpsertWithWhereUniqueWithoutCampaignInput | dooh_detectionUpsertWithWhereUniqueWithoutCampaignInput[]
-    createMany?: dooh_detectionCreateManyCampaignInputEnvelope
-    set?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    disconnect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    delete?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    connect?: dooh_detectionWhereUniqueInput | dooh_detectionWhereUniqueInput[]
-    update?: dooh_detectionUpdateWithWhereUniqueWithoutCampaignInput | dooh_detectionUpdateWithWhereUniqueWithoutCampaignInput[]
-    updateMany?: dooh_detectionUpdateManyWithWhereWithoutCampaignInput | dooh_detectionUpdateManyWithWhereWithoutCampaignInput[]
-    deleteMany?: dooh_detectionScalarWhereInput | dooh_detectionScalarWhereInput[]
-  }
-
-  export type ad_campaignsCreateNestedOneWithoutDetectionsInput = {
-    create?: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
-    connectOrCreate?: ad_campaignsCreateOrConnectWithoutDetectionsInput
-    connect?: ad_campaignsWhereUniqueInput
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type ad_campaignsUpdateOneRequiredWithoutDetectionsNestedInput = {
-    create?: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
-    connectOrCreate?: ad_campaignsCreateOrConnectWithoutDetectionsInput
-    upsert?: ad_campaignsUpsertWithoutDetectionsInput
-    connect?: ad_campaignsWhereUniqueInput
-    update?: XOR<XOR<ad_campaignsUpdateToOneWithWhereWithoutDetectionsInput, ad_campaignsUpdateWithoutDetectionsInput>, ad_campaignsUncheckedUpdateWithoutDetectionsInput>
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5243,6 +5070,31 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5262,78 +5114,18 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -5346,175 +5138,222 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
+  export type campaignsCreateWithoutCampaign_creativeInput = {
+    id?: string
+    name: string
+    start_date?: Date | string | null
+    end_date?: Date | string | null
+    age_groups?: campaignsCreateage_groupsInput | string[]
+    gender?: string | null
   }
 
-  export type dooh_detectionCreateWithoutCampaignInput = {
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
+  export type campaignsUncheckedCreateWithoutCampaign_creativeInput = {
+    id?: string
+    name: string
+    start_date?: Date | string | null
+    end_date?: Date | string | null
+    age_groups?: campaignsCreateage_groupsInput | string[]
+    gender?: string | null
   }
 
-  export type dooh_detectionUncheckedCreateWithoutCampaignInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
+  export type campaignsCreateOrConnectWithoutCampaign_creativeInput = {
+    where: campaignsWhereUniqueInput
+    create: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
   }
 
-  export type dooh_detectionCreateOrConnectWithoutCampaignInput = {
-    where: dooh_detectionWhereUniqueInput
-    create: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput>
+  export type creativesCreateWithoutCampaign_creativeInput = {
+    id?: string
+    name: string
+    created_at?: Date | string | null
   }
 
-  export type dooh_detectionCreateManyCampaignInputEnvelope = {
-    data: dooh_detectionCreateManyCampaignInput | dooh_detectionCreateManyCampaignInput[]
+  export type creativesUncheckedCreateWithoutCampaign_creativeInput = {
+    id?: string
+    name: string
+    created_at?: Date | string | null
+  }
+
+  export type creativesCreateOrConnectWithoutCampaign_creativeInput = {
+    where: creativesWhereUniqueInput
+    create: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
+  }
+
+  export type campaignsUpsertWithoutCampaign_creativeInput = {
+    update: XOR<campaignsUpdateWithoutCampaign_creativeInput, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
+    create: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
+    where?: campaignsWhereInput
+  }
+
+  export type campaignsUpdateToOneWithWhereWithoutCampaign_creativeInput = {
+    where?: campaignsWhereInput
+    data: XOR<campaignsUpdateWithoutCampaign_creativeInput, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
+  }
+
+  export type campaignsUpdateWithoutCampaign_creativeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type campaignsUncheckedUpdateWithoutCampaign_creativeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    age_groups?: campaignsUpdateage_groupsInput | string[]
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type creativesUpsertWithoutCampaign_creativeInput = {
+    update: XOR<creativesUpdateWithoutCampaign_creativeInput, creativesUncheckedUpdateWithoutCampaign_creativeInput>
+    create: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
+    where?: creativesWhereInput
+  }
+
+  export type creativesUpdateToOneWithWhereWithoutCampaign_creativeInput = {
+    where?: creativesWhereInput
+    data: XOR<creativesUpdateWithoutCampaign_creativeInput, creativesUncheckedUpdateWithoutCampaign_creativeInput>
+  }
+
+  export type creativesUpdateWithoutCampaign_creativeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type creativesUncheckedUpdateWithoutCampaign_creativeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type campaign_creativeCreateWithoutCampaignsInput = {
+    creatives: creativesCreateNestedOneWithoutCampaign_creativeInput
+  }
+
+  export type campaign_creativeUncheckedCreateWithoutCampaignsInput = {
+    creative_id: string
+  }
+
+  export type campaign_creativeCreateOrConnectWithoutCampaignsInput = {
+    where: campaign_creativeWhereUniqueInput
+    create: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput>
+  }
+
+  export type campaign_creativeCreateManyCampaignsInputEnvelope = {
+    data: campaign_creativeCreateManyCampaignsInput | campaign_creativeCreateManyCampaignsInput[]
     skipDuplicates?: boolean
   }
 
-  export type dooh_detectionUpsertWithWhereUniqueWithoutCampaignInput = {
-    where: dooh_detectionWhereUniqueInput
-    update: XOR<dooh_detectionUpdateWithoutCampaignInput, dooh_detectionUncheckedUpdateWithoutCampaignInput>
-    create: XOR<dooh_detectionCreateWithoutCampaignInput, dooh_detectionUncheckedCreateWithoutCampaignInput>
+  export type campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput = {
+    where: campaign_creativeWhereUniqueInput
+    update: XOR<campaign_creativeUpdateWithoutCampaignsInput, campaign_creativeUncheckedUpdateWithoutCampaignsInput>
+    create: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput>
   }
 
-  export type dooh_detectionUpdateWithWhereUniqueWithoutCampaignInput = {
-    where: dooh_detectionWhereUniqueInput
-    data: XOR<dooh_detectionUpdateWithoutCampaignInput, dooh_detectionUncheckedUpdateWithoutCampaignInput>
+  export type campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput = {
+    where: campaign_creativeWhereUniqueInput
+    data: XOR<campaign_creativeUpdateWithoutCampaignsInput, campaign_creativeUncheckedUpdateWithoutCampaignsInput>
   }
 
-  export type dooh_detectionUpdateManyWithWhereWithoutCampaignInput = {
-    where: dooh_detectionScalarWhereInput
-    data: XOR<dooh_detectionUpdateManyMutationInput, dooh_detectionUncheckedUpdateManyWithoutCampaignInput>
+  export type campaign_creativeUpdateManyWithWhereWithoutCampaignsInput = {
+    where: campaign_creativeScalarWhereInput
+    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyWithoutCampaignsInput>
   }
 
-  export type dooh_detectionScalarWhereInput = {
-    AND?: dooh_detectionScalarWhereInput | dooh_detectionScalarWhereInput[]
-    OR?: dooh_detectionScalarWhereInput[]
-    NOT?: dooh_detectionScalarWhereInput | dooh_detectionScalarWhereInput[]
-    id?: IntFilter<"dooh_detection"> | number
-    timestamp?: DateTimeFilter<"dooh_detection"> | Date | string
-    bluetooth_id_hash?: StringFilter<"dooh_detection"> | string
-    ad_id?: StringFilter<"dooh_detection"> | string
-    age?: IntFilter<"dooh_detection"> | number
-    race?: StringFilter<"dooh_detection"> | string
-    gender?: StringFilter<"dooh_detection"> | string
+  export type campaign_creativeScalarWhereInput = {
+    AND?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+    OR?: campaign_creativeScalarWhereInput[]
+    NOT?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+    campaign_id?: UuidFilter<"campaign_creative"> | string
+    creative_id?: UuidFilter<"campaign_creative"> | string
   }
 
-  export type ad_campaignsCreateWithoutDetectionsInput = {
-    ad_id: string
-    name: string
-    category: string
+  export type campaign_creativeCreateWithoutCreativesInput = {
+    campaigns: campaignsCreateNestedOneWithoutCampaign_creativeInput
   }
 
-  export type ad_campaignsUncheckedCreateWithoutDetectionsInput = {
-    ad_id: string
-    name: string
-    category: string
+  export type campaign_creativeUncheckedCreateWithoutCreativesInput = {
+    campaign_id: string
   }
 
-  export type ad_campaignsCreateOrConnectWithoutDetectionsInput = {
-    where: ad_campaignsWhereUniqueInput
-    create: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
+  export type campaign_creativeCreateOrConnectWithoutCreativesInput = {
+    where: campaign_creativeWhereUniqueInput
+    create: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput>
   }
 
-  export type ad_campaignsUpsertWithoutDetectionsInput = {
-    update: XOR<ad_campaignsUpdateWithoutDetectionsInput, ad_campaignsUncheckedUpdateWithoutDetectionsInput>
-    create: XOR<ad_campaignsCreateWithoutDetectionsInput, ad_campaignsUncheckedCreateWithoutDetectionsInput>
-    where?: ad_campaignsWhereInput
+  export type campaign_creativeCreateManyCreativesInputEnvelope = {
+    data: campaign_creativeCreateManyCreativesInput | campaign_creativeCreateManyCreativesInput[]
+    skipDuplicates?: boolean
   }
 
-  export type ad_campaignsUpdateToOneWithWhereWithoutDetectionsInput = {
-    where?: ad_campaignsWhereInput
-    data: XOR<ad_campaignsUpdateWithoutDetectionsInput, ad_campaignsUncheckedUpdateWithoutDetectionsInput>
+  export type campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput = {
+    where: campaign_creativeWhereUniqueInput
+    update: XOR<campaign_creativeUpdateWithoutCreativesInput, campaign_creativeUncheckedUpdateWithoutCreativesInput>
+    create: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput>
   }
 
-  export type ad_campaignsUpdateWithoutDetectionsInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+  export type campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput = {
+    where: campaign_creativeWhereUniqueInput
+    data: XOR<campaign_creativeUpdateWithoutCreativesInput, campaign_creativeUncheckedUpdateWithoutCreativesInput>
   }
 
-  export type ad_campaignsUncheckedUpdateWithoutDetectionsInput = {
-    ad_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    category?: StringFieldUpdateOperationsInput | string
+  export type campaign_creativeUpdateManyWithWhereWithoutCreativesInput = {
+    where: campaign_creativeScalarWhereInput
+    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyWithoutCreativesInput>
   }
 
-  export type dooh_detectionCreateManyCampaignInput = {
-    id?: number
-    timestamp: Date | string
-    bluetooth_id_hash: string
-    age: number
-    race: string
-    gender: string
+  export type campaign_creativeCreateManyCampaignsInput = {
+    creative_id: string
   }
 
-  export type dooh_detectionUpdateWithoutCampaignInput = {
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type campaign_creativeUpdateWithoutCampaignsInput = {
+    creatives?: creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput
   }
 
-  export type dooh_detectionUncheckedUpdateWithoutCampaignInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type campaign_creativeUncheckedUpdateWithoutCampaignsInput = {
+    creative_id?: StringFieldUpdateOperationsInput | string
   }
 
-  export type dooh_detectionUncheckedUpdateManyWithoutCampaignInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
-    bluetooth_id_hash?: StringFieldUpdateOperationsInput | string
-    age?: IntFieldUpdateOperationsInput | number
-    race?: StringFieldUpdateOperationsInput | string
-    gender?: StringFieldUpdateOperationsInput | string
+  export type campaign_creativeUncheckedUpdateManyWithoutCampaignsInput = {
+    creative_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type campaign_creativeCreateManyCreativesInput = {
+    campaign_id: string
+  }
+
+  export type campaign_creativeUpdateWithoutCreativesInput = {
+    campaigns?: campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput
+  }
+
+  export type campaign_creativeUncheckedUpdateWithoutCreativesInput = {
+    campaign_id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type campaign_creativeUncheckedUpdateManyWithoutCreativesInput = {
+    campaign_id?: StringFieldUpdateOperationsInput | string
   }
 
 

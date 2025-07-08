@@ -120,31 +120,24 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Ad_campaignsScalarFieldEnum = {
-  ad_id: 'ad_id',
-  name: 'name',
-  category: 'category'
+exports.Prisma.Campaign_creativeScalarFieldEnum = {
+  campaign_id: 'campaign_id',
+  creative_id: 'creative_id'
 };
 
-exports.Prisma.Dooh_detectionScalarFieldEnum = {
+exports.Prisma.CampaignsScalarFieldEnum = {
   id: 'id',
-  timestamp: 'timestamp',
-  bluetooth_id_hash: 'bluetooth_id_hash',
-  ad_id: 'ad_id',
-  age: 'age',
-  race: 'race',
+  name: 'name',
+  start_date: 'start_date',
+  end_date: 'end_date',
+  age_groups: 'age_groups',
   gender: 'gender'
 };
 
-exports.Prisma.Pos_purchaseScalarFieldEnum = {
+exports.Prisma.CreativesScalarFieldEnum = {
   id: 'id',
-  timestamp: 'timestamp',
-  bluetooth_id_hash: 'bluetooth_id_hash',
-  age: 'age',
-  race: 'race',
-  gender: 'gender',
-  items_purchased: 'items_purchased',
-  sale_total: 'sale_total'
+  name: 'name',
+  created_at: 'created_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -152,20 +145,9 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull
-};
-
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
-};
-
-exports.Prisma.JsonNullValueFilter = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull,
-  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -175,9 +157,9 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  ad_campaigns: 'ad_campaigns',
-  dooh_detection: 'dooh_detection',
-  pos_purchase: 'pos_purchase'
+  campaign_creative: 'campaign_creative',
+  campaigns: 'campaigns',
+  creatives: 'creatives'
 };
 
 /**
