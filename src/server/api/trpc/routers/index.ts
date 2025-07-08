@@ -8,4 +8,5 @@ export const appRouter = router({
   audience: audienceRouter,
   customers: customerRouter,
   utils: utilsRouter,
+  upload: uploadRouter,
 });

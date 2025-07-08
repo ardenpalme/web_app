@@ -27,6 +27,7 @@ import {
   AlertCircle,
   CheckCircle,
   Clock,
+  ArrowUpToLine,
 } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
@@ -54,7 +55,8 @@ interface UploadedFile {
   file: File
   name: string
   notes: string
-  status: "processing" | "success" | "error"
+  extension: string
+  status: "success" | "error" 
   preview?: string
 }
 
@@ -101,6 +103,7 @@ export default function DOOHCMSInterface() {
     }
   }
 
+
   const handleFiles = (files: File[]) => {
     const errors: string[] = []
     const validFiles: UploadedFile[] = []
@@ -119,12 +122,14 @@ export default function DOOHCMSInterface() {
         return
       }
 
+      const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
       const newFile: UploadedFile = {
         id: Math.random().toString(36).substr(2, 9),
         file,
         name: file.name.replace(/\.[^/.]+$/, ""),
+        extension: ext,
         notes: "",
-        status: "processing",
+        status: "success",
       }
 
       // Create preview URL
@@ -137,18 +142,6 @@ export default function DOOHCMSInterface() {
 
     setValidationErrors(errors)
     setUploadedFiles((prev) => [...prev, ...validFiles])
-
-    // Simulate processing
-    validFiles.forEach((file) => {
-      setTimeout(
-        () => {
-          setUploadedFiles((prev) =>
-            prev.map((f) => (f.id === file.id ? { ...f, status: Math.random() > 0.1 ? "success" : "error" } : f)),
-          )
-        },
-        2000 + Math.random() * 3000,
-      )
-    })
   }
 
   const removeFile = (id: string) => {
@@ -175,8 +168,6 @@ export default function DOOHCMSInterface() {
 
   const getStatusIcon = (status: UploadedFile["status"]) => {
     switch (status) {
-      case "processing":
-        return <Clock className="w-4 h-4" />
       case "success":
         return <CheckCircle className="w-4 h-4" />
       case "error":
@@ -186,8 +177,6 @@ export default function DOOHCMSInterface() {
 
   const getStatusColor = (status: UploadedFile["status"]) => {
     switch (status) {
-      case "processing":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200"
       case "success":
         return "bg-green-100 text-green-800 border-green-200"
       case "error":
@@ -197,6 +186,43 @@ export default function DOOHCMSInterface() {
 
   const successfulUploads = uploadedFiles.filter((f) => f.status === "success").length
 
+  const uploadFileToWorker = async (file: File, fname: string) => {
+    const form = new FormData();
+    form.append("file", file);
+
+    const res = await fetch(`https://r2-worker.ardenpalme.workers.dev/api/files/${fname}`, {
+      method: "PUT",
+      headers: {
+        "x-custom-psk": "e3a1c6b4d9f27a815b3cf1d6982ab6ed973420e8795a6f8cda2f5f4135c4a0ee",
+      },
+      body: form,
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Upload failed: ${res.status} - ${text}`);
+    }
+  };
+
+  //const uploadFileMutation = trpc.upload.uploadFile.useMutation();
+  const uploadCampaign = async () => {
+    const camp_data = {
+      name: campaignName,
+      start_date: startDate,
+      end_date: endDate,
+      target_age_ranges: selectedAgeRanges,
+      target_gender: gender,
+    };
+
+    console.log(camp_data);
+
+    for (const file of uploadedFiles.filter((f) => f.status === "success")) {
+      const fname = `${file.name}.${file.extension}`;
+      const status = await uploadFileToWorker(file.file, fname);
+      console.log(status);
+    }
+  };
+
   return (
     <TooltipProvider>
       <div className="max-w-6xl mx-auto p-6 space-y-8">
@@ -204,7 +230,6 @@ export default function DOOHCMSInterface() {
           <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
           <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
         </div>
-        <TestTRPC />
 
 
         {/* Campaign Details */}
@@ -334,7 +359,7 @@ export default function DOOHCMSInterface() {
                           )}
                           <Badge variant="outline" className={cn("text-xs", getStatusColor(file.status))}>
                             {getStatusIcon(file.status)}
-                            <span className="ml-1 capitalize">{file.status}</span>
+                            <span className="ml-1 text-sm">{file.status}</span>
                           </Badge>
                         </div>
                         <Button variant="ghost" size="sm" onClick={() => removeFile(file.id)} className="h-6 w-6 p-0">
@@ -487,8 +512,8 @@ export default function DOOHCMSInterface() {
             <div className="pt-4 border-t">
               <Button
                 size="lg"
-                className="w-full md:w-auto"
-                disabled={!campaignName || !startDate || !endDate || successfulUploads === 0}
+                className="w-full md:w-auto cursor-pointer"
+                onClick={uploadCampaign}
               >
                 Submit Campaign
               </Button>

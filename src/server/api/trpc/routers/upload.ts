@@ -1,27 +1,40 @@
 import { publicProcedure, router } from '../../trpc';
 import { z } from 'zod';
-import { PutObjectCommand } from "@aws-sdk/client-s3"
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner"
-import { r2 } from "@/lib/r2"
+
+const WORKER_UPLOAD_URL = "https://r2-worker.ardenpalme.workers.dev/api/files";
+const PRESHARED_AUTH_HEADER_VALUE = "e3a1c6b4d9f27a815b3cf1d6982ab6ed973420e8795a6f8cda2f5f4135c4a0ee";//process.env.NEXT_PUBLIC_PRESHARED_AUTH_HEADER_VALUE!;
 
 export const uploadRouter = router({
-  getPresignedUrl: publicProcedure
-    .input(z.object({ filename: z.string(), contentType: z.string() }))
-    .query(async ({ input }) => {
-      const command = new PutObjectCommand({
-        Bucket: "your-bucket-name",
-        Key: input.filename,
-        ContentType: input.contentType,
+  uploadFile: publicProcedure
+    .input(
+      z.object({
+        file: z.instanceof(File),
+        fname: z.string(),
       })
+    )
+    .mutation(async ({ input }) => {
+      const file = input.file;
+      const fname = input.fname;
+      const form = new FormData();
+      form.append("file", file, fname);
 
-      const signedUrl = await getSignedUrl(r2, command, { expiresIn: 300 })
+      const res = await fetch(`${WORKER_UPLOAD_URL}/${encodeURIComponent(fname)}`, {
+        method: "PUT",
+        headers: {
+          "x-custom-psk": PRESHARED_AUTH_HEADER_VALUE,
+        },
+        body: form,
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(`Upload failed: ${res.status} - ${errorText}`);
+      }
 
       return {
-        url: signedUrl,
-        r2Url: `https://f7713b8ef4a9e9eb83b0026ada901aef.r2.cloudflarestorage.com/your-bucket-name/${input.filename}`,
-      }
-    }),  
+        success: true,
+        filename: fname,
+        //r2Url: `https://<your-cdn-domain>/${file.name}`, // optional
+      };
+    }),
 });
-
-
-
