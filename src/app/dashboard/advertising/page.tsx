@@ -231,12 +231,7 @@ export default function DOOHCMSInterface() {
 
   return (
     <TooltipProvider>
-      <div className="max-w-6xl mx-auto p-6 space-y-8">
-        <div className="space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
-          <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
-        </div>
-
+      <div className="px-4 py-2 space-y-8 justify-items-start">
 
         {/* Campaign Details */}
         <Card>
