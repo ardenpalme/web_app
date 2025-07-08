@@ -33,7 +33,6 @@ export const utilsRouter = router({
     }
 
     //console.log(buckets);
-
     return buckets;
   }),
 });

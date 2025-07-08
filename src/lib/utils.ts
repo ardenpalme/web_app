@@ -20,3 +20,7 @@ export function formatDateTimeRange(
     end: endIso,
   };
 }
+
+export async function getSystemConfig() {
+  
+}
