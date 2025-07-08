@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { trpc } from '@/lib/trpc'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -18,4 +19,8 @@ export function formatDateTimeRange(
     start: startIso,
     end: endIso,
   };
+}
+
+export async function getSystemConfig() {
+  
 }

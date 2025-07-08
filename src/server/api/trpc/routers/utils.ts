@@ -5,17 +5,36 @@ import { PrismaClient } from '@generated/prisma'
 const prisma = new PrismaClient()
 
 export const utilsRouter = router({
-  DateTimeRange: publicProcedure.query(async () => {
-    const doohStart = await prisma.dooh_detection.findFirst({ orderBy: { timestamp: 'asc' }, select: { timestamp: true } });
-    const doohEnd = await prisma.dooh_detection.findFirst({ orderBy: { timestamp: 'desc' }, select: { timestamp: true } });
+  getAgeBuckets: publicProcedure.query(async () => {
+    const config = await prisma.system_config.findMany({
+      where: {
+        parameter: { in: ['age_bucket_start', 'age_bucket_range'] },
+      },
+    });
 
-    const posStart = await prisma.pos_purchase.findFirst({ orderBy: { timestamp: 'asc' }, select: { timestamp: true } });
-    const posEnd = await prisma.pos_purchase.findFirst({ orderBy: { timestamp: 'desc' }, select: { timestamp: true } });
+    const configMap = Object.fromEntries(
+      config.map((c) => [c.parameter, parseInt(c.value, 10)])
+    );
 
-    return {
-      dooh: [doohStart?.timestamp || null, doohEnd?.timestamp || null],
-      pos: [posStart?.timestamp || null, posEnd?.timestamp || null]
-    };
+    const start = configMap.age_bucket_start;
+    const range = configMap.age_bucket_range;
+
+    if (isNaN(start) || isNaN(range)) {
+      throw new Error("Invalid or missing config");
+    }
+
+    const maxAge = 70;
+    const buckets: string[] = [];
+
+    for (let age = start; age <= maxAge; age += range) {
+      const from = age;
+      const to = Math.min(age + range - 1, maxAge);
+      buckets.push(to === maxAge ? `${from}+` : `${from}–${to}`);
+    }
+
+    console.log(buckets);
+
+    return buckets;
   }),
 });
 

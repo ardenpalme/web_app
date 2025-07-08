@@ -60,7 +60,7 @@ interface UploadedFile {
   preview?: string
 }
 
-const ageRanges = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+
 
 export default function DOOHCMSInterface() {
   const [campaignName, setCampaignName] = useState("")
@@ -102,7 +102,6 @@ export default function DOOHCMSInterface() {
       handleFiles(files)
     }
   }
-
 
   const handleFiles = (files: File[]) => {
     const errors: string[] = []
@@ -227,6 +226,8 @@ export default function DOOHCMSInterface() {
       creative_ids,
     });
   };
+
+  const { data: ageRanges, isLoading: is_ageRanges_Loading } = trpc.utils.getAgeBuckets.useQuery();
 
   return (
     <TooltipProvider>
@@ -466,7 +467,7 @@ export default function DOOHCMSInterface() {
               <div className="space-y-2">
                 <Label>Age Ranges</Label>
                 <div className="grid grid-cols-2 gap-2">
-                  {ageRanges.map((range) => (
+                  {!is_ageRanges_Loading && ageRanges?.map((range) => (
                     <div key={range} className="flex items-center space-x-2">
                       <Checkbox
                         id={range}
