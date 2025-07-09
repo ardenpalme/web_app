@@ -195,17 +195,23 @@ export default function DOOHCMSInterface() {
     { id: selectedCampaignId },
     {
       enabled: !!selectedCampaignId && selectedCampaignId !== "new-campaign",
-      onSuccess: (data) => {
-        if (data) {
-          setCampaignName(data.name)
-          setStartDate(data.startDate)
-          setEndDate(data.endDate)
-          setCampaignNotes(data.notes || "")
-          setUploadedFiles(data.creatives)
-        }
-      },
     },
   )
+
+  // Effect to populate form when campaign data is fetched
+  useEffect(() => {
+    if (campaignData) {
+      setCampaignName(campaignData.name)
+      setStartDate(new Date(campaignData.startDate))
+      setEndDate(new Date(campaignData.endDate))
+      setCampaignNotes(campaignData.notes || "")
+      const creativesFromDb: ClientCreative[] = campaignData.creatives.map((creative) => ({
+        ...creative,
+        uploadStatus: "success",
+      }))
+      setUploadedFiles(creativesFromDb)
+    }
+  }, [campaignData])
 
   const { mutate: upsertCampaign, isPending: isUpserting } = trpc.campaign.upsert.useMutation({
     onSuccess: () => {
@@ -261,6 +267,7 @@ export default function DOOHCMSInterface() {
     setCampaignNotes("")
   }
 
+  // Effect to reset form for a new campaign
   useEffect(() => {
     if (selectedCampaignId === "new-campaign") {
       resetForm()
@@ -564,9 +571,9 @@ export default function DOOHCMSInterface() {
                       <Card key={file.id} className="p-4 shadow-sm">
                         <div className="flex flex-col md:flex-row items-start gap-4">
                           <div className="flex-shrink-0 w-full md:w-40 aspect-video bg-muted rounded-md overflow-hidden flex items-center justify-center">
-                            {file.localPreviewUrl ? (
+                            {file.localPreviewUrl || file.fileUrl ? (
                               <img
-                                src={file.localPreviewUrl || "/placeholder.svg"}
+                                src={file.localPreviewUrl || `/api/r2/${file.fileUrl}`}
                                 alt={file.name}
                                 className="w-full h-full object-cover"
                               />

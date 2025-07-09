@@ -44,7 +44,6 @@ export const PREDEFINED_TAGS = [
   "Time:LateNight",
 ]
 
-// A custom CommandInput without the search icon
 const CustomCommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
@@ -95,52 +94,73 @@ export function TagInput({
   const existingKeys = React.useMemo(() => tags.map((tag) => tag.split(":")[0]), [tags])
 
   React.useEffect(() => {
-    if (!inputValue) {
+    const activeSegment = inputValue.split(",").pop()?.trim() ?? ""
+    if (!activeSegment) {
       setSuggestion("")
       return
     }
 
+    const [currentKey, currentValue] = activeSegment.split(/:(.*)/s)
     let newSuggestion = ""
+
+    const keyAlreadyUsed = existingKeys.includes(currentKey)
+    if (keyAlreadyUsed && structuredTags[currentKey] !== null) {
+      setSuggestion("")
+      return
+    }
+
     const match = autocompleteOptions.find(
-      (tag) => tag.toLowerCase().startsWith(inputValue.toLowerCase()) && !tags.includes(tag),
+      (tag) => tag.toLowerCase().startsWith(activeSegment.toLowerCase()) && !tags.includes(tag),
     )
 
     if (match) {
-      const [key] = match.split(":")
-      if (!existingKeys.includes(key) || tags.includes(match)) {
-        newSuggestion = match.substring(inputValue.length)
-      } else if (existingKeys.includes(key) && !tags.some((t) => t.startsWith(key + ":"))) {
-        newSuggestion = match.substring(inputValue.length)
+      const matchKey = match.split(":")[0]
+      if (!existingKeys.includes(matchKey) || matchKey === currentKey) {
+        newSuggestion = match.substring(activeSegment.length)
       }
     }
     setSuggestion(newSuggestion)
-  }, [inputValue, autocompleteOptions, tags, existingKeys])
-
-  const addTag = (tag: string) => {
-    const [key] = tag.split(":")
-    const keyAlreadyExists = existingKeys.includes(key)
-    const isStandalone = structuredTags[key] === null
-
-    if (tag && autocompleteOptions.includes(tag) && !tags.includes(tag)) {
-      if (isStandalone && !keyAlreadyExists) {
-        onChange([...tags, tag])
-        setInputValue("")
-      } else if (!isStandalone && !keyAlreadyExists) {
-        onChange([...tags, tag])
-        setInputValue("")
-      }
-    }
-  }
+  }, [inputValue, autocompleteOptions, tags, existingKeys, structuredTags])
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const activeSegment = inputValue.split(",").pop()?.trim() ?? ""
+
     if (e.key === "Tab" && suggestion) {
       e.preventDefault()
-      setInputValue(inputValue + suggestion)
+      const parts = inputValue.split(",")
+      parts[parts.length - 1] = activeSegment + suggestion
+      setInputValue(parts.join(","))
     }
 
     if (e.key === "Enter") {
       e.preventDefault()
-      addTag(inputValue)
+      const newEntries = inputValue
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean)
+      if (newEntries.length === 0) return
+
+      const currentTags = new Set(tags)
+      const currentKeys = new Set(tags.map((t) => t.split(":")[0]))
+      const tagsToAdd: string[] = []
+
+      for (const entry of newEntries) {
+        const entryKey = entry.split(":")[0]
+        const isValidOption = autocompleteOptions.includes(entry)
+        const isNewTag = !currentTags.has(entry)
+        const isKeyAvailable = !currentKeys.has(entryKey)
+
+        if (isValidOption && isNewTag && isKeyAvailable) {
+          tagsToAdd.push(entry)
+          currentTags.add(entry)
+          currentKeys.add(entryKey)
+        }
+      }
+
+      if (tagsToAdd.length > 0) {
+        onChange([...tags, ...tagsToAdd])
+      }
+      setInputValue("")
     }
 
     if (e.key === "Backspace" && !inputValue && tags.length > 0) {
@@ -149,17 +169,17 @@ export function TagInput({
       onChange(newTags)
     }
 
-    if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-      const [currentKey, currentValue] = inputValue.split(/:(.*)/s)
-      const values = structuredTags[currentKey]
+    const [currentKey, currentValue] = activeSegment.split(/:(.*)/s)
+    const values = structuredTags[currentKey]
+    if (Array.isArray(values) && values.length > 0 && (e.key === "ArrowUp" || e.key === "ArrowDown")) {
+      e.preventDefault()
+      const currentIndex = currentValue ? values.indexOf(currentValue) : -1
+      const direction = e.key === "ArrowDown" ? 1 : -1
+      const nextIndex = (currentIndex + direction + values.length) % values.length
 
-      if (Array.isArray(values) && values.length > 0) {
-        e.preventDefault()
-        const currentIndex = currentValue ? values.indexOf(currentValue) : -1
-        const direction = e.key === "ArrowDown" ? 1 : -1
-        const nextIndex = (currentIndex + direction + values.length) % values.length
-        setInputValue(`${currentKey}:${values[nextIndex]}`)
-      }
+      const parts = inputValue.split(",")
+      parts[parts.length - 1] = `${currentKey}:${values[nextIndex]}`
+      setInputValue(parts.join(","))
     }
   }
 
@@ -196,9 +216,9 @@ export function TagInput({
             <div className="text-sm p-1">
               <p className="font-semibold">How to add tags:</p>
               <ul className="list-disc list-inside mt-1 space-y-1">
-                <li>Start typing and use `Tab` to autocomplete.</li>
-                <li>For categories like 'Age', type 'Age:' then use `↑`/`↓` keys to cycle values.</li>
-                <li>Press `Enter` to confirm a valid tag.</li>
+                <li>Type to get suggestions, use `Tab` to complete.</li>
+                <li>Enter multiple tags separated by commas.</li>
+                <li>Press `Enter` to add all valid tags.</li>
               </ul>
             </div>
           </TooltipContent>
