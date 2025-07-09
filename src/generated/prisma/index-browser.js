@@ -120,30 +120,35 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.Campaign_creativeScalarFieldEnum = {
-  campaign_id: 'campaign_id',
-  creative_id: 'creative_id'
-};
-
-exports.Prisma.CampaignsScalarFieldEnum = {
+exports.Prisma.CampaignScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  start_date: 'start_date',
-  end_date: 'end_date',
-  age_groups: 'age_groups',
-  gender: 'gender'
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  notes: 'notes',
+  submittedBy: 'submittedBy',
+  submissionDate: 'submissionDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
-exports.Prisma.CreativesScalarFieldEnum = {
+exports.Prisma.CreativeScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  created_at: 'created_at'
-};
-
-exports.Prisma.System_configScalarFieldEnum = {
-  id: 'id',
-  parameter: 'parameter',
-  value: 'value'
+  notes: 'notes',
+  tags: 'tags',
+  approvalStatus: 'approvalStatus',
+  proofOfPlay: 'proofOfPlay',
+  fileUrl: 'fileUrl',
+  fileType: 'fileType',
+  fileSize: 'fileSize',
+  width: 'width',
+  height: 'height',
+  duration: 'duration',
+  campaignId: 'campaignId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -160,13 +165,22 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.CampaignStatus = exports.$Enums.CampaignStatus = {
+  draft: 'draft',
+  WAITING_FOR_APPROVAL: 'WAITING_FOR_APPROVAL',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
 
+exports.CreativeApprovalStatus = exports.$Enums.CreativeApprovalStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
 
 exports.Prisma.ModelName = {
-  campaign_creative: 'campaign_creative',
-  campaigns: 'campaigns',
-  creatives: 'creatives',
-  system_config: 'system_config'
+  Campaign: 'Campaign',
+  Creative: 'Creative'
 };
 
 /**

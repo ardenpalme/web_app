@@ -4,57 +4,120 @@ import { PrismaClient } from '@generated/prisma'
 
 const prisma = new PrismaClient()
 
+const creativeInputSchema = z.object({
+  id: z.string().cuid().optional(),
+  name: z.string().min(1),
+  notes: z.string().nullish(),
+  tags: z.array(z.string()),
+  proofOfPlay: z.boolean(),
+  fileUrl: z.string().min(1, "A valid file key is required."),
+  fileType: z.string(),
+  fileSize: z.number().int(),
+  width: z.number().int().nullish(),
+  height: z.number().int().nullish(),
+  duration: z.number().nullish(),
+})
+
+const campaignUpsertSchema = z.object({
+  id: z.string().cuid().optional(),
+  name: z.string().min(1, "Campaign name is required."),
+  startDate: z.string(),
+  endDate: z.string(),
+  notes: z.string().nullish(),
+  creatives: z.array(creativeInputSchema),
+})
+
 export const campaignRouter = router({
-  upload: publicProcedure
-    .input(
-      z.object({
-        name: z.string(),
-        start_date: z.string().datetime(),
-        end_date: z.string().datetime(),
-        target_age_groups: z.array(z.string()),
-        target_gender: z.string(),
-        creative_ids: z.array(z.string().uuid()),
-      })
-    )
-    .mutation(async ({ input }) => {
-      return await prisma.campaigns.create({
-        data: {
-          name: input.name,
-          start_date: new Date(input.start_date),
-          end_date: new Date(input.end_date),
-          age_groups: input.target_age_groups,
-          gender: input.target_gender,
-          campaign_creative: {
-            create: input.creative_ids.map((creativeId) => ({
-              creatives: {
-                connect: { id: creativeId },
-              },
-            })),
-          },
-        },
-        include: {
-          campaign_creative: {
-            include: {
-              creatives: true, 
-            },
-          },
-        },
-      });
-    }),
+  listForSelect: publicProcedure.query(async () => {
+    return await prisma.campaign.findMany({
+      select: { id: true, name: true },
+      orderBy: { updatedAt: 'desc' },
+    })
+  }),
+
+  listWithStatus: publicProcedure.query(async () => {
+    return await prisma.campaign.findMany({
+      select: {
+        id: true,
+        name: true,
+        submittedBy: true,
+        submissionDate: true,
+        status: true,
+        _count: { select: { creatives: true } },
+      },
+      orderBy: { updatedAt: 'desc' },
+    })
+  }),
+
+  getById: publicProcedure.input(z.object({ id: z.string() })).query(async ({ input }) => {
+    return await prisma.campaign.findUnique({
+      where: { id: input.id },
+      include: { creatives: true },
+    })
+  }),
+
+  upsert: publicProcedure.input(campaignUpsertSchema).mutation(async ({ input }) => {
+    const { id, creatives, ...campaignData } = input
+    campaignData.startDate = new Date(campaignData.startDate)
+    campaignData.endDate = new Date(campaignData.endDate)
+    const campaign = await prisma.campaign.upsert({
+      where: { id: id ?? '' },
+      create: {
+        ...campaignData,
+        creatives: { create: creatives },
+      },
+      update: {
+        ...campaignData,
+        creatives: { deleteMany: {}, create: creatives },
+      },
+    })
+    return { success: true, campaignId: campaign.id }
+  }),
 });
 
 export const creativeRouter = router({
-  upload: publicProcedure
-    .input(
-      z.object({
-        name: z.string(),
-      })
-    )
-    .mutation(async ({ input }) => {
-      return await prisma.creatives.create({
-        data: {
-          name: input.name,
+  listAll: publicProcedure.query(async () => {
+    return await prisma.creative.findMany({
+      select: {
+        id: true,
+        name: true,
+        approvalStatus: true,
+        fileUrl: true,
+        campaign: {
+          select: {
+            id: true,
+            name: true,
+            status: true,
+          },
         },
-      });
-    }),
+      },
+      orderBy: { createdAt: 'desc' },
+    })
+  }),
+
+  getById: publicProcedure.input(z.object({ id: z.string() })).query(async ({ input }) => {
+    return await prisma.creative.findUnique({
+      where: { id: input.id },
+      include: {
+        campaign: {
+          select: {
+            id: true,
+            name: true,
+            status: true,
+          },
+        },
+      },
+    })
+  }),
+
+  upsert: publicProcedure.input(creativeInputSchema).mutation(async ({ input }) => {
+    const { id, ...data } = input
+    const creative = await prisma.creative.upsert({
+      where: { id: id ?? '' },
+      create: data,
+      update: data,
+    })
+    return { success: true, creativeId: creative.id }
+  }),
 });
+

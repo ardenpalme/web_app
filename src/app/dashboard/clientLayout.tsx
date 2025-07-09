@@ -40,16 +40,6 @@ const defaultEnd = "2023-10-22T19:07:23.000Z"
 // Navigation items under Analytics
 const analyticsItems = [
   {
-    title: "Customers",
-    url: "/dashboard/customers",
-    icon: Users,
-  },
-  {
-    title: "Audience",
-    url: "/dashboard/audience",
-    icon: Target,
-  },
-  {
     title: "Advertising",
     url: "/dashboard/advertising",
     icon: Megaphone,

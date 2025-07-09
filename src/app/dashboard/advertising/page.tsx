@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState, useRef, useCallback } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,511 +15,741 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Calendar } from "@/components/ui/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
-  UploadCloud,
-  X,
+  Plus,
+  Trash2,
   Eye,
-  Info,
   CalendarIcon,
   FileVideo,
-  FileImage,
   AlertCircle,
   CheckCircle,
   Clock,
-  ArrowUpToLine,
+  FileEdit,
+  XCircle,
+  Loader2,
+  UploadCloud,
+  X,
 } from "lucide-react"
 import { format } from "date-fns"
-import { cn } from "@/lib/utils"
-import { trpc } from '@/lib/trpc'
+import { cn, formatDuration, formatBytes } from "@/lib/utils"
+import type { CampaignStatus as CampaignStatusEnum, Creative as PrismaCreative } from "@prisma/client"
+import { trpc } from "@/lib/trpc"
+import { uploadFileToWorker, downloadFileFromWorker } from "@/lib/r2-worker"
+import cuid from "cuid"
 
-export function TestTRPC() {
-  const { data, isLoading } = trpc.audience.ViewsByAge.useQuery({
-    start:"2023-10-15T13:00:00.000Z", 
-    end:"2025-10-23T13:00:00.000Z"});
+// --- Helper: Preview Dialog ---
+const PreviewDialogContent = ({ creative }: { creative: ClientCreative }) => {
+  const [objectUrl, setObjectUrl] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>No Data</div>;
+  useEffect(() => {
+    if (!creative.fileUrl) return
+
+    setIsLoading(true)
+    setError(null)
+
+    downloadFileFromWorker(creative.fileUrl)
+      .then((blob) => {
+        const url = URL.createObjectURL(blob)
+        setObjectUrl(url)
+      })
+      .catch(() => setError("Failed to load preview."))
+      .finally(() => setIsLoading(false))
+
+    return () => {
+      if (objectUrl) {
+        URL.revokeObjectURL(objectUrl)
+      }
+    }
+  }, [creative.fileUrl])
+
   return (
-    <ul>
-      {data.map((row, i) => (
-        <li key={i}>
-          {row.ageRange} :: {row._count}
-        </li>
-      ))}
-    </ul>);
+    <DialogContent className="max-w-4xl">
+      <DialogHeader>
+        <DialogTitle>{creative.name}</DialogTitle>
+      </DialogHeader>
+      <div className="aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center">
+        {isLoading && <Loader2 className="h-8 w-8 animate-spin text-white" />}
+        {error && <p className="text-red-500">{error}</p>}
+        {objectUrl &&
+          (creative.fileType.startsWith("video/") ? (
+            <video controls autoPlay className="w-full h-full" src={objectUrl} />
+          ) : (
+            <img src={objectUrl || "/placeholder.svg"} alt={creative.name} className="w-full h-full object-contain" />
+          ))}
+      </div>
+    </DialogContent>
+  )
 }
 
-interface UploadedFile {
-  id: string
-  file: File
-  name: string
-  notes: string
-  extension: string
-  status: "success" | "error" 
-  preview?: string
+// --- Helper Components ---
+const CampaignStatusBadge = ({ status }: { status: CampaignStatusEnum | null }) => {
+  if (!status) return null
+  const statusConfig = {
+    draft: {
+      label: "Draft",
+      icon: <FileEdit className="h-3 w-3" />,
+      className: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+    },
+    WAITING_FOR_APPROVAL: {
+      label: "Waiting for Approval",
+      icon: <Clock className="h-3 w-3" />,
+      className:
+        "bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:border-yellow-800",
+    },
+    APPROVED: {
+      label: "Approved",
+      icon: <CheckCircle className="h-3 w-3" />,
+      className:
+        "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/50 dark:text-green-300 dark:border-green-800",
+    },
+    REJECTED: {
+      label: "Rejected",
+      icon: <XCircle className="h-3 w-3" />,
+      className: "bg-red-100 text-red-800 border-red-200 dark:bg-red-900/50 dark:text-red-300 dark:border-red-800",
+    },
+  }
+  const config = statusConfig[status]
+  return (
+    <Badge
+      variant="outline"
+      className={cn("flex items-center gap-1.5 text-xs font-medium px-2.5 py-1", config.className)}
+    >
+      {config.icon}
+      <span>{config.label}</span>
+    </Badge>
+  )
 }
 
+const FormSkeleton = () => (
+  <div className="space-y-8">
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-6 w-48" />
+        <Skeleton className="h-4 w-72" />
+      </CardHeader>
+      <CardContent className="space-y-6 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-24" />
+            <Skeleton className="h-10 w-full" />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-6 w-48" />
+        <Skeleton className="h-4 w-72" />
+      </CardHeader>
+      <CardContent className="p-6">
+        <div className="text-center text-muted-foreground py-12">
+          <Loader2 className="mx-auto h-8 w-8 animate-spin" />
+          <p className="mt-2">Loading creative assets...</p>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+)
 
+// --- Main Component ---
+
+type ClientCreative = Omit<PrismaCreative, "campaignId"> & {
+  uploadStatus?: "uploading" | "success" | "error"
+  errorMessage?: string
+  file?: File // Temporary holder for the file object during upload
+  localPreviewUrl?: string // For instant preview before upload completes
+}
 
 export default function DOOHCMSInterface() {
+  const [selectedCampaignId, setSelectedCampaignId] = useState("")
   const [campaignName, setCampaignName] = useState("")
   const [startDate, setStartDate] = useState<Date>()
   const [endDate, setEndDate] = useState<Date>()
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
-  const [isDragOver, setIsDragOver] = useState(false)
-  const [gender, setGender] = useState("any")
-  const [selectedAgeRanges, setSelectedAgeRanges] = useState<string[]>([])
-  const [validationErrors, setValidationErrors] = useState<string[]>([])
-
+  const [uploadedFiles, setUploadedFiles] = useState<ClientCreative[]>([])
+  const [campaignNotes, setCampaignNotes] = useState("")
+  const [isDragging, setIsDragging] = useState(false)
+  const [creativeTagInputs, setCreativeTagInputs] = useState<Record<string, string>>({})
 
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const handleClickUpload = () => {
+  const uploadControllers = useRef<Map<string, AbortController>>(new Map())
+
+  // --- tRPC API Calls ---
+  const { data: campaignsForSelect, isLoading: isLoadingCampaigns } = trpc.campaign.listForSelect.useQuery()
+
+  const {
+    data: campaignData,
+    isLoading: isCampaignLoading,
+    isError: isCampaignError,
+  } = trpc.campaign.getById.useQuery(
+    { id: selectedCampaignId },
+    {
+      enabled: !!selectedCampaignId && selectedCampaignId !== "new-campaign",
+      onSuccess: (data) => {
+        if (data) {
+          setCampaignName(data.name)
+          setStartDate(data.startDate)
+          setEndDate(data.endDate)
+          setCampaignNotes(data.notes || "")
+          setUploadedFiles(data.creatives)
+        }
+      },
+    },
+  )
+
+  const { mutate: upsertCampaign, isPending: isUpserting } = trpc.campaign.upsert.useMutation({
+    onSuccess: () => {
+      console.log("Campaign submitted successfully!")
+    },
+    onError: (error) => {
+      console.error("Submission failed:", error)
+    },
+  })
+
+  const handleSubmit = () => {
+    if (!campaignName || !startDate || !endDate) return
+
+    const creativesToSubmit = uploadedFiles
+      .filter((f) => f.uploadStatus === "success")
+      .map((c) => ({
+        id: c.id.startsWith("temp-") ? undefined : c.id,
+        name: c.name,
+        notes: c.notes,
+        tags: c.tags,
+        proofOfPlay: c.proofOfPlay,
+        fileUrl: c.fileUrl,
+        fileType: c.fileType,
+        fileSize: c.fileSize,
+        width: c.width,
+        height: c.height,
+        duration: c.duration,
+      }))
+
+    const campaignPayload = {
+      id: selectedCampaignId === "new-campaign" ? undefined : selectedCampaignId,
+      name: campaignName,
+      startDate,
+      endDate,
+      notes: campaignNotes,
+      creatives: creativesToSubmit,
+    }
+    upsertCampaign(campaignPayload)
+  }
+
+  // --- Logic & Handlers ---
+  const campaignStatus = (() => {
+    if (selectedCampaignId === "new-campaign") return "draft"
+    if (!selectedCampaignId || !campaignData) return null
+    return campaignData?.status || null
+  })()
+
+  const resetForm = () => {
+    setCampaignName("")
+    setStartDate(undefined)
+    setEndDate(undefined)
+    setUploadedFiles([])
+    setCampaignNotes("")
+  }
+
+  useEffect(() => {
+    if (selectedCampaignId === "new-campaign") {
+      resetForm()
+    }
+  }, [selectedCampaignId])
+
+  const handleAddAssetsClick = () => {
     fileInputRef.current?.click()
   }
 
-  const handleDragOver = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragOver(true)
-  }, [])
+  const getFileMetadata = (
+    file: File,
+  ): Promise<{ width?: number; height?: number; duration?: number; error?: string }> => {
+    return new Promise((resolve) => {
+      if (file.type.startsWith("image/")) {
+        const img = new Image()
+        img.onload = () => {
+          resolve({ width: img.naturalWidth, height: img.naturalHeight })
+          URL.revokeObjectURL(img.src)
+        }
+        img.onerror = () => resolve({ error: "Could not load image metadata." })
+        img.src = URL.createObjectURL(file)
+      } else if (file.type.startsWith("video/")) {
+        const video = document.createElement("video")
+        video.onloadedmetadata = () => {
+          resolve({
+            width: video.videoWidth,
+            height: video.videoHeight,
+            duration: video.duration,
+          })
+          URL.revokeObjectURL(video.src)
+        }
+        video.onerror = () => resolve({ error: "Could not load video metadata." })
+        video.src = URL.createObjectURL(file)
+      } else {
+        resolve({})
+      }
+    })
+  }
 
-  const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragOver(false)
-  }, [])
+  const handleFiles = async (files: FileList | File[]) => {
+    const filesArray = Array.from(files)
+    const newUploads: ClientCreative[] = []
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault()
-    setIsDragOver(false)
+    for (const file of filesArray) {
+      const tempId = cuid()
+      const fileExtension = file.name.split(".").pop()
+      const fileName = `${cuid()}.${fileExtension}`
+      const controller = new AbortController()
+      uploadControllers.current.set(tempId, controller)
 
-    const files = Array.from(e.dataTransfer.files)
-    handleFiles(files)
-  }, [])
+      const placeholder: ClientCreative = {
+        id: tempId,
+        name: file.name.replace(/\.[^/.]+$/, ""),
+        notes: "",
+        tags: [],
+        approvalStatus: "PENDING",
+        proofOfPlay: false,
+        localPreviewUrl: URL.createObjectURL(file),
+        fileUrl: "",
+        fileType: file.type,
+        fileSize: file.size,
+        width: null,
+        height: null,
+        duration: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        uploadStatus: "uploading",
+        file: file,
+      }
+      newUploads.push(placeholder)
 
-  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+      uploadFileToWorker(file, fileName, controller.signal)
+        .then(async () => {
+          const metadata = await getFileMetadata(file)
+          setUploadedFiles((prev) =>
+            prev.map((f) =>
+              f.id === tempId
+                ? {
+                    ...f,
+                    fileUrl: fileName,
+                    ...metadata,
+                    uploadStatus: "success",
+                    file: undefined,
+                  }
+                : f,
+            ),
+          )
+          uploadControllers.current.delete(tempId)
+        })
+        .catch((err) => {
+          if (err.name === "AbortError") return
+          setUploadedFiles((prev) =>
+            prev.map((f) =>
+              f.id === tempId ? { ...f, uploadStatus: "error", errorMessage: err.message, file: undefined } : f,
+            ),
+          )
+          uploadControllers.current.delete(tempId)
+        })
+    }
+    setUploadedFiles((prev) => [...prev, ...newUploads])
+  }
+
+  const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const files = Array.from(e.target.files)
-      handleFiles(files)
+      await handleFiles(e.target.files)
     }
   }
 
-  const handleFiles = (files: File[]) => {
-    const errors: string[] = []
-    const validFiles: UploadedFile[] = []
+  const handleDragEvents = (e: React.DragEvent<HTMLDivElement>, type: "enter" | "leave" | "over") => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (type === "enter" || type === "over") {
+      setIsDragging(true)
+    } else {
+      setIsDragging(false)
+    }
+  }
 
-    files.forEach((file) => {
-      // Validate file type
-      const validTypes = ["video/mp4", "image/jpeg", "image/jpg", "image/png"]
-      if (!validTypes.includes(file.type)) {
-        errors.push(`${file.name}: Invalid file type. Only MP4, JPG, and PNG files are allowed.`)
-        return
-      }
-
-      // Validate file size (50MB limit)
-      if (file.size > 50 * 1024 * 1024) {
-        errors.push(`${file.name}: File too large. Maximum size is 50MB.`)
-        return
-      }
-
-      const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
-      const newFile: UploadedFile = {
-        id: Math.random().toString(36).substr(2, 9),
-        file,
-        name: file.name.replace(/\.[^/.]+$/, ""),
-        extension: ext,
-        notes: "",
-        status: "success",
-      }
-
-      // Create preview URL
-      if (file.type.startsWith("image/")) {
-        newFile.preview = URL.createObjectURL(file)
-      }
-
-      validFiles.push(newFile)
-    })
-
-    setValidationErrors(errors)
-    setUploadedFiles((prev) => [...prev, ...validFiles])
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsDragging(false)
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      handleFiles(e.dataTransfer.files)
+      e.dataTransfer.clearData()
+    }
   }
 
   const removeFile = (id: string) => {
-    setUploadedFiles((prev) => {
-      const file = prev.find((f) => f.id === id)
-      if (file?.preview) {
-        URL.revokeObjectURL(file.preview)
-      }
-      return prev.filter((f) => f.id !== id)
-    })
+    const fileToRemove = uploadedFiles.find((f) => f.id === id)
+    if (fileToRemove?.localPreviewUrl) {
+      URL.revokeObjectURL(fileToRemove.localPreviewUrl)
+    }
+    if (uploadControllers.current.has(id)) {
+      uploadControllers.current.get(id)?.abort()
+      uploadControllers.current.delete(id)
+    }
+    setUploadedFiles((prev) => prev.filter((f) => f.id !== id))
   }
 
-  const updateFileName = (id: string, name: string) => {
-    setUploadedFiles((prev) => prev.map((f) => (f.id === id ? { ...f, name } : f)))
+  const updateFileDetail = (id: string, key: "name" | "notes", value: string) => {
+    setUploadedFiles((prev) => prev.map((f) => (f.id === id ? { ...f, [key]: value } : f)))
   }
 
-  const updateFileNotes = (id: string, notes: string) => {
-    setUploadedFiles((prev) => prev.map((f) => (f.id === id ? { ...f, notes } : f)))
+  const toggleProofOfPlay = (id: string) => {
+    setUploadedFiles((prev) => prev.map((f) => (f.id === id ? { ...f, proofOfPlay: !f.proofOfPlay } : f)))
   }
 
-  const toggleAgeRange = (range: string) => {
-    setSelectedAgeRanges((prev) => (prev.includes(range) ? prev.filter((r) => r !== range) : [...prev, range]))
-  }
-
-  const getStatusIcon = (status: UploadedFile["status"]) => {
-    switch (status) {
-      case "success":
-        return <CheckCircle className="w-4 h-4" />
-      case "error":
-        return <AlertCircle className="w-4 h-4" />
+  const handleCreativeTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, fileId: string) => {
+    const tagInput = creativeTagInputs[fileId] || ""
+    if (e.key === "Enter" && tagInput.trim() !== "") {
+      e.preventDefault()
+      setUploadedFiles((prev) =>
+        prev.map((f) => (f.id === fileId ? { ...f, tags: [...new Set([...(f.tags || []), tagInput.trim()])] } : f)),
+      )
+      setCreativeTagInputs((prev) => ({ ...prev, [fileId]: "" }))
     }
   }
 
-  const getStatusColor = (status: UploadedFile["status"]) => {
-    switch (status) {
-      case "success":
-        return "bg-green-100 text-green-800 border-green-200"
-      case "error":
-        return "bg-red-100 text-red-800 border-red-200"
-    }
+  const removeCreativeTag = (fileId: string, tagToRemove: string) => {
+    setUploadedFiles((prev) =>
+      prev.map((f) => (f.id === fileId ? { ...f, tags: f.tags.filter((tag) => tag !== tagToRemove) } : f)),
+    )
   }
-
-  const successfulUploads = uploadedFiles.filter((f) => f.status === "success").length
-
-  const uploadFileToWorker = async (file: File, fname: string) => {
-    const form = new FormData();
-    form.append("file", file);
-
-    const res = await fetch(`https://r2-worker.ardenpalme.workers.dev/api/files/${fname}`, {
-      method: "PUT",
-      headers: {
-        "x-custom-psk": "e3a1c6b4d9f27a815b3cf1d6982ab6ed973420e8795a6f8cda2f5f4135c4a0ee",
-      },
-      body: form,
-    });
-
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`Upload failed: ${res.status} - ${text}`);
-    }
-  };
-
-  const uploadCreativeMutation = trpc.creative.upload.useMutation();
-  const uploadCampaignMutation = trpc.campaign.upload.useMutation();
-
-  const uploadCampaign = async () => {
-    const creative_ids: string[] = [];
-    for (const file of uploadedFiles.filter((f) => f.status === "success")) {
-      const fname = `${file.name}.${file.extension}`;
-
-      await uploadFileToWorker(file.file, fname);
-
-      const creative = await uploadCreativeMutation.mutateAsync({ name: fname });
-      creative_ids.push(creative.id);
-    }
-
-    await uploadCampaignMutation.mutateAsync({
-      name: campaignName,
-      start_date: startDate,
-      end_date: endDate,
-      target_age_groups: selectedAgeRanges,
-      target_gender: gender,
-      creative_ids,
-    });
-  };
-
-  const { data: ageRanges, isLoading: is_ageRanges_Loading } = trpc.utils.getAgeBuckets.useQuery();
 
   return (
     <TooltipProvider>
-      <div className="px-4 py-2 space-y-8 justify-items-start">
-
-        {/* Campaign Details */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Campaign Details</CardTitle>
-            <CardDescription>Set up your campaign parameters and scheduling</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="campaign-name">Campaign Name</Label>
-                <Input
-                  id="campaign-name"
-                  placeholder="Enter campaign name"
-                  value={campaignName}
-                  onChange={(e) => setCampaignName(e.target.value)}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label>Start Date</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal",
-                        !startDate && "text-muted-foreground",
-                      )}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {startDate ? format(startDate, "PPP") : "Pick a date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <Calendar mode="single" selected={startDate} onSelect={setStartDate} initialFocus />
-                  </PopoverContent>
-                </Popover>
-              </div>
-
-              <div className="space-y-2">
-                <Label>End Date</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn("w-full justify-start text-left font-normal", !endDate && "text-muted-foreground")}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {endDate ? format(endDate, "PPP") : "Pick a date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <Calendar mode="single" selected={endDate} onSelect={setEndDate} initialFocus />
-                  </PopoverContent>
-                </Popover>
-              </div>
-            </div>
-
-            <Alert>
-              <Info className="h-4 w-4" />
-              <AlertDescription>
-                Scheduling is handled automatically using real-time audience data and optimal viewing times.
-              </AlertDescription>
-            </Alert>
-          </CardContent>
-        </Card>
-
-        {/* File Upload */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Creative Assets</CardTitle>
-            <CardDescription>Upload your video and image creatives for the campaign</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div
-              className={cn(
-                "relative border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer",
-                isDragOver ? "border-primary bg-primary/5" : "border-muted-foreground/25",
-                "hover:border-primary/50 hover:bg-primary/5",
-              )}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              onClick={handleClickUpload}
-            >
-              <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-              <div className="space-y-2">
-                <p className="text-lg font-medium">Drop your files here, or click to browse</p>
-                <p className="text-sm text-muted-foreground">Supports MP4, JPG, and PNG files up to 50MB each</p>
-              </div>
-              <div className="absolute inset-0 w-full h-full cursor-pointer">
-                <input
-                type="file"
-                multiple
-                accept=".mp4,.jpg,.jpeg,.png"
-                onChange={handleFileInput}
-                className="hidden"
-                ref={fileInputRef}
-                />
-              </div>
-            </div>
-
-            {validationErrors.length > 0 && (
-              <div className="space-y-2">
-                {validationErrors.map((error, index) => (
-                  <Alert key={index} variant="destructive">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                ))}
-              </div>
-            )}
-
-            {uploadedFiles.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {uploadedFiles.map((file) => (
-                  <Card key={file.id} className="relative">
-                    <CardContent className="p-4 space-y-3">
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-center space-x-2">
-                          {file.file.type.startsWith("video/") ? (
-                            <FileVideo className="w-5 h-5 text-blue-500" />
-                          ) : (
-                            <FileImage className="w-5 h-5 text-green-500" />
-                          )}
-                          <Badge variant="outline" className={cn("text-xs", getStatusColor(file.status))}>
-                            {getStatusIcon(file.status)}
-                            <span className="ml-1 text-sm">{file.status}</span>
-                          </Badge>
-                        </div>
-                        <Button variant="ghost" size="sm" onClick={() => removeFile(file.id)} className="h-6 w-6 p-0">
-                          <X className="w-4 h-4" />
-                        </Button>
-                      </div>
-
-                      {file.preview && (
-                        <div className="aspect-video bg-muted rounded-md overflow-hidden">
-                          <img
-                            src={file.preview || "/placeholder.svg"}
-                            alt={file.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      )}
-
-                      <div className="space-y-2">
-                        <Input
-                          placeholder="Creative name"
-                          value={file.name}
-                          onChange={(e) => updateFileName(file.id, e.target.value)}
-                          className="text-sm"
-                        />
-                        <Textarea
-                          placeholder="Notes or tags (optional)"
-                          value={file.notes}
-                          onChange={(e) => updateFileNotes(file.id, e.target.value)}
-                          className="text-sm min-h-[60px]"
-                        />
-                      </div>
-
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="sm" className="w-full bg-transparent">
-                            <Eye className="w-4 h-4 mr-2" />
-                            Preview
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent className="max-w-4xl">
-                          <DialogHeader>
-                            <DialogTitle>{file.name}</DialogTitle>
-                          </DialogHeader>
-                          <div className="aspect-video bg-black rounded-lg overflow-hidden">
-                            {file.file.type.startsWith("video/") ? (
-                              <video controls className="w-full h-full" src={URL.createObjectURL(file.file)} />
-                            ) : file.preview ? (
-                              <img
-                                src={file.preview || "/placeholder.svg"}
-                                alt={file.name}
-                                className="w-full h-full object-contain"
-                              />
-                            ) : null}
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Audience Targeting */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <span>Audience Targeting</span>
-              <Tooltip>
-                <TooltipTrigger>
-                  <Info className="w-4 h-4 text-muted-foreground" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="max-w-xs">
-                    Used to prioritize screens with matching demographics. Data is anonymized and GDPR-compliant.
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </CardTitle>
-            <CardDescription>Optional demographic targeting to optimize ad placement</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label>Gender</Label>
-                <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="any">Any</SelectItem>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label>Age Ranges</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {!is_ageRanges_Loading && ageRanges?.map((range) => (
-                    <div key={range} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={range}
-                        checked={selectedAgeRanges.includes(range)}
-                        onCheckedChange={() => toggleAgeRange(range)}
-                      />
-                      <Label htmlFor={range} className="text-sm font-normal">
-                        {range}
-                      </Label>
-                    </div>
+      <div className="max-w-6xl mx-auto p-6 space-y-8">
+        {/* Header and Campaign Selector */}
+        <div className="space-y-4">
+          <div className="space-y-1">
+            <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
+            <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-full max-w-sm">
+              <Select value={selectedCampaignId} onValueChange={setSelectedCampaignId} disabled={isLoadingCampaigns}>
+                <SelectTrigger id="campaign-select">
+                  <SelectValue placeholder={isLoadingCampaigns ? "Loading campaigns..." : "Select a Campaign..."} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="new-campaign">Create New Campaign</SelectItem>
+                  {(campaignsForSelect || []).map((campaign) => (
+                    <SelectItem key={campaign.id} value={campaign.id}>
+                      {campaign.name}
+                    </SelectItem>
                   ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <CampaignStatusBadge status={campaignStatus} />
+          </div>
+        </div>
+
+        {isCampaignLoading && <FormSkeleton />}
+
+        {isCampaignError && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>Failed to load campaign data. Please try again.</AlertDescription>
+          </Alert>
+        )}
+
+        {selectedCampaignId && !isCampaignLoading && !isCampaignError && (
+          <div className="space-y-8">
+            {/* Campaign Details Card */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Campaign Details</CardTitle>
+                <CardDescription>Set up your campaign parameters and scheduling.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6 pt-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="campaign-name">Campaign Name</Label>
+                    <Input
+                      id="campaign-name"
+                      placeholder="Enter campaign name"
+                      value={campaignName}
+                      onChange={(e) => setCampaignName(e.target.value)}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Start Date</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !startDate && "text-muted-foreground",
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {startDate ? format(startDate, "PPP") : "Pick a date"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0">
+                        <Calendar mode="single" selected={startDate} onSelect={setStartDate} initialFocus />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>End Date</Label>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className={cn(
+                            "w-full justify-start text-left font-normal",
+                            !endDate && "text-muted-foreground",
+                          )}
+                        >
+                          <CalendarIcon className="mr-2 h-4 w-4" />
+                          {endDate ? format(endDate, "PPP") : "Pick a date"}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0">
+                        <Calendar mode="single" selected={endDate} onSelect={setEndDate} initialFocus />
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
 
-        {/* Campaign Summary */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Campaign Summary</CardTitle>
-            <CardDescription>Review your campaign before submission</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <p className="font-medium">Total Creatives</p>
-                <p className="text-2xl font-bold text-primary">{successfulUploads}</p>
-              </div>
-              <div>
-                <p className="font-medium">Campaign Duration</p>
-                <p className="text-muted-foreground">
-                  {startDate && endDate
-                    ? `${Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))} days`
-                    : "Not set"}
-                </p>
-              </div>
-              <div>
-                <p className="font-medium">Targeting</p>
-                <p className="text-muted-foreground">
-                  {gender === "any" && selectedAgeRanges.length === 0
-                    ? "No targeting"
-                    : `${gender !== "any" ? gender : "Any gender"}, ${selectedAgeRanges.length > 0 ? selectedAgeRanges.join(", ") : "All ages"}`}
-                </p>
-              </div>
-            </div>
+            {/* Creative Assets Card */}
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                  <CardTitle>Creative Assets</CardTitle>
+                  <CardDescription>Upload and manage your video and image creatives.</CardDescription>
+                </div>
+                <Button onClick={handleAddAssetsClick}>
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add Assets
+                </Button>
+              </CardHeader>
+              <CardContent
+                className="p-6"
+                onDragEnter={(e) => handleDragEvents(e, "enter")}
+                onDragLeave={(e) => handleDragEvents(e, "leave")}
+                onDragOver={(e) => handleDragEvents(e, "over")}
+                onDrop={handleDrop}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept=".mp4,.jpg,.jpeg,.png"
+                  onChange={handleFileInput}
+                  className="hidden"
+                />
+                {uploadedFiles.length === 0 ? (
+                  <div
+                    className={cn(
+                      "flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/20 p-12 text-center transition-colors",
+                      isDragging && "border-primary bg-primary/10",
+                    )}
+                  >
+                    <UploadCloud className="h-12 w-12 text-muted-foreground" />
+                    <h3 className="mt-4 text-lg font-semibold">Drag and drop files here</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">or click the button to browse</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {uploadedFiles.map((file) => (
+                      <Card key={file.id} className="p-4 shadow-sm">
+                        <div className="flex flex-col md:flex-row items-start gap-4">
+                          <div className="flex-shrink-0 w-full md:w-40 aspect-video bg-muted rounded-md overflow-hidden flex items-center justify-center">
+                            {file.localPreviewUrl ? (
+                              <img
+                                src={file.localPreviewUrl || "/placeholder.svg"}
+                                alt={file.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <FileVideo className="w-10 h-10 text-muted-foreground" />
+                            )}
+                          </div>
+                          <div className="flex-1 space-y-4">
+                            <Input
+                              placeholder="Creative name"
+                              value={file.name}
+                              onChange={(e) => updateFileDetail(file.id, "name", e.target.value)}
+                              className="text-base font-semibold"
+                            />
+                            {/* TAGS INPUT RESTORED HERE */}
+                            <div className="space-y-2">
+                              <div className="relative">
+                                <Label htmlFor={`tag-input-${file.id}`} className="text-sm font-medium">
+                                  Tags
+                                </Label>
+                                <Input
+                                  id={`tag-input-${file.id}`}
+                                  placeholder="Add a tag and press Enter"
+                                  value={creativeTagInputs[file.id] || ""}
+                                  onChange={(e) =>
+                                    setCreativeTagInputs((prev) => ({ ...prev, [file.id]: e.target.value }))
+                                  }
+                                  onKeyDown={(e) => handleCreativeTagKeyDown(e, file.id)}
+                                />
+                              </div>
+                              {file.tags && file.tags.length > 0 && (
+                                <div className="flex flex-wrap gap-2">
+                                  {file.tags.map((tag, index) => (
+                                    <Badge key={index} variant="secondary">
+                                      {tag}
+                                      <button
+                                        onClick={() => removeCreativeTag(file.id, tag)}
+                                        className="ml-1.5 rounded-full hover:bg-background/50"
+                                      >
+                                        <X className="h-3 w-3" />
+                                      </button>
+                                    </Badge>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                            <Textarea
+                              placeholder="Add notes for this creative..."
+                              value={file.notes ?? ""}
+                              onChange={(e) => updateFileDetail(file.id, "notes", e.target.value)}
+                              className="text-sm min-h-[60px]"
+                            />
+                          </div>
+                          <div className="w-full md:w-56 space-y-2 text-sm">
+                            <div className="flex items-center justify-between">
+                              <span className="text-muted-foreground">Status</span>
+                              <Badge variant="outline" className="capitalize">
+                                {file.uploadStatus === "uploading" && (
+                                  <Loader2 className="w-4 h-4 text-yellow-500 animate-spin mr-1.5" />
+                                )}
+                                {file.uploadStatus === "success" && (
+                                  <CheckCircle className="w-4 h-4 text-green-500 mr-1.5" />
+                                )}
+                                {file.uploadStatus === "error" && (
+                                  <AlertCircle className="w-4 h-4 text-red-500 mr-1.5" />
+                                )}
+                                {file.uploadStatus}
+                              </Badge>
+                            </div>
+                            {file.fileSize && (
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">File Size</span>
+                                <span>{formatBytes(file.fileSize)}</span>
+                              </div>
+                            )}
+                            {file.width && file.height && (
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">Resolution</span>
+                                <span>{`${file.width}x${file.height}`}</span>
+                              </div>
+                            )}
+                            {file.duration && (
+                              <div className="flex items-center justify-between">
+                                <span className="text-muted-foreground">Duration</span>
+                                <span>{formatDuration(file.duration)}</span>
+                              </div>
+                            )}
+                            <div className="flex items-center justify-between pt-2 border-t mt-2">
+                              <div className="flex items-center space-x-2">
+                                <Checkbox
+                                  id={`pop-${file.id}`}
+                                  checked={file.proofOfPlay}
+                                  onCheckedChange={() => toggleProofOfPlay(file.id)}
+                                />
+                                <Label htmlFor={`pop-${file.id}`} className="text-sm font-medium">
+                                  Proof of Play
+                                </Label>
+                              </div>
+                              <div className="flex items-center">
+                                <Dialog>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <DialogTrigger asChild>
+                                        <Button variant="ghost" size="icon" disabled={!file.fileUrl}>
+                                          <Eye className="h-4 w-4" />
+                                        </Button>
+                                      </DialogTrigger>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                      <p>Preview</p>
+                                    </TooltipContent>
+                                  </Tooltip>
+                                  <PreviewDialogContent creative={file} />
+                                </Dialog>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <Button
+                                      variant="ghost"
+                                      size="icon"
+                                      className="text-destructive hover:text-destructive"
+                                      onClick={() => removeFile(file.id)}
+                                    >
+                                      <Trash2 className="h-4 w-4" />
+                                    </Button>
+                                  </TooltipTrigger>
+                                  <TooltipContent>
+                                    <p>Remove</p>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
 
-            <div className="pt-4 border-t">
+            {/* Campaign Notes Card */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Campaign Notes</CardTitle>
+                <CardDescription>Add any overall notes or instructions for the campaign.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Textarea
+                  id="campaign-notes"
+                  placeholder="Add any specific instructions or notes for the campaign as a whole..."
+                  value={campaignNotes}
+                  onChange={(e) => setCampaignNotes(e.target.value)}
+                />
+              </CardContent>
+            </Card>
+
+            {/* Submit Button */}
+            <div className="flex justify-end pt-4">
               <Button
                 size="lg"
-                className="w-full md:w-auto cursor-pointer"
-                onClick={uploadCampaign}
+                onClick={handleSubmit}
+                disabled={
+                  isUpserting ||
+                  !campaignName ||
+                  !startDate ||
+                  !endDate ||
+                  uploadedFiles.some((f) => f.uploadStatus !== "success")
+                }
               >
-                Submit Campaign
+                {isUpserting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isUpserting ? "Submitting..." : "Submit Campaign"}
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        )}
       </div>
     </TooltipProvider>
   )

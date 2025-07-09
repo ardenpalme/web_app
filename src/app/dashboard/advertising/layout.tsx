@@ -1,3 +1,5 @@
+"use client"
+
 import type React from "react"
 import {
   Tabs,
@@ -5,6 +7,8 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import Link from "next/link";
+import { DndProvider } from "react-dnd"
+import { HTML5Backend } from "react-dnd-html5-backend"
 
 export default function RootLayout({
   children,
@@ -14,24 +18,24 @@ export default function RootLayout({
   return (
     <div className="w-full">
       <div className="space-y-2 px-4">
-        <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
-        <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
+        <h1 className="text-3xl font-bold tracking-tight">Campaign Manager</h1>
       </div>
 
       <Tabs className="w-full p-4" defaultValue="New Campaign">
         <div className="w-full">
           <TabsList className="w-1/3 flex justify-center">
-            <TabsTrigger value="New Campaign" asChild>
-              <Link href="/dashboard/advertising">New Campaign</Link>
-            </TabsTrigger>
-            <TabsTrigger value="Creatives" asChild>
-              <Link href="/dashboard/advertising/creatives">Assign Creatives</Link>
+            <TabsTrigger value="Status" asChild>
+              <Link href="/dashboard/advertising/status">Review</Link>
             </TabsTrigger>
           </TabsList>
         </div>
       </Tabs>
 
-      {children}
+      <div>
+        <DndProvider backend={HTML5Backend}>
+          {children}
+        </DndProvider>
+      </div>
     </div>
   );
 }

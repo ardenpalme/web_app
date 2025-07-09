@@ -1,9 +1,24 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { trpc } from '@/lib/trpc'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
+
+export const formatDuration = (seconds: number) => {
+  const s = Math.floor(seconds)
+  return `${s.toString().padStart(2, "0")}s`
+}
+
+export const formatBytes = (bytes: number, decimals = 2) => {
+  if (bytes === 0) return "0 Bytes"
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB"]
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return Number.parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
 }
 
 export function formatDateTimeRange(
@@ -19,8 +34,4 @@ export function formatDateTimeRange(
     start: startIso,
     end: endIso,
   };
-}
-
-export async function getSystemConfig() {
-  
 }

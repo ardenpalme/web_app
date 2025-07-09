@@ -14,25 +14,47 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model campaign_creative
+ * Model Campaign
  * 
  */
-export type campaign_creative = $Result.DefaultSelection<Prisma.$campaign_creativePayload>
+export type Campaign = $Result.DefaultSelection<Prisma.$CampaignPayload>
 /**
- * Model campaigns
+ * Model Creative
  * 
  */
-export type campaigns = $Result.DefaultSelection<Prisma.$campaignsPayload>
+export type Creative = $Result.DefaultSelection<Prisma.$CreativePayload>
+
 /**
- * Model creatives
- * 
+ * Enums
  */
-export type creatives = $Result.DefaultSelection<Prisma.$creativesPayload>
-/**
- * Model system_config
- * 
- */
-export type system_config = $Result.DefaultSelection<Prisma.$system_configPayload>
+export namespace $Enums {
+  export const CampaignStatus: {
+  draft: 'draft',
+  WAITING_FOR_APPROVAL: 'WAITING_FOR_APPROVAL',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type CampaignStatus = (typeof CampaignStatus)[keyof typeof CampaignStatus]
+
+
+export const CreativeApprovalStatus: {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+};
+
+export type CreativeApprovalStatus = (typeof CreativeApprovalStatus)[keyof typeof CreativeApprovalStatus]
+
+}
+
+export type CampaignStatus = $Enums.CampaignStatus
+
+export const CampaignStatus: typeof $Enums.CampaignStatus
+
+export type CreativeApprovalStatus = $Enums.CreativeApprovalStatus
+
+export const CreativeApprovalStatus: typeof $Enums.CreativeApprovalStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -41,8 +63,8 @@ export type system_config = $Result.DefaultSelection<Prisma.$system_configPayloa
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Campaign_creatives
- * const campaign_creatives = await prisma.campaign_creative.findMany()
+ * // Fetch zero or more Campaigns
+ * const campaigns = await prisma.campaign.findMany()
  * ```
  *
  *
@@ -62,8 +84,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Campaign_creatives
-   * const campaign_creatives = await prisma.campaign_creative.findMany()
+   * // Fetch zero or more Campaigns
+   * const campaigns = await prisma.campaign.findMany()
    * ```
    *
    *
@@ -160,44 +182,24 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.campaign_creative`: Exposes CRUD operations for the **campaign_creative** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Campaign_creatives
-    * const campaign_creatives = await prisma.campaign_creative.findMany()
-    * ```
-    */
-  get campaign_creative(): Prisma.campaign_creativeDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.campaigns`: Exposes CRUD operations for the **campaigns** model.
+   * `prisma.campaign`: Exposes CRUD operations for the **Campaign** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Campaigns
-    * const campaigns = await prisma.campaigns.findMany()
+    * const campaigns = await prisma.campaign.findMany()
     * ```
     */
-  get campaigns(): Prisma.campaignsDelegate<ExtArgs, ClientOptions>;
+  get campaign(): Prisma.CampaignDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.creatives`: Exposes CRUD operations for the **creatives** model.
+   * `prisma.creative`: Exposes CRUD operations for the **Creative** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Creatives
-    * const creatives = await prisma.creatives.findMany()
+    * const creatives = await prisma.creative.findMany()
     * ```
     */
-  get creatives(): Prisma.creativesDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.system_config`: Exposes CRUD operations for the **system_config** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more System_configs
-    * const system_configs = await prisma.system_config.findMany()
-    * ```
-    */
-  get system_config(): Prisma.system_configDelegate<ExtArgs, ClientOptions>;
+  get creative(): Prisma.CreativeDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -638,10 +640,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    campaign_creative: 'campaign_creative',
-    campaigns: 'campaigns',
-    creatives: 'creatives',
-    system_config: 'system_config'
+    Campaign: 'Campaign',
+    Creative: 'Creative'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,303 +660,155 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "campaign_creative" | "campaigns" | "creatives" | "system_config"
+      modelProps: "campaign" | "creative"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      campaign_creative: {
-        payload: Prisma.$campaign_creativePayload<ExtArgs>
-        fields: Prisma.campaign_creativeFieldRefs
+      Campaign: {
+        payload: Prisma.$CampaignPayload<ExtArgs>
+        fields: Prisma.CampaignFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.campaign_creativeFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload> | null
+            args: Prisma.CampaignFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.campaign_creativeFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           findFirst: {
-            args: Prisma.campaign_creativeFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload> | null
+            args: Prisma.CampaignFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.campaign_creativeFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           findMany: {
-            args: Prisma.campaign_creativeFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
+            args: Prisma.CampaignFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>[]
           }
           create: {
-            args: Prisma.campaign_creativeCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           createMany: {
-            args: Prisma.campaign_creativeCreateManyArgs<ExtArgs>
+            args: Prisma.CampaignCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.campaign_creativeCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
+            args: Prisma.CampaignCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>[]
           }
           delete: {
-            args: Prisma.campaign_creativeDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           update: {
-            args: Prisma.campaign_creativeUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           deleteMany: {
-            args: Prisma.campaign_creativeDeleteManyArgs<ExtArgs>
+            args: Prisma.CampaignDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.campaign_creativeUpdateManyArgs<ExtArgs>
+            args: Prisma.CampaignUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.campaign_creativeUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>[]
+            args: Prisma.CampaignUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>[]
           }
           upsert: {
-            args: Prisma.campaign_creativeUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaign_creativePayload>
+            args: Prisma.CampaignUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignPayload>
           }
           aggregate: {
-            args: Prisma.Campaign_creativeAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCampaign_creative>
+            args: Prisma.CampaignAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCampaign>
           }
           groupBy: {
-            args: Prisma.campaign_creativeGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Campaign_creativeGroupByOutputType>[]
+            args: Prisma.CampaignGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CampaignGroupByOutputType>[]
           }
           count: {
-            args: Prisma.campaign_creativeCountArgs<ExtArgs>
-            result: $Utils.Optional<Campaign_creativeCountAggregateOutputType> | number
+            args: Prisma.CampaignCountArgs<ExtArgs>
+            result: $Utils.Optional<CampaignCountAggregateOutputType> | number
           }
         }
       }
-      campaigns: {
-        payload: Prisma.$campaignsPayload<ExtArgs>
-        fields: Prisma.campaignsFieldRefs
+      Creative: {
+        payload: Prisma.$CreativePayload<ExtArgs>
+        fields: Prisma.CreativeFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.campaignsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload> | null
+            args: Prisma.CreativeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.campaignsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           findFirst: {
-            args: Prisma.campaignsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload> | null
+            args: Prisma.CreativeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.campaignsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           findMany: {
-            args: Prisma.campaignsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
+            args: Prisma.CreativeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>[]
           }
           create: {
-            args: Prisma.campaignsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           createMany: {
-            args: Prisma.campaignsCreateManyArgs<ExtArgs>
+            args: Prisma.CreativeCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.campaignsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
+            args: Prisma.CreativeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>[]
           }
           delete: {
-            args: Prisma.campaignsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           update: {
-            args: Prisma.campaignsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           deleteMany: {
-            args: Prisma.campaignsDeleteManyArgs<ExtArgs>
+            args: Prisma.CreativeDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.campaignsUpdateManyArgs<ExtArgs>
+            args: Prisma.CreativeUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.campaignsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>[]
+            args: Prisma.CreativeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>[]
           }
           upsert: {
-            args: Prisma.campaignsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$campaignsPayload>
+            args: Prisma.CreativeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CreativePayload>
           }
           aggregate: {
-            args: Prisma.CampaignsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCampaigns>
+            args: Prisma.CreativeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCreative>
           }
           groupBy: {
-            args: Prisma.campaignsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CampaignsGroupByOutputType>[]
+            args: Prisma.CreativeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CreativeGroupByOutputType>[]
           }
           count: {
-            args: Prisma.campaignsCountArgs<ExtArgs>
-            result: $Utils.Optional<CampaignsCountAggregateOutputType> | number
-          }
-        }
-      }
-      creatives: {
-        payload: Prisma.$creativesPayload<ExtArgs>
-        fields: Prisma.creativesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.creativesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.creativesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          findFirst: {
-            args: Prisma.creativesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.creativesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          findMany: {
-            args: Prisma.creativesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
-          }
-          create: {
-            args: Prisma.creativesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          createMany: {
-            args: Prisma.creativesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.creativesCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
-          }
-          delete: {
-            args: Prisma.creativesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          update: {
-            args: Prisma.creativesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          deleteMany: {
-            args: Prisma.creativesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.creativesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.creativesUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>[]
-          }
-          upsert: {
-            args: Prisma.creativesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$creativesPayload>
-          }
-          aggregate: {
-            args: Prisma.CreativesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCreatives>
-          }
-          groupBy: {
-            args: Prisma.creativesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CreativesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.creativesCountArgs<ExtArgs>
-            result: $Utils.Optional<CreativesCountAggregateOutputType> | number
-          }
-        }
-      }
-      system_config: {
-        payload: Prisma.$system_configPayload<ExtArgs>
-        fields: Prisma.system_configFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.system_configFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.system_configFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          findFirst: {
-            args: Prisma.system_configFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.system_configFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          findMany: {
-            args: Prisma.system_configFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>[]
-          }
-          create: {
-            args: Prisma.system_configCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          createMany: {
-            args: Prisma.system_configCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.system_configCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>[]
-          }
-          delete: {
-            args: Prisma.system_configDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          update: {
-            args: Prisma.system_configUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          deleteMany: {
-            args: Prisma.system_configDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.system_configUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.system_configUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>[]
-          }
-          upsert: {
-            args: Prisma.system_configUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$system_configPayload>
-          }
-          aggregate: {
-            args: Prisma.System_configAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSystem_config>
-          }
-          groupBy: {
-            args: Prisma.system_configGroupByArgs<ExtArgs>
-            result: $Utils.Optional<System_configGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.system_configCountArgs<ExtArgs>
-            result: $Utils.Optional<System_configCountAggregateOutputType> | number
+            args: Prisma.CreativeCountArgs<ExtArgs>
+            result: $Utils.Optional<CreativeCountAggregateOutputType> | number
           }
         }
       }
@@ -1044,10 +896,8 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    campaign_creative?: campaign_creativeOmit
-    campaigns?: campaignsOmit
-    creatives?: creativesOmit
-    system_config?: system_configOmit
+    campaign?: CampaignOmit
+    creative?: CreativeOmit
   }
 
   /* Types for Logging */
@@ -1138,64 +988,33 @@ export namespace Prisma {
 
 
   /**
-   * Count Type CampaignsCountOutputType
+   * Count Type CampaignCountOutputType
    */
 
-  export type CampaignsCountOutputType = {
-    campaign_creative: number
+  export type CampaignCountOutputType = {
+    creatives: number
   }
 
-  export type CampaignsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign_creative?: boolean | CampaignsCountOutputTypeCountCampaign_creativeArgs
+  export type CampaignCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creatives?: boolean | CampaignCountOutputTypeCountCreativesArgs
   }
 
   // Custom InputTypes
   /**
-   * CampaignsCountOutputType without action
+   * CampaignCountOutputType without action
    */
-  export type CampaignsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CampaignsCountOutputType
+     * Select specific fields to fetch from the CampaignCountOutputType
      */
-    select?: CampaignsCountOutputTypeSelect<ExtArgs> | null
+    select?: CampaignCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * CampaignsCountOutputType without action
+   * CampaignCountOutputType without action
    */
-  export type CampaignsCountOutputTypeCountCampaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: campaign_creativeWhereInput
-  }
-
-
-  /**
-   * Count Type CreativesCountOutputType
-   */
-
-  export type CreativesCountOutputType = {
-    campaign_creative: number
-  }
-
-  export type CreativesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign_creative?: boolean | CreativesCountOutputTypeCountCampaign_creativeArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * CreativesCountOutputType without action
-   */
-  export type CreativesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CreativesCountOutputType
-     */
-    select?: CreativesCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * CreativesCountOutputType without action
-   */
-  export type CreativesCountOutputTypeCountCampaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: campaign_creativeWhereInput
+  export type CampaignCountOutputTypeCountCreativesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CreativeWhereInput
   }
 
 
@@ -1204,1381 +1023,406 @@ export namespace Prisma {
    */
 
   /**
-   * Model campaign_creative
+   * Model Campaign
    */
 
-  export type AggregateCampaign_creative = {
-    _count: Campaign_creativeCountAggregateOutputType | null
-    _min: Campaign_creativeMinAggregateOutputType | null
-    _max: Campaign_creativeMaxAggregateOutputType | null
+  export type AggregateCampaign = {
+    _count: CampaignCountAggregateOutputType | null
+    _min: CampaignMinAggregateOutputType | null
+    _max: CampaignMaxAggregateOutputType | null
   }
 
-  export type Campaign_creativeMinAggregateOutputType = {
-    campaign_id: string | null
-    creative_id: string | null
-  }
-
-  export type Campaign_creativeMaxAggregateOutputType = {
-    campaign_id: string | null
-    creative_id: string | null
-  }
-
-  export type Campaign_creativeCountAggregateOutputType = {
-    campaign_id: number
-    creative_id: number
-    _all: number
-  }
-
-
-  export type Campaign_creativeMinAggregateInputType = {
-    campaign_id?: true
-    creative_id?: true
-  }
-
-  export type Campaign_creativeMaxAggregateInputType = {
-    campaign_id?: true
-    creative_id?: true
-  }
-
-  export type Campaign_creativeCountAggregateInputType = {
-    campaign_id?: true
-    creative_id?: true
-    _all?: true
-  }
-
-  export type Campaign_creativeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which campaign_creative to aggregate.
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of campaign_creatives to fetch.
-     */
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: campaign_creativeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` campaign_creatives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` campaign_creatives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned campaign_creatives
-    **/
-    _count?: true | Campaign_creativeCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Campaign_creativeMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Campaign_creativeMaxAggregateInputType
-  }
-
-  export type GetCampaign_creativeAggregateType<T extends Campaign_creativeAggregateArgs> = {
-        [P in keyof T & keyof AggregateCampaign_creative]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCampaign_creative[P]>
-      : GetScalarType<T[P], AggregateCampaign_creative[P]>
-  }
-
-
-
-
-  export type campaign_creativeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: campaign_creativeWhereInput
-    orderBy?: campaign_creativeOrderByWithAggregationInput | campaign_creativeOrderByWithAggregationInput[]
-    by: Campaign_creativeScalarFieldEnum[] | Campaign_creativeScalarFieldEnum
-    having?: campaign_creativeScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Campaign_creativeCountAggregateInputType | true
-    _min?: Campaign_creativeMinAggregateInputType
-    _max?: Campaign_creativeMaxAggregateInputType
-  }
-
-  export type Campaign_creativeGroupByOutputType = {
-    campaign_id: string
-    creative_id: string
-    _count: Campaign_creativeCountAggregateOutputType | null
-    _min: Campaign_creativeMinAggregateOutputType | null
-    _max: Campaign_creativeMaxAggregateOutputType | null
-  }
-
-  type GetCampaign_creativeGroupByPayload<T extends campaign_creativeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Campaign_creativeGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Campaign_creativeGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Campaign_creativeGroupByOutputType[P]>
-            : GetScalarType<T[P], Campaign_creativeGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type campaign_creativeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    campaign_id?: boolean
-    creative_id?: boolean
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["campaign_creative"]>
-
-  export type campaign_creativeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    campaign_id?: boolean
-    creative_id?: boolean
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["campaign_creative"]>
-
-  export type campaign_creativeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    campaign_id?: boolean
-    creative_id?: boolean
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["campaign_creative"]>
-
-  export type campaign_creativeSelectScalar = {
-    campaign_id?: boolean
-    creative_id?: boolean
-  }
-
-  export type campaign_creativeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"campaign_id" | "creative_id", ExtArgs["result"]["campaign_creative"]>
-  export type campaign_creativeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }
-  export type campaign_creativeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }
-  export type campaign_creativeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaigns?: boolean | campaignsDefaultArgs<ExtArgs>
-    creatives?: boolean | creativesDefaultArgs<ExtArgs>
-  }
-
-  export type $campaign_creativePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "campaign_creative"
-    objects: {
-      campaigns: Prisma.$campaignsPayload<ExtArgs>
-      creatives: Prisma.$creativesPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      campaign_id: string
-      creative_id: string
-    }, ExtArgs["result"]["campaign_creative"]>
-    composites: {}
-  }
-
-  type campaign_creativeGetPayload<S extends boolean | null | undefined | campaign_creativeDefaultArgs> = $Result.GetResult<Prisma.$campaign_creativePayload, S>
-
-  type campaign_creativeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<campaign_creativeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Campaign_creativeCountAggregateInputType | true
-    }
-
-  export interface campaign_creativeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['campaign_creative'], meta: { name: 'campaign_creative' } }
-    /**
-     * Find zero or one Campaign_creative that matches the filter.
-     * @param {campaign_creativeFindUniqueArgs} args - Arguments to find a Campaign_creative
-     * @example
-     * // Get one Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends campaign_creativeFindUniqueArgs>(args: SelectSubset<T, campaign_creativeFindUniqueArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Campaign_creative that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {campaign_creativeFindUniqueOrThrowArgs} args - Arguments to find a Campaign_creative
-     * @example
-     * // Get one Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends campaign_creativeFindUniqueOrThrowArgs>(args: SelectSubset<T, campaign_creativeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Campaign_creative that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeFindFirstArgs} args - Arguments to find a Campaign_creative
-     * @example
-     * // Get one Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends campaign_creativeFindFirstArgs>(args?: SelectSubset<T, campaign_creativeFindFirstArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Campaign_creative that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeFindFirstOrThrowArgs} args - Arguments to find a Campaign_creative
-     * @example
-     * // Get one Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends campaign_creativeFindFirstOrThrowArgs>(args?: SelectSubset<T, campaign_creativeFindFirstOrThrowArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Campaign_creatives that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Campaign_creatives
-     * const campaign_creatives = await prisma.campaign_creative.findMany()
-     * 
-     * // Get first 10 Campaign_creatives
-     * const campaign_creatives = await prisma.campaign_creative.findMany({ take: 10 })
-     * 
-     * // Only select the `campaign_id`
-     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.findMany({ select: { campaign_id: true } })
-     * 
-     */
-    findMany<T extends campaign_creativeFindManyArgs>(args?: SelectSubset<T, campaign_creativeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Campaign_creative.
-     * @param {campaign_creativeCreateArgs} args - Arguments to create a Campaign_creative.
-     * @example
-     * // Create one Campaign_creative
-     * const Campaign_creative = await prisma.campaign_creative.create({
-     *   data: {
-     *     // ... data to create a Campaign_creative
-     *   }
-     * })
-     * 
-     */
-    create<T extends campaign_creativeCreateArgs>(args: SelectSubset<T, campaign_creativeCreateArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Campaign_creatives.
-     * @param {campaign_creativeCreateManyArgs} args - Arguments to create many Campaign_creatives.
-     * @example
-     * // Create many Campaign_creatives
-     * const campaign_creative = await prisma.campaign_creative.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends campaign_creativeCreateManyArgs>(args?: SelectSubset<T, campaign_creativeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Campaign_creatives and returns the data saved in the database.
-     * @param {campaign_creativeCreateManyAndReturnArgs} args - Arguments to create many Campaign_creatives.
-     * @example
-     * // Create many Campaign_creatives
-     * const campaign_creative = await prisma.campaign_creative.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Campaign_creatives and only return the `campaign_id`
-     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.createManyAndReturn({
-     *   select: { campaign_id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends campaign_creativeCreateManyAndReturnArgs>(args?: SelectSubset<T, campaign_creativeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Campaign_creative.
-     * @param {campaign_creativeDeleteArgs} args - Arguments to delete one Campaign_creative.
-     * @example
-     * // Delete one Campaign_creative
-     * const Campaign_creative = await prisma.campaign_creative.delete({
-     *   where: {
-     *     // ... filter to delete one Campaign_creative
-     *   }
-     * })
-     * 
-     */
-    delete<T extends campaign_creativeDeleteArgs>(args: SelectSubset<T, campaign_creativeDeleteArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Campaign_creative.
-     * @param {campaign_creativeUpdateArgs} args - Arguments to update one Campaign_creative.
-     * @example
-     * // Update one Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends campaign_creativeUpdateArgs>(args: SelectSubset<T, campaign_creativeUpdateArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Campaign_creatives.
-     * @param {campaign_creativeDeleteManyArgs} args - Arguments to filter Campaign_creatives to delete.
-     * @example
-     * // Delete a few Campaign_creatives
-     * const { count } = await prisma.campaign_creative.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends campaign_creativeDeleteManyArgs>(args?: SelectSubset<T, campaign_creativeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Campaign_creatives.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Campaign_creatives
-     * const campaign_creative = await prisma.campaign_creative.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends campaign_creativeUpdateManyArgs>(args: SelectSubset<T, campaign_creativeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Campaign_creatives and returns the data updated in the database.
-     * @param {campaign_creativeUpdateManyAndReturnArgs} args - Arguments to update many Campaign_creatives.
-     * @example
-     * // Update many Campaign_creatives
-     * const campaign_creative = await prisma.campaign_creative.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Campaign_creatives and only return the `campaign_id`
-     * const campaign_creativeWithCampaign_idOnly = await prisma.campaign_creative.updateManyAndReturn({
-     *   select: { campaign_id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends campaign_creativeUpdateManyAndReturnArgs>(args: SelectSubset<T, campaign_creativeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Campaign_creative.
-     * @param {campaign_creativeUpsertArgs} args - Arguments to update or create a Campaign_creative.
-     * @example
-     * // Update or create a Campaign_creative
-     * const campaign_creative = await prisma.campaign_creative.upsert({
-     *   create: {
-     *     // ... data to create a Campaign_creative
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Campaign_creative we want to update
-     *   }
-     * })
-     */
-    upsert<T extends campaign_creativeUpsertArgs>(args: SelectSubset<T, campaign_creativeUpsertArgs<ExtArgs>>): Prisma__campaign_creativeClient<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Campaign_creatives.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeCountArgs} args - Arguments to filter Campaign_creatives to count.
-     * @example
-     * // Count the number of Campaign_creatives
-     * const count = await prisma.campaign_creative.count({
-     *   where: {
-     *     // ... the filter for the Campaign_creatives we want to count
-     *   }
-     * })
-    **/
-    count<T extends campaign_creativeCountArgs>(
-      args?: Subset<T, campaign_creativeCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Campaign_creativeCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Campaign_creative.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Campaign_creativeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Campaign_creativeAggregateArgs>(args: Subset<T, Campaign_creativeAggregateArgs>): Prisma.PrismaPromise<GetCampaign_creativeAggregateType<T>>
-
-    /**
-     * Group by Campaign_creative.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaign_creativeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends campaign_creativeGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: campaign_creativeGroupByArgs['orderBy'] }
-        : { orderBy?: campaign_creativeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, campaign_creativeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaign_creativeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the campaign_creative model
-   */
-  readonly fields: campaign_creativeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for campaign_creative.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__campaign_creativeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    campaigns<T extends campaignsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, campaignsDefaultArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    creatives<T extends creativesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, creativesDefaultArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the campaign_creative model
-   */
-  interface campaign_creativeFieldRefs {
-    readonly campaign_id: FieldRef<"campaign_creative", 'String'>
-    readonly creative_id: FieldRef<"campaign_creative", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * campaign_creative findUnique
-   */
-  export type campaign_creativeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter, which campaign_creative to fetch.
-     */
-    where: campaign_creativeWhereUniqueInput
-  }
-
-  /**
-   * campaign_creative findUniqueOrThrow
-   */
-  export type campaign_creativeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter, which campaign_creative to fetch.
-     */
-    where: campaign_creativeWhereUniqueInput
-  }
-
-  /**
-   * campaign_creative findFirst
-   */
-  export type campaign_creativeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter, which campaign_creative to fetch.
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of campaign_creatives to fetch.
-     */
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for campaign_creatives.
-     */
-    cursor?: campaign_creativeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` campaign_creatives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` campaign_creatives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of campaign_creatives.
-     */
-    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
-  }
-
-  /**
-   * campaign_creative findFirstOrThrow
-   */
-  export type campaign_creativeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter, which campaign_creative to fetch.
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of campaign_creatives to fetch.
-     */
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for campaign_creatives.
-     */
-    cursor?: campaign_creativeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` campaign_creatives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` campaign_creatives.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of campaign_creatives.
-     */
-    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
-  }
-
-  /**
-   * campaign_creative findMany
-   */
-  export type campaign_creativeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter, which campaign_creatives to fetch.
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of campaign_creatives to fetch.
-     */
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing campaign_creatives.
-     */
-    cursor?: campaign_creativeWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` campaign_creatives from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` campaign_creatives.
-     */
-    skip?: number
-    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
-  }
-
-  /**
-   * campaign_creative create
-   */
-  export type campaign_creativeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * The data needed to create a campaign_creative.
-     */
-    data: XOR<campaign_creativeCreateInput, campaign_creativeUncheckedCreateInput>
-  }
-
-  /**
-   * campaign_creative createMany
-   */
-  export type campaign_creativeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many campaign_creatives.
-     */
-    data: campaign_creativeCreateManyInput | campaign_creativeCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * campaign_creative createManyAndReturn
-   */
-  export type campaign_creativeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * The data used to create many campaign_creatives.
-     */
-    data: campaign_creativeCreateManyInput | campaign_creativeCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * campaign_creative update
-   */
-  export type campaign_creativeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * The data needed to update a campaign_creative.
-     */
-    data: XOR<campaign_creativeUpdateInput, campaign_creativeUncheckedUpdateInput>
-    /**
-     * Choose, which campaign_creative to update.
-     */
-    where: campaign_creativeWhereUniqueInput
-  }
-
-  /**
-   * campaign_creative updateMany
-   */
-  export type campaign_creativeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update campaign_creatives.
-     */
-    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyInput>
-    /**
-     * Filter which campaign_creatives to update
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * Limit how many campaign_creatives to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * campaign_creative updateManyAndReturn
-   */
-  export type campaign_creativeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * The data used to update campaign_creatives.
-     */
-    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyInput>
-    /**
-     * Filter which campaign_creatives to update
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * Limit how many campaign_creatives to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * campaign_creative upsert
-   */
-  export type campaign_creativeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * The filter to search for the campaign_creative to update in case it exists.
-     */
-    where: campaign_creativeWhereUniqueInput
-    /**
-     * In case the campaign_creative found by the `where` argument doesn't exist, create a new campaign_creative with this data.
-     */
-    create: XOR<campaign_creativeCreateInput, campaign_creativeUncheckedCreateInput>
-    /**
-     * In case the campaign_creative was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<campaign_creativeUpdateInput, campaign_creativeUncheckedUpdateInput>
-  }
-
-  /**
-   * campaign_creative delete
-   */
-  export type campaign_creativeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    /**
-     * Filter which campaign_creative to delete.
-     */
-    where: campaign_creativeWhereUniqueInput
-  }
-
-  /**
-   * campaign_creative deleteMany
-   */
-  export type campaign_creativeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which campaign_creatives to delete
-     */
-    where?: campaign_creativeWhereInput
-    /**
-     * Limit how many campaign_creatives to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * campaign_creative without action
-   */
-  export type campaign_creativeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: campaign_creativeInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model campaigns
-   */
-
-  export type AggregateCampaigns = {
-    _count: CampaignsCountAggregateOutputType | null
-    _min: CampaignsMinAggregateOutputType | null
-    _max: CampaignsMaxAggregateOutputType | null
-  }
-
-  export type CampaignsMinAggregateOutputType = {
+  export type CampaignMinAggregateOutputType = {
     id: string | null
     name: string | null
-    start_date: Date | null
-    end_date: Date | null
-    gender: string | null
+    startDate: Date | null
+    endDate: Date | null
+    status: $Enums.CampaignStatus | null
+    notes: string | null
+    submittedBy: string | null
+    submissionDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type CampaignsMaxAggregateOutputType = {
+  export type CampaignMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    start_date: Date | null
-    end_date: Date | null
-    gender: string | null
+    startDate: Date | null
+    endDate: Date | null
+    status: $Enums.CampaignStatus | null
+    notes: string | null
+    submittedBy: string | null
+    submissionDate: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type CampaignsCountAggregateOutputType = {
+  export type CampaignCountAggregateOutputType = {
     id: number
     name: number
-    start_date: number
-    end_date: number
-    age_groups: number
-    gender: number
+    startDate: number
+    endDate: number
+    status: number
+    notes: number
+    submittedBy: number
+    submissionDate: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type CampaignsMinAggregateInputType = {
+  export type CampaignMinAggregateInputType = {
     id?: true
     name?: true
-    start_date?: true
-    end_date?: true
-    gender?: true
+    startDate?: true
+    endDate?: true
+    status?: true
+    notes?: true
+    submittedBy?: true
+    submissionDate?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
-  export type CampaignsMaxAggregateInputType = {
+  export type CampaignMaxAggregateInputType = {
     id?: true
     name?: true
-    start_date?: true
-    end_date?: true
-    gender?: true
+    startDate?: true
+    endDate?: true
+    status?: true
+    notes?: true
+    submittedBy?: true
+    submissionDate?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
-  export type CampaignsCountAggregateInputType = {
+  export type CampaignCountAggregateInputType = {
     id?: true
     name?: true
-    start_date?: true
-    end_date?: true
-    age_groups?: true
-    gender?: true
+    startDate?: true
+    endDate?: true
+    status?: true
+    notes?: true
+    submittedBy?: true
+    submissionDate?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
-  export type CampaignsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which campaigns to aggregate.
+     * Filter which Campaign to aggregate.
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of campaigns to fetch.
+     * Determine the order of Campaigns to fetch.
      */
-    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
+    orderBy?: CampaignOrderByWithRelationInput | CampaignOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: campaignsWhereUniqueInput
+    cursor?: CampaignWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` campaigns from the position of the cursor.
+     * Take `±n` Campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` campaigns.
+     * Skip the first `n` Campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned campaigns
+     * Count returned Campaigns
     **/
-    _count?: true | CampaignsCountAggregateInputType
+    _count?: true | CampaignCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CampaignsMinAggregateInputType
+    _min?: CampaignMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CampaignsMaxAggregateInputType
+    _max?: CampaignMaxAggregateInputType
   }
 
-  export type GetCampaignsAggregateType<T extends CampaignsAggregateArgs> = {
-        [P in keyof T & keyof AggregateCampaigns]: P extends '_count' | 'count'
+  export type GetCampaignAggregateType<T extends CampaignAggregateArgs> = {
+        [P in keyof T & keyof AggregateCampaign]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCampaigns[P]>
-      : GetScalarType<T[P], AggregateCampaigns[P]>
+        : GetScalarType<T[P], AggregateCampaign[P]>
+      : GetScalarType<T[P], AggregateCampaign[P]>
   }
 
 
 
 
-  export type campaignsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: campaignsWhereInput
-    orderBy?: campaignsOrderByWithAggregationInput | campaignsOrderByWithAggregationInput[]
-    by: CampaignsScalarFieldEnum[] | CampaignsScalarFieldEnum
-    having?: campaignsScalarWhereWithAggregatesInput
+  export type CampaignGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CampaignWhereInput
+    orderBy?: CampaignOrderByWithAggregationInput | CampaignOrderByWithAggregationInput[]
+    by: CampaignScalarFieldEnum[] | CampaignScalarFieldEnum
+    having?: CampaignScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CampaignsCountAggregateInputType | true
-    _min?: CampaignsMinAggregateInputType
-    _max?: CampaignsMaxAggregateInputType
+    _count?: CampaignCountAggregateInputType | true
+    _min?: CampaignMinAggregateInputType
+    _max?: CampaignMaxAggregateInputType
   }
 
-  export type CampaignsGroupByOutputType = {
+  export type CampaignGroupByOutputType = {
     id: string
     name: string
-    start_date: Date | null
-    end_date: Date | null
-    age_groups: string[]
-    gender: string | null
-    _count: CampaignsCountAggregateOutputType | null
-    _min: CampaignsMinAggregateOutputType | null
-    _max: CampaignsMaxAggregateOutputType | null
+    startDate: Date
+    endDate: Date
+    status: $Enums.CampaignStatus
+    notes: string | null
+    submittedBy: string | null
+    submissionDate: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: CampaignCountAggregateOutputType | null
+    _min: CampaignMinAggregateOutputType | null
+    _max: CampaignMaxAggregateOutputType | null
   }
 
-  type GetCampaignsGroupByPayload<T extends campaignsGroupByArgs> = Prisma.PrismaPromise<
+  type GetCampaignGroupByPayload<T extends CampaignGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CampaignsGroupByOutputType, T['by']> &
+      PickEnumerable<CampaignGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CampaignsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CampaignGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CampaignsGroupByOutputType[P]>
-            : GetScalarType<T[P], CampaignsGroupByOutputType[P]>
+              : GetScalarType<T[P], CampaignGroupByOutputType[P]>
+            : GetScalarType<T[P], CampaignGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type campaignsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CampaignSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    start_date?: boolean
-    end_date?: boolean
-    age_groups?: boolean
-    gender?: boolean
-    campaign_creative?: boolean | campaigns$campaign_creativeArgs<ExtArgs>
-    _count?: boolean | CampaignsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["campaigns"]>
+    startDate?: boolean
+    endDate?: boolean
+    status?: boolean
+    notes?: boolean
+    submittedBy?: boolean
+    submissionDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creatives?: boolean | Campaign$creativesArgs<ExtArgs>
+    _count?: boolean | CampaignCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaign"]>
 
-  export type campaignsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CampaignSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    start_date?: boolean
-    end_date?: boolean
-    age_groups?: boolean
-    gender?: boolean
-  }, ExtArgs["result"]["campaigns"]>
+    startDate?: boolean
+    endDate?: boolean
+    status?: boolean
+    notes?: boolean
+    submittedBy?: boolean
+    submissionDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["campaign"]>
 
-  export type campaignsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CampaignSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    start_date?: boolean
-    end_date?: boolean
-    age_groups?: boolean
-    gender?: boolean
-  }, ExtArgs["result"]["campaigns"]>
+    startDate?: boolean
+    endDate?: boolean
+    status?: boolean
+    notes?: boolean
+    submittedBy?: boolean
+    submissionDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["campaign"]>
 
-  export type campaignsSelectScalar = {
+  export type CampaignSelectScalar = {
     id?: boolean
     name?: boolean
-    start_date?: boolean
-    end_date?: boolean
-    age_groups?: boolean
-    gender?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    status?: boolean
+    notes?: boolean
+    submittedBy?: boolean
+    submissionDate?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type campaignsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "start_date" | "end_date" | "age_groups" | "gender", ExtArgs["result"]["campaigns"]>
-  export type campaignsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign_creative?: boolean | campaigns$campaign_creativeArgs<ExtArgs>
-    _count?: boolean | CampaignsCountOutputTypeDefaultArgs<ExtArgs>
+  export type CampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "startDate" | "endDate" | "status" | "notes" | "submittedBy" | "submissionDate" | "createdAt" | "updatedAt", ExtArgs["result"]["campaign"]>
+  export type CampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creatives?: boolean | Campaign$creativesArgs<ExtArgs>
+    _count?: boolean | CampaignCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type campaignsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type campaignsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CampaignIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CampaignIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $campaignsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "campaigns"
+  export type $CampaignPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Campaign"
     objects: {
-      campaign_creative: Prisma.$campaign_creativePayload<ExtArgs>[]
+      creatives: Prisma.$CreativePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      start_date: Date | null
-      end_date: Date | null
-      age_groups: string[]
-      gender: string | null
-    }, ExtArgs["result"]["campaigns"]>
+      startDate: Date
+      endDate: Date
+      status: $Enums.CampaignStatus
+      notes: string | null
+      submittedBy: string | null
+      submissionDate: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["campaign"]>
     composites: {}
   }
 
-  type campaignsGetPayload<S extends boolean | null | undefined | campaignsDefaultArgs> = $Result.GetResult<Prisma.$campaignsPayload, S>
+  type CampaignGetPayload<S extends boolean | null | undefined | CampaignDefaultArgs> = $Result.GetResult<Prisma.$CampaignPayload, S>
 
-  type campaignsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<campaignsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CampaignsCountAggregateInputType | true
+  type CampaignCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CampaignFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CampaignCountAggregateInputType | true
     }
 
-  export interface campaignsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['campaigns'], meta: { name: 'campaigns' } }
+  export interface CampaignDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Campaign'], meta: { name: 'Campaign' } }
     /**
-     * Find zero or one Campaigns that matches the filter.
-     * @param {campaignsFindUniqueArgs} args - Arguments to find a Campaigns
+     * Find zero or one Campaign that matches the filter.
+     * @param {CampaignFindUniqueArgs} args - Arguments to find a Campaign
      * @example
-     * // Get one Campaigns
-     * const campaigns = await prisma.campaigns.findUnique({
+     * // Get one Campaign
+     * const campaign = await prisma.campaign.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends campaignsFindUniqueArgs>(args: SelectSubset<T, campaignsFindUniqueArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CampaignFindUniqueArgs>(args: SelectSubset<T, CampaignFindUniqueArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Campaigns that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Campaign that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {campaignsFindUniqueOrThrowArgs} args - Arguments to find a Campaigns
+     * @param {CampaignFindUniqueOrThrowArgs} args - Arguments to find a Campaign
      * @example
-     * // Get one Campaigns
-     * const campaigns = await prisma.campaigns.findUniqueOrThrow({
+     * // Get one Campaign
+     * const campaign = await prisma.campaign.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends campaignsFindUniqueOrThrowArgs>(args: SelectSubset<T, campaignsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CampaignFindUniqueOrThrowArgs>(args: SelectSubset<T, CampaignFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Campaigns that matches the filter.
+     * Find the first Campaign that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsFindFirstArgs} args - Arguments to find a Campaigns
+     * @param {CampaignFindFirstArgs} args - Arguments to find a Campaign
      * @example
-     * // Get one Campaigns
-     * const campaigns = await prisma.campaigns.findFirst({
+     * // Get one Campaign
+     * const campaign = await prisma.campaign.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends campaignsFindFirstArgs>(args?: SelectSubset<T, campaignsFindFirstArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CampaignFindFirstArgs>(args?: SelectSubset<T, CampaignFindFirstArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Campaigns that matches the filter or
+     * Find the first Campaign that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsFindFirstOrThrowArgs} args - Arguments to find a Campaigns
+     * @param {CampaignFindFirstOrThrowArgs} args - Arguments to find a Campaign
      * @example
-     * // Get one Campaigns
-     * const campaigns = await prisma.campaigns.findFirstOrThrow({
+     * // Get one Campaign
+     * const campaign = await prisma.campaign.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends campaignsFindFirstOrThrowArgs>(args?: SelectSubset<T, campaignsFindFirstOrThrowArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CampaignFindFirstOrThrowArgs>(args?: SelectSubset<T, CampaignFindFirstOrThrowArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Campaigns that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CampaignFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Campaigns
-     * const campaigns = await prisma.campaigns.findMany()
+     * const campaigns = await prisma.campaign.findMany()
      * 
      * // Get first 10 Campaigns
-     * const campaigns = await prisma.campaigns.findMany({ take: 10 })
+     * const campaigns = await prisma.campaign.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const campaignsWithIdOnly = await prisma.campaigns.findMany({ select: { id: true } })
+     * const campaignWithIdOnly = await prisma.campaign.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends campaignsFindManyArgs>(args?: SelectSubset<T, campaignsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CampaignFindManyArgs>(args?: SelectSubset<T, CampaignFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Campaigns.
-     * @param {campaignsCreateArgs} args - Arguments to create a Campaigns.
+     * Create a Campaign.
+     * @param {CampaignCreateArgs} args - Arguments to create a Campaign.
      * @example
-     * // Create one Campaigns
-     * const Campaigns = await prisma.campaigns.create({
+     * // Create one Campaign
+     * const Campaign = await prisma.campaign.create({
      *   data: {
-     *     // ... data to create a Campaigns
+     *     // ... data to create a Campaign
      *   }
      * })
      * 
      */
-    create<T extends campaignsCreateArgs>(args: SelectSubset<T, campaignsCreateArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CampaignCreateArgs>(args: SelectSubset<T, CampaignCreateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Campaigns.
-     * @param {campaignsCreateManyArgs} args - Arguments to create many Campaigns.
+     * @param {CampaignCreateManyArgs} args - Arguments to create many Campaigns.
      * @example
      * // Create many Campaigns
-     * const campaigns = await prisma.campaigns.createMany({
+     * const campaign = await prisma.campaign.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends campaignsCreateManyArgs>(args?: SelectSubset<T, campaignsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CampaignCreateManyArgs>(args?: SelectSubset<T, CampaignCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Campaigns and returns the data saved in the database.
-     * @param {campaignsCreateManyAndReturnArgs} args - Arguments to create many Campaigns.
+     * @param {CampaignCreateManyAndReturnArgs} args - Arguments to create many Campaigns.
      * @example
      * // Create many Campaigns
-     * const campaigns = await prisma.campaigns.createManyAndReturn({
+     * const campaign = await prisma.campaign.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Campaigns and only return the `id`
-     * const campaignsWithIdOnly = await prisma.campaigns.createManyAndReturn({
+     * const campaignWithIdOnly = await prisma.campaign.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2588,28 +1432,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends campaignsCreateManyAndReturnArgs>(args?: SelectSubset<T, campaignsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CampaignCreateManyAndReturnArgs>(args?: SelectSubset<T, CampaignCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Campaigns.
-     * @param {campaignsDeleteArgs} args - Arguments to delete one Campaigns.
+     * Delete a Campaign.
+     * @param {CampaignDeleteArgs} args - Arguments to delete one Campaign.
      * @example
-     * // Delete one Campaigns
-     * const Campaigns = await prisma.campaigns.delete({
+     * // Delete one Campaign
+     * const Campaign = await prisma.campaign.delete({
      *   where: {
-     *     // ... filter to delete one Campaigns
+     *     // ... filter to delete one Campaign
      *   }
      * })
      * 
      */
-    delete<T extends campaignsDeleteArgs>(args: SelectSubset<T, campaignsDeleteArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CampaignDeleteArgs>(args: SelectSubset<T, CampaignDeleteArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Campaigns.
-     * @param {campaignsUpdateArgs} args - Arguments to update one Campaigns.
+     * Update one Campaign.
+     * @param {CampaignUpdateArgs} args - Arguments to update one Campaign.
      * @example
-     * // Update one Campaigns
-     * const campaigns = await prisma.campaigns.update({
+     * // Update one Campaign
+     * const campaign = await prisma.campaign.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2619,30 +1463,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends campaignsUpdateArgs>(args: SelectSubset<T, campaignsUpdateArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CampaignUpdateArgs>(args: SelectSubset<T, CampaignUpdateArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Campaigns.
-     * @param {campaignsDeleteManyArgs} args - Arguments to filter Campaigns to delete.
+     * @param {CampaignDeleteManyArgs} args - Arguments to filter Campaigns to delete.
      * @example
      * // Delete a few Campaigns
-     * const { count } = await prisma.campaigns.deleteMany({
+     * const { count } = await prisma.campaign.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends campaignsDeleteManyArgs>(args?: SelectSubset<T, campaignsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CampaignDeleteManyArgs>(args?: SelectSubset<T, CampaignDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CampaignUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Campaigns
-     * const campaigns = await prisma.campaigns.updateMany({
+     * const campaign = await prisma.campaign.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2652,14 +1496,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends campaignsUpdateManyArgs>(args: SelectSubset<T, campaignsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CampaignUpdateManyArgs>(args: SelectSubset<T, CampaignUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Campaigns and returns the data updated in the database.
-     * @param {campaignsUpdateManyAndReturnArgs} args - Arguments to update many Campaigns.
+     * @param {CampaignUpdateManyAndReturnArgs} args - Arguments to update many Campaigns.
      * @example
      * // Update many Campaigns
-     * const campaigns = await prisma.campaigns.updateManyAndReturn({
+     * const campaign = await prisma.campaign.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2669,7 +1513,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Campaigns and only return the `id`
-     * const campaignsWithIdOnly = await prisma.campaigns.updateManyAndReturn({
+     * const campaignWithIdOnly = await prisma.campaign.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2682,56 +1526,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends campaignsUpdateManyAndReturnArgs>(args: SelectSubset<T, campaignsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CampaignUpdateManyAndReturnArgs>(args: SelectSubset<T, CampaignUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Campaigns.
-     * @param {campaignsUpsertArgs} args - Arguments to update or create a Campaigns.
+     * Create or update one Campaign.
+     * @param {CampaignUpsertArgs} args - Arguments to update or create a Campaign.
      * @example
-     * // Update or create a Campaigns
-     * const campaigns = await prisma.campaigns.upsert({
+     * // Update or create a Campaign
+     * const campaign = await prisma.campaign.upsert({
      *   create: {
-     *     // ... data to create a Campaigns
+     *     // ... data to create a Campaign
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Campaigns we want to update
+     *     // ... the filter for the Campaign we want to update
      *   }
      * })
      */
-    upsert<T extends campaignsUpsertArgs>(args: SelectSubset<T, campaignsUpsertArgs<ExtArgs>>): Prisma__campaignsClient<$Result.GetResult<Prisma.$campaignsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CampaignUpsertArgs>(args: SelectSubset<T, CampaignUpsertArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Campaigns.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsCountArgs} args - Arguments to filter Campaigns to count.
+     * @param {CampaignCountArgs} args - Arguments to filter Campaigns to count.
      * @example
      * // Count the number of Campaigns
-     * const count = await prisma.campaigns.count({
+     * const count = await prisma.campaign.count({
      *   where: {
      *     // ... the filter for the Campaigns we want to count
      *   }
      * })
     **/
-    count<T extends campaignsCountArgs>(
-      args?: Subset<T, campaignsCountArgs>,
+    count<T extends CampaignCountArgs>(
+      args?: Subset<T, CampaignCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CampaignsCountAggregateOutputType>
+          : GetScalarType<T['select'], CampaignCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Campaigns.
+     * Allows you to perform aggregations operations on a Campaign.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CampaignsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CampaignAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2751,13 +1595,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CampaignsAggregateArgs>(args: Subset<T, CampaignsAggregateArgs>): Prisma.PrismaPromise<GetCampaignsAggregateType<T>>
+    aggregate<T extends CampaignAggregateArgs>(args: Subset<T, CampaignAggregateArgs>): Prisma.PrismaPromise<GetCampaignAggregateType<T>>
 
     /**
-     * Group by Campaigns.
+     * Group by Campaign.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {campaignsGroupByArgs} args - Group by arguments.
+     * @param {CampaignGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2772,14 +1616,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends campaignsGroupByArgs,
+      T extends CampaignGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: campaignsGroupByArgs['orderBy'] }
-        : { orderBy?: campaignsGroupByArgs['orderBy'] },
+        ? { orderBy: CampaignGroupByArgs['orderBy'] }
+        : { orderBy?: CampaignGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2828,22 +1672,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, campaignsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaignsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CampaignGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaignGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the campaigns model
+   * Fields of the Campaign model
    */
-  readonly fields: campaignsFieldRefs;
+  readonly fields: CampaignFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for campaigns.
+   * The delegate class that acts as a "Promise-like" for Campaign.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__campaignsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CampaignClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    campaign_creative<T extends campaigns$campaign_creativeArgs<ExtArgs> = {}>(args?: Subset<T, campaigns$campaign_creativeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    creatives<T extends Campaign$creativesArgs<ExtArgs> = {}>(args?: Subset<T, Campaign$creativesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2870,762 +1714,956 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the campaigns model
+   * Fields of the Campaign model
    */
-  interface campaignsFieldRefs {
-    readonly id: FieldRef<"campaigns", 'String'>
-    readonly name: FieldRef<"campaigns", 'String'>
-    readonly start_date: FieldRef<"campaigns", 'DateTime'>
-    readonly end_date: FieldRef<"campaigns", 'DateTime'>
-    readonly age_groups: FieldRef<"campaigns", 'String[]'>
-    readonly gender: FieldRef<"campaigns", 'String'>
+  interface CampaignFieldRefs {
+    readonly id: FieldRef<"Campaign", 'String'>
+    readonly name: FieldRef<"Campaign", 'String'>
+    readonly startDate: FieldRef<"Campaign", 'DateTime'>
+    readonly endDate: FieldRef<"Campaign", 'DateTime'>
+    readonly status: FieldRef<"Campaign", 'CampaignStatus'>
+    readonly notes: FieldRef<"Campaign", 'String'>
+    readonly submittedBy: FieldRef<"Campaign", 'String'>
+    readonly submissionDate: FieldRef<"Campaign", 'DateTime'>
+    readonly createdAt: FieldRef<"Campaign", 'DateTime'>
+    readonly updatedAt: FieldRef<"Campaign", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * campaigns findUnique
+   * Campaign findUnique
    */
-  export type campaignsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter, which campaigns to fetch.
+     * Filter, which Campaign to fetch.
      */
-    where: campaignsWhereUniqueInput
+    where: CampaignWhereUniqueInput
   }
 
   /**
-   * campaigns findUniqueOrThrow
+   * Campaign findUniqueOrThrow
    */
-  export type campaignsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter, which campaigns to fetch.
+     * Filter, which Campaign to fetch.
      */
-    where: campaignsWhereUniqueInput
+    where: CampaignWhereUniqueInput
   }
 
   /**
-   * campaigns findFirst
+   * Campaign findFirst
    */
-  export type campaignsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter, which campaigns to fetch.
+     * Filter, which Campaign to fetch.
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of campaigns to fetch.
+     * Determine the order of Campaigns to fetch.
      */
-    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
+    orderBy?: CampaignOrderByWithRelationInput | CampaignOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for campaigns.
+     * Sets the position for searching for Campaigns.
      */
-    cursor?: campaignsWhereUniqueInput
+    cursor?: CampaignWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` campaigns from the position of the cursor.
+     * Take `±n` Campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` campaigns.
+     * Skip the first `n` Campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of campaigns.
+     * Filter by unique combinations of Campaigns.
      */
-    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
+    distinct?: CampaignScalarFieldEnum | CampaignScalarFieldEnum[]
   }
 
   /**
-   * campaigns findFirstOrThrow
+   * Campaign findFirstOrThrow
    */
-  export type campaignsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter, which campaigns to fetch.
+     * Filter, which Campaign to fetch.
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of campaigns to fetch.
+     * Determine the order of Campaigns to fetch.
      */
-    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
+    orderBy?: CampaignOrderByWithRelationInput | CampaignOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for campaigns.
+     * Sets the position for searching for Campaigns.
      */
-    cursor?: campaignsWhereUniqueInput
+    cursor?: CampaignWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` campaigns from the position of the cursor.
+     * Take `±n` Campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` campaigns.
+     * Skip the first `n` Campaigns.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of campaigns.
+     * Filter by unique combinations of Campaigns.
      */
-    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
+    distinct?: CampaignScalarFieldEnum | CampaignScalarFieldEnum[]
   }
 
   /**
-   * campaigns findMany
+   * Campaign findMany
    */
-  export type campaignsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter, which campaigns to fetch.
+     * Filter, which Campaigns to fetch.
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of campaigns to fetch.
+     * Determine the order of Campaigns to fetch.
      */
-    orderBy?: campaignsOrderByWithRelationInput | campaignsOrderByWithRelationInput[]
+    orderBy?: CampaignOrderByWithRelationInput | CampaignOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing campaigns.
+     * Sets the position for listing Campaigns.
      */
-    cursor?: campaignsWhereUniqueInput
+    cursor?: CampaignWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` campaigns from the position of the cursor.
+     * Take `±n` Campaigns from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` campaigns.
+     * Skip the first `n` Campaigns.
      */
     skip?: number
-    distinct?: CampaignsScalarFieldEnum | CampaignsScalarFieldEnum[]
+    distinct?: CampaignScalarFieldEnum | CampaignScalarFieldEnum[]
   }
 
   /**
-   * campaigns create
+   * Campaign create
    */
-  export type campaignsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * The data needed to create a campaigns.
+     * The data needed to create a Campaign.
      */
-    data: XOR<campaignsCreateInput, campaignsUncheckedCreateInput>
+    data: XOR<CampaignCreateInput, CampaignUncheckedCreateInput>
   }
 
   /**
-   * campaigns createMany
+   * Campaign createMany
    */
-  export type campaignsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many campaigns.
+     * The data used to create many Campaigns.
      */
-    data: campaignsCreateManyInput | campaignsCreateManyInput[]
+    data: CampaignCreateManyInput | CampaignCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * campaigns createManyAndReturn
+   * Campaign createManyAndReturn
    */
-  export type campaignsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CampaignSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
-     * The data used to create many campaigns.
+     * The data used to create many Campaigns.
      */
-    data: campaignsCreateManyInput | campaignsCreateManyInput[]
+    data: CampaignCreateManyInput | CampaignCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * campaigns update
+   * Campaign update
    */
-  export type campaignsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * The data needed to update a campaigns.
+     * The data needed to update a Campaign.
      */
-    data: XOR<campaignsUpdateInput, campaignsUncheckedUpdateInput>
+    data: XOR<CampaignUpdateInput, CampaignUncheckedUpdateInput>
     /**
-     * Choose, which campaigns to update.
+     * Choose, which Campaign to update.
      */
-    where: campaignsWhereUniqueInput
+    where: CampaignWhereUniqueInput
   }
 
   /**
-   * campaigns updateMany
+   * Campaign updateMany
    */
-  export type campaignsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update campaigns.
+     * The data used to update Campaigns.
      */
-    data: XOR<campaignsUpdateManyMutationInput, campaignsUncheckedUpdateManyInput>
+    data: XOR<CampaignUpdateManyMutationInput, CampaignUncheckedUpdateManyInput>
     /**
-     * Filter which campaigns to update
+     * Filter which Campaigns to update
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
-     * Limit how many campaigns to update.
+     * Limit how many Campaigns to update.
      */
     limit?: number
   }
 
   /**
-   * campaigns updateManyAndReturn
+   * Campaign updateManyAndReturn
    */
-  export type campaignsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CampaignSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
-     * The data used to update campaigns.
+     * The data used to update Campaigns.
      */
-    data: XOR<campaignsUpdateManyMutationInput, campaignsUncheckedUpdateManyInput>
+    data: XOR<CampaignUpdateManyMutationInput, CampaignUncheckedUpdateManyInput>
     /**
-     * Filter which campaigns to update
+     * Filter which Campaigns to update
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
-     * Limit how many campaigns to update.
+     * Limit how many Campaigns to update.
      */
     limit?: number
   }
 
   /**
-   * campaigns upsert
+   * Campaign upsert
    */
-  export type campaignsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * The filter to search for the campaigns to update in case it exists.
+     * The filter to search for the Campaign to update in case it exists.
      */
-    where: campaignsWhereUniqueInput
+    where: CampaignWhereUniqueInput
     /**
-     * In case the campaigns found by the `where` argument doesn't exist, create a new campaigns with this data.
+     * In case the Campaign found by the `where` argument doesn't exist, create a new Campaign with this data.
      */
-    create: XOR<campaignsCreateInput, campaignsUncheckedCreateInput>
+    create: XOR<CampaignCreateInput, CampaignUncheckedCreateInput>
     /**
-     * In case the campaigns was found with the provided `where` argument, update it with this data.
+     * In case the Campaign was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<campaignsUpdateInput, campaignsUncheckedUpdateInput>
+    update: XOR<CampaignUpdateInput, CampaignUncheckedUpdateInput>
   }
 
   /**
-   * campaigns delete
+   * Campaign delete
    */
-  export type campaignsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
     /**
-     * Filter which campaigns to delete.
+     * Filter which Campaign to delete.
      */
-    where: campaignsWhereUniqueInput
+    where: CampaignWhereUniqueInput
   }
 
   /**
-   * campaigns deleteMany
+   * Campaign deleteMany
    */
-  export type campaignsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which campaigns to delete
+     * Filter which Campaigns to delete
      */
-    where?: campaignsWhereInput
+    where?: CampaignWhereInput
     /**
-     * Limit how many campaigns to delete.
+     * Limit how many Campaigns to delete.
      */
     limit?: number
   }
 
   /**
-   * campaigns.campaign_creative
+   * Campaign.creatives
    */
-  export type campaigns$campaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Campaign$creativesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaign_creative
+     * Select specific fields to fetch from the Creative
      */
-    select?: campaign_creativeSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaign_creative
+     * Omit specific fields from the Creative
      */
-    omit?: campaign_creativeOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    where?: campaign_creativeWhereInput
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    cursor?: campaign_creativeWhereUniqueInput
+    include?: CreativeInclude<ExtArgs> | null
+    where?: CreativeWhereInput
+    orderBy?: CreativeOrderByWithRelationInput | CreativeOrderByWithRelationInput[]
+    cursor?: CreativeWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+    distinct?: CreativeScalarFieldEnum | CreativeScalarFieldEnum[]
   }
 
   /**
-   * campaigns without action
+   * Campaign without action
    */
-  export type campaignsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CampaignDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the campaigns
+     * Select specific fields to fetch from the Campaign
      */
-    select?: campaignsSelect<ExtArgs> | null
+    select?: CampaignSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the campaigns
+     * Omit specific fields from the Campaign
      */
-    omit?: campaignsOmit<ExtArgs> | null
+    omit?: CampaignOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaignsInclude<ExtArgs> | null
+    include?: CampaignInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model creatives
+   * Model Creative
    */
 
-  export type AggregateCreatives = {
-    _count: CreativesCountAggregateOutputType | null
-    _min: CreativesMinAggregateOutputType | null
-    _max: CreativesMaxAggregateOutputType | null
+  export type AggregateCreative = {
+    _count: CreativeCountAggregateOutputType | null
+    _avg: CreativeAvgAggregateOutputType | null
+    _sum: CreativeSumAggregateOutputType | null
+    _min: CreativeMinAggregateOutputType | null
+    _max: CreativeMaxAggregateOutputType | null
   }
 
-  export type CreativesMinAggregateOutputType = {
+  export type CreativeAvgAggregateOutputType = {
+    fileSize: number | null
+    width: number | null
+    height: number | null
+    duration: number | null
+  }
+
+  export type CreativeSumAggregateOutputType = {
+    fileSize: number | null
+    width: number | null
+    height: number | null
+    duration: number | null
+  }
+
+  export type CreativeMinAggregateOutputType = {
     id: string | null
     name: string | null
-    created_at: Date | null
+    notes: string | null
+    approvalStatus: $Enums.CreativeApprovalStatus | null
+    proofOfPlay: boolean | null
+    fileUrl: string | null
+    fileType: string | null
+    fileSize: number | null
+    width: number | null
+    height: number | null
+    duration: number | null
+    campaignId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type CreativesMaxAggregateOutputType = {
+  export type CreativeMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    created_at: Date | null
+    notes: string | null
+    approvalStatus: $Enums.CreativeApprovalStatus | null
+    proofOfPlay: boolean | null
+    fileUrl: string | null
+    fileType: string | null
+    fileSize: number | null
+    width: number | null
+    height: number | null
+    duration: number | null
+    campaignId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type CreativesCountAggregateOutputType = {
+  export type CreativeCountAggregateOutputType = {
     id: number
     name: number
-    created_at: number
+    notes: number
+    tags: number
+    approvalStatus: number
+    proofOfPlay: number
+    fileUrl: number
+    fileType: number
+    fileSize: number
+    width: number
+    height: number
+    duration: number
+    campaignId: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type CreativesMinAggregateInputType = {
-    id?: true
-    name?: true
-    created_at?: true
+  export type CreativeAvgAggregateInputType = {
+    fileSize?: true
+    width?: true
+    height?: true
+    duration?: true
   }
 
-  export type CreativesMaxAggregateInputType = {
-    id?: true
-    name?: true
-    created_at?: true
+  export type CreativeSumAggregateInputType = {
+    fileSize?: true
+    width?: true
+    height?: true
+    duration?: true
   }
 
-  export type CreativesCountAggregateInputType = {
+  export type CreativeMinAggregateInputType = {
     id?: true
     name?: true
-    created_at?: true
+    notes?: true
+    approvalStatus?: true
+    proofOfPlay?: true
+    fileUrl?: true
+    fileType?: true
+    fileSize?: true
+    width?: true
+    height?: true
+    duration?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CreativeMaxAggregateInputType = {
+    id?: true
+    name?: true
+    notes?: true
+    approvalStatus?: true
+    proofOfPlay?: true
+    fileUrl?: true
+    fileType?: true
+    fileSize?: true
+    width?: true
+    height?: true
+    duration?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CreativeCountAggregateInputType = {
+    id?: true
+    name?: true
+    notes?: true
+    tags?: true
+    approvalStatus?: true
+    proofOfPlay?: true
+    fileUrl?: true
+    fileType?: true
+    fileSize?: true
+    width?: true
+    height?: true
+    duration?: true
+    campaignId?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
-  export type CreativesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which creatives to aggregate.
+     * Filter which Creative to aggregate.
      */
-    where?: creativesWhereInput
+    where?: CreativeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of creatives to fetch.
+     * Determine the order of Creatives to fetch.
      */
-    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
+    orderBy?: CreativeOrderByWithRelationInput | CreativeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: creativesWhereUniqueInput
+    cursor?: CreativeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` creatives from the position of the cursor.
+     * Take `±n` Creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` creatives.
+     * Skip the first `n` Creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned creatives
+     * Count returned Creatives
     **/
-    _count?: true | CreativesCountAggregateInputType
+    _count?: true | CreativeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CreativeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CreativeSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CreativesMinAggregateInputType
+    _min?: CreativeMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CreativesMaxAggregateInputType
+    _max?: CreativeMaxAggregateInputType
   }
 
-  export type GetCreativesAggregateType<T extends CreativesAggregateArgs> = {
-        [P in keyof T & keyof AggregateCreatives]: P extends '_count' | 'count'
+  export type GetCreativeAggregateType<T extends CreativeAggregateArgs> = {
+        [P in keyof T & keyof AggregateCreative]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCreatives[P]>
-      : GetScalarType<T[P], AggregateCreatives[P]>
+        : GetScalarType<T[P], AggregateCreative[P]>
+      : GetScalarType<T[P], AggregateCreative[P]>
   }
 
 
 
 
-  export type creativesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: creativesWhereInput
-    orderBy?: creativesOrderByWithAggregationInput | creativesOrderByWithAggregationInput[]
-    by: CreativesScalarFieldEnum[] | CreativesScalarFieldEnum
-    having?: creativesScalarWhereWithAggregatesInput
+  export type CreativeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CreativeWhereInput
+    orderBy?: CreativeOrderByWithAggregationInput | CreativeOrderByWithAggregationInput[]
+    by: CreativeScalarFieldEnum[] | CreativeScalarFieldEnum
+    having?: CreativeScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CreativesCountAggregateInputType | true
-    _min?: CreativesMinAggregateInputType
-    _max?: CreativesMaxAggregateInputType
+    _count?: CreativeCountAggregateInputType | true
+    _avg?: CreativeAvgAggregateInputType
+    _sum?: CreativeSumAggregateInputType
+    _min?: CreativeMinAggregateInputType
+    _max?: CreativeMaxAggregateInputType
   }
 
-  export type CreativesGroupByOutputType = {
+  export type CreativeGroupByOutputType = {
     id: string
     name: string
-    created_at: Date | null
-    _count: CreativesCountAggregateOutputType | null
-    _min: CreativesMinAggregateOutputType | null
-    _max: CreativesMaxAggregateOutputType | null
+    notes: string | null
+    tags: string[]
+    approvalStatus: $Enums.CreativeApprovalStatus
+    proofOfPlay: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width: number | null
+    height: number | null
+    duration: number | null
+    campaignId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CreativeCountAggregateOutputType | null
+    _avg: CreativeAvgAggregateOutputType | null
+    _sum: CreativeSumAggregateOutputType | null
+    _min: CreativeMinAggregateOutputType | null
+    _max: CreativeMaxAggregateOutputType | null
   }
 
-  type GetCreativesGroupByPayload<T extends creativesGroupByArgs> = Prisma.PrismaPromise<
+  type GetCreativeGroupByPayload<T extends CreativeGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CreativesGroupByOutputType, T['by']> &
+      PickEnumerable<CreativeGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CreativesGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CreativeGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CreativesGroupByOutputType[P]>
-            : GetScalarType<T[P], CreativesGroupByOutputType[P]>
+              : GetScalarType<T[P], CreativeGroupByOutputType[P]>
+            : GetScalarType<T[P], CreativeGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type creativesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CreativeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    created_at?: boolean
-    campaign_creative?: boolean | creatives$campaign_creativeArgs<ExtArgs>
-    _count?: boolean | CreativesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["creatives"]>
+    notes?: boolean
+    tags?: boolean
+    approvalStatus?: boolean
+    proofOfPlay?: boolean
+    fileUrl?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    width?: boolean
+    height?: boolean
+    duration?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creative"]>
 
-  export type creativesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CreativeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    created_at?: boolean
-  }, ExtArgs["result"]["creatives"]>
+    notes?: boolean
+    tags?: boolean
+    approvalStatus?: boolean
+    proofOfPlay?: boolean
+    fileUrl?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    width?: boolean
+    height?: boolean
+    duration?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creative"]>
 
-  export type creativesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CreativeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    created_at?: boolean
-  }, ExtArgs["result"]["creatives"]>
+    notes?: boolean
+    tags?: boolean
+    approvalStatus?: boolean
+    proofOfPlay?: boolean
+    fileUrl?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    width?: boolean
+    height?: boolean
+    duration?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["creative"]>
 
-  export type creativesSelectScalar = {
+  export type CreativeSelectScalar = {
     id?: boolean
     name?: boolean
-    created_at?: boolean
+    notes?: boolean
+    tags?: boolean
+    approvalStatus?: boolean
+    proofOfPlay?: boolean
+    fileUrl?: boolean
+    fileType?: boolean
+    fileSize?: boolean
+    width?: boolean
+    height?: boolean
+    duration?: boolean
+    campaignId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type creativesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at", ExtArgs["result"]["creatives"]>
-  export type creativesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    campaign_creative?: boolean | creatives$campaign_creativeArgs<ExtArgs>
-    _count?: boolean | CreativesCountOutputTypeDefaultArgs<ExtArgs>
+  export type CreativeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "notes" | "tags" | "approvalStatus" | "proofOfPlay" | "fileUrl" | "fileType" | "fileSize" | "width" | "height" | "duration" | "campaignId" | "createdAt" | "updatedAt", ExtArgs["result"]["creative"]>
+  export type CreativeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
   }
-  export type creativesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type creativesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CreativeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
+  }
+  export type CreativeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    campaign?: boolean | CampaignDefaultArgs<ExtArgs>
+  }
 
-  export type $creativesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "creatives"
+  export type $CreativePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Creative"
     objects: {
-      campaign_creative: Prisma.$campaign_creativePayload<ExtArgs>[]
+      campaign: Prisma.$CampaignPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
-      created_at: Date | null
-    }, ExtArgs["result"]["creatives"]>
+      notes: string | null
+      tags: string[]
+      approvalStatus: $Enums.CreativeApprovalStatus
+      proofOfPlay: boolean
+      fileUrl: string
+      fileType: string
+      fileSize: number
+      width: number | null
+      height: number | null
+      duration: number | null
+      campaignId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["creative"]>
     composites: {}
   }
 
-  type creativesGetPayload<S extends boolean | null | undefined | creativesDefaultArgs> = $Result.GetResult<Prisma.$creativesPayload, S>
+  type CreativeGetPayload<S extends boolean | null | undefined | CreativeDefaultArgs> = $Result.GetResult<Prisma.$CreativePayload, S>
 
-  type creativesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<creativesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CreativesCountAggregateInputType | true
+  type CreativeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CreativeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CreativeCountAggregateInputType | true
     }
 
-  export interface creativesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['creatives'], meta: { name: 'creatives' } }
+  export interface CreativeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Creative'], meta: { name: 'Creative' } }
     /**
-     * Find zero or one Creatives that matches the filter.
-     * @param {creativesFindUniqueArgs} args - Arguments to find a Creatives
+     * Find zero or one Creative that matches the filter.
+     * @param {CreativeFindUniqueArgs} args - Arguments to find a Creative
      * @example
-     * // Get one Creatives
-     * const creatives = await prisma.creatives.findUnique({
+     * // Get one Creative
+     * const creative = await prisma.creative.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends creativesFindUniqueArgs>(args: SelectSubset<T, creativesFindUniqueArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CreativeFindUniqueArgs>(args: SelectSubset<T, CreativeFindUniqueArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Creatives that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Creative that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {creativesFindUniqueOrThrowArgs} args - Arguments to find a Creatives
+     * @param {CreativeFindUniqueOrThrowArgs} args - Arguments to find a Creative
      * @example
-     * // Get one Creatives
-     * const creatives = await prisma.creatives.findUniqueOrThrow({
+     * // Get one Creative
+     * const creative = await prisma.creative.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends creativesFindUniqueOrThrowArgs>(args: SelectSubset<T, creativesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CreativeFindUniqueOrThrowArgs>(args: SelectSubset<T, CreativeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Creatives that matches the filter.
+     * Find the first Creative that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesFindFirstArgs} args - Arguments to find a Creatives
+     * @param {CreativeFindFirstArgs} args - Arguments to find a Creative
      * @example
-     * // Get one Creatives
-     * const creatives = await prisma.creatives.findFirst({
+     * // Get one Creative
+     * const creative = await prisma.creative.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends creativesFindFirstArgs>(args?: SelectSubset<T, creativesFindFirstArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CreativeFindFirstArgs>(args?: SelectSubset<T, CreativeFindFirstArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Creatives that matches the filter or
+     * Find the first Creative that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesFindFirstOrThrowArgs} args - Arguments to find a Creatives
+     * @param {CreativeFindFirstOrThrowArgs} args - Arguments to find a Creative
      * @example
-     * // Get one Creatives
-     * const creatives = await prisma.creatives.findFirstOrThrow({
+     * // Get one Creative
+     * const creative = await prisma.creative.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends creativesFindFirstOrThrowArgs>(args?: SelectSubset<T, creativesFindFirstOrThrowArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CreativeFindFirstOrThrowArgs>(args?: SelectSubset<T, CreativeFindFirstOrThrowArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Creatives that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CreativeFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Creatives
-     * const creatives = await prisma.creatives.findMany()
+     * const creatives = await prisma.creative.findMany()
      * 
      * // Get first 10 Creatives
-     * const creatives = await prisma.creatives.findMany({ take: 10 })
+     * const creatives = await prisma.creative.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const creativesWithIdOnly = await prisma.creatives.findMany({ select: { id: true } })
+     * const creativeWithIdOnly = await prisma.creative.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends creativesFindManyArgs>(args?: SelectSubset<T, creativesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CreativeFindManyArgs>(args?: SelectSubset<T, CreativeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Creatives.
-     * @param {creativesCreateArgs} args - Arguments to create a Creatives.
+     * Create a Creative.
+     * @param {CreativeCreateArgs} args - Arguments to create a Creative.
      * @example
-     * // Create one Creatives
-     * const Creatives = await prisma.creatives.create({
+     * // Create one Creative
+     * const Creative = await prisma.creative.create({
      *   data: {
-     *     // ... data to create a Creatives
+     *     // ... data to create a Creative
      *   }
      * })
      * 
      */
-    create<T extends creativesCreateArgs>(args: SelectSubset<T, creativesCreateArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CreativeCreateArgs>(args: SelectSubset<T, CreativeCreateArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Creatives.
-     * @param {creativesCreateManyArgs} args - Arguments to create many Creatives.
+     * @param {CreativeCreateManyArgs} args - Arguments to create many Creatives.
      * @example
      * // Create many Creatives
-     * const creatives = await prisma.creatives.createMany({
+     * const creative = await prisma.creative.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends creativesCreateManyArgs>(args?: SelectSubset<T, creativesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CreativeCreateManyArgs>(args?: SelectSubset<T, CreativeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Creatives and returns the data saved in the database.
-     * @param {creativesCreateManyAndReturnArgs} args - Arguments to create many Creatives.
+     * @param {CreativeCreateManyAndReturnArgs} args - Arguments to create many Creatives.
      * @example
      * // Create many Creatives
-     * const creatives = await prisma.creatives.createManyAndReturn({
+     * const creative = await prisma.creative.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Creatives and only return the `id`
-     * const creativesWithIdOnly = await prisma.creatives.createManyAndReturn({
+     * const creativeWithIdOnly = await prisma.creative.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3635,28 +2673,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends creativesCreateManyAndReturnArgs>(args?: SelectSubset<T, creativesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CreativeCreateManyAndReturnArgs>(args?: SelectSubset<T, CreativeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Creatives.
-     * @param {creativesDeleteArgs} args - Arguments to delete one Creatives.
+     * Delete a Creative.
+     * @param {CreativeDeleteArgs} args - Arguments to delete one Creative.
      * @example
-     * // Delete one Creatives
-     * const Creatives = await prisma.creatives.delete({
+     * // Delete one Creative
+     * const Creative = await prisma.creative.delete({
      *   where: {
-     *     // ... filter to delete one Creatives
+     *     // ... filter to delete one Creative
      *   }
      * })
      * 
      */
-    delete<T extends creativesDeleteArgs>(args: SelectSubset<T, creativesDeleteArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CreativeDeleteArgs>(args: SelectSubset<T, CreativeDeleteArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Creatives.
-     * @param {creativesUpdateArgs} args - Arguments to update one Creatives.
+     * Update one Creative.
+     * @param {CreativeUpdateArgs} args - Arguments to update one Creative.
      * @example
-     * // Update one Creatives
-     * const creatives = await prisma.creatives.update({
+     * // Update one Creative
+     * const creative = await prisma.creative.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3666,30 +2704,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends creativesUpdateArgs>(args: SelectSubset<T, creativesUpdateArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CreativeUpdateArgs>(args: SelectSubset<T, CreativeUpdateArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Creatives.
-     * @param {creativesDeleteManyArgs} args - Arguments to filter Creatives to delete.
+     * @param {CreativeDeleteManyArgs} args - Arguments to filter Creatives to delete.
      * @example
      * // Delete a few Creatives
-     * const { count } = await prisma.creatives.deleteMany({
+     * const { count } = await prisma.creative.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends creativesDeleteManyArgs>(args?: SelectSubset<T, creativesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CreativeDeleteManyArgs>(args?: SelectSubset<T, CreativeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CreativeUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Creatives
-     * const creatives = await prisma.creatives.updateMany({
+     * const creative = await prisma.creative.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3699,14 +2737,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends creativesUpdateManyArgs>(args: SelectSubset<T, creativesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CreativeUpdateManyArgs>(args: SelectSubset<T, CreativeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Creatives and returns the data updated in the database.
-     * @param {creativesUpdateManyAndReturnArgs} args - Arguments to update many Creatives.
+     * @param {CreativeUpdateManyAndReturnArgs} args - Arguments to update many Creatives.
      * @example
      * // Update many Creatives
-     * const creatives = await prisma.creatives.updateManyAndReturn({
+     * const creative = await prisma.creative.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3716,7 +2754,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Creatives and only return the `id`
-     * const creativesWithIdOnly = await prisma.creatives.updateManyAndReturn({
+     * const creativeWithIdOnly = await prisma.creative.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3729,56 +2767,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends creativesUpdateManyAndReturnArgs>(args: SelectSubset<T, creativesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CreativeUpdateManyAndReturnArgs>(args: SelectSubset<T, CreativeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Creatives.
-     * @param {creativesUpsertArgs} args - Arguments to update or create a Creatives.
+     * Create or update one Creative.
+     * @param {CreativeUpsertArgs} args - Arguments to update or create a Creative.
      * @example
-     * // Update or create a Creatives
-     * const creatives = await prisma.creatives.upsert({
+     * // Update or create a Creative
+     * const creative = await prisma.creative.upsert({
      *   create: {
-     *     // ... data to create a Creatives
+     *     // ... data to create a Creative
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Creatives we want to update
+     *     // ... the filter for the Creative we want to update
      *   }
      * })
      */
-    upsert<T extends creativesUpsertArgs>(args: SelectSubset<T, creativesUpsertArgs<ExtArgs>>): Prisma__creativesClient<$Result.GetResult<Prisma.$creativesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CreativeUpsertArgs>(args: SelectSubset<T, CreativeUpsertArgs<ExtArgs>>): Prisma__CreativeClient<$Result.GetResult<Prisma.$CreativePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Creatives.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesCountArgs} args - Arguments to filter Creatives to count.
+     * @param {CreativeCountArgs} args - Arguments to filter Creatives to count.
      * @example
      * // Count the number of Creatives
-     * const count = await prisma.creatives.count({
+     * const count = await prisma.creative.count({
      *   where: {
      *     // ... the filter for the Creatives we want to count
      *   }
      * })
     **/
-    count<T extends creativesCountArgs>(
-      args?: Subset<T, creativesCountArgs>,
+    count<T extends CreativeCountArgs>(
+      args?: Subset<T, CreativeCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CreativesCountAggregateOutputType>
+          : GetScalarType<T['select'], CreativeCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Creatives.
+     * Allows you to perform aggregations operations on a Creative.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CreativesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CreativeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3798,13 +2836,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CreativesAggregateArgs>(args: Subset<T, CreativesAggregateArgs>): Prisma.PrismaPromise<GetCreativesAggregateType<T>>
+    aggregate<T extends CreativeAggregateArgs>(args: Subset<T, CreativeAggregateArgs>): Prisma.PrismaPromise<GetCreativeAggregateType<T>>
 
     /**
-     * Group by Creatives.
+     * Group by Creative.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {creativesGroupByArgs} args - Group by arguments.
+     * @param {CreativeGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3819,14 +2857,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends creativesGroupByArgs,
+      T extends CreativeGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: creativesGroupByArgs['orderBy'] }
-        : { orderBy?: creativesGroupByArgs['orderBy'] },
+        ? { orderBy: CreativeGroupByArgs['orderBy'] }
+        : { orderBy?: CreativeGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3875,22 +2913,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, creativesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCreativesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CreativeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCreativeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the creatives model
+   * Fields of the Creative model
    */
-  readonly fields: creativesFieldRefs;
+  readonly fields: CreativeFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for creatives.
+   * The delegate class that acts as a "Promise-like" for Creative.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__creativesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CreativeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    campaign_creative<T extends creatives$campaign_creativeArgs<ExtArgs> = {}>(args?: Subset<T, creatives$campaign_creativeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$campaign_creativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    campaign<T extends CampaignDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CampaignDefaultArgs<ExtArgs>>): Prisma__CampaignClient<$Result.GetResult<Prisma.$CampaignPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3917,1442 +2955,435 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the creatives model
+   * Fields of the Creative model
    */
-  interface creativesFieldRefs {
-    readonly id: FieldRef<"creatives", 'String'>
-    readonly name: FieldRef<"creatives", 'String'>
-    readonly created_at: FieldRef<"creatives", 'DateTime'>
+  interface CreativeFieldRefs {
+    readonly id: FieldRef<"Creative", 'String'>
+    readonly name: FieldRef<"Creative", 'String'>
+    readonly notes: FieldRef<"Creative", 'String'>
+    readonly tags: FieldRef<"Creative", 'String[]'>
+    readonly approvalStatus: FieldRef<"Creative", 'CreativeApprovalStatus'>
+    readonly proofOfPlay: FieldRef<"Creative", 'Boolean'>
+    readonly fileUrl: FieldRef<"Creative", 'String'>
+    readonly fileType: FieldRef<"Creative", 'String'>
+    readonly fileSize: FieldRef<"Creative", 'Int'>
+    readonly width: FieldRef<"Creative", 'Int'>
+    readonly height: FieldRef<"Creative", 'Int'>
+    readonly duration: FieldRef<"Creative", 'Float'>
+    readonly campaignId: FieldRef<"Creative", 'String'>
+    readonly createdAt: FieldRef<"Creative", 'DateTime'>
+    readonly updatedAt: FieldRef<"Creative", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * creatives findUnique
+   * Creative findUnique
    */
-  export type creativesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter, which creatives to fetch.
+     * Filter, which Creative to fetch.
      */
-    where: creativesWhereUniqueInput
+    where: CreativeWhereUniqueInput
   }
 
   /**
-   * creatives findUniqueOrThrow
+   * Creative findUniqueOrThrow
    */
-  export type creativesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter, which creatives to fetch.
+     * Filter, which Creative to fetch.
      */
-    where: creativesWhereUniqueInput
+    where: CreativeWhereUniqueInput
   }
 
   /**
-   * creatives findFirst
+   * Creative findFirst
    */
-  export type creativesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter, which creatives to fetch.
+     * Filter, which Creative to fetch.
      */
-    where?: creativesWhereInput
+    where?: CreativeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of creatives to fetch.
+     * Determine the order of Creatives to fetch.
      */
-    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
+    orderBy?: CreativeOrderByWithRelationInput | CreativeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for creatives.
+     * Sets the position for searching for Creatives.
      */
-    cursor?: creativesWhereUniqueInput
+    cursor?: CreativeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` creatives from the position of the cursor.
+     * Take `±n` Creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` creatives.
+     * Skip the first `n` Creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of creatives.
+     * Filter by unique combinations of Creatives.
      */
-    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
+    distinct?: CreativeScalarFieldEnum | CreativeScalarFieldEnum[]
   }
 
   /**
-   * creatives findFirstOrThrow
+   * Creative findFirstOrThrow
    */
-  export type creativesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter, which creatives to fetch.
+     * Filter, which Creative to fetch.
      */
-    where?: creativesWhereInput
+    where?: CreativeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of creatives to fetch.
+     * Determine the order of Creatives to fetch.
      */
-    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
+    orderBy?: CreativeOrderByWithRelationInput | CreativeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for creatives.
+     * Sets the position for searching for Creatives.
      */
-    cursor?: creativesWhereUniqueInput
+    cursor?: CreativeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` creatives from the position of the cursor.
+     * Take `±n` Creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` creatives.
+     * Skip the first `n` Creatives.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of creatives.
+     * Filter by unique combinations of Creatives.
      */
-    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
+    distinct?: CreativeScalarFieldEnum | CreativeScalarFieldEnum[]
   }
 
   /**
-   * creatives findMany
+   * Creative findMany
    */
-  export type creativesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter, which creatives to fetch.
+     * Filter, which Creatives to fetch.
      */
-    where?: creativesWhereInput
+    where?: CreativeWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of creatives to fetch.
+     * Determine the order of Creatives to fetch.
      */
-    orderBy?: creativesOrderByWithRelationInput | creativesOrderByWithRelationInput[]
+    orderBy?: CreativeOrderByWithRelationInput | CreativeOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing creatives.
+     * Sets the position for listing Creatives.
      */
-    cursor?: creativesWhereUniqueInput
+    cursor?: CreativeWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` creatives from the position of the cursor.
+     * Take `±n` Creatives from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` creatives.
+     * Skip the first `n` Creatives.
      */
     skip?: number
-    distinct?: CreativesScalarFieldEnum | CreativesScalarFieldEnum[]
+    distinct?: CreativeScalarFieldEnum | CreativeScalarFieldEnum[]
   }
 
   /**
-   * creatives create
+   * Creative create
    */
-  export type creativesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * The data needed to create a creatives.
+     * The data needed to create a Creative.
      */
-    data: XOR<creativesCreateInput, creativesUncheckedCreateInput>
+    data: XOR<CreativeCreateInput, CreativeUncheckedCreateInput>
   }
 
   /**
-   * creatives createMany
+   * Creative createMany
    */
-  export type creativesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many creatives.
+     * The data used to create many Creatives.
      */
-    data: creativesCreateManyInput | creativesCreateManyInput[]
+    data: CreativeCreateManyInput | CreativeCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * creatives createManyAndReturn
+   * Creative createManyAndReturn
    */
-  export type creativesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CreativeSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
-     * The data used to create many creatives.
+     * The data used to create many Creatives.
      */
-    data: creativesCreateManyInput | creativesCreateManyInput[]
+    data: CreativeCreateManyInput | CreativeCreateManyInput[]
     skipDuplicates?: boolean
-  }
-
-  /**
-   * creatives update
-   */
-  export type creativesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the creatives
-     */
-    select?: creativesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the creatives
-     */
-    omit?: creativesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
-    /**
-     * The data needed to update a creatives.
-     */
-    data: XOR<creativesUpdateInput, creativesUncheckedUpdateInput>
-    /**
-     * Choose, which creatives to update.
-     */
-    where: creativesWhereUniqueInput
+    include?: CreativeIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * creatives updateMany
+   * Creative update
    */
-  export type creativesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update creatives.
+     * Select specific fields to fetch from the Creative
      */
-    data: XOR<creativesUpdateManyMutationInput, creativesUncheckedUpdateManyInput>
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Filter which creatives to update
+     * Omit specific fields from the Creative
      */
-    where?: creativesWhereInput
-    /**
-     * Limit how many creatives to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * creatives updateManyAndReturn
-   */
-  export type creativesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the creatives
-     */
-    select?: creativesSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the creatives
-     */
-    omit?: creativesOmit<ExtArgs> | null
-    /**
-     * The data used to update creatives.
-     */
-    data: XOR<creativesUpdateManyMutationInput, creativesUncheckedUpdateManyInput>
-    /**
-     * Filter which creatives to update
-     */
-    where?: creativesWhereInput
-    /**
-     * Limit how many creatives to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * creatives upsert
-   */
-  export type creativesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the creatives
-     */
-    select?: creativesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the creatives
-     */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * The filter to search for the creatives to update in case it exists.
+     * The data needed to update a Creative.
      */
-    where: creativesWhereUniqueInput
+    data: XOR<CreativeUpdateInput, CreativeUncheckedUpdateInput>
     /**
-     * In case the creatives found by the `where` argument doesn't exist, create a new creatives with this data.
+     * Choose, which Creative to update.
      */
-    create: XOR<creativesCreateInput, creativesUncheckedCreateInput>
-    /**
-     * In case the creatives was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<creativesUpdateInput, creativesUncheckedUpdateInput>
+    where: CreativeWhereUniqueInput
   }
 
   /**
-   * creatives delete
+   * Creative updateMany
    */
-  export type creativesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * The data used to update Creatives.
      */
-    select?: creativesSelect<ExtArgs> | null
+    data: XOR<CreativeUpdateManyMutationInput, CreativeUncheckedUpdateManyInput>
     /**
-     * Omit specific fields from the creatives
+     * Filter which Creatives to update
      */
-    omit?: creativesOmit<ExtArgs> | null
+    where?: CreativeWhereInput
+    /**
+     * Limit how many Creatives to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Creative updateManyAndReturn
+   */
+  export type CreativeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Creative
+     */
+    select?: CreativeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Creative
+     */
+    omit?: CreativeOmit<ExtArgs> | null
+    /**
+     * The data used to update Creatives.
+     */
+    data: XOR<CreativeUpdateManyMutationInput, CreativeUncheckedUpdateManyInput>
+    /**
+     * Filter which Creatives to update
+     */
+    where?: CreativeWhereInput
+    /**
+     * Limit how many Creatives to update.
+     */
+    limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
-    /**
-     * Filter which creatives to delete.
-     */
-    where: creativesWhereUniqueInput
+    include?: CreativeIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * creatives deleteMany
+   * Creative upsert
    */
-  export type creativesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which creatives to delete
+     * Select specific fields to fetch from the Creative
      */
-    where?: creativesWhereInput
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Limit how many creatives to delete.
+     * Omit specific fields from the Creative
      */
-    limit?: number
-  }
-
-  /**
-   * creatives.campaign_creative
-   */
-  export type creatives$campaign_creativeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the campaign_creative
-     */
-    select?: campaign_creativeSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the campaign_creative
-     */
-    omit?: campaign_creativeOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: campaign_creativeInclude<ExtArgs> | null
-    where?: campaign_creativeWhereInput
-    orderBy?: campaign_creativeOrderByWithRelationInput | campaign_creativeOrderByWithRelationInput[]
-    cursor?: campaign_creativeWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Campaign_creativeScalarFieldEnum | Campaign_creativeScalarFieldEnum[]
+    include?: CreativeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Creative to update in case it exists.
+     */
+    where: CreativeWhereUniqueInput
+    /**
+     * In case the Creative found by the `where` argument doesn't exist, create a new Creative with this data.
+     */
+    create: XOR<CreativeCreateInput, CreativeUncheckedCreateInput>
+    /**
+     * In case the Creative was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CreativeUpdateInput, CreativeUncheckedUpdateInput>
   }
 
   /**
-   * creatives without action
+   * Creative delete
    */
-  export type creativesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the creatives
+     * Select specific fields to fetch from the Creative
      */
-    select?: creativesSelect<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the creatives
+     * Omit specific fields from the Creative
      */
-    omit?: creativesOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: creativesInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model system_config
-   */
-
-  export type AggregateSystem_config = {
-    _count: System_configCountAggregateOutputType | null
-    _avg: System_configAvgAggregateOutputType | null
-    _sum: System_configSumAggregateOutputType | null
-    _min: System_configMinAggregateOutputType | null
-    _max: System_configMaxAggregateOutputType | null
-  }
-
-  export type System_configAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type System_configSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type System_configMinAggregateOutputType = {
-    id: number | null
-    parameter: string | null
-    value: string | null
-  }
-
-  export type System_configMaxAggregateOutputType = {
-    id: number | null
-    parameter: string | null
-    value: string | null
-  }
-
-  export type System_configCountAggregateOutputType = {
-    id: number
-    parameter: number
-    value: number
-    _all: number
-  }
-
-
-  export type System_configAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type System_configSumAggregateInputType = {
-    id?: true
-  }
-
-  export type System_configMinAggregateInputType = {
-    id?: true
-    parameter?: true
-    value?: true
-  }
-
-  export type System_configMaxAggregateInputType = {
-    id?: true
-    parameter?: true
-    value?: true
-  }
-
-  export type System_configCountAggregateInputType = {
-    id?: true
-    parameter?: true
-    value?: true
-    _all?: true
-  }
-
-  export type System_configAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    include?: CreativeInclude<ExtArgs> | null
     /**
-     * Filter which system_config to aggregate.
+     * Filter which Creative to delete.
      */
-    where?: system_configWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of system_configs to fetch.
-     */
-    orderBy?: system_configOrderByWithRelationInput | system_configOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: system_configWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` system_configs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` system_configs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned system_configs
-    **/
-    _count?: true | System_configCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: System_configAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: System_configSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: System_configMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: System_configMaxAggregateInputType
-  }
-
-  export type GetSystem_configAggregateType<T extends System_configAggregateArgs> = {
-        [P in keyof T & keyof AggregateSystem_config]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSystem_config[P]>
-      : GetScalarType<T[P], AggregateSystem_config[P]>
-  }
-
-
-
-
-  export type system_configGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: system_configWhereInput
-    orderBy?: system_configOrderByWithAggregationInput | system_configOrderByWithAggregationInput[]
-    by: System_configScalarFieldEnum[] | System_configScalarFieldEnum
-    having?: system_configScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: System_configCountAggregateInputType | true
-    _avg?: System_configAvgAggregateInputType
-    _sum?: System_configSumAggregateInputType
-    _min?: System_configMinAggregateInputType
-    _max?: System_configMaxAggregateInputType
-  }
-
-  export type System_configGroupByOutputType = {
-    id: number
-    parameter: string | null
-    value: string
-    _count: System_configCountAggregateOutputType | null
-    _avg: System_configAvgAggregateOutputType | null
-    _sum: System_configSumAggregateOutputType | null
-    _min: System_configMinAggregateOutputType | null
-    _max: System_configMaxAggregateOutputType | null
-  }
-
-  type GetSystem_configGroupByPayload<T extends system_configGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<System_configGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof System_configGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], System_configGroupByOutputType[P]>
-            : GetScalarType<T[P], System_configGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type system_configSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    parameter?: boolean
-    value?: boolean
-  }, ExtArgs["result"]["system_config"]>
-
-  export type system_configSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    parameter?: boolean
-    value?: boolean
-  }, ExtArgs["result"]["system_config"]>
-
-  export type system_configSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    parameter?: boolean
-    value?: boolean
-  }, ExtArgs["result"]["system_config"]>
-
-  export type system_configSelectScalar = {
-    id?: boolean
-    parameter?: boolean
-    value?: boolean
-  }
-
-  export type system_configOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "parameter" | "value", ExtArgs["result"]["system_config"]>
-
-  export type $system_configPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "system_config"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      parameter: string | null
-      value: string
-    }, ExtArgs["result"]["system_config"]>
-    composites: {}
-  }
-
-  type system_configGetPayload<S extends boolean | null | undefined | system_configDefaultArgs> = $Result.GetResult<Prisma.$system_configPayload, S>
-
-  type system_configCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<system_configFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: System_configCountAggregateInputType | true
-    }
-
-  export interface system_configDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['system_config'], meta: { name: 'system_config' } }
-    /**
-     * Find zero or one System_config that matches the filter.
-     * @param {system_configFindUniqueArgs} args - Arguments to find a System_config
-     * @example
-     * // Get one System_config
-     * const system_config = await prisma.system_config.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends system_configFindUniqueArgs>(args: SelectSubset<T, system_configFindUniqueArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one System_config that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {system_configFindUniqueOrThrowArgs} args - Arguments to find a System_config
-     * @example
-     * // Get one System_config
-     * const system_config = await prisma.system_config.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends system_configFindUniqueOrThrowArgs>(args: SelectSubset<T, system_configFindUniqueOrThrowArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first System_config that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configFindFirstArgs} args - Arguments to find a System_config
-     * @example
-     * // Get one System_config
-     * const system_config = await prisma.system_config.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends system_configFindFirstArgs>(args?: SelectSubset<T, system_configFindFirstArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first System_config that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configFindFirstOrThrowArgs} args - Arguments to find a System_config
-     * @example
-     * // Get one System_config
-     * const system_config = await prisma.system_config.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends system_configFindFirstOrThrowArgs>(args?: SelectSubset<T, system_configFindFirstOrThrowArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more System_configs that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all System_configs
-     * const system_configs = await prisma.system_config.findMany()
-     * 
-     * // Get first 10 System_configs
-     * const system_configs = await prisma.system_config.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const system_configWithIdOnly = await prisma.system_config.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends system_configFindManyArgs>(args?: SelectSubset<T, system_configFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a System_config.
-     * @param {system_configCreateArgs} args - Arguments to create a System_config.
-     * @example
-     * // Create one System_config
-     * const System_config = await prisma.system_config.create({
-     *   data: {
-     *     // ... data to create a System_config
-     *   }
-     * })
-     * 
-     */
-    create<T extends system_configCreateArgs>(args: SelectSubset<T, system_configCreateArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many System_configs.
-     * @param {system_configCreateManyArgs} args - Arguments to create many System_configs.
-     * @example
-     * // Create many System_configs
-     * const system_config = await prisma.system_config.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends system_configCreateManyArgs>(args?: SelectSubset<T, system_configCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many System_configs and returns the data saved in the database.
-     * @param {system_configCreateManyAndReturnArgs} args - Arguments to create many System_configs.
-     * @example
-     * // Create many System_configs
-     * const system_config = await prisma.system_config.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many System_configs and only return the `id`
-     * const system_configWithIdOnly = await prisma.system_config.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends system_configCreateManyAndReturnArgs>(args?: SelectSubset<T, system_configCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a System_config.
-     * @param {system_configDeleteArgs} args - Arguments to delete one System_config.
-     * @example
-     * // Delete one System_config
-     * const System_config = await prisma.system_config.delete({
-     *   where: {
-     *     // ... filter to delete one System_config
-     *   }
-     * })
-     * 
-     */
-    delete<T extends system_configDeleteArgs>(args: SelectSubset<T, system_configDeleteArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one System_config.
-     * @param {system_configUpdateArgs} args - Arguments to update one System_config.
-     * @example
-     * // Update one System_config
-     * const system_config = await prisma.system_config.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends system_configUpdateArgs>(args: SelectSubset<T, system_configUpdateArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more System_configs.
-     * @param {system_configDeleteManyArgs} args - Arguments to filter System_configs to delete.
-     * @example
-     * // Delete a few System_configs
-     * const { count } = await prisma.system_config.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends system_configDeleteManyArgs>(args?: SelectSubset<T, system_configDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more System_configs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many System_configs
-     * const system_config = await prisma.system_config.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends system_configUpdateManyArgs>(args: SelectSubset<T, system_configUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more System_configs and returns the data updated in the database.
-     * @param {system_configUpdateManyAndReturnArgs} args - Arguments to update many System_configs.
-     * @example
-     * // Update many System_configs
-     * const system_config = await prisma.system_config.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more System_configs and only return the `id`
-     * const system_configWithIdOnly = await prisma.system_config.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends system_configUpdateManyAndReturnArgs>(args: SelectSubset<T, system_configUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one System_config.
-     * @param {system_configUpsertArgs} args - Arguments to update or create a System_config.
-     * @example
-     * // Update or create a System_config
-     * const system_config = await prisma.system_config.upsert({
-     *   create: {
-     *     // ... data to create a System_config
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the System_config we want to update
-     *   }
-     * })
-     */
-    upsert<T extends system_configUpsertArgs>(args: SelectSubset<T, system_configUpsertArgs<ExtArgs>>): Prisma__system_configClient<$Result.GetResult<Prisma.$system_configPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of System_configs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configCountArgs} args - Arguments to filter System_configs to count.
-     * @example
-     * // Count the number of System_configs
-     * const count = await prisma.system_config.count({
-     *   where: {
-     *     // ... the filter for the System_configs we want to count
-     *   }
-     * })
-    **/
-    count<T extends system_configCountArgs>(
-      args?: Subset<T, system_configCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], System_configCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a System_config.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {System_configAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends System_configAggregateArgs>(args: Subset<T, System_configAggregateArgs>): Prisma.PrismaPromise<GetSystem_configAggregateType<T>>
-
-    /**
-     * Group by System_config.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {system_configGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends system_configGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: system_configGroupByArgs['orderBy'] }
-        : { orderBy?: system_configGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, system_configGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSystem_configGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the system_config model
-   */
-  readonly fields: system_configFieldRefs;
+    where: CreativeWhereUniqueInput
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for system_config.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
+   * Creative deleteMany
    */
-  export interface Prisma__system_configClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
+  export type CreativeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
+     * Filter which Creatives to delete
      */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    where?: CreativeWhereInput
     /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the system_config model
-   */
-  interface system_configFieldRefs {
-    readonly id: FieldRef<"system_config", 'Int'>
-    readonly parameter: FieldRef<"system_config", 'String'>
-    readonly value: FieldRef<"system_config", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * system_config findUnique
-   */
-  export type system_configFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter, which system_config to fetch.
-     */
-    where: system_configWhereUniqueInput
-  }
-
-  /**
-   * system_config findUniqueOrThrow
-   */
-  export type system_configFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter, which system_config to fetch.
-     */
-    where: system_configWhereUniqueInput
-  }
-
-  /**
-   * system_config findFirst
-   */
-  export type system_configFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter, which system_config to fetch.
-     */
-    where?: system_configWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of system_configs to fetch.
-     */
-    orderBy?: system_configOrderByWithRelationInput | system_configOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for system_configs.
-     */
-    cursor?: system_configWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` system_configs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` system_configs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of system_configs.
-     */
-    distinct?: System_configScalarFieldEnum | System_configScalarFieldEnum[]
-  }
-
-  /**
-   * system_config findFirstOrThrow
-   */
-  export type system_configFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter, which system_config to fetch.
-     */
-    where?: system_configWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of system_configs to fetch.
-     */
-    orderBy?: system_configOrderByWithRelationInput | system_configOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for system_configs.
-     */
-    cursor?: system_configWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` system_configs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` system_configs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of system_configs.
-     */
-    distinct?: System_configScalarFieldEnum | System_configScalarFieldEnum[]
-  }
-
-  /**
-   * system_config findMany
-   */
-  export type system_configFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter, which system_configs to fetch.
-     */
-    where?: system_configWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of system_configs to fetch.
-     */
-    orderBy?: system_configOrderByWithRelationInput | system_configOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing system_configs.
-     */
-    cursor?: system_configWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` system_configs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` system_configs.
-     */
-    skip?: number
-    distinct?: System_configScalarFieldEnum | System_configScalarFieldEnum[]
-  }
-
-  /**
-   * system_config create
-   */
-  export type system_configCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * The data needed to create a system_config.
-     */
-    data: XOR<system_configCreateInput, system_configUncheckedCreateInput>
-  }
-
-  /**
-   * system_config createMany
-   */
-  export type system_configCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many system_configs.
-     */
-    data: system_configCreateManyInput | system_configCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * system_config createManyAndReturn
-   */
-  export type system_configCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * The data used to create many system_configs.
-     */
-    data: system_configCreateManyInput | system_configCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * system_config update
-   */
-  export type system_configUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * The data needed to update a system_config.
-     */
-    data: XOR<system_configUpdateInput, system_configUncheckedUpdateInput>
-    /**
-     * Choose, which system_config to update.
-     */
-    where: system_configWhereUniqueInput
-  }
-
-  /**
-   * system_config updateMany
-   */
-  export type system_configUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update system_configs.
-     */
-    data: XOR<system_configUpdateManyMutationInput, system_configUncheckedUpdateManyInput>
-    /**
-     * Filter which system_configs to update
-     */
-    where?: system_configWhereInput
-    /**
-     * Limit how many system_configs to update.
+     * Limit how many Creatives to delete.
      */
     limit?: number
   }
 
   /**
-   * system_config updateManyAndReturn
+   * Creative without action
    */
-  export type system_configUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CreativeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the system_config
+     * Select specific fields to fetch from the Creative
      */
-    select?: system_configSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CreativeSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the system_config
+     * Omit specific fields from the Creative
      */
-    omit?: system_configOmit<ExtArgs> | null
+    omit?: CreativeOmit<ExtArgs> | null
     /**
-     * The data used to update system_configs.
+     * Choose, which related nodes to fetch as well
      */
-    data: XOR<system_configUpdateManyMutationInput, system_configUncheckedUpdateManyInput>
-    /**
-     * Filter which system_configs to update
-     */
-    where?: system_configWhereInput
-    /**
-     * Limit how many system_configs to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * system_config upsert
-   */
-  export type system_configUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * The filter to search for the system_config to update in case it exists.
-     */
-    where: system_configWhereUniqueInput
-    /**
-     * In case the system_config found by the `where` argument doesn't exist, create a new system_config with this data.
-     */
-    create: XOR<system_configCreateInput, system_configUncheckedCreateInput>
-    /**
-     * In case the system_config was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<system_configUpdateInput, system_configUncheckedUpdateInput>
-  }
-
-  /**
-   * system_config delete
-   */
-  export type system_configDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
-    /**
-     * Filter which system_config to delete.
-     */
-    where: system_configWhereUniqueInput
-  }
-
-  /**
-   * system_config deleteMany
-   */
-  export type system_configDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which system_configs to delete
-     */
-    where?: system_configWhereInput
-    /**
-     * Limit how many system_configs to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * system_config without action
-   */
-  export type system_configDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the system_config
-     */
-    select?: system_configSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the system_config
-     */
-    omit?: system_configOmit<ExtArgs> | null
+    include?: CreativeInclude<ExtArgs> | null
   }
 
 
@@ -5370,42 +3401,41 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const Campaign_creativeScalarFieldEnum: {
-    campaign_id: 'campaign_id',
-    creative_id: 'creative_id'
-  };
-
-  export type Campaign_creativeScalarFieldEnum = (typeof Campaign_creativeScalarFieldEnum)[keyof typeof Campaign_creativeScalarFieldEnum]
-
-
-  export const CampaignsScalarFieldEnum: {
+  export const CampaignScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    start_date: 'start_date',
-    end_date: 'end_date',
-    age_groups: 'age_groups',
-    gender: 'gender'
+    startDate: 'startDate',
+    endDate: 'endDate',
+    status: 'status',
+    notes: 'notes',
+    submittedBy: 'submittedBy',
+    submissionDate: 'submissionDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
-  export type CampaignsScalarFieldEnum = (typeof CampaignsScalarFieldEnum)[keyof typeof CampaignsScalarFieldEnum]
+  export type CampaignScalarFieldEnum = (typeof CampaignScalarFieldEnum)[keyof typeof CampaignScalarFieldEnum]
 
 
-  export const CreativesScalarFieldEnum: {
+  export const CreativeScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    created_at: 'created_at'
+    notes: 'notes',
+    tags: 'tags',
+    approvalStatus: 'approvalStatus',
+    proofOfPlay: 'proofOfPlay',
+    fileUrl: 'fileUrl',
+    fileType: 'fileType',
+    fileSize: 'fileSize',
+    width: 'width',
+    height: 'height',
+    duration: 'duration',
+    campaignId: 'campaignId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
-  export type CreativesScalarFieldEnum = (typeof CreativesScalarFieldEnum)[keyof typeof CreativesScalarFieldEnum]
-
-
-  export const System_configScalarFieldEnum: {
-    id: 'id',
-    parameter: 'parameter',
-    value: 'value'
-  };
-
-  export type System_configScalarFieldEnum = (typeof System_configScalarFieldEnum)[keyof typeof System_configScalarFieldEnum]
+  export type CreativeScalarFieldEnum = (typeof CreativeScalarFieldEnum)[keyof typeof CreativeScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5466,6 +3496,41 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'CampaignStatus'
+   */
+  export type EnumCampaignStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CampaignStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CampaignStatus[]'
+   */
+  export type ListEnumCampaignStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CampaignStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'CreativeApprovalStatus'
+   */
+  export type EnumCreativeApprovalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreativeApprovalStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'CreativeApprovalStatus[]'
+   */
+  export type ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CreativeApprovalStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5496,440 +3561,411 @@ export namespace Prisma {
    */
 
 
-  export type campaign_creativeWhereInput = {
-    AND?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
-    OR?: campaign_creativeWhereInput[]
-    NOT?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
-    campaign_id?: UuidFilter<"campaign_creative"> | string
-    creative_id?: UuidFilter<"campaign_creative"> | string
-    campaigns?: XOR<CampaignsScalarRelationFilter, campaignsWhereInput>
-    creatives?: XOR<CreativesScalarRelationFilter, creativesWhereInput>
+  export type CampaignWhereInput = {
+    AND?: CampaignWhereInput | CampaignWhereInput[]
+    OR?: CampaignWhereInput[]
+    NOT?: CampaignWhereInput | CampaignWhereInput[]
+    id?: StringFilter<"Campaign"> | string
+    name?: StringFilter<"Campaign"> | string
+    startDate?: DateTimeFilter<"Campaign"> | Date | string
+    endDate?: DateTimeFilter<"Campaign"> | Date | string
+    status?: EnumCampaignStatusFilter<"Campaign"> | $Enums.CampaignStatus
+    notes?: StringNullableFilter<"Campaign"> | string | null
+    submittedBy?: StringNullableFilter<"Campaign"> | string | null
+    submissionDate?: DateTimeNullableFilter<"Campaign"> | Date | string | null
+    createdAt?: DateTimeFilter<"Campaign"> | Date | string
+    updatedAt?: DateTimeFilter<"Campaign"> | Date | string
+    creatives?: CreativeListRelationFilter
   }
 
-  export type campaign_creativeOrderByWithRelationInput = {
-    campaign_id?: SortOrder
-    creative_id?: SortOrder
-    campaigns?: campaignsOrderByWithRelationInput
-    creatives?: creativesOrderByWithRelationInput
-  }
-
-  export type campaign_creativeWhereUniqueInput = Prisma.AtLeast<{
-    campaign_id_creative_id?: campaign_creativeCampaign_idCreative_idCompoundUniqueInput
-    AND?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
-    OR?: campaign_creativeWhereInput[]
-    NOT?: campaign_creativeWhereInput | campaign_creativeWhereInput[]
-    campaign_id?: UuidFilter<"campaign_creative"> | string
-    creative_id?: UuidFilter<"campaign_creative"> | string
-    campaigns?: XOR<CampaignsScalarRelationFilter, campaignsWhereInput>
-    creatives?: XOR<CreativesScalarRelationFilter, creativesWhereInput>
-  }, "campaign_id_creative_id">
-
-  export type campaign_creativeOrderByWithAggregationInput = {
-    campaign_id?: SortOrder
-    creative_id?: SortOrder
-    _count?: campaign_creativeCountOrderByAggregateInput
-    _max?: campaign_creativeMaxOrderByAggregateInput
-    _min?: campaign_creativeMinOrderByAggregateInput
-  }
-
-  export type campaign_creativeScalarWhereWithAggregatesInput = {
-    AND?: campaign_creativeScalarWhereWithAggregatesInput | campaign_creativeScalarWhereWithAggregatesInput[]
-    OR?: campaign_creativeScalarWhereWithAggregatesInput[]
-    NOT?: campaign_creativeScalarWhereWithAggregatesInput | campaign_creativeScalarWhereWithAggregatesInput[]
-    campaign_id?: UuidWithAggregatesFilter<"campaign_creative"> | string
-    creative_id?: UuidWithAggregatesFilter<"campaign_creative"> | string
-  }
-
-  export type campaignsWhereInput = {
-    AND?: campaignsWhereInput | campaignsWhereInput[]
-    OR?: campaignsWhereInput[]
-    NOT?: campaignsWhereInput | campaignsWhereInput[]
-    id?: UuidFilter<"campaigns"> | string
-    name?: StringFilter<"campaigns"> | string
-    start_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
-    end_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
-    age_groups?: StringNullableListFilter<"campaigns">
-    gender?: StringNullableFilter<"campaigns"> | string | null
-    campaign_creative?: Campaign_creativeListRelationFilter
-  }
-
-  export type campaignsOrderByWithRelationInput = {
+  export type CampaignOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    start_date?: SortOrderInput | SortOrder
-    end_date?: SortOrderInput | SortOrder
-    age_groups?: SortOrder
-    gender?: SortOrderInput | SortOrder
-    campaign_creative?: campaign_creativeOrderByRelationAggregateInput
+    startDate?: SortOrder
+    endDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    submittedBy?: SortOrderInput | SortOrder
+    submissionDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creatives?: CreativeOrderByRelationAggregateInput
   }
 
-  export type campaignsWhereUniqueInput = Prisma.AtLeast<{
+  export type CampaignWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: campaignsWhereInput | campaignsWhereInput[]
-    OR?: campaignsWhereInput[]
-    NOT?: campaignsWhereInput | campaignsWhereInput[]
-    name?: StringFilter<"campaigns"> | string
-    start_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
-    end_date?: DateTimeNullableFilter<"campaigns"> | Date | string | null
-    age_groups?: StringNullableListFilter<"campaigns">
-    gender?: StringNullableFilter<"campaigns"> | string | null
-    campaign_creative?: Campaign_creativeListRelationFilter
+    AND?: CampaignWhereInput | CampaignWhereInput[]
+    OR?: CampaignWhereInput[]
+    NOT?: CampaignWhereInput | CampaignWhereInput[]
+    name?: StringFilter<"Campaign"> | string
+    startDate?: DateTimeFilter<"Campaign"> | Date | string
+    endDate?: DateTimeFilter<"Campaign"> | Date | string
+    status?: EnumCampaignStatusFilter<"Campaign"> | $Enums.CampaignStatus
+    notes?: StringNullableFilter<"Campaign"> | string | null
+    submittedBy?: StringNullableFilter<"Campaign"> | string | null
+    submissionDate?: DateTimeNullableFilter<"Campaign"> | Date | string | null
+    createdAt?: DateTimeFilter<"Campaign"> | Date | string
+    updatedAt?: DateTimeFilter<"Campaign"> | Date | string
+    creatives?: CreativeListRelationFilter
   }, "id">
 
-  export type campaignsOrderByWithAggregationInput = {
+  export type CampaignOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    start_date?: SortOrderInput | SortOrder
-    end_date?: SortOrderInput | SortOrder
-    age_groups?: SortOrder
-    gender?: SortOrderInput | SortOrder
-    _count?: campaignsCountOrderByAggregateInput
-    _max?: campaignsMaxOrderByAggregateInput
-    _min?: campaignsMinOrderByAggregateInput
+    startDate?: SortOrder
+    endDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrderInput | SortOrder
+    submittedBy?: SortOrderInput | SortOrder
+    submissionDate?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CampaignCountOrderByAggregateInput
+    _max?: CampaignMaxOrderByAggregateInput
+    _min?: CampaignMinOrderByAggregateInput
   }
 
-  export type campaignsScalarWhereWithAggregatesInput = {
-    AND?: campaignsScalarWhereWithAggregatesInput | campaignsScalarWhereWithAggregatesInput[]
-    OR?: campaignsScalarWhereWithAggregatesInput[]
-    NOT?: campaignsScalarWhereWithAggregatesInput | campaignsScalarWhereWithAggregatesInput[]
-    id?: UuidWithAggregatesFilter<"campaigns"> | string
-    name?: StringWithAggregatesFilter<"campaigns"> | string
-    start_date?: DateTimeNullableWithAggregatesFilter<"campaigns"> | Date | string | null
-    end_date?: DateTimeNullableWithAggregatesFilter<"campaigns"> | Date | string | null
-    age_groups?: StringNullableListFilter<"campaigns">
-    gender?: StringNullableWithAggregatesFilter<"campaigns"> | string | null
+  export type CampaignScalarWhereWithAggregatesInput = {
+    AND?: CampaignScalarWhereWithAggregatesInput | CampaignScalarWhereWithAggregatesInput[]
+    OR?: CampaignScalarWhereWithAggregatesInput[]
+    NOT?: CampaignScalarWhereWithAggregatesInput | CampaignScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Campaign"> | string
+    name?: StringWithAggregatesFilter<"Campaign"> | string
+    startDate?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
+    endDate?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
+    status?: EnumCampaignStatusWithAggregatesFilter<"Campaign"> | $Enums.CampaignStatus
+    notes?: StringNullableWithAggregatesFilter<"Campaign"> | string | null
+    submittedBy?: StringNullableWithAggregatesFilter<"Campaign"> | string | null
+    submissionDate?: DateTimeNullableWithAggregatesFilter<"Campaign"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
   }
 
-  export type creativesWhereInput = {
-    AND?: creativesWhereInput | creativesWhereInput[]
-    OR?: creativesWhereInput[]
-    NOT?: creativesWhereInput | creativesWhereInput[]
-    id?: UuidFilter<"creatives"> | string
-    name?: StringFilter<"creatives"> | string
-    created_at?: DateTimeNullableFilter<"creatives"> | Date | string | null
-    campaign_creative?: Campaign_creativeListRelationFilter
+  export type CreativeWhereInput = {
+    AND?: CreativeWhereInput | CreativeWhereInput[]
+    OR?: CreativeWhereInput[]
+    NOT?: CreativeWhereInput | CreativeWhereInput[]
+    id?: StringFilter<"Creative"> | string
+    name?: StringFilter<"Creative"> | string
+    notes?: StringNullableFilter<"Creative"> | string | null
+    tags?: StringNullableListFilter<"Creative">
+    approvalStatus?: EnumCreativeApprovalStatusFilter<"Creative"> | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFilter<"Creative"> | boolean
+    fileUrl?: StringFilter<"Creative"> | string
+    fileType?: StringFilter<"Creative"> | string
+    fileSize?: IntFilter<"Creative"> | number
+    width?: IntNullableFilter<"Creative"> | number | null
+    height?: IntNullableFilter<"Creative"> | number | null
+    duration?: FloatNullableFilter<"Creative"> | number | null
+    campaignId?: StringFilter<"Creative"> | string
+    createdAt?: DateTimeFilter<"Creative"> | Date | string
+    updatedAt?: DateTimeFilter<"Creative"> | Date | string
+    campaign?: XOR<CampaignScalarRelationFilter, CampaignWhereInput>
   }
 
-  export type creativesOrderByWithRelationInput = {
+  export type CreativeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    created_at?: SortOrderInput | SortOrder
-    campaign_creative?: campaign_creativeOrderByRelationAggregateInput
+    notes?: SortOrderInput | SortOrder
+    tags?: SortOrder
+    approvalStatus?: SortOrder
+    proofOfPlay?: SortOrder
+    fileUrl?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    width?: SortOrderInput | SortOrder
+    height?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    campaign?: CampaignOrderByWithRelationInput
   }
 
-  export type creativesWhereUniqueInput = Prisma.AtLeast<{
+  export type CreativeWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: creativesWhereInput | creativesWhereInput[]
-    OR?: creativesWhereInput[]
-    NOT?: creativesWhereInput | creativesWhereInput[]
-    name?: StringFilter<"creatives"> | string
-    created_at?: DateTimeNullableFilter<"creatives"> | Date | string | null
-    campaign_creative?: Campaign_creativeListRelationFilter
+    AND?: CreativeWhereInput | CreativeWhereInput[]
+    OR?: CreativeWhereInput[]
+    NOT?: CreativeWhereInput | CreativeWhereInput[]
+    name?: StringFilter<"Creative"> | string
+    notes?: StringNullableFilter<"Creative"> | string | null
+    tags?: StringNullableListFilter<"Creative">
+    approvalStatus?: EnumCreativeApprovalStatusFilter<"Creative"> | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFilter<"Creative"> | boolean
+    fileUrl?: StringFilter<"Creative"> | string
+    fileType?: StringFilter<"Creative"> | string
+    fileSize?: IntFilter<"Creative"> | number
+    width?: IntNullableFilter<"Creative"> | number | null
+    height?: IntNullableFilter<"Creative"> | number | null
+    duration?: FloatNullableFilter<"Creative"> | number | null
+    campaignId?: StringFilter<"Creative"> | string
+    createdAt?: DateTimeFilter<"Creative"> | Date | string
+    updatedAt?: DateTimeFilter<"Creative"> | Date | string
+    campaign?: XOR<CampaignScalarRelationFilter, CampaignWhereInput>
   }, "id">
 
-  export type creativesOrderByWithAggregationInput = {
+  export type CreativeOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    created_at?: SortOrderInput | SortOrder
-    _count?: creativesCountOrderByAggregateInput
-    _max?: creativesMaxOrderByAggregateInput
-    _min?: creativesMinOrderByAggregateInput
+    notes?: SortOrderInput | SortOrder
+    tags?: SortOrder
+    approvalStatus?: SortOrder
+    proofOfPlay?: SortOrder
+    fileUrl?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    width?: SortOrderInput | SortOrder
+    height?: SortOrderInput | SortOrder
+    duration?: SortOrderInput | SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CreativeCountOrderByAggregateInput
+    _avg?: CreativeAvgOrderByAggregateInput
+    _max?: CreativeMaxOrderByAggregateInput
+    _min?: CreativeMinOrderByAggregateInput
+    _sum?: CreativeSumOrderByAggregateInput
   }
 
-  export type creativesScalarWhereWithAggregatesInput = {
-    AND?: creativesScalarWhereWithAggregatesInput | creativesScalarWhereWithAggregatesInput[]
-    OR?: creativesScalarWhereWithAggregatesInput[]
-    NOT?: creativesScalarWhereWithAggregatesInput | creativesScalarWhereWithAggregatesInput[]
-    id?: UuidWithAggregatesFilter<"creatives"> | string
-    name?: StringWithAggregatesFilter<"creatives"> | string
-    created_at?: DateTimeNullableWithAggregatesFilter<"creatives"> | Date | string | null
+  export type CreativeScalarWhereWithAggregatesInput = {
+    AND?: CreativeScalarWhereWithAggregatesInput | CreativeScalarWhereWithAggregatesInput[]
+    OR?: CreativeScalarWhereWithAggregatesInput[]
+    NOT?: CreativeScalarWhereWithAggregatesInput | CreativeScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Creative"> | string
+    name?: StringWithAggregatesFilter<"Creative"> | string
+    notes?: StringNullableWithAggregatesFilter<"Creative"> | string | null
+    tags?: StringNullableListFilter<"Creative">
+    approvalStatus?: EnumCreativeApprovalStatusWithAggregatesFilter<"Creative"> | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolWithAggregatesFilter<"Creative"> | boolean
+    fileUrl?: StringWithAggregatesFilter<"Creative"> | string
+    fileType?: StringWithAggregatesFilter<"Creative"> | string
+    fileSize?: IntWithAggregatesFilter<"Creative"> | number
+    width?: IntNullableWithAggregatesFilter<"Creative"> | number | null
+    height?: IntNullableWithAggregatesFilter<"Creative"> | number | null
+    duration?: FloatNullableWithAggregatesFilter<"Creative"> | number | null
+    campaignId?: StringWithAggregatesFilter<"Creative"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Creative"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Creative"> | Date | string
   }
 
-  export type system_configWhereInput = {
-    AND?: system_configWhereInput | system_configWhereInput[]
-    OR?: system_configWhereInput[]
-    NOT?: system_configWhereInput | system_configWhereInput[]
-    id?: IntFilter<"system_config"> | number
-    parameter?: StringNullableFilter<"system_config"> | string | null
-    value?: StringFilter<"system_config"> | string
-  }
-
-  export type system_configOrderByWithRelationInput = {
-    id?: SortOrder
-    parameter?: SortOrderInput | SortOrder
-    value?: SortOrder
-  }
-
-  export type system_configWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: system_configWhereInput | system_configWhereInput[]
-    OR?: system_configWhereInput[]
-    NOT?: system_configWhereInput | system_configWhereInput[]
-    parameter?: StringNullableFilter<"system_config"> | string | null
-    value?: StringFilter<"system_config"> | string
-  }, "id">
-
-  export type system_configOrderByWithAggregationInput = {
-    id?: SortOrder
-    parameter?: SortOrderInput | SortOrder
-    value?: SortOrder
-    _count?: system_configCountOrderByAggregateInput
-    _avg?: system_configAvgOrderByAggregateInput
-    _max?: system_configMaxOrderByAggregateInput
-    _min?: system_configMinOrderByAggregateInput
-    _sum?: system_configSumOrderByAggregateInput
-  }
-
-  export type system_configScalarWhereWithAggregatesInput = {
-    AND?: system_configScalarWhereWithAggregatesInput | system_configScalarWhereWithAggregatesInput[]
-    OR?: system_configScalarWhereWithAggregatesInput[]
-    NOT?: system_configScalarWhereWithAggregatesInput | system_configScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"system_config"> | number
-    parameter?: StringNullableWithAggregatesFilter<"system_config"> | string | null
-    value?: StringWithAggregatesFilter<"system_config"> | string
-  }
-
-  export type campaign_creativeCreateInput = {
-    campaigns: campaignsCreateNestedOneWithoutCampaign_creativeInput
-    creatives: creativesCreateNestedOneWithoutCampaign_creativeInput
-  }
-
-  export type campaign_creativeUncheckedCreateInput = {
-    campaign_id: string
-    creative_id: string
-  }
-
-  export type campaign_creativeUpdateInput = {
-    campaigns?: campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput
-    creatives?: creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput
-  }
-
-  export type campaign_creativeUncheckedUpdateInput = {
-    campaign_id?: StringFieldUpdateOperationsInput | string
-    creative_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type campaign_creativeCreateManyInput = {
-    campaign_id: string
-    creative_id: string
-  }
-
-  export type campaign_creativeUpdateManyMutationInput = {
-
-  }
-
-  export type campaign_creativeUncheckedUpdateManyInput = {
-    campaign_id?: StringFieldUpdateOperationsInput | string
-    creative_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type campaignsCreateInput = {
+  export type CampaignCreateInput = {
     id?: string
     name: string
-    start_date?: Date | string | null
-    end_date?: Date | string | null
-    age_groups?: campaignsCreateage_groupsInput | string[]
-    gender?: string | null
-    campaign_creative?: campaign_creativeCreateNestedManyWithoutCampaignsInput
+    startDate: Date | string
+    endDate: Date | string
+    status?: $Enums.CampaignStatus
+    notes?: string | null
+    submittedBy?: string | null
+    submissionDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatives?: CreativeCreateNestedManyWithoutCampaignInput
   }
 
-  export type campaignsUncheckedCreateInput = {
+  export type CampaignUncheckedCreateInput = {
     id?: string
     name: string
-    start_date?: Date | string | null
-    end_date?: Date | string | null
-    age_groups?: campaignsCreateage_groupsInput | string[]
-    gender?: string | null
-    campaign_creative?: campaign_creativeUncheckedCreateNestedManyWithoutCampaignsInput
+    startDate: Date | string
+    endDate: Date | string
+    status?: $Enums.CampaignStatus
+    notes?: string | null
+    submittedBy?: string | null
+    submissionDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creatives?: CreativeUncheckedCreateNestedManyWithoutCampaignInput
   }
 
-  export type campaignsUpdateInput = {
+  export type CampaignUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-    campaign_creative?: campaign_creativeUpdateManyWithoutCampaignsNestedInput
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatives?: CreativeUpdateManyWithoutCampaignNestedInput
   }
 
-  export type campaignsUncheckedUpdateInput = {
+  export type CampaignUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-    campaign_creative?: campaign_creativeUncheckedUpdateManyWithoutCampaignsNestedInput
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creatives?: CreativeUncheckedUpdateManyWithoutCampaignNestedInput
   }
 
-  export type campaignsCreateManyInput = {
+  export type CampaignCreateManyInput = {
     id?: string
     name: string
-    start_date?: Date | string | null
-    end_date?: Date | string | null
-    age_groups?: campaignsCreateage_groupsInput | string[]
-    gender?: string | null
+    startDate: Date | string
+    endDate: Date | string
+    status?: $Enums.CampaignStatus
+    notes?: string | null
+    submittedBy?: string | null
+    submissionDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaignsUpdateManyMutationInput = {
+  export type CampaignUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type campaignsUncheckedUpdateManyInput = {
+  export type CampaignUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type creativesCreateInput = {
+  export type CreativeCreateInput = {
     id?: string
     name: string
-    created_at?: Date | string | null
-    campaign_creative?: campaign_creativeCreateNestedManyWithoutCreativesInput
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    campaign: CampaignCreateNestedOneWithoutCreativesInput
   }
 
-  export type creativesUncheckedCreateInput = {
+  export type CreativeUncheckedCreateInput = {
     id?: string
     name: string
-    created_at?: Date | string | null
-    campaign_creative?: campaign_creativeUncheckedCreateNestedManyWithoutCreativesInput
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    campaignId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type creativesUpdateInput = {
+  export type CreativeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    campaign_creative?: campaign_creativeUpdateManyWithoutCreativesNestedInput
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    campaign?: CampaignUpdateOneRequiredWithoutCreativesNestedInput
   }
 
-  export type creativesUncheckedUpdateInput = {
+  export type CreativeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    campaign_creative?: campaign_creativeUncheckedUpdateManyWithoutCreativesNestedInput
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type creativesCreateManyInput = {
+  export type CreativeCreateManyInput = {
     id?: string
     name: string
-    created_at?: Date | string | null
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    campaignId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type creativesUpdateManyMutationInput = {
+  export type CreativeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type creativesUncheckedUpdateManyInput = {
+  export type CreativeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type system_configCreateInput = {
-    parameter?: string | null
-    value: string
-  }
-
-  export type system_configUncheckedCreateInput = {
-    id?: number
-    parameter?: string | null
-    value: string
-  }
-
-  export type system_configUpdateInput = {
-    parameter?: NullableStringFieldUpdateOperationsInput | string | null
-    value?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type system_configUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    parameter?: NullableStringFieldUpdateOperationsInput | string | null
-    value?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type system_configCreateManyInput = {
-    id?: number
-    parameter?: string | null
-    value: string
-  }
-
-  export type system_configUpdateManyMutationInput = {
-    parameter?: NullableStringFieldUpdateOperationsInput | string | null
-    value?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type system_configUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    parameter?: NullableStringFieldUpdateOperationsInput | string | null
-    value?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UuidFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedUuidFilter<$PrismaModel> | string
-  }
-
-  export type CampaignsScalarRelationFilter = {
-    is?: campaignsWhereInput
-    isNot?: campaignsWhereInput
-  }
-
-  export type CreativesScalarRelationFilter = {
-    is?: creativesWhereInput
-    isNot?: creativesWhereInput
-  }
-
-  export type campaign_creativeCampaign_idCreative_idCompoundUniqueInput = {
-    campaign_id: string
-    creative_id: string
-  }
-
-  export type campaign_creativeCountOrderByAggregateInput = {
-    campaign_id?: SortOrder
-    creative_id?: SortOrder
-  }
-
-  export type campaign_creativeMaxOrderByAggregateInput = {
-    campaign_id?: SortOrder
-    creative_id?: SortOrder
-  }
-
-  export type campaign_creativeMinOrderByAggregateInput = {
-    campaign_id?: SortOrder
-    creative_id?: SortOrder
-  }
-
-  export type UuidWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    campaignId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -5947,23 +3983,22 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type EnumCampaignStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CampaignStatus | EnumCampaignStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCampaignStatusFilter<$PrismaModel> | $Enums.CampaignStatus
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -5981,10 +4016,21 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type Campaign_creativeListRelationFilter = {
-    every?: campaign_creativeWhereInput
-    some?: campaign_creativeWhereInput
-    none?: campaign_creativeWhereInput
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type CreativeListRelationFilter = {
+    every?: CreativeWhereInput
+    some?: CreativeWhereInput
+    none?: CreativeWhereInput
   }
 
   export type SortOrderInput = {
@@ -5992,33 +4038,47 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type campaign_creativeOrderByRelationAggregateInput = {
+  export type CreativeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type campaignsCountOrderByAggregateInput = {
+  export type CampaignCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    start_date?: SortOrder
-    end_date?: SortOrder
-    age_groups?: SortOrder
-    gender?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    submittedBy?: SortOrder
+    submissionDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type campaignsMaxOrderByAggregateInput = {
+  export type CampaignMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    start_date?: SortOrder
-    end_date?: SortOrder
-    gender?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    submittedBy?: SortOrder
+    submissionDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type campaignsMinOrderByAggregateInput = {
+  export type CampaignMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    start_date?: SortOrder
-    end_date?: SortOrder
-    gender?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    status?: SortOrder
+    notes?: SortOrder
+    submittedBy?: SortOrder
+    submissionDate?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6039,18 +4099,28 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumCampaignStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CampaignStatus | EnumCampaignStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel> | $Enums.CampaignStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCampaignStatusFilter<$PrismaModel>
+    _max?: NestedEnumCampaignStatusFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6071,22 +4141,38 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type creativesCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    created_at?: SortOrder
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type creativesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    created_at?: SortOrder
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
-  export type creativesMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    created_at?: SortOrder
+  export type EnumCreativeApprovalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreativeApprovalStatus | EnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel> | $Enums.CreativeApprovalStatus
+  }
+
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -6100,30 +4186,115 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type system_configCountOrderByAggregateInput = {
-    id?: SortOrder
-    parameter?: SortOrder
-    value?: SortOrder
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type system_configAvgOrderByAggregateInput = {
-    id?: SortOrder
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type system_configMaxOrderByAggregateInput = {
-    id?: SortOrder
-    parameter?: SortOrder
-    value?: SortOrder
+  export type CampaignScalarRelationFilter = {
+    is?: CampaignWhereInput
+    isNot?: CampaignWhereInput
   }
 
-  export type system_configMinOrderByAggregateInput = {
+  export type CreativeCountOrderByAggregateInput = {
     id?: SortOrder
-    parameter?: SortOrder
-    value?: SortOrder
+    name?: SortOrder
+    notes?: SortOrder
+    tags?: SortOrder
+    approvalStatus?: SortOrder
+    proofOfPlay?: SortOrder
+    fileUrl?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    duration?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type system_configSumOrderByAggregateInput = {
+  export type CreativeAvgOrderByAggregateInput = {
+    fileSize?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    duration?: SortOrder
+  }
+
+  export type CreativeMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
+    notes?: SortOrder
+    approvalStatus?: SortOrder
+    proofOfPlay?: SortOrder
+    fileUrl?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    duration?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CreativeMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    notes?: SortOrder
+    approvalStatus?: SortOrder
+    proofOfPlay?: SortOrder
+    fileUrl?: SortOrder
+    fileType?: SortOrder
+    fileSize?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    duration?: SortOrder
+    campaignId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CreativeSumOrderByAggregateInput = {
+    fileSize?: SortOrder
+    width?: SortOrder
+    height?: SortOrder
+    duration?: SortOrder
+  }
+
+  export type EnumCreativeApprovalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreativeApprovalStatus | EnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCreativeApprovalStatusWithAggregatesFilter<$PrismaModel> | $Enums.CreativeApprovalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel>
+    _max?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6142,137 +4313,121 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type campaignsCreateNestedOneWithoutCampaign_creativeInput = {
-    create?: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
-    connectOrCreate?: campaignsCreateOrConnectWithoutCampaign_creativeInput
-    connect?: campaignsWhereUniqueInput
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type creativesCreateNestedOneWithoutCampaign_creativeInput = {
-    create?: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
-    connectOrCreate?: creativesCreateOrConnectWithoutCampaign_creativeInput
-    connect?: creativesWhereUniqueInput
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
-  export type campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput = {
-    create?: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
-    connectOrCreate?: campaignsCreateOrConnectWithoutCampaign_creativeInput
-    upsert?: campaignsUpsertWithoutCampaign_creativeInput
-    connect?: campaignsWhereUniqueInput
-    update?: XOR<XOR<campaignsUpdateToOneWithWhereWithoutCampaign_creativeInput, campaignsUpdateWithoutCampaign_creativeInput>, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
+  export type CreativeCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput> | CreativeCreateWithoutCampaignInput[] | CreativeUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: CreativeCreateOrConnectWithoutCampaignInput | CreativeCreateOrConnectWithoutCampaignInput[]
+    createMany?: CreativeCreateManyCampaignInputEnvelope
+    connect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
   }
 
-  export type creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput = {
-    create?: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
-    connectOrCreate?: creativesCreateOrConnectWithoutCampaign_creativeInput
-    upsert?: creativesUpsertWithoutCampaign_creativeInput
-    connect?: creativesWhereUniqueInput
-    update?: XOR<XOR<creativesUpdateToOneWithWhereWithoutCampaign_creativeInput, creativesUpdateWithoutCampaign_creativeInput>, creativesUncheckedUpdateWithoutCampaign_creativeInput>
+  export type CreativeUncheckedCreateNestedManyWithoutCampaignInput = {
+    create?: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput> | CreativeCreateWithoutCampaignInput[] | CreativeUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: CreativeCreateOrConnectWithoutCampaignInput | CreativeCreateOrConnectWithoutCampaignInput[]
+    createMany?: CreativeCreateManyCampaignInputEnvelope
+    connect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type campaignsCreateage_groupsInput = {
-    set: string[]
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
-  export type campaign_creativeCreateNestedManyWithoutCampaignsInput = {
-    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
-    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-  }
-
-  export type campaign_creativeUncheckedCreateNestedManyWithoutCampaignsInput = {
-    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
-    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-  }
-
-  export type campaignsUpdateage_groupsInput = {
-    set?: string[]
-    push?: string | string[]
+  export type EnumCampaignStatusFieldUpdateOperationsInput = {
+    set?: $Enums.CampaignStatus
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type campaign_creativeUpdateManyWithoutCampaignsNestedInput = {
-    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
-    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput[]
-    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
-    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    update?: campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput[]
-    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCampaignsInput | campaign_creativeUpdateManyWithWhereWithoutCampaignsInput[]
-    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
-  export type campaign_creativeUncheckedUpdateManyWithoutCampaignsNestedInput = {
-    create?: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput> | campaign_creativeCreateWithoutCampaignsInput[] | campaign_creativeUncheckedCreateWithoutCampaignsInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCampaignsInput | campaign_creativeCreateOrConnectWithoutCampaignsInput[]
-    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput[]
-    createMany?: campaign_creativeCreateManyCampaignsInputEnvelope
-    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    update?: campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput | campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput[]
-    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCampaignsInput | campaign_creativeUpdateManyWithWhereWithoutCampaignsInput[]
-    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  export type CreativeUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput> | CreativeCreateWithoutCampaignInput[] | CreativeUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: CreativeCreateOrConnectWithoutCampaignInput | CreativeCreateOrConnectWithoutCampaignInput[]
+    upsert?: CreativeUpsertWithWhereUniqueWithoutCampaignInput | CreativeUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: CreativeCreateManyCampaignInputEnvelope
+    set?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    disconnect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    delete?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    connect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    update?: CreativeUpdateWithWhereUniqueWithoutCampaignInput | CreativeUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: CreativeUpdateManyWithWhereWithoutCampaignInput | CreativeUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: CreativeScalarWhereInput | CreativeScalarWhereInput[]
   }
 
-  export type campaign_creativeCreateNestedManyWithoutCreativesInput = {
-    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
-    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  export type CreativeUncheckedUpdateManyWithoutCampaignNestedInput = {
+    create?: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput> | CreativeCreateWithoutCampaignInput[] | CreativeUncheckedCreateWithoutCampaignInput[]
+    connectOrCreate?: CreativeCreateOrConnectWithoutCampaignInput | CreativeCreateOrConnectWithoutCampaignInput[]
+    upsert?: CreativeUpsertWithWhereUniqueWithoutCampaignInput | CreativeUpsertWithWhereUniqueWithoutCampaignInput[]
+    createMany?: CreativeCreateManyCampaignInputEnvelope
+    set?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    disconnect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    delete?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    connect?: CreativeWhereUniqueInput | CreativeWhereUniqueInput[]
+    update?: CreativeUpdateWithWhereUniqueWithoutCampaignInput | CreativeUpdateWithWhereUniqueWithoutCampaignInput[]
+    updateMany?: CreativeUpdateManyWithWhereWithoutCampaignInput | CreativeUpdateManyWithWhereWithoutCampaignInput[]
+    deleteMany?: CreativeScalarWhereInput | CreativeScalarWhereInput[]
   }
 
-  export type campaign_creativeUncheckedCreateNestedManyWithoutCreativesInput = {
-    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
-    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
+  export type CreativeCreatetagsInput = {
+    set: string[]
   }
 
-  export type campaign_creativeUpdateManyWithoutCreativesNestedInput = {
-    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
-    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput | campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput[]
-    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
-    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    update?: campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput | campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput[]
-    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCreativesInput | campaign_creativeUpdateManyWithWhereWithoutCreativesInput[]
-    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  export type CampaignCreateNestedOneWithoutCreativesInput = {
+    create?: XOR<CampaignCreateWithoutCreativesInput, CampaignUncheckedCreateWithoutCreativesInput>
+    connectOrCreate?: CampaignCreateOrConnectWithoutCreativesInput
+    connect?: CampaignWhereUniqueInput
   }
 
-  export type campaign_creativeUncheckedUpdateManyWithoutCreativesNestedInput = {
-    create?: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput> | campaign_creativeCreateWithoutCreativesInput[] | campaign_creativeUncheckedCreateWithoutCreativesInput[]
-    connectOrCreate?: campaign_creativeCreateOrConnectWithoutCreativesInput | campaign_creativeCreateOrConnectWithoutCreativesInput[]
-    upsert?: campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput | campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput[]
-    createMany?: campaign_creativeCreateManyCreativesInputEnvelope
-    set?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    disconnect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    delete?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    connect?: campaign_creativeWhereUniqueInput | campaign_creativeWhereUniqueInput[]
-    update?: campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput | campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput[]
-    updateMany?: campaign_creativeUpdateManyWithWhereWithoutCreativesInput | campaign_creativeUpdateManyWithWhereWithoutCreativesInput[]
-    deleteMany?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
+  export type CreativeUpdatetagsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type EnumCreativeApprovalStatusFieldUpdateOperationsInput = {
+    set?: $Enums.CreativeApprovalStatus
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -6283,40 +4438,28 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NestedUuidFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedUuidFilter<$PrismaModel> | string
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedUuidWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+  export type CampaignUpdateOneRequiredWithoutCreativesNestedInput = {
+    create?: XOR<CampaignCreateWithoutCreativesInput, CampaignUncheckedCreateWithoutCreativesInput>
+    connectOrCreate?: CampaignCreateOrConnectWithoutCreativesInput
+    upsert?: CampaignUpsertWithoutCreativesInput
+    connect?: CampaignWhereUniqueInput
+    update?: XOR<XOR<CampaignUpdateToOneWithWhereWithoutCreativesInput, CampaignUpdateWithoutCreativesInput>, CampaignUncheckedUpdateWithoutCreativesInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6333,15 +4476,22 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedEnumCampaignStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CampaignStatus | EnumCampaignStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCampaignStatusFilter<$PrismaModel> | $Enums.CampaignStatus
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -6356,6 +4506,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6375,29 +4536,39 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
     lt?: number | IntFieldRefInput<$PrismaModel>
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CampaignStatus | EnumCampaignStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CampaignStatus[] | ListEnumCampaignStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCampaignStatusWithAggregatesFilter<$PrismaModel> | $Enums.CampaignStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCampaignStatusFilter<$PrismaModel>
+    _max?: NestedEnumCampaignStatusFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -6415,6 +4586,72 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumCreativeApprovalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreativeApprovalStatus | EnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel> | $Enums.CreativeApprovalStatus
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumCreativeApprovalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.CreativeApprovalStatus | EnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.CreativeApprovalStatus[] | ListEnumCreativeApprovalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumCreativeApprovalStatusWithAggregatesFilter<$PrismaModel> | $Enums.CreativeApprovalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel>
+    _max?: NestedEnumCreativeApprovalStatusFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6444,204 +4681,253 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type campaignsCreateWithoutCampaign_creativeInput = {
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type CreativeCreateWithoutCampaignInput = {
     id?: string
     name: string
-    start_date?: Date | string | null
-    end_date?: Date | string | null
-    age_groups?: campaignsCreateage_groupsInput | string[]
-    gender?: string | null
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaignsUncheckedCreateWithoutCampaign_creativeInput = {
+  export type CreativeUncheckedCreateWithoutCampaignInput = {
     id?: string
     name: string
-    start_date?: Date | string | null
-    end_date?: Date | string | null
-    age_groups?: campaignsCreateage_groupsInput | string[]
-    gender?: string | null
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaignsCreateOrConnectWithoutCampaign_creativeInput = {
-    where: campaignsWhereUniqueInput
-    create: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
+  export type CreativeCreateOrConnectWithoutCampaignInput = {
+    where: CreativeWhereUniqueInput
+    create: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput>
   }
 
-  export type creativesCreateWithoutCampaign_creativeInput = {
-    id?: string
-    name: string
-    created_at?: Date | string | null
-  }
-
-  export type creativesUncheckedCreateWithoutCampaign_creativeInput = {
-    id?: string
-    name: string
-    created_at?: Date | string | null
-  }
-
-  export type creativesCreateOrConnectWithoutCampaign_creativeInput = {
-    where: creativesWhereUniqueInput
-    create: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
-  }
-
-  export type campaignsUpsertWithoutCampaign_creativeInput = {
-    update: XOR<campaignsUpdateWithoutCampaign_creativeInput, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
-    create: XOR<campaignsCreateWithoutCampaign_creativeInput, campaignsUncheckedCreateWithoutCampaign_creativeInput>
-    where?: campaignsWhereInput
-  }
-
-  export type campaignsUpdateToOneWithWhereWithoutCampaign_creativeInput = {
-    where?: campaignsWhereInput
-    data: XOR<campaignsUpdateWithoutCampaign_creativeInput, campaignsUncheckedUpdateWithoutCampaign_creativeInput>
-  }
-
-  export type campaignsUpdateWithoutCampaign_creativeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type campaignsUncheckedUpdateWithoutCampaign_creativeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    end_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    age_groups?: campaignsUpdateage_groupsInput | string[]
-    gender?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type creativesUpsertWithoutCampaign_creativeInput = {
-    update: XOR<creativesUpdateWithoutCampaign_creativeInput, creativesUncheckedUpdateWithoutCampaign_creativeInput>
-    create: XOR<creativesCreateWithoutCampaign_creativeInput, creativesUncheckedCreateWithoutCampaign_creativeInput>
-    where?: creativesWhereInput
-  }
-
-  export type creativesUpdateToOneWithWhereWithoutCampaign_creativeInput = {
-    where?: creativesWhereInput
-    data: XOR<creativesUpdateWithoutCampaign_creativeInput, creativesUncheckedUpdateWithoutCampaign_creativeInput>
-  }
-
-  export type creativesUpdateWithoutCampaign_creativeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type creativesUncheckedUpdateWithoutCampaign_creativeInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type campaign_creativeCreateWithoutCampaignsInput = {
-    creatives: creativesCreateNestedOneWithoutCampaign_creativeInput
-  }
-
-  export type campaign_creativeUncheckedCreateWithoutCampaignsInput = {
-    creative_id: string
-  }
-
-  export type campaign_creativeCreateOrConnectWithoutCampaignsInput = {
-    where: campaign_creativeWhereUniqueInput
-    create: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput>
-  }
-
-  export type campaign_creativeCreateManyCampaignsInputEnvelope = {
-    data: campaign_creativeCreateManyCampaignsInput | campaign_creativeCreateManyCampaignsInput[]
+  export type CreativeCreateManyCampaignInputEnvelope = {
+    data: CreativeCreateManyCampaignInput | CreativeCreateManyCampaignInput[]
     skipDuplicates?: boolean
   }
 
-  export type campaign_creativeUpsertWithWhereUniqueWithoutCampaignsInput = {
-    where: campaign_creativeWhereUniqueInput
-    update: XOR<campaign_creativeUpdateWithoutCampaignsInput, campaign_creativeUncheckedUpdateWithoutCampaignsInput>
-    create: XOR<campaign_creativeCreateWithoutCampaignsInput, campaign_creativeUncheckedCreateWithoutCampaignsInput>
+  export type CreativeUpsertWithWhereUniqueWithoutCampaignInput = {
+    where: CreativeWhereUniqueInput
+    update: XOR<CreativeUpdateWithoutCampaignInput, CreativeUncheckedUpdateWithoutCampaignInput>
+    create: XOR<CreativeCreateWithoutCampaignInput, CreativeUncheckedCreateWithoutCampaignInput>
   }
 
-  export type campaign_creativeUpdateWithWhereUniqueWithoutCampaignsInput = {
-    where: campaign_creativeWhereUniqueInput
-    data: XOR<campaign_creativeUpdateWithoutCampaignsInput, campaign_creativeUncheckedUpdateWithoutCampaignsInput>
+  export type CreativeUpdateWithWhereUniqueWithoutCampaignInput = {
+    where: CreativeWhereUniqueInput
+    data: XOR<CreativeUpdateWithoutCampaignInput, CreativeUncheckedUpdateWithoutCampaignInput>
   }
 
-  export type campaign_creativeUpdateManyWithWhereWithoutCampaignsInput = {
-    where: campaign_creativeScalarWhereInput
-    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyWithoutCampaignsInput>
+  export type CreativeUpdateManyWithWhereWithoutCampaignInput = {
+    where: CreativeScalarWhereInput
+    data: XOR<CreativeUpdateManyMutationInput, CreativeUncheckedUpdateManyWithoutCampaignInput>
   }
 
-  export type campaign_creativeScalarWhereInput = {
-    AND?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
-    OR?: campaign_creativeScalarWhereInput[]
-    NOT?: campaign_creativeScalarWhereInput | campaign_creativeScalarWhereInput[]
-    campaign_id?: UuidFilter<"campaign_creative"> | string
-    creative_id?: UuidFilter<"campaign_creative"> | string
+  export type CreativeScalarWhereInput = {
+    AND?: CreativeScalarWhereInput | CreativeScalarWhereInput[]
+    OR?: CreativeScalarWhereInput[]
+    NOT?: CreativeScalarWhereInput | CreativeScalarWhereInput[]
+    id?: StringFilter<"Creative"> | string
+    name?: StringFilter<"Creative"> | string
+    notes?: StringNullableFilter<"Creative"> | string | null
+    tags?: StringNullableListFilter<"Creative">
+    approvalStatus?: EnumCreativeApprovalStatusFilter<"Creative"> | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFilter<"Creative"> | boolean
+    fileUrl?: StringFilter<"Creative"> | string
+    fileType?: StringFilter<"Creative"> | string
+    fileSize?: IntFilter<"Creative"> | number
+    width?: IntNullableFilter<"Creative"> | number | null
+    height?: IntNullableFilter<"Creative"> | number | null
+    duration?: FloatNullableFilter<"Creative"> | number | null
+    campaignId?: StringFilter<"Creative"> | string
+    createdAt?: DateTimeFilter<"Creative"> | Date | string
+    updatedAt?: DateTimeFilter<"Creative"> | Date | string
   }
 
-  export type campaign_creativeCreateWithoutCreativesInput = {
-    campaigns: campaignsCreateNestedOneWithoutCampaign_creativeInput
+  export type CampaignCreateWithoutCreativesInput = {
+    id?: string
+    name: string
+    startDate: Date | string
+    endDate: Date | string
+    status?: $Enums.CampaignStatus
+    notes?: string | null
+    submittedBy?: string | null
+    submissionDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaign_creativeUncheckedCreateWithoutCreativesInput = {
-    campaign_id: string
+  export type CampaignUncheckedCreateWithoutCreativesInput = {
+    id?: string
+    name: string
+    startDate: Date | string
+    endDate: Date | string
+    status?: $Enums.CampaignStatus
+    notes?: string | null
+    submittedBy?: string | null
+    submissionDate?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaign_creativeCreateOrConnectWithoutCreativesInput = {
-    where: campaign_creativeWhereUniqueInput
-    create: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput>
+  export type CampaignCreateOrConnectWithoutCreativesInput = {
+    where: CampaignWhereUniqueInput
+    create: XOR<CampaignCreateWithoutCreativesInput, CampaignUncheckedCreateWithoutCreativesInput>
   }
 
-  export type campaign_creativeCreateManyCreativesInputEnvelope = {
-    data: campaign_creativeCreateManyCreativesInput | campaign_creativeCreateManyCreativesInput[]
-    skipDuplicates?: boolean
+  export type CampaignUpsertWithoutCreativesInput = {
+    update: XOR<CampaignUpdateWithoutCreativesInput, CampaignUncheckedUpdateWithoutCreativesInput>
+    create: XOR<CampaignCreateWithoutCreativesInput, CampaignUncheckedCreateWithoutCreativesInput>
+    where?: CampaignWhereInput
   }
 
-  export type campaign_creativeUpsertWithWhereUniqueWithoutCreativesInput = {
-    where: campaign_creativeWhereUniqueInput
-    update: XOR<campaign_creativeUpdateWithoutCreativesInput, campaign_creativeUncheckedUpdateWithoutCreativesInput>
-    create: XOR<campaign_creativeCreateWithoutCreativesInput, campaign_creativeUncheckedCreateWithoutCreativesInput>
+  export type CampaignUpdateToOneWithWhereWithoutCreativesInput = {
+    where?: CampaignWhereInput
+    data: XOR<CampaignUpdateWithoutCreativesInput, CampaignUncheckedUpdateWithoutCreativesInput>
   }
 
-  export type campaign_creativeUpdateWithWhereUniqueWithoutCreativesInput = {
-    where: campaign_creativeWhereUniqueInput
-    data: XOR<campaign_creativeUpdateWithoutCreativesInput, campaign_creativeUncheckedUpdateWithoutCreativesInput>
+  export type CampaignUpdateWithoutCreativesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type campaign_creativeUpdateManyWithWhereWithoutCreativesInput = {
-    where: campaign_creativeScalarWhereInput
-    data: XOR<campaign_creativeUpdateManyMutationInput, campaign_creativeUncheckedUpdateManyWithoutCreativesInput>
+  export type CampaignUncheckedUpdateWithoutCreativesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumCampaignStatusFieldUpdateOperationsInput | $Enums.CampaignStatus
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    submittedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    submissionDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type campaign_creativeCreateManyCampaignsInput = {
-    creative_id: string
+  export type CreativeCreateManyCampaignInput = {
+    id?: string
+    name: string
+    notes?: string | null
+    tags?: CreativeCreatetagsInput | string[]
+    approvalStatus?: $Enums.CreativeApprovalStatus
+    proofOfPlay?: boolean
+    fileUrl: string
+    fileType: string
+    fileSize: number
+    width?: number | null
+    height?: number | null
+    duration?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type campaign_creativeUpdateWithoutCampaignsInput = {
-    creatives?: creativesUpdateOneRequiredWithoutCampaign_creativeNestedInput
+  export type CreativeUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type campaign_creativeUncheckedUpdateWithoutCampaignsInput = {
-    creative_id?: StringFieldUpdateOperationsInput | string
+  export type CreativeUncheckedUpdateWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type campaign_creativeUncheckedUpdateManyWithoutCampaignsInput = {
-    creative_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type campaign_creativeCreateManyCreativesInput = {
-    campaign_id: string
-  }
-
-  export type campaign_creativeUpdateWithoutCreativesInput = {
-    campaigns?: campaignsUpdateOneRequiredWithoutCampaign_creativeNestedInput
-  }
-
-  export type campaign_creativeUncheckedUpdateWithoutCreativesInput = {
-    campaign_id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type campaign_creativeUncheckedUpdateManyWithoutCreativesInput = {
-    campaign_id?: StringFieldUpdateOperationsInput | string
+  export type CreativeUncheckedUpdateManyWithoutCampaignInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    notes?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: CreativeUpdatetagsInput | string[]
+    approvalStatus?: EnumCreativeApprovalStatusFieldUpdateOperationsInput | $Enums.CreativeApprovalStatus
+    proofOfPlay?: BoolFieldUpdateOperationsInput | boolean
+    fileUrl?: StringFieldUpdateOperationsInput | string
+    fileType?: StringFieldUpdateOperationsInput | string
+    fileSize?: IntFieldUpdateOperationsInput | number
+    width?: NullableIntFieldUpdateOperationsInput | number | null
+    height?: NullableIntFieldUpdateOperationsInput | number | null
+    duration?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

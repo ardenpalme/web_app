@@ -8,34 +8,56 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model campaign_creative {
-  campaign_id String    @db.Uuid
-  creative_id String    @db.Uuid
-  campaigns   campaigns @relation(fields: [campaign_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  creatives   creatives @relation(fields: [creative_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-
-  @@id([campaign_id, creative_id])
+model Campaign {
+  id             String         @id @default(cuid())
+  name           String
+  startDate      DateTime
+  endDate        DateTime
+  status         CampaignStatus @default(draft)
+  notes          String?
+  submittedBy    String?
+  submissionDate DateTime?
+  creatives      Creative[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
 }
 
-model campaigns {
-  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name              String
-  start_date        DateTime?           @db.Date
-  end_date          DateTime?           @db.Date
-  age_groups        String[]
-  gender            String?
-  campaign_creative campaign_creative[]
+model Creative {
+  id             String                 @id @default(cuid())
+  name           String
+  notes          String?
+  tags           String[]               @default([])
+  approvalStatus CreativeApprovalStatus @default(PENDING)
+  proofOfPlay    Boolean                @default(false)
+
+  // R2 Storage Metadata
+  // This is the unique key for the file in the R2 bucket, not a public URL.
+  fileUrl  String
+  fileType String
+  fileSize Int
+
+  // Media Metadata
+  width    Int?
+  height   Int?
+  duration Float?
+
+  // Relations
+  campaign   Campaign @relation(fields: [campaignId], references: [id])
+  campaignId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model creatives {
-  id                String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name              String
-  created_at        DateTime?           @default(now()) @db.Timestamp(6)
-  campaign_creative campaign_creative[]
+enum CampaignStatus {
+  draft
+  WAITING_FOR_APPROVAL
+  APPROVED
+  REJECTED
 }
 
-model system_config {
-  id        Int     @id @default(autoincrement())
-  parameter String?
-  value     String
+enum CreativeApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
