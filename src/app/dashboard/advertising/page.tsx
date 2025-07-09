@@ -428,23 +428,22 @@ export default function DOOHCMSInterface() {
 
   return (
     <TooltipProvider>
-      <div className="max-w-6xl mx-auto p-6 space-y-8">
+      <div className="max-w-6xl p-5 space-y-8">
         {/* Header and Campaign Selector */}
         <div className="space-y-4">
           <div className="space-y-1">
-            <h1 className="text-3xl font-bold tracking-tight">DOOH Campaign Manager</h1>
             <p className="text-muted-foreground">Create and manage your digital out-of-home advertising campaigns</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="w-full max-w-sm">
-              <Select value={selectedCampaignId} onValueChange={setSelectedCampaignId} disabled={isLoadingCampaigns}>
-                <SelectTrigger id="campaign-select">
+            <div className="w-full max-w-sm ">
+              <Select value={selectedCampaignId} onValueChange={setSelectedCampaignId} disabled={isLoadingCampaigns} >
+                <SelectTrigger id="campaign-select" className="w-full cursor-pointer">
                   <SelectValue placeholder={isLoadingCampaigns ? "Loading campaigns..." : "Select a Campaign..."} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="new-campaign">Create New Campaign</SelectItem>
+                  <SelectItem value="new-campaign" className="cursor-pointer">Create New Campaign</SelectItem>
                   {(campaignsForSelect || []).map((campaign) => (
-                    <SelectItem key={campaign.id} value={campaign.id}>
+                    <SelectItem key={campaign.id} value={campaign.id} className="cursor-pointer">
                       {campaign.name}
                     </SelectItem>
                   ))}
@@ -490,8 +489,8 @@ export default function DOOHCMSInterface() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !startDate && "text-muted-foreground",
+                            "cursor-pointer w-full justify-start text-left font-normal",
+                            !startDate && "cursor-pointer text-muted-foreground",
                           )}
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
@@ -510,8 +509,8 @@ export default function DOOHCMSInterface() {
                         <Button
                           variant="outline"
                           className={cn(
-                            "w-full justify-start text-left font-normal",
-                            !endDate && "text-muted-foreground",
+                            "cursor-pointer w-full justify-start text-left font-normal",
+                            !endDate && "cursor-pointer text-muted-foreground",
                           )}
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
@@ -531,13 +530,15 @@ export default function DOOHCMSInterface() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                  <CardTitle>Creative Assets</CardTitle>
+                  <CardTitle className="pb-2">Creative Assets</CardTitle>
                   <CardDescription>Upload and manage your video and image creatives.</CardDescription>
                 </div>
-                <Button onClick={handleAddAssetsClick}>
-                  <Plus className="mr-2 h-4 w-4" />
-                  Add Assets
-                </Button>
+                {uploadedFiles.length > 0 && (
+                  <Button className="cursor-pointer" onClick={handleAddAssetsClick}>
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add Assets
+                  </Button>
+                )}
               </CardHeader>
               <CardContent
                 className="p-6"
@@ -557,13 +558,16 @@ export default function DOOHCMSInterface() {
                 {uploadedFiles.length === 0 ? (
                   <div
                     className={cn(
-                      "flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/20 p-12 text-center transition-colors",
+                      "cursor-pointer flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/20 p-12 text-center transition-colors",
                       isDragging && "border-primary bg-primary/10",
                     )}
                   >
                     <UploadCloud className="h-12 w-12 text-muted-foreground" />
                     <h3 className="mt-4 text-lg font-semibold">Drag and drop files here</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">or click the button to browse</p>
+                    <p className="mt-2 text-sm text-muted-foreground">or</p>
+                    <Button variant="outline" className="mt-4 bg-transparent cursor-pointer" onClick={handleAddAssetsClick}>
+                      Browse Files
+                    </Button>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -571,15 +575,23 @@ export default function DOOHCMSInterface() {
                       <Card key={file.id} className="p-4 shadow-sm">
                         <div className="flex flex-col md:flex-row items-start gap-4">
                           <div className="flex-shrink-0 w-full md:w-40 aspect-video bg-muted rounded-md overflow-hidden flex items-center justify-center">
-                            {file.localPreviewUrl || file.fileUrl ? (
-                              <img
-                                src={file.localPreviewUrl || `/api/r2/${file.fileUrl}`}
-                                alt={file.name}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <FileVideo className="w-10 h-10 text-muted-foreground" />
-                            )}
+                            {/* Assume that file.fileURL exists */}
+                            {file && file.fileType.startsWith("video/") ? (
+                                <video
+                                  src={`/api/r2/${file.fileUrl}`}
+                                  controls={false}
+                                  muted
+                                  className="w-full h-full object-cover rounded-md"
+                                  onMouseOver={(e) => e.currentTarget.play()}
+                                  onMouseOut={(e) => e.currentTarget.pause()}
+                                />
+                              ) : (
+                                <img
+                                  src={file.fileUrl ? `/api/r2/${file.fileUrl}` : "/placeholder.svg"}
+                                  alt={file.name}
+                                  className="w-full h-full object-cover"
+                                />
+                              )}
                           </div>
                           <div className="flex-1 space-y-4">
                             <Input
@@ -589,7 +601,6 @@ export default function DOOHCMSInterface() {
                               className="text-base font-semibold"
                             />
                             <div className="space-y-2">
-                              <Label className="text-sm font-medium">Tags</Label>
                               <TagInput
                                 value={file.tags || []}
                                 onChange={(newTags) => handleTagChange(file.id, newTags)}
@@ -660,6 +671,7 @@ export default function DOOHCMSInterface() {
                                 <Checkbox
                                   id={`pop-${file.id}`}
                                   checked={file.proofOfPlay}
+                                  className="cursor-pointer"
                                   onCheckedChange={() => toggleProofOfPlay(file.id)}
                                 />
                                 <Label htmlFor={`pop-${file.id}`} className="text-sm font-medium">
@@ -671,7 +683,7 @@ export default function DOOHCMSInterface() {
                                   <Tooltip>
                                     <TooltipTrigger asChild>
                                       <DialogTrigger asChild>
-                                        <Button variant="ghost" size="icon" disabled={!file.fileUrl}>
+                                        <Button variant="ghost" size="icon" className="cursor-pointer" disabled={!file.fileUrl}>
                                           <Eye className="h-4 w-4" />
                                         </Button>
                                       </DialogTrigger>
@@ -687,7 +699,7 @@ export default function DOOHCMSInterface() {
                                     <Button
                                       variant="ghost"
                                       size="icon"
-                                      className="text-destructive hover:text-destructive"
+                                      className="text-destructive hover:text-destructive cursor-pointer"
                                       onClick={() => removeFile(file.id)}
                                     >
                                       <Trash2 className="h-4 w-4" />
@@ -729,6 +741,7 @@ export default function DOOHCMSInterface() {
               <Button
                 size="lg"
                 onClick={handleSubmit}
+                className="cursor-pointer"
                 disabled={
                   isUpserting ||
                   !campaignName ||

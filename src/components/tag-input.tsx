@@ -218,6 +218,7 @@ export function TagInput({
               <ul className="list-disc list-inside mt-1 space-y-1">
                 <li>Type to get suggestions, use `Tab` to complete.</li>
                 <li>Enter multiple tags separated by commas.</li>
+                <li>Cycle through options with up/down arrows</li>
                 <li>Press `Enter` to add all valid tags.</li>
               </ul>
             </div>

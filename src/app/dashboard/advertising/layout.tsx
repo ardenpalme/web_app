@@ -17,15 +17,18 @@ export default function RootLayout({
 }) {
   return (
     <div className="w-full">
-      <div className="space-y-2 px-4">
+      <div className="px-4 pb-10">
         <h1 className="text-3xl font-bold tracking-tight">Campaign Manager</h1>
       </div>
 
-      <Tabs className="w-full p-4" defaultValue="New Campaign">
+      <Tabs className="w-full px-4" defaultValue="Campaign Manager">
         <div className="w-full">
           <TabsList className="w-1/3 flex justify-center">
+            <TabsTrigger value="Campaign Manager" asChild>
+              <Link href="/dashboard/advertising">Campaign Manager</Link>
+            </TabsTrigger>
             <TabsTrigger value="Status" asChild>
-              <Link href="/dashboard/advertising/status">Review</Link>
+              <Link href="/dashboard/advertising/status">Review Status</Link>
             </TabsTrigger>
           </TabsList>
         </div>
