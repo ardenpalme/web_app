@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -172,6 +172,15 @@ type ClientCreative = Omit<PrismaCreative, "campaignId"> & {
   localPreviewUrl?: string // For instant preview before upload completes
 }
 
+// A type for the initial state, mirroring the fetched data structure
+type InitialCampaignState = {
+  name: string
+  startDate: Date
+  endDate: Date
+  notes: string | null
+  creatives: PrismaCreative[]
+}
+
 export default function DOOHCMSInterface() {
   const [selectedCampaignId, setSelectedCampaignId] = useState("")
   const [campaignName, setCampaignName] = useState("")
@@ -180,6 +189,7 @@ export default function DOOHCMSInterface() {
   const [uploadedFiles, setUploadedFiles] = useState<ClientCreative[]>([])
   const [campaignNotes, setCampaignNotes] = useState("")
   const [isDragging, setIsDragging] = useState(false)
+  const [initialCampaignState, setInitialCampaignState] = useState<InitialCampaignState | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const uploadControllers = useRef<Map<string, AbortController>>(new Map())
@@ -201,10 +211,19 @@ export default function DOOHCMSInterface() {
   // Effect to populate form when campaign data is fetched
   useEffect(() => {
     if (campaignData) {
-      setCampaignName(campaignData.name)
-      setStartDate(new Date(campaignData.startDate))
-      setEndDate(new Date(campaignData.endDate))
-      setCampaignNotes(campaignData.notes || "")
+      const initialState = {
+        name: campaignData.name,
+        startDate: new Date(campaignData.startDate),
+        endDate: new Date(campaignData.endDate),
+        notes: campaignData.notes || "",
+        creatives: campaignData.creatives,
+      }
+      setInitialCampaignState(initialState)
+
+      setCampaignName(initialState.name)
+      setStartDate(initialState.startDate)
+      setEndDate(initialState.endDate)
+      setCampaignNotes(initialState.notes || "")
       const creativesFromDb: ClientCreative[] = campaignData.creatives.map((creative) => ({
         ...creative,
         uploadStatus: "success",
@@ -259,18 +278,78 @@ export default function DOOHCMSInterface() {
     return campaignData?.status || null
   })()
 
+  const hasChanges = useMemo(() => {
+    if (!initialCampaignState || selectedCampaignId === "new-campaign") {
+      return false
+    }
+
+    const cleanUploadedFiles = uploadedFiles.map((f) => ({
+      id: f.id,
+      name: f.name,
+      notes: f.notes,
+      tags: f.tags.slice().sort(),
+      proofOfPlay: f.proofOfPlay,
+      fileUrl: f.fileUrl,
+    }))
+
+    const cleanInitialCreatives = initialCampaignState.creatives.map((f) => ({
+      id: f.id,
+      name: f.name,
+      notes: f.notes,
+      tags: f.tags.slice().sort(),
+      proofOfPlay: f.proofOfPlay,
+      fileUrl: f.fileUrl,
+    }))
+
+    const currentStateString = JSON.stringify({
+      name: campaignName,
+      startDate: startDate,
+      endDate: endDate,
+      notes: campaignNotes,
+      creatives: cleanUploadedFiles.sort((a, b) => a.id.localeCompare(b.id)),
+    })
+
+    const initialStateString = JSON.stringify({
+      name: initialCampaignState.name,
+      startDate: initialCampaignState.startDate,
+      endDate: initialCampaignState.endDate,
+      notes: initialCampaignState.notes,
+      creatives: cleanInitialCreatives.sort((a, b) => a.id.localeCompare(b.id)),
+    })
+
+    return currentStateString !== initialStateString
+  }, [campaignName, startDate, endDate, campaignNotes, uploadedFiles, initialCampaignState, selectedCampaignId])
+
+  const handleDiscardChanges = () => {
+    if (initialCampaignState) {
+      setCampaignName(initialCampaignState.name)
+      setStartDate(initialCampaignState.startDate)
+      setEndDate(initialCampaignState.endDate)
+      setCampaignNotes(initialCampaignState.notes || "")
+      setUploadedFiles(
+        initialCampaignState.creatives.map((c) => ({
+          ...c,
+          uploadStatus: "success",
+        })),
+      )
+    }
+  }
+
   const resetForm = () => {
     setCampaignName("")
     setStartDate(undefined)
     setEndDate(undefined)
     setUploadedFiles([])
     setCampaignNotes("")
+    setInitialCampaignState(null)
   }
 
   // Effect to reset form for a new campaign
   useEffect(() => {
     if (selectedCampaignId === "new-campaign") {
       resetForm()
+    } else if (!selectedCampaignId) {
+      setInitialCampaignState(null)
     }
   }, [selectedCampaignId])
 
@@ -737,22 +816,50 @@ export default function DOOHCMSInterface() {
             </Card>
 
             {/* Submit Button */}
-            <div className="flex justify-end pt-4">
-              <Button
-                size="lg"
-                onClick={handleSubmit}
-                className="cursor-pointer"
-                disabled={
-                  isUpserting ||
-                  !campaignName ||
-                  !startDate ||
-                  !endDate ||
-                  uploadedFiles.some((f) => f.uploadStatus !== "success")
-                }
-              >
-                {isUpserting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {isUpserting ? "Submitting..." : "Submit Campaign"}
-              </Button>
+            <div className="flex justify-end pt-4 space-x-4">
+              {selectedCampaignId === "new-campaign" ? (
+                <Button
+                  size="lg"
+                  onClick={handleSubmit}
+                  className="cursor-pointer"
+                  disabled={
+                    isUpserting ||
+                    !campaignName ||
+                    !startDate ||
+                    !endDate ||
+                    uploadedFiles.some((f) => f.uploadStatus !== "success")
+                  }
+                >
+                  {isUpserting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {isUpserting ? "Submitting..." : "Submit Campaign"}
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={handleDiscardChanges}
+                    disabled={isUpserting || !hasChanges}
+                  >
+                    Discard Changes
+                  </Button>
+                  <Button
+                    size="lg"
+                    onClick={handleSubmit}
+                    disabled={
+                      isUpserting ||
+                      !hasChanges ||
+                      !campaignName ||
+                      !startDate ||
+                      !endDate ||
+                      uploadedFiles.some((f) => f.uploadStatus !== "success")
+                    }
+                  >
+                    {isUpserting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {isUpserting ? "Saving..." : "Save Changes"}
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         )}
