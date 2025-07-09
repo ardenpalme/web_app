@@ -210,7 +210,7 @@ export function TagInput({
         </div>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Info className="h-4 w-4 text-muted-foreground cursor-pointer ml-2 flex-shrink-0" />
+            <Info className="h-4 w-4 text-muted-foreground ml-2 flex-shrink-0" />
           </TooltipTrigger>
           <TooltipContent>
             <div className="text-sm p-1">

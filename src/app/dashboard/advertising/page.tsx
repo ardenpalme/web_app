@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef, useMemo } from "react"
+import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -124,7 +125,7 @@ const CampaignStatusBadge = ({ status }: { status: CampaignStatusEnum | null }) 
   )
 }
 
-const FormSkeleton = () => (
+export const FormSkeleton = () => (
   <div className="space-y-8">
     <Card>
       <CardHeader>
@@ -182,7 +183,12 @@ type InitialCampaignState = {
 }
 
 export default function DOOHCMSInterface() {
-  const [selectedCampaignId, setSelectedCampaignId] = useState("")
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  const selectedCampaignId = searchParams.get("campaignId") || ""
+
   const [campaignName, setCampaignName] = useState("")
   const [startDate, setStartDate] = useState<Date>()
   const [endDate, setEndDate] = useState<Date>()
@@ -209,8 +215,28 @@ export default function DOOHCMSInterface() {
   )
 
   // Effect to populate form when campaign data is fetched
+  const { mutate: upsertCampaign, isPending: isUpserting } = trpc.campaign.upsert.useMutation({
+    onSuccess: () => {
+      console.log("Campaign submitted successfully!")
+    },
+    onError: (error) => {
+      console.error("Submission failed:", error)
+    },
+  })
+
+  const resetForm = () => {
+    setCampaignName("")
+    setStartDate(undefined)
+    setEndDate(undefined)
+    setUploadedFiles([])
+    setCampaignNotes("")
+    setInitialCampaignState(null)
+  }
+
   useEffect(() => {
-    if (campaignData) {
+    if (selectedCampaignId === "new-campaign") {
+      resetForm()
+    } else if (campaignData && selectedCampaignId === campaignData.id) {
       const initialState = {
         name: campaignData.name,
         startDate: new Date(campaignData.startDate),
@@ -229,17 +255,26 @@ export default function DOOHCMSInterface() {
         uploadStatus: "success",
       }))
       setUploadedFiles(creativesFromDb)
+     } else if (!selectedCampaignId) {
+          resetForm()
     }
-  }, [campaignData])
+  }, [selectedCampaignId, campaignData])
 
-  const { mutate: upsertCampaign, isPending: isUpserting } = trpc.campaign.upsert.useMutation({
-    onSuccess: () => {
-      console.log("Campaign submitted successfully!")
-    },
-    onError: (error) => {
-      console.error("Submission failed:", error)
-    },
-  })
+  const handleCampaignSelect = (campaignId: string) => {
+    const params = new URLSearchParams()
+    if (campaignId) {
+      params.set("campaignId", campaignId)
+      if (campaignId !== "new-campaign") {
+        const campaign = campaignsForSelect?.find((c) => c.id === campaignId)
+        if (campaign) {
+          params.set("name", campaign.name)
+        }
+      }
+      router.push(`${pathname}?${params.toString()}`)
+    } else {
+      router.push(pathname) // clear all params
+    }
+  }
 
   const handleSubmit = () => {
     if (!campaignName || !startDate || !endDate) return
@@ -334,24 +369,6 @@ export default function DOOHCMSInterface() {
       )
     }
   }
-
-  const resetForm = () => {
-    setCampaignName("")
-    setStartDate(undefined)
-    setEndDate(undefined)
-    setUploadedFiles([])
-    setCampaignNotes("")
-    setInitialCampaignState(null)
-  }
-
-  // Effect to reset form for a new campaign
-  useEffect(() => {
-    if (selectedCampaignId === "new-campaign") {
-      resetForm()
-    } else if (!selectedCampaignId) {
-      setInitialCampaignState(null)
-    }
-  }, [selectedCampaignId])
 
   const handleAddAssetsClick = () => {
     fileInputRef.current?.click()
@@ -515,7 +532,7 @@ export default function DOOHCMSInterface() {
           </div>
           <div className="flex items-center gap-4">
             <div className="w-full max-w-sm ">
-              <Select value={selectedCampaignId} onValueChange={setSelectedCampaignId} disabled={isLoadingCampaigns} >
+              <Select value={selectedCampaignId} onValueChange={handleCampaignSelect} disabled={isLoadingCampaigns} >
                 <SelectTrigger id="campaign-select" className="w-full cursor-pointer">
                   <SelectValue placeholder={isLoadingCampaigns ? "Loading campaigns..." : "Select a Campaign..."} />
                 </SelectTrigger>
@@ -637,7 +654,7 @@ export default function DOOHCMSInterface() {
                 {uploadedFiles.length === 0 ? (
                   <div
                     className={cn(
-                      "cursor-pointer flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/20 p-12 text-center transition-colors",
+                      "flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/20 p-12 text-center transition-colors",
                       isDragging && "border-primary bg-primary/10",
                     )}
                   >

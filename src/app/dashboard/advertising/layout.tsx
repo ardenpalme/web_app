@@ -23,12 +23,12 @@ export default function RootLayout({
 
       <Tabs className="w-full px-4" defaultValue="Campaign Manager">
         <div className="w-full">
-          <TabsList className="w-1/3 flex justify-center">
-            <TabsTrigger value="Campaign Manager" asChild>
-              <Link href="/dashboard/advertising">Campaign Manager</Link>
-            </TabsTrigger>
+          <TabsList className="p-1 flex justify-center">
             <TabsTrigger value="Status" asChild>
-              <Link href="/dashboard/advertising/status">Review Status</Link>
+              <Link href="/dashboard/advertising/status">Gneral Overview</Link>
+            </TabsTrigger>
+            <TabsTrigger value="Campaign Manager" asChild>
+              <Link href="/dashboard/advertising">Manage Campaigns</Link>
             </TabsTrigger>
           </TabsList>
         </div>

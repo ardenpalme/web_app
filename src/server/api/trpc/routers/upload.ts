@@ -37,16 +37,14 @@ export const campaignRouter = router({
 
   listWithStatus: publicProcedure.query(async () => {
     return await prisma.campaign.findMany({
-      select: {
-        id: true,
-        name: true,
-        submittedBy: true,
-        submissionDate: true,
-        status: true,
-        _count: { select: { creatives: true } },
+      include: { 
+        creatives: true,
+        _count: {
+          select: { creatives: true }
+        }
       },
-      orderBy: { updatedAt: 'desc' },
-    })
+      orderBy: { updatedAt: 'desc' }
+    });
   }),
 
   getById: publicProcedure.input(z.object({ id: z.string() })).query(async ({ input }) => {
