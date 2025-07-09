@@ -1,19 +1,34 @@
 "use client"
 
-import { useState } from "react"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { mockCampaigns as initialCampaigns } from "@/lib/data"
-import type { Campaign } from "@/lib/types"
 import { format, differenceInDays } from "date-fns"
 import { FileVideo } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CampaignStatusBadge, CreativeStatusBadge } from "./status-badges"
+import { trpc } from "@/lib/client"
+import { Loader2, AlertCircle } from "lucide-react"
 
 export function CampaignStatusDashboard() {
-  const [campaigns, setCampaigns] = useState<Campaign[]>(initialCampaigns)
+  const { data: campaigns, isLoading, isError } = trpc.campaign.listWithStatus.useQuery()
 
-  if (campaigns.length === 0) {
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-24">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
+
+  if (isError) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24 text-destructive">
+        <AlertCircle className="h-8 w-8" />
+        <p className="mt-2">Failed to load campaigns.</p>
+      </div>
+    )
+  }
+
+  if (!campaigns || campaigns.length === 0) {
     return (
       <div className="text-center text-muted-foreground py-24">
         <p>You have not submitted any campaigns yet.</p>
@@ -36,8 +51,10 @@ export function CampaignStatusDashboard() {
             <AccordionTrigger className="grid grid-cols-12 items-center p-4 hover:no-underline [&[data-state=open]>svg]:rotate-180">
               <div className="col-span-4 text-left font-medium">{campaign.name}</div>
               <div className="col-span-3 text-left">{campaign.submittedBy}</div>
-              <div className="col-span-2 text-left">{format(campaign.submissionDate, "PPP")}</div>
-              <div className="col-span-1 text-left">{campaign.creatives.length}</div>
+              <div className="col-span-2 text-left">
+                {campaign.submissionDate ? format(campaign.submissionDate, "PPP") : "-"}
+              </div>
+              <div className="col-span-1 text-left">{campaign._count.creatives}</div>
               <div className="col-span-2 flex justify-start">
                 <CampaignStatusBadge status={campaign.status} />
               </div>
@@ -66,14 +83,8 @@ export function CampaignStatusDashboard() {
                       </div>
                     </div>
                     <div>
-                      <span className="text-sm text-muted-foreground">Targeting Tags</span>
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {campaign.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
+                      <span className="text-sm text-muted-foreground">Campaign Notes</span>
+                      <p className="text-sm text-muted-foreground mt-1">{campaign.notes || "No notes provided."}</p>
                     </div>
                   </CardContent>
                 </Card>

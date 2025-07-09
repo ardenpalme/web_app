@@ -29,12 +29,11 @@ import {
   XCircle,
   Loader2,
   UploadCloud,
-  X,
 } from "lucide-react"
 import { format } from "date-fns"
 import { cn, formatDuration, formatBytes } from "@/lib/utils"
 import type { CampaignStatus as CampaignStatusEnum, Creative as PrismaCreative } from "@prisma/client"
-import { trpc } from "@/lib/trpc"
+import { trpc } from "@/lib/client"
 import { uploadFileToWorker, downloadFileFromWorker } from "@/lib/r2-worker"
 import cuid from "cuid"
 import { TagInput, PREDEFINED_TAGS } from "@/components/tag-input"
@@ -386,6 +385,7 @@ export default function DOOHCMSInterface() {
     setIsDragging(false)
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       handleFiles(e.dataTransfer.files)
+      e.dataTransfer.clearData()
     }
   }
 
@@ -403,16 +403,6 @@ export default function DOOHCMSInterface() {
 
   const updateFileDetail = (id: string, key: "name" | "notes", value: string) => {
     setUploadedFiles((prev) => prev.map((f) => (f.id === id ? { ...f, [key]: value } : f)))
-  }
-
-  const handleTagChange = (fileId: string, newTags: string[]) => {
-    setUploadedFiles((prev) => prev.map((f) => (f.id === fileId ? { ...f, tags: newTags } : f)))
-  }
-
-  const handleTagRemove = (fileId: string, tagToRemove: string) => {
-    setUploadedFiles((prev) =>
-      prev.map((f) => (f.id === fileId ? { ...f, tags: f.tags.filter((t) => t !== tagToRemove) } : f)),
-    )
   }
 
   const toggleProofOfPlay = (id: string) => {
@@ -585,27 +575,15 @@ export default function DOOHCMSInterface() {
                               <Label className="text-sm font-medium">Tags</Label>
                               <TagInput
                                 value={file.tags || []}
-                                onChange={(newTags) => handleTagChange(file.id, newTags)}
+                                onChange={(newTags) => {
+                                  setUploadedFiles((prev) =>
+                                    prev.map((f) => (f.id === file.id ? { ...f, tags: newTags } : f)),
+                                  )
+                                }}
                                 autocompleteOptions={PREDEFINED_TAGS}
                                 placeholder="Add tags..."
+                                tooltipContent="Add relevant tags for targeting and reporting. Press Enter to add a custom tag."
                               />
-                              {file.tags && file.tags.length > 0 && (
-                                <div className="flex flex-wrap gap-2 pt-2">
-                                  {file.tags.map((tag) => (
-                                    <Badge key={tag} variant="secondary">
-                                      {tag}
-                                      <button
-                                        type="button"
-                                        className="ml-1.5 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                                        onClick={() => handleTagRemove(file.id, tag)}
-                                      >
-                                        <X className="h-3 w-3" />
-                                        <span className="sr-only">Remove {tag}</span>
-                                      </button>
-                                    </Badge>
-                                  ))}
-                                </div>
-                              )}
                             </div>
                             <Textarea
                               placeholder="Add notes for this creative..."
@@ -740,4 +718,3 @@ export default function DOOHCMSInterface() {
     </TooltipProvider>
   )
 }
-

@@ -1,40 +1,3 @@
-// --- Core Status Enums ---
-export type CampaignStatus = "approved" | "waiting for approval" | "rejected" | "draft"
-export type CreativeApprovalStatus = "approved" | "rejected" | "pending"
-export type CreativeProcessingStatus = "processing" | "success" | "error"
-
-// --- Core Data Structures ---
-export interface Creative {
-  id: string
-  file: File
-  name: string
-  notes: string
-  tags: string[]
-  status: CreativeProcessingStatus
-  approvalStatus: CreativeApprovalStatus
-  proofOfPlay: boolean
-  preview?: string
-  width?: number
-  height?: number
-  duration?: number
-}
-
-export interface Campaign {
-  id: string
-  name: string
-  startDate: Date
-  endDate: Date
-  status: CampaignStatus
-  creatives: Creative[]
-  // Optional fields for different contexts
-  submittedBy?: string
-  submissionDate?: Date
-  notes?: string
-}
-
-// --- Performance Dashboard Types ---
-export type PerformanceStatus = "Live" | "Ended" | "Approved"
-
 export interface CampaignPerformance {
   id: string
   name: string
@@ -64,5 +27,40 @@ export interface CampaignPerformance {
   }
 }
 
-export type UploadedFile = {}
+export type PerformanceStatus = "Live" | "Ended" | "Approved"
 
+export interface Campaign {
+  id: string
+  name: string
+  startDate: Date
+  endDate: Date
+  status: CampaignStatus
+  notes?: string
+  submittedBy?: string
+  submissionDate?: Date
+  creatives: Creative[]
+  createdAt: Date
+  updatedAt: Date
+}
+
+export type CampaignStatus = "draft" | "WAITING_FOR_APPROVAL" | "APPROVED" | "REJECTED"
+
+export type CreativeApprovalStatus = "PENDING" | "APPROVED" | "REJECTED"
+
+export interface Creative {
+  id: string
+  name: string
+  notes?: string
+  tags: string[]
+  approvalStatus: CreativeApprovalStatus
+  proofOfPlay: boolean
+  fileUrl: string
+  fileType: string
+  fileSize: number
+  width?: number
+  height?: number
+  duration?: number
+  campaignId: string
+  createdAt: Date
+  updatedAt: Date
+}

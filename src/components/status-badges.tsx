@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge"
-import type { CampaignStatus, UploadedFile } from "@/lib/types"
+import type { CampaignStatus, CreativeApprovalStatus } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { ThumbsUp, ThumbsDown, CircleDot, FileEdit, XCircle, CheckCircle, Clock } from "lucide-react"
 
@@ -42,7 +42,7 @@ export const CampaignStatusBadge = ({ status }: { status: CampaignStatus }) => {
   )
 }
 
-export const CreativeStatusBadge = ({ status }: { status: UploadedFile["approvalStatus"] }) => {
+export const CreativeStatusBadge = ({ status }: { status: CreativeApprovalStatus }) => {
   const statusConfig = {
     pending: {
       label: "Pending",
