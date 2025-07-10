@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { useRouter, useSearchParams, usePathname } from "next/navigation"
 import { differenceInDays, format } from "date-fns"
-import { FileVideo, Loader2, AlertCircle } from "lucide-react"
+import { FileVideo, Loader2, AlertCircle, CheckSquare } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CampaignStatusBadge, CreativeStatusBadge } from "./status-badges"
+import { Badge } from "@/components/ui/badge"
 import { trpc } from "@/lib/trpc"
-import { cn } from "@/lib/utils"
 
 export function CampaignStatusDashboard() {
   const router = useRouter()
@@ -79,7 +79,7 @@ export function CampaignStatusDashboard() {
       >
         {campaigns.map((campaign) => (
           <AccordionItem value={campaign.id} key={campaign.id} className="border-b last:border-b-0">
-            <AccordionTrigger className="flex w-full items-center p-4 gap-4 hover:no-underline text-sm [&[data-state=open]>svg]:rotate-180">
+            <AccordionTrigger className="cursor-pointer flex w-full items-center p-4 gap-4 hover:no-underline text-sm [&[data-state=open]>svg]:rotate-180">
               <div className="flex flex-1 items-center gap-4">
                 <div className="flex-[4] text-left font-medium">{campaign.name}</div>
                 <div className="flex-[3] text-left">{campaign.submittedBy || "-"}</div>
@@ -122,25 +122,48 @@ export function CampaignStatusDashboard() {
                   <div className="space-y-2">
                     {campaign.creatives &&
                       campaign.creatives.map((creative) => (
-                        <div key={creative.id} className="bg-background border rounded-lg p-4 flex items-center gap-4">
+                        <div key={creative.id} className="bg-background border rounded-lg p-4 flex items-start gap-4">
                           <div className="flex-shrink-0 w-32 aspect-video bg-muted rounded-md overflow-hidden">
-                            {creative.fileUrl ? (
-                              <img
-                                src={`/api/r2/${creative.fileUrl}`}
-                                alt={creative.name}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex items-center justify-center">
-                                <FileVideo className="w-8 h-8 text-muted-foreground" />
+                            {creative && creative.fileType.startsWith("video/") ? (
+                                <video
+                                  src={`/api/r2/${creative.fileUrl}`}
+                                  controls={false}
+                                  muted
+                                  className="w-full h-full object-cover rounded-md"
+                                  onMouseOver={(e) => e.currentTarget.play()}
+                                  onMouseOut={(e) => e.currentTarget.pause()}
+                                />
+                              ) : (
+                                <img
+                                  src={creative.fileUrl ? `/api/r2/${creative.fileUrl}` : "/placeholder.svg"}
+                                  alt={creative.name}
+                                  className="w-full h-full object-cover"
+                                />
+                              )}
+
+                          </div>
+                          <div className="flex-1 space-y-2">
+                            <p className="font-medium">{creative.name}</p>
+                            <p className="text-sm text-muted-foreground">{creative.notes || "No notes provided."}</p>
+                            {creative.tags && creative.tags.length > 0 && (
+                              <div className="flex flex-wrap gap-1 pt-1">
+                                {creative.tags.map((tag) => (
+                                  <Badge key={tag} variant="secondary" className="text-xs">
+                                    {tag}
+                                  </Badge>
+                                ))}
                               </div>
                             )}
                           </div>
-                          <div className="flex-1">
-                            <p className="font-medium">{creative.name}</p>
-                            <p className="text-sm text-muted-foreground">{creative.notes || "No notes provided."}</p>
-                          </div> 
-                          <CreativeStatusBadge status={creative.approvalStatus} />
+                          <div className="flex flex-col items-end gap-2 w-36 text-right">
+                            <CreativeStatusBadge status={creative.approvalStatus} />
+                            {creative.proofOfPlay && (
+                              <Badge variant="outline" className="flex items-center gap-1 text-xs">
+                                <CheckSquare className="h-3 w-3" />
+                                Proof of Play
+                              </Badge>
+                            )}
+                          </div>
                         </div>
                       ))}
                     {(!campaign.creatives || campaign.creatives.length === 0) && (

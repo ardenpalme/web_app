@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect, useRef, useMemo } from "react"
-import { useRouter, useSearchParams, usePathname } from "next/navigation"
+import { redirect, useRouter, useSearchParams, usePathname } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -304,6 +304,7 @@ export default function DOOHCMSInterface() {
       creatives: creativesToSubmit,
     }
     upsertCampaign(campaignPayload)
+    redirect('/dashboard/advertising/status');
   }
 
   // --- Logic & Handlers ---
@@ -368,6 +369,7 @@ export default function DOOHCMSInterface() {
         })),
       )
     }
+    redirect('/dashboard/advertising/status');
   }
 
   const handleAddAssetsClick = () => {
@@ -537,12 +539,12 @@ export default function DOOHCMSInterface() {
                   <SelectValue placeholder={isLoadingCampaigns ? "Loading campaigns..." : "Select a Campaign..."} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="new-campaign" className="cursor-pointer">Create New Campaign</SelectItem>
                   {(campaignsForSelect || []).map((campaign) => (
                     <SelectItem key={campaign.id} value={campaign.id} className="cursor-pointer">
                       {campaign.name}
                     </SelectItem>
                   ))}
+                  <SelectItem value="new-campaign" className="cursor-pointer">Create New Campaign</SelectItem>
                 </SelectContent>
               </Select>
             </div>

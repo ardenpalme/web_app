@@ -5,9 +5,8 @@ import { Loader2 } from "lucide-react"
 
 export default function StatusPage() {
   return (
-    <div className="max-w-7xl mx-auto py-6 space-y-8">
+    <div className="max-w-7xl mx-auto p-5 space-y-8">
       <div className="space-y-1">
-        <h1 className="text-3xl font-bold tracking-tight">Campaign Status</h1>
         <p className="text-muted-foreground">Track the approval process of your submitted campaigns.</p>
       </div>
       <Card>
